@@ -1,15 +1,13 @@
-import { vercel } from '@t3-oss/env-core/presets';
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod';
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
 export const keys = () =>
   createEnv({
-    extends: [vercel()],
     server: {
       ANALYZE: z.string().optional(),
 
       // Added by Vercel
-      NEXT_RUNTIME: z.enum(['nodejs', 'edge']).optional(),
+      NEXT_RUNTIME: z.enum(["nodejs", "edge"]).optional(),
     },
     client: {
       NEXT_PUBLIC_APP_URL: z.string().min(1).url(),
