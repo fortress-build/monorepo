@@ -23,9 +23,7 @@ if (process.env.NODE_ENV === "production") {
   nextConfig.redirects = redirects;
 }
 
-if (env.VERCEL) {
-  nextConfig = withSentry(nextConfig);
-}
+nextConfig = withSentry(nextConfig);
 
 if (env.ANALYZE === "true") {
   nextConfig = withAnalyzer(nextConfig);

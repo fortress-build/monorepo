@@ -5,9 +5,7 @@ import type { NextConfig } from "next";
 
 let nextConfig: NextConfig = withLogtail({ ...config });
 
-if (env.VERCEL) {
-  nextConfig = withSentry(nextConfig);
-}
+nextConfig = withSentry(nextConfig);
 
 if (env.ANALYZE === "true") {
   nextConfig = withAnalyzer(nextConfig);
