@@ -1,19 +1,13 @@
-import merge from 'lodash.merge';
-import type { Metadata } from 'next';
+import merge from "lodash.merge";
+import type { Metadata } from "next";
 
-type MetadataGenerator = Omit<Metadata, 'description' | 'title'> & {
+type MetadataGenerator = Omit<Metadata, "description" | "title"> & {
   title: string;
   description: string;
   image?: string;
 };
 
-const applicationName = 'next-forge';
-const author: Metadata['authors'] = {
-  name: 'Hayden Bleasel',
-  url: 'https://haydenbleasel.com/',
-};
-const publisher = 'Hayden Bleasel';
-const twitterHandle = '@haydenbleasel';
+const applicationName = "nerve";
 
 export const createMetadata = ({
   title,
@@ -26,27 +20,20 @@ export const createMetadata = ({
     title: parsedTitle,
     description,
     applicationName,
-    authors: [author],
-    creator: author.name,
     formatDetection: {
       telephone: false,
     },
     appleWebApp: {
       capable: true,
-      statusBarStyle: 'default',
+      statusBarStyle: "default",
       title: parsedTitle,
     },
     openGraph: {
       title: parsedTitle,
       description,
-      type: 'website',
+      type: "website",
       siteName: applicationName,
-      locale: 'en_US',
-    },
-    publisher,
-    twitter: {
-      card: 'summary_large_image',
-      creator: twitterHandle,
+      locale: "en_US",
     },
   };
 

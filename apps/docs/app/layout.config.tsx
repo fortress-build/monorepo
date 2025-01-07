@@ -4,6 +4,12 @@ export const baseOptions: BaseLayoutProps = {
   nav: {
     title: "Nerve",
   },
-  links: [],
+  links: [
+    {
+      text: "Home",
+      url: "https://fortress.build",
+      active: "nested-url",
+    },
+  ],
   githubUrl: "https://github.com/fortress-build",
 };

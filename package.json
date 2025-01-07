@@ -1,8 +1,8 @@
 {
-  "name": "next-forge",
+  "name": "nerve",
   "version": "3.0.13",
   "bin": {
-    "next-forge": "scripts/init.mjs"
+    "nerve": "scripts/init.mjs"
   },
   "files": [
     "scripts/init.mjs"
