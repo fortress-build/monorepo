@@ -15,7 +15,7 @@ const meta = {
 
 export const metadata: Metadata = createMetadata(meta);
 
-const Home = async () => {
+async function Home() {
   return (
     <>
       <Hero />
@@ -27,6 +27,6 @@ const Home = async () => {
       <CTA />
     </>
   );
-};
+}
 
 export default Home;

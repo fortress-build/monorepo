@@ -8,6 +8,15 @@
       "Liveblocks"
     ]
   },
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "useAwait": {
+          "level": "off"
+        }
+      }
+    }
+  },
   "files": {
     "ignore": [
       "packages/design-system/components/ui/**",
