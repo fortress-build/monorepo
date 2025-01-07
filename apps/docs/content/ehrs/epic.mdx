@@ -1,0 +1,54 @@
+---
+title: "Integrate into Epic"
+description: "An overview of FHIR (Fast Healthcare Interoperability Resources)"
+---
+import { Frame } from '../../components/Frame'
+
+## Set up Epic integration
+
+Follow these steps to set up your Epic integration:
+
+### 1. Create a FHIR on Epic account
+At the moment, we are abstracting over the FHIR on Epic APIs. You'll need to create a FHIR on Epic account to get started.
+
+<Frame>
+  <img src="/images/epic/create-account.png" alt="Create FHIR on Epic account" />
+</Frame>
+
+### 2. Create a new application
+1. Navigate to the "Build Apps" tab
+2. Click the "+Create" button
+
+<Frame>
+  <img src="/images/epic/create-app.png" alt="Create new Epic application" />
+</Frame>
+
+### 3. Configure your application
+1. Enter your application name
+2. For Application Audience, select 'Clinicians or Administrative Users'
+3. Select the APIs you want to use
+   <Callout>We recommend selecting all APIs initially for development purposes. Note that this may take a minute to complete.</Callout>
+
+<Frame>
+  <img src="/images/epic/app-config.png" alt="Configure Epic application" />
+</Frame>
+
+### 4. Set up redirect URIs
+Add your redirect URIs for both:
+- Development domain (e.g., `http://localhost:3000`)
+- Production URL
+
+<Frame>
+  <img src="/images/epic/redirect-uri.png" alt="Set up redirect URIs" />
+</Frame>
+
+### 5. Complete application setup
+1. Fill out the remaining information
+2. Click "Save & Ready for Production"
+
+<Frame>
+  <img src="/images/epic/save-production.png" alt="Save and complete setup" />
+</Frame>
+
+### 6. Get your Client ID
+After setup is complete, locate and copy your Client ID. You'll need this to initialize the integration:
