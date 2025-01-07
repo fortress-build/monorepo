@@ -6,6 +6,8 @@ export const keys = () =>
     server: {
       ANALYZE: z.string().optional(),
 
+      DEPLOYMENT_URL: z.string().url().optional(),
+
       // Added by Vercel
       NEXT_RUNTIME: z.enum(["nodejs", "edge"]).optional(),
     },
@@ -22,5 +24,6 @@ export const keys = () =>
       NEXT_PUBLIC_WEB_URL: process.env.NEXT_PUBLIC_WEB_URL,
       NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
       NEXT_PUBLIC_DOCS_URL: process.env.NEXT_PUBLIC_DOCS_URL,
+      DEPLOYMENT_URL: process.env.DEPLOYMENT_URL,
     },
   });
