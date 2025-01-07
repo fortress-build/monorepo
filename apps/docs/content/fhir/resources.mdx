@@ -1,0 +1,228 @@
+---
+title: "FHIR Resources"
+description: "A list of FHIR resources, and which ones may be relevant"
+---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
+
+<Callout>
+  We use the R4 standard for FHIR implementations.
+</Callout>
+
+<Tabs defaultValue="category" className="mt-6">
+  <TabsList>
+    <TabsTrigger value="category">By Category</TabsTrigger>
+    <TabsTrigger value="alphabetical">Alphabetical</TabsTrigger>
+    <TabsTrigger value="recommended">By Product Type</TabsTrigger>
+  </TabsList>
+
+  <TabsContent value="category">
+    ## Foundation Resources
+
+    | Category | Resource | Maturity Level |
+    |----------|----------|----------------|
+    | Conformance | CapabilityStatement | Normative |
+    | | StructureDefinition | Normative |
+    | | ImplementationGuide | Level 1 |
+    | | SearchParameter | Level 3 |
+    | | MessageDefinition | Level 1 |
+    | | OperationDefinition | Normative |
+    | | CompartmentDefinition | Level 1 |
+    | | StructureMap | Level 2 |
+    | | GraphDefinition | Level 1 |
+    | | ExampleScenario | Level 0 |
+    | Terminology | CodeSystem | Normative |
+    | | ValueSet | Normative |
+    | | ConceptMap | Level 3 |
+    | | NamingSystem | Level 1 |
+    | | TerminologyCapabilities | Level 0 |
+    | Security | Provenance | Level 3 |
+    | | AuditEvent | Level 3 |
+    | | Consent | Level 2 |
+    | Documents | Composition | Level 2 |
+    | | DocumentManifest | Level 2 |
+    | | DocumentReference | Level 3 |
+    | Other | CatalogEntry | Level 0 |
+    | | Basic | Level 1 |
+    | | Binary | Normative |
+    | | Bundle | Normative |
+    | | Linkage | Level 0 |
+    | | MessageHeader | Level 4 |
+    | | OperationOutcome | Normative |
+    | | Parameters | Normative |
+    | | Subscription | Level 3 |
+
+    ## Base Resources
+
+    | Category | Resource | Maturity Level |
+    |----------|----------|----------------|
+    | Individuals | Patient | Normative |
+    | | Practitioner | Level 3 |
+    | | PractitionerRole | Level 2 |
+    | | RelatedPerson | Level 2 |
+    | | Person | Level 2 |
+    | | Group | Level 1 |
+    | Entities | Organization | Level 3 |
+    | | OrganizationAffiliation | Level 0 |
+    | | HealthcareService | Level 2 |
+    | | Endpoint | Level 2 |
+    | | Location | Level 3 |
+    | | Substance | Level 2 |
+    | | BiologicallyDerivedProduct | Level 0 |
+    | | Device | Level 2 |
+    | | DeviceMetric | Level 1 |
+    | Workflow | Task | Level 2 |
+    | | Appointment | Level 3 |
+    | | AppointmentResponse | Level 3 |
+    | | Schedule | Level 3 |
+    | | Slot | Level 3 |
+    | | VerificationResult | Level 0 |
+    | Management | Encounter | Level 2 |
+    | | EpisodeOfCare | Level 2 |
+    | | Flag | Level 1 |
+    | | List | Level 1 |
+    | | Library | Level 2 |
+
+    ## Clinical Resources
+
+    | Category | Resource | Maturity Level |
+    |----------|----------|----------------|
+    | Summary | AllergyIntolerance | Level 3 |
+    | | AdverseEvent | Level 0 |
+    | | Condition | Level 3 |
+    | | Procedure | Level 3 |
+    | | FamilyMemberHistory | Level 2 |
+    | | ClinicalImpression | Level 0 |
+    | | DetectedIssue | Level 1 |
+    | Diagnostics | Observation | Normative |
+    | | Media | Level 1 |
+    | | DiagnosticReport | Level 3 |
+    | | Specimen | Level 2 |
+    | | BodyStructure | Level 1 |
+    | | ImagingStudy | Level 3 |
+    | | QuestionnaireResponse | Level 3 |
+    | | MolecularSequence | Level 1 |
+    | Medications | MedicationRequest | Level 3 |
+    | | MedicationAdministration | Level 2 |
+    | | MedicationDispense | Level 2 |
+    | | MedicationStatement | Level 3 |
+    | | Medication | Level 3 |
+    | | MedicationKnowledge | Level 0 |
+    | | Immunization | Level 3 |
+    | | ImmunizationEvaluation | Level 0 |
+    | | ImmunizationRecommendation | Level 1 |
+    | Care Provision | CarePlan | Level 2 |
+    | | CareTeam | Level 2 |
+    | | Goal | Level 2 |
+    | | ServiceRequest | Level 2 |
+    | | NutritionOrder | Level 2 |
+    | | VisionPrescription | Level 2 |
+    | | RiskAssessment | Level 1 |
+    | Request & Response | RequestGroup | Level 2 |
+    | | Communication | Level 2 |
+    | | CommunicationRequest | Level 2 |
+    | | DeviceRequest | Level 1 |
+    | | DeviceUseStatement | Level 0 |
+    | | GuidanceResponse | Level 2 |
+    | | SupplyRequest | Level 1 |
+    | | SupplyDelivery | Level 1 |
+
+    ## Financial Resources
+
+    | Category | Resource | Maturity Level |
+    |----------|----------|----------------|
+    | Support | Coverage | Level 2 |
+    | | CoverageEligibilityRequest | Level 2 |
+    | | CoverageEligibilityResponse | Level 2 |
+    | | EnrollmentRequest | Level 0 |
+    | | EnrollmentResponse | Level 0 |
+    | Billing | Claim | Level 2 |
+    | | ClaimResponse | Level 2 |
+    | | Invoice | Level 0 |
+    | Payment | PaymentNotice | Level 2 |
+    | | PaymentReconciliation | Level 2 |
+    | General | Account | Level 2 |
+    | | ChargeItem | Level 0 |
+    | | ChargeItemDefinition | Level 0 |
+    | | Contract | Level 1 |
+    | | ExplanationOfBenefit | Level 2 |
+    | | InsurancePlan | Level 0 |
+
+    ## Specialized Resources
+
+    | Category | Resource | Maturity Level |
+    |----------|----------|----------------|
+    | Public Health & Research | ResearchStudy | Level 1 |
+    | | ResearchSubject | Level 1 |
+    | Definitional Artifacts | ActivityDefinition | Level 2 |
+    | | DeviceDefinition | Level 0 |
+    | | EventDefinition | Level 0 |
+    | | ObservationDefinition | Level 0 |
+    | | PlanDefinition | Level 2 |
+    | | Questionnaire | Level 3 |
+    | | SpecimenDefinition | Level 0 |
+    | Evidence-Based Medicine | Evidence | Level 0 |
+    | | EvidenceVariable | Level 0 |
+    | | EffectEvidenceSynthesis | Level 0 |
+    | | RiskEvidenceSynthesis | Level 0 |
+    | | ResearchDefinition | Level 0 |
+    | | ResearchElementDefinition | Level 0 |
+    | Quality Reporting & Testing | Measure | Level 2 |
+    | | MeasureReport | Level 2 |
+    | | TestScript | Level 2 |
+    | | TestReport | Level 0 |
+    | Medication Definition | MedicinalProduct | Level 0 |
+    | | MedicinalProductAuthorization | Level 0 |
+    | | MedicinalProductContraindication | Level 0 |
+    | | MedicinalProductIndication | Level 0 |
+    | | MedicinalProductIngredient | Level 0 |
+    | | MedicinalProductInteraction | Level 0 |
+    | | MedicinalProductManufactured | Level 0 |
+    | | MedicinalProductPackaged | Level 0 |
+    | | MedicinalProductPharmaceutical | Level 0 |
+    | | MedicinalProductUndesirableEffect | Level 0 |
+    | | SubstanceNucleicAcid | Level 0 |
+    | | SubstancePolymer | Level 0 |
+    | | SubstanceProtein | Level 0 |
+    | | SubstanceReferenceInformation | Level 0 |
+    | | SubstanceSpecification | Level 0 |
+    | | SubstanceSourceMaterial | Level 0 |
+  </TabsContent>
+
+  <TabsContent value="alphabetical">
+    ## All FHIR Resources
+    | Resource | Category | Maturity Level |
+    |----------|----------|----------------|
+    | Account | Financial - General | Level 2 |
+    | ActivityDefinition | Specialized - Definitional Artifacts | Level 2 |
+    | AdverseEvent | Clinical - Summary | Level 0 |
+    {/* ... continue with all resources alphabetically ... */}
+  </TabsContent>
+
+  <TabsContent value="recommended">
+    ## Recommended Resources by Product Type
+
+    ### Electronic Health Records (EHR)
+    | Resource | Maturity Level | Description |
+    |----------|----------------|-------------|
+    | Patient | Normative | Core patient demographics |
+    | Observation | Normative | Clinical measurements and findings |
+    | Condition | Level 3 | Patient conditions and diagnoses |
+    | Encounter | Level 2 | Patient visits and admissions |
+
+    ### Practice Management
+    | Resource | Maturity Level | Description |
+    |----------|----------------|-------------|
+    | Appointment | Level 3 | Scheduling of appointments |
+    | Schedule | Level 3 | Resource availability |
+    | Practitioner | Level 3 | Healthcare providers |
+    | Organization | Level 3 | Healthcare organizations |
+
+    ### Billing Systems
+    | Resource | Maturity Level | Description |
+    |----------|----------------|-------------|
+    | Claim | Level 2 | Billing claims |
+    | Coverage | Level 2 | Insurance coverage |
+    | ExplanationOfBenefit | Level 2 | Claim processing results |
+    | Invoice | Level 0 | Billing invoices |
+  </TabsContent>
+</Tabs>
