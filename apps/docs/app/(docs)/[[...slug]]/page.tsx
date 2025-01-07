@@ -1,19 +1,21 @@
-import { source } from '@/lib/source';
+import { source } from "@/lib/source";
 import {
   DocsPage,
   DocsBody,
   DocsDescription,
   DocsTitle,
-} from 'fumadocs-ui/page';
-import { notFound } from 'next/navigation';
-import defaultMdxComponents from 'fumadocs-ui/mdx';
+} from "fumadocs-ui/page";
+import { notFound } from "next/navigation";
+import defaultMdxComponents from "fumadocs-ui/mdx";
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  if (!page) notFound();
+  if (!page) {
+    notFound();
+  }
 
   const MDX = page.data.body;
 
@@ -37,7 +39,9 @@ export async function generateMetadata(props: {
 }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
-  if (!page) notFound();
+  if (!page) {
+    notFound();
+  }
 
   return {
     title: page.data.title,
