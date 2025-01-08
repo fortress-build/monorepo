@@ -10,6 +10,7 @@ import { keys } from "./keys";
 export type DatastoreInfo = DatastoreProperties;
 
 const healthlake = new HealthLakeClient({
+  region: keys().AWS_REGION,
   credentials: async () => ({
     accessKeyId: keys().AWS_ACCESS_KEY_ID,
     secretAccessKey: keys().AWS_SECRET_ACCESS_KEY,
