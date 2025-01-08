@@ -216,8 +216,8 @@ function ConsentScreen({
   const healthInfo = getHealthInformationList();
 
   return (
-    <Card className="mx-auto mt-16 w-[500px] border border-gray-200 shadow-none">
-      <CardHeader>
+    <Card className="mx-auto flex h-[600px] w-[500px] flex-col border border-gray-200 shadow-none">
+      <CardHeader className="flex-shrink-0">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Button
@@ -235,7 +235,7 @@ function ConsentScreen({
           </div>
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-1 overflow-y-auto">
         <div className="space-y-4">
           <p className="text-gray-600">
             We are requesting the following permissions from {provider.name}:
@@ -372,7 +372,7 @@ function ConsentScreen({
           </Button>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-center">
+      <CardFooter className="flex flex-shrink-0 justify-center">
         <span className="flex items-center gap-2 text-gray-500 text-xs">
           Powered by Nerve
           <Image src="/logo.svg" alt="Nerve Logo" width={16} height={16} />
@@ -423,86 +423,72 @@ function Unauthenticated() {
   // Show consent screen if provider is selected
   if (selectedProvider) {
     return (
-      <ConsentScreen
-        provider={selectedProvider}
-        onAccept={() => {
-          globalThis.localStorage.setItem(
-            '__fhir_oauth_provider',
-            JSON.stringify(selectedProvider)
-          );
-
-          client.authenticate().then((res) => {
-            if (res.state === 'unauthenticated') {
-              console.log(`${res.authUrl}`);
-              globalThis.window.location.assign(res.authUrl);
-              return;
-            }
-          });
-        }}
-        onBack={() => setSelectedProvider(null)}
-      />
+      <div className="flex h-[600px] items-start">
+        <ConsentScreen
+          provider={selectedProvider}
+          onAccept={() => {
+            globalThis.localStorage.setItem(
+              '__fhir_oauth_provider',
+              JSON.stringify(selectedProvider)
+            );
+          }}
+          onBack={() => setSelectedProvider(null)}
+        />
+      </div>
     );
   }
 
   // Show EHR selection screen
   return (
-    <Card className="w-[500px] border shadow-none">
-      <CardHeader className="flex flex-col gap-2">
-        <CardTitle>Select Your EHR Provider</CardTitle>
-        <Input
-          type="search"
-          className="h-8 text-sm"
-          placeholder="Search providers..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-      </CardHeader>
-      <CardContent>
-        <div
-          className={`grid max-h-[180px] grid-cols-2 gap-1 ${
-            filteredProviders.length > 6 ? 'overflow-y-scroll' : 'grid-rows-3'
-          }`}
-        >
-          {filteredProviders.map((provider, index) => (
-            <ProviderButton
-              key={`${provider.name}-${index}`}
-              provider={provider}
-              isLast={index == filteredProviders.length - 1}
-              select={(provider) => {
-                setSelectedProvider(provider);
-                client.setEHRAuth(provider);
-              }}
-            />
-          ))}
-        </div>
-      </CardContent>
-      <CardFooter className="flex justify-center">
-        <span className="flex items-center gap-2 text-gray-500 text-xs">
-          Powered by Nerve
-          <Image src="/logo.svg" alt="Nerve Logo" width={16} height={16} />
-        </span>
-      </CardFooter>
-    </Card>
+    <div className="flex h-[600px] items-center">
+      <Card className="w-[500px] border shadow-[0_2px_30px_-2px_rgba(20,46,78,0.15)]">
+        <CardHeader className="flex flex-col gap-2">
+          <CardTitle>Select Your EHR Provider</CardTitle>
+          <Input
+            type="search"
+            className="h-8 text-sm"
+            placeholder="Search EHRs..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </CardHeader>
+        <CardContent>
+          <div
+            className={`grid max-h-[180px] grid-cols-2 gap-1 ${
+              filteredProviders.length > 6 ? 'overflow-y-scroll' : 'grid-rows-3'
+            }`}
+          >
+            {filteredProviders.map((provider, index) => (
+              <ProviderButton
+                key={`${provider.name}-${index}`}
+                provider={provider}
+                isLast={index === filteredProviders.length - 1}
+                select={(provider) => {
+                  setSelectedProvider(provider);
+                }}
+              />
+            ))}
+          </div>
+        </CardContent>
+        <CardFooter className="flex justify-center">
+          <span className="flex items-center gap-2 text-gray-500 text-xs">
+            Powered by Nerve
+            <Image src="/logo.svg" alt="Nerve Logo" width={16} height={16} />
+          </span>
+        </CardFooter>
+      </Card>
+    </div>
   );
 }
 
 export default function Home() {
+  // Always set authenticatedState to false
   const [authenticatedState, setAuthenticatedState] = useState<
     boolean | undefined
-  >(undefined);
+  >(false);
 
   useEffect(() => {
-    if (!localStorage.getItem('__fhir_oauth_provider')) {
-      setAuthenticatedState(false);
-      return;
-    }
-
-    const selectedProviderJson = localStorage.getItem('__fhir_oauth_provider');
-    const selectedProvider = JSON.parse(selectedProviderJson!);
-    if (!selectedProvider) {
-      setAuthenticatedState(false);
-      return;
-    }
+    setAuthenticatedState(false);
   }, []);
 
   // fhir.authenticate().then((res) => {
@@ -517,7 +503,7 @@ export default function Home() {
 
   return (
     <div className="flex items-center justify-center">
-      {authenticatedState ? <Authenticated /> : <Unauthenticated />}
+      {authenticatedState ? <Unauthenticated /> : <Unauthenticated />}
     </div>
   );
 }

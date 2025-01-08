@@ -10,7 +10,7 @@ import InteractiveComponent from "@/components/Hero/InteractiveComponent";
 
 function BackedByYC() {
   return (
-    <div className="flex flex-row px-3">
+    <div className="flex flex-row justify-center px-3 lg:justify-start">
       <div className="mr-2 gap-2 self-center pt-1 text-gray-500 text-xs">
         {"Backed by"}
       </div>
@@ -25,7 +25,7 @@ export const Hero = async () => {
   return (
     <div className="w-full">
       <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-8 py-20 lg:py-40">
+        <div className="flex flex-col items-center gap-8 py-20 lg:flex-row lg:py-40">
           <div className="flex flex-col gap-8 lg:w-1/2">
             <div>
               <Feed queries={[blog.latestPostQuery]} draft={draft.isEnabled}>
@@ -36,10 +36,10 @@ export const Hero = async () => {
                 }}
               </Feed>
             </div>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 text-center lg:text-left">
               <h1 className="font-regular text-5xl tracking-tighter md:text-7xl">
                 Healthcare Integrations for{" "}
-                <span className="inline-block bg-gradient-to-r from-[#7aaeed] to-[#BC99E8] bg-clip-text text-transparent">
+                <span className="inline-block bg-gradient-to-r from-[#7aaeed] to-[#142e4e] bg-clip-text text-transparent">
                   developers
                 </span>
               </h1>
@@ -48,7 +48,7 @@ export const Hero = async () => {
                 and your customers.
               </p>
             </div>
-            <div className="flex flex-row gap-3">
+            <div className="flex flex-row justify-center gap-3 lg:justify-start">
               <Button size="lg" className="gap-4" variant="outline" asChild>
                 <Link href="/contact">
                   Read Docs <BookOpen className="h-4 w-4" />

@@ -16,7 +16,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import Image from 'next/image';
-import Logo from './logo.svg';
+import Logo from 'public/logo.svg';
 
 const GithubIcon = () => (
   <svg
@@ -86,7 +86,7 @@ export const Header = () => {
   return (
     <header className="sticky top-0 left-0 z-40 w-full border-b bg-background">
       <div className="container relative mx-auto flex min-h-20 flex-row items-center gap-4 lg:grid lg:grid-cols-[auto,1fr,auto]">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <Image
             src={Logo}
             alt="Logo"
@@ -94,7 +94,9 @@ export const Header = () => {
             height={24}
             className="dark:invert"
           />
-          <p className="whitespace-nowrap font-semibold">nerve</p>
+          <p className="whitespace-nowrap font-semibold text-[#142e4e] text-lg dark:text-white">
+            nerve
+          </p>
         </div>
         <div className="hidden items-center lg:ml-8 lg:flex">
           <NavigationMenu>
