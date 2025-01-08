@@ -20,6 +20,7 @@
     "@repo/observability": "workspace:*",
     "@repo/payments": "workspace:*",
     "@repo/tokens": "workspace:*",
+    "@repo/healthlake": "workspace:*",
     "@sentry/nextjs": "^8.47.0",
     "@t3-oss/env-nextjs": "^0.11.1",
     "next": "15.1.3",

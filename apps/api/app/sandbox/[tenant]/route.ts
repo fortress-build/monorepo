@@ -1,7 +1,8 @@
 import type { HTTP_METHOD } from "next/dist/server/web/http";
-import { NextResponse, type NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 
 import { unkey } from "@repo/tokens";
+import { getSandboxInfo } from "@repo/healthlake";
 import { env } from "@/env";
 import { log } from "@repo/observability/log";
 
@@ -55,15 +56,34 @@ async function proxyRequest(
     });
   }
 
-  return Response.json({
-    tenant,
-  });
+  const info = await getSandboxInfo(tenant);
+  if (info === undefined) {
+    return new Response(undefined, {
+      status: 404,
+      statusText: "Not Found",
+    });
+  }
 
-  // return await fetch(req, {
-  //   headers: {
-  //     // TODO: aws auth ??
-  //   },
-  // });
+  if (
+    info.DatastoreStatus !== "ACTIVE" ||
+    info.DatastoreEndpoint === undefined
+  ) {
+    return new Response(undefined, {
+      status: 503,
+      statusText: "Service Unavailable",
+    });
+  }
+
+  const endpoint = info.DatastoreEndpoint;
+
+  return await fetch(endpoint, {
+    method,
+    body: req.body,
+    headers: {
+      ...req.headers,
+      // TODO: aws auth ??
+    },
+  });
 }
 
 function handler(method: HTTP_METHOD) {

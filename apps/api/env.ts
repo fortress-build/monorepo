@@ -6,6 +6,7 @@ import { keys as core } from "@repo/next-config/keys";
 import { keys as observability } from "@repo/observability/keys";
 import { keys as payments } from "@repo/payments/keys";
 import { keys as tokens } from "@repo/tokens/keys";
+import { keys as healthlake } from "@repo/healthlake/keys";
 import { createEnv } from "@t3-oss/env-nextjs";
 
 export const env = createEnv({
@@ -18,6 +19,7 @@ export const env = createEnv({
     observability(),
     payments(),
     tokens(),
+    healthlake(),
   ],
   server: {},
   client: {},
