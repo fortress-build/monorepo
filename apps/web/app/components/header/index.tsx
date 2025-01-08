@@ -19,7 +19,8 @@ import Image from 'next/image';
 import Logo from 'public/logo.svg';
 
 const GithubIcon = () => (
-  <svg
+  // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+<svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     className="h-5 w-5 fill-current"
@@ -29,7 +30,8 @@ const GithubIcon = () => (
 );
 
 const DiscordIcon = () => (
-  <svg
+  // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+<svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     className="h-5 w-5 fill-current"

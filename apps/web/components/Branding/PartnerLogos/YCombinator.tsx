@@ -4,7 +4,8 @@ export default function YCLogo({
   className?: string;
 }) {
   return (
-    <svg
+    // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+<svg
       className={className}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 32 32"
