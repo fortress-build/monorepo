@@ -10,15 +10,7 @@ datasource db {
 }
 
 model Organization {
-  id    Int     @id @default(autoincrement())
-  name  String
-  slug  String  @unique
-  Token Token[]
-}
-
-model Token {
-  token_id        String       @id @unique
-  secret_hash     String
-  organization    Organization @relation(fields: [organization_id], references: [id])
-  organization_id Int
+  id   Int    @id @default(autoincrement())
+  name String
+  slug String @unique
 }

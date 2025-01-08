@@ -1056,6 +1056,25 @@ importers:
         specifier: ^2.1.8
         version: 2.1.8(@types/node@22.10.5)(jsdom@25.0.1(bufferutil@4.0.9))(terser@5.31.0)
 
+  packages/tokens:
+    dependencies:
+      '@t3-oss/env-nextjs':
+        specifier: ^0.11.1
+        version: 0.11.1(typescript@5.7.2)(zod@3.24.1)
+      '@unkey/api':
+        specifier: ^0.29.0
+        version: 0.29.0
+      server-only:
+        specifier: ^0.0.1
+        version: 0.0.1
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
+    devDependencies:
+      '@types/node':
+        specifier: ^22.10.5
+        version: 22.10.5
+
   packages/typescript-config: {}
 
   packages/webhooks:
@@ -4709,6 +4728,15 @@ packages:
 
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
+
+  '@unkey/api@0.29.0':
+    resolution: {integrity: sha512-RxvPtj82AgAvFTug2ujRRZkOfi8tMTPvSsqcMcBMgcyHO/tpTEjUtIPYlDzESBKqRc4K3F3a7s3aBVTuLIgoWw==}
+
+  '@unkey/error@0.2.0':
+    resolution: {integrity: sha512-DFGb4A7SrusZPP0FYuRIF0CO+Gi4etLUAEJ6EKc+TKYmscL0nEJ2Pr38FyX9MvjI4Wx5l35Wc9KsBjMm9Ybh7w==}
+
+  '@unkey/rbac@0.3.1':
+    resolution: {integrity: sha512-Hj+52XRIlBBl3/qOUq9K71Fwy3PWExBQOpOClVYHdrcmbgqNL6L4EdW/BzliLhqPCdwZTPVSJTnZ3Hw4ZYixsQ==}
 
   '@upstash/core-analytics@0.0.10':
     resolution: {integrity: sha512-7qJHGxpQgQr9/vmeS1PktEwvNAF7TI4iJDi8Pu2CFZ9YUGHZH4fOP5TfYlZ4aVxfopnELiE4BS4FBjyK7V1/xQ==}
@@ -13915,6 +13943,19 @@ snapshots:
       '@types/node': 22.10.5
 
   '@ungap/structured-clone@1.2.0': {}
+
+  '@unkey/api@0.29.0':
+    dependencies:
+      '@unkey/rbac': 0.3.1
+
+  '@unkey/error@0.2.0':
+    dependencies:
+      zod: 3.24.1
+
+  '@unkey/rbac@0.3.1':
+    dependencies:
+      '@unkey/error': 0.2.0
+      zod: 3.24.1
 
   '@upstash/core-analytics@0.0.10':
     dependencies:
