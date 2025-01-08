@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["driverAdapters"]
@@ -9,13 +6,19 @@ generator client {
 datasource db {
   provider     = "postgresql"
   url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  relationMode = "foreignKeys"
 }
 
-// This is a stub model.
-// Delete it and add your own Prisma models.
-model Page {
+model Organization {
   id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  name  String
+  slug  String  @unique
+  Token Token[]
+}
+
+model Token {
+  token_id        String       @id @unique
+  secret_hash     String
+  organization    Organization @relation(fields: [organization_id], references: [id])
+  organization_id Int
 }
