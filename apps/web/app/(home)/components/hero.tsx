@@ -45,7 +45,7 @@ export const Hero = async () => {
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed tracking-tight md:text-xl">
                 A single API to integrate with every EHR, made simple for you
-                and your customers.
+                and your partners.
               </p>
             </div>
             <div className="flex flex-row justify-center gap-3 lg:justify-start">

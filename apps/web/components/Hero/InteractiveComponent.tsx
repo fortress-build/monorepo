@@ -216,7 +216,7 @@ function ConsentScreen({
   const healthInfo = getHealthInformationList();
 
   return (
-    <Card className="mx-auto flex h-[600px] w-[500px] flex-col border border-gray-200 shadow-none">
+    <Card className="mx-auto flex h-[600px] w-[500px] flex-col border border-gray-200 shadow-[0_2px_30px_-2px_rgba(20,46,78,0.15)]">
       <CardHeader className="flex-shrink-0">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -372,7 +372,7 @@ function ConsentScreen({
           </Button>
         </div>
       </CardContent>
-      <CardFooter className="flex flex-shrink-0 justify-center">
+      <CardFooter className="flex flex-shrink-0 justify-center pt-4">
         <span className="flex items-center gap-2 text-gray-500 text-xs">
           Powered by Nerve
           <Image src="/logo.svg" alt="Nerve Logo" width={16} height={16} />
