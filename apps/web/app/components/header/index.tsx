@@ -85,7 +85,7 @@ export const Header = () => {
   const [isOpen, setOpen] = useState(false);
   return (
     <header className="sticky top-0 left-0 z-40 w-full border-b bg-background">
-      <div className="container relative mx-auto flex min-h-20 flex-row items-center gap-4 lg:grid lg:grid-cols-3">
+      <div className="container relative mx-auto flex min-h-20 flex-row items-center gap-4 lg:grid lg:grid-cols-[auto,1fr,auto]">
         <div className="flex items-center gap-2">
           <Image
             src={Logo}
@@ -96,8 +96,8 @@ export const Header = () => {
           />
           <p className="whitespace-nowrap font-semibold">nerve</p>
         </div>
-        <div className="hidden flex-row items-center justify-center gap-4 lg:flex">
-          <NavigationMenu className="flex items-start justify-start">
+        <div className="hidden items-center lg:ml-8 lg:flex">
+          <NavigationMenu>
             <NavigationMenuList className="flex flex-row gap-4">
               {navigationItems.map((item) => (
                 <NavigationMenuItem key={item.title}>
@@ -148,7 +148,7 @@ export const Header = () => {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <div className="flex w-full justify-end gap-4">
+        <div className="flex w-full items-center justify-end gap-4">
           <Button variant="ghost" className="hidden md:inline" asChild>
             <Link href="/contact">Contact us</Link>
           </Button>
@@ -156,7 +156,7 @@ export const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="hidden md:inline"
+            className="hidden items-center justify-center md:inline-flex"
             asChild
           >
             <Link
@@ -170,7 +170,7 @@ export const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="hidden md:inline"
+            className="hidden items-center justify-center md:inline-flex"
             asChild
           >
             <Link
