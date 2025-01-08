@@ -4,23 +4,22 @@ description: "An overview of FHIR (Fast Healthcare Interoperability Resources)"
 ---
 import { Frame } from '../../components/Frame'
 
+
 ## Set up Epic integration
 
 Follow these steps to set up your Epic integration:
 
 ### 1. Create a FHIR on Epic account
-At the moment, we are abstracting over the FHIR on Epic APIs. You'll need to create a FHIR on Epic account to get started.
 
-<Frame>
-  <img src="/images/epic/create-account.png" alt="Create FHIR on Epic account" />
-</Frame>
+At the moment, we are abstracting over the FHIR on Epic APIs. [Go to FHIR on Epic](https://fhir.epic.com/) and make an account. 
+
 
 ### 2. Create a new application
 1. Navigate to the "Build Apps" tab
 2. Click the "+Create" button
 
 <Frame>
-  <img src="/images/epic/create-app.png" alt="Create new Epic application" />
+  <img src="/EpicSteps/step1.png" alt="Create new Epic application" />
 </Frame>
 
 ### 3. Configure your application
@@ -30,7 +29,7 @@ At the moment, we are abstracting over the FHIR on Epic APIs. You'll need to cre
    <Callout>We recommend selecting all APIs initially for development purposes. Note that this may take a minute to complete.</Callout>
 
 <Frame>
-  <img src="/images/epic/app-config.png" alt="Configure Epic application" />
+  <img src="/EpicSteps/step2.png" alt="Configure Epic application" />
 </Frame>
 
 ### 4. Set up redirect URIs
@@ -39,7 +38,13 @@ Add your redirect URIs for both:
 - Production URL
 
 <Frame>
-  <img src="/images/epic/redirect-uri.png" alt="Set up redirect URIs" />
+  <img src="/EpicSteps/step3.png" alt="Set up redirect URIs" />
+</Frame>
+
+<Callout> You do not need to fill out any of these </Callout>
+
+<Frame>
+  <img src="/EpicSteps/step4.png" alt="Set up redirect URIs" />
 </Frame>
 
 ### 5. Complete application setup
@@ -47,8 +52,11 @@ Add your redirect URIs for both:
 2. Click "Save & Ready for Production"
 
 <Frame>
-  <img src="/images/epic/save-production.png" alt="Save and complete setup" />
+  <img src="/EpicSteps/step5.png" alt="Set up redirect URIs" />
 </Frame>
 
 ### 6. Get your Client ID
 After setup is complete, locate and copy your Client ID. You'll need this to initialize the integration:
+
+
+//ADD CODE
