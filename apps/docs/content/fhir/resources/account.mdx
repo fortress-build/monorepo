@@ -1,7 +1,7 @@
 ---
 title: "Account"
 ---
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 import { DollarSign } from 'lucide-react'
 
 | Maturity Level | Security Category | Resource Category |
@@ -11,13 +11,8 @@ import { DollarSign } from 'lucide-react'
 Account is a resource that serves as a financial tool for tracking value accrued for a particular purpose. In the healthcare field, it is used to track charges for a patient, cost centers, etc...
 
 ## Resource Content
-<Tabs defaultValue="table">
-  <TabsList>
-    <TabsTrigger value="table">Table</TabsTrigger>
-    <TabsTrigger value="json">JSON</TabsTrigger>
-    <TabsTrigger value="types">Types</TabsTrigger>
-  </TabsList>
-  <TabsContent value="table">
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
     | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
     |------|--------|------|------------------------|
     | identifier | | Identifier[] | Account number |
@@ -36,8 +31,8 @@ Account is a resource that serves as a financial tool for tracking value accrued
     | └─ onHold | | boolean | Credit or other hold applied |
     | └─ period | | Period | Guarantee account during |
     | partOf | | Reference\<[Account](/fhir/resources/account)> | Reference to a parent Account |
-  </TabsContent>
-  <TabsContent value="json">
+  </Tab>
+  <Tab value="json">
     ```json
 {
     "resourceType" : "Account",
@@ -64,8 +59,8 @@ Account is a resource that serves as a financial tool for tracking value accrued
     "partOf" : { Reference(Account) } // Reference to a parent Account
 }
         ```
-  </TabsContent>
-  <TabsContent value="types">
+  </Tab>
+  <Tab value="types">
     ```typescript
   declare class Account extends DomainResource {
         resourceType: "Account";
@@ -97,7 +92,7 @@ Account is a resource that serves as a financial tool for tracking value accrued
         partOf?: Reference<Account>;
         }
     ```
-  </TabsContent>
+  </Tab>
 </Tabs>
 
 ## Search Parameters

@@ -1,8 +1,8 @@
 ---
 title: "Appointment"
 ---
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
 import { Users } from 'lucide-react'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 
 | Maturity Level | Security Category | Resource Category |
 |----------------|------------------|-------------------|
@@ -11,13 +11,8 @@ import { Users } from 'lucide-react'
 A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
 
 ## Resource Content
-<Tabs defaultValue="table">
-  <TabsList>
-    <TabsTrigger value="table">Table</TabsTrigger>
-    <TabsTrigger value="json">JSON</TabsTrigger>
-    <TabsTrigger value="types">Types</TabsTrigger>
-  </TabsList>
-  <TabsContent value="table">
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
     | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
     |------|----------|------|------------------------|
     | identifier | | Identifier[] | External Ids for this item |
@@ -47,8 +42,8 @@ A booking of a healthcare event among patient(s), practitioner(s), related perso
     | └─ status | <span style={{color: "#22c55e"}}>✓</span> | code | accepted \| declined \| tentative \| needs-action |
     | └─ period | | Period | Participation period of the actor |
     | requestedPeriod | | Period[] | Potential date/time interval(s) requested |
-  </TabsContent>
-  <TabsContent value="json">
+  </Tab>
+  <Tab value="json">
     ```json
 {
 {
@@ -88,8 +83,8 @@ A booking of a healthcare event among patient(s), practitioner(s), related perso
 }
 }
         ```
-  </TabsContent>
-  <TabsContent value="types">
+  </Tab>
+  <Tab value="types">
     ```typescript
 export declare class Appointment extends DomainResource {
     resourceType: "Appointment";
@@ -140,7 +135,7 @@ export declare class Appointment extends DomainResource {
     requestedPeriod?: Period[];
 }
     ```
-  </TabsContent>
+  </Tab>
 </Tabs>
 
 ## Search Parameters

@@ -2,7 +2,7 @@
 title: "ActivityDefinition"
 ---
 import { Microscope } from 'lucide-react'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 
 | Maturity Level | Security Category | Resource Category |
 |----------------|------------------|-------------------|
@@ -12,13 +12,8 @@ ActivityDefinition allows for the definition of some activity to be performed, i
 
 ## Resource Content
 
-<Tabs defaultValue="structure">
-  <TabsList>
-    <TabsTrigger value="structure">Structure</TabsTrigger>
-    <TabsTrigger value="json">JSON</TabsTrigger>
-    <TabsTrigger value="typescript">TypeScript</TabsTrigger>
-  </TabsList>
-  <TabsContent value="structure">
+<Tabs items={["structure", "json", "typescript"]} defaultValue="structure">
+  <Tab value="structure">
     | <div style={{width: "100px"}}>Name</div> | <div style={{width: "60px"}}>Required</div> | <div style={{width: "100px"}}>Type</div> | <div style={{width: "calc(100% - 480px)"}}>Description & Constraints</div> |
     |------|--------|------|------------------------|
     | url | | uri | Canonical identifier for this activity definition, represented as a URI (globally unique) |
@@ -73,9 +68,9 @@ ActivityDefinition allows for the definition of some activity to be performed, i
     | dynamicValue | | BackboneElement | Dynamic aspects of the definition |
     | └─ path | <span style={{color: "#22c55e"}}>✓</span> | string | The path to the element to be set dynamically |
     | └─ expression | <span style={{color: "#22c55e"}}>✓</span> | Expression | An expression that provides the dynamic value for the customization |
-  </TabsContent>
-
-  <TabsContent value="json">
+  </Tab>
+  
+  <Tab value="json">
     ```json
     {
       "resourceType" : "ActivityDefinition",
@@ -145,9 +140,9 @@ ActivityDefinition allows for the definition of some activity to be performed, i
       }]
     }
     ```
-  </TabsContent>
-
-  <TabsContent value="typescript">
+  </Tab>
+  
+  <Tab value="typescript">
     ```typescript
     type ActivityDefinitionDynamicValue = {
       path: string;
@@ -239,7 +234,7 @@ ActivityDefinition allows for the definition of some activity to be performed, i
         transform?: string;
     }
     ```
-  </TabsContent>
+  </Tab>
 </Tabs>
 
 ## Search Parameters

@@ -1,9 +1,8 @@
 ---
 title: "AuditEvent"
 ---
-
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
 import { Database } from 'lucide-react'
+import { Tab, Tabs} from 'fumadocs-ui/components/tabs'
 
 | Maturity Level | Security Category | Resource Category |
 |----------------|------------------|-------------------|
@@ -12,13 +11,8 @@ import { Database } from 'lucide-react'
 A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
 
 ## Resource Content
-<Tabs defaultValue="table">
-  <TabsList>
-    <TabsTrigger value="table">Table</TabsTrigger>
-    <TabsTrigger value="json">JSON</TabsTrigger>
-    <TabsTrigger value="types">Types</TabsTrigger>
-  </TabsList>
-  <TabsContent value="table">
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
     | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
     |------|----------|------|------------------------|
     | type | <span style={{color: "#22c55e"}}>✓</span> | Coding | Type/identifier of event |
@@ -59,9 +53,8 @@ A record of an event made for purposes of maintaining a security log. Typical us
     | └─ detail | | BackboneElement[] | Additional Information about the entity |
     | └─── type | <span style={{color: "#22c55e"}}>✓</span> | string | Name of the property |
     | └─── value[x] | <span style={{color: "#22c55e"}}>✓</span> | string \| base64Binary | Property value |
-
-  </TabsContent>
-  <TabsContent value="json">
+  </Tab>
+  <Tab value="json">
     ```json
 {
   "resourceType" : "AuditEvent",
@@ -116,8 +109,8 @@ A record of an event made for purposes of maintaining a security log. Typical us
   }]
 }
         ```
-  </TabsContent>
-  <TabsContent value="types">
+  </Tab>
+  <Tab value="types">
     ```typescript
 export type  AuditEventAgentNetwork = {
     address?: string;
@@ -177,7 +170,7 @@ export declare class AuditEvent extends DomainResource{
     entity?: AuditEventEntity[];
 }
     ```
-  </TabsContent>
+  </Tab>
 </Tabs>
 
 ## Search Parameters

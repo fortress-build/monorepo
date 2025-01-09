@@ -1035,6 +1035,9 @@ importers:
 
   packages/sdk-nextjs:
     dependencies:
+      '@repo/client-js':
+        specifier: workspace:*
+        version: link:../client-js
       '@repo/next-config':
         specifier: workspace:*
         version: link:../next-config

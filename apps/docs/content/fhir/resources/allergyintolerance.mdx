@@ -1,7 +1,7 @@
 ---
 title: "AllergyIntolerance"
 ---
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 import { Stethoscope } from 'lucide-react'
 
 | Maturity Level | Security Category | Resource Category |
@@ -12,13 +12,8 @@ Risk of harmful or undesirable, physiological response which is unique to an ind
 
 
 ## Resource Content
-<Tabs defaultValue="table">
-  <TabsList>
-    <TabsTrigger value="table">Table</TabsTrigger>
-    <TabsTrigger value="json">JSON</TabsTrigger>
-    <TabsTrigger value="types">Types</TabsTrigger>
-  </TabsList>
-  <TabsContent value="table">
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
     | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
     |------|--------|------|------------------------|
     | identifier | | Identifier[] | External ids for this item |
@@ -44,8 +39,8 @@ Risk of harmful or undesirable, physiological response which is unique to an ind
     | └─ severity | | code | mild \| moderate \| severe (of event as a whole) |
     | └─ exposureRoute | | CodeableConcept | How the subject was exposed to the substance |
     | └─ note | | Annotation[] | Text about event not captured in other fields |
-  </TabsContent>
-  <TabsContent value="json">
+  </Tab>
+  <Tab value="json">
     ```json
 {
   "resourceType" : "AllergyIntolerance",
@@ -84,8 +79,8 @@ Risk of harmful or undesirable, physiological response which is unique to an ind
   }]
 }
         ```
-  </TabsContent>
-  <TabsContent value="types">
+  </Tab>
+  <Tab value="types">
     ```typescript
 export type AllergyIntoleranceReaction = {
     substance?: CodeableConcept;
@@ -121,7 +116,7 @@ export declare class AllergyIntolerance extends DomainResource{
     reaction?: AllergyIntoleranceReaction[];
 }
     ```
-  </TabsContent>
+  </Tab>
 </Tabs>
 
 ## Search Parameters

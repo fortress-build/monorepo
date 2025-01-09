@@ -1,7 +1,7 @@
 ---
 title: "AdverseEvent"
 ---
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 import { Stethoscope } from 'lucide-react'
 
 | Maturity Level | Security Category | Resource Category |
@@ -11,13 +11,8 @@ import { Stethoscope } from 'lucide-react'
 Actual or potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
 
 ## Resource Content
-<Tabs defaultValue="structure">
-  <TabsList>
-    <TabsTrigger value="structure">Structure</TabsTrigger>
-    <TabsTrigger value="json">JSON</TabsTrigger>
-    <TabsTrigger value="types">Types</TabsTrigger>
-  </TabsList>
-  <TabsContent value="structure">
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
     | <div style={{width: "180px"}}>Name</div> | Required| <div style={{width: "180px"}}>Type</div> | <div style={{width: "calc(100% - 480px)"}}>Description & Constraints</div> |
     |------|----------|------|------------------------|
     | identifier | | Identifier | Business identifier for the event |
@@ -46,8 +41,8 @@ Actual or potential/avoided event causing unintended physical injury resulting f
     | subjectMedicalHistory | | Reference\<[Condition](/fhir/resources/condition)\| [Observation](/fhir/resources/observation)\| [AllergyIntolerance](/fhir/resources/allergyintolerance)\| [FamilyMemberHistory](/fhir/resources/familymemberhistory)\| [Immunization](/fhir/resources/immunization)\| [Procedure](/fhir/resources/procedure)\| [Media](/fhir/resources/media)\| [DocumentReference](/fhir/resources/documentreference)>[] | AdverseEvent.subjectMedicalHistory |
     | referenceDocument | | Reference\<[DocumentReference](/fhir/resources/documentreference)>[] | AdverseEvent.referenceDocument |
     | study | | Reference\<[ResearchStudy](/fhir/resources/researchstudy)>[] | AdverseEvent.study |
-  </TabsContent>
-  <TabsContent value="json">
+  </Tab>
+  <Tab value="json">
     ```json
 {
   "resourceType" : "AdverseEvent",
@@ -87,8 +82,8 @@ Actual or potential/avoided event causing unintended physical injury resulting f
   "study" : [{ Reference(ResearchStudy) }] // AdverseEvent.study
 }
         ```
-  </TabsContent>
-  <TabsContent value="types">
+  </Tab>
+  <Tab value="types">
     ```typescript
 export type SuspectEntity = {
     instance: Reference<Immunization|Procedure|Substance|Medication|MedicationAdministration|MedicationStatement|Device>;
@@ -127,7 +122,7 @@ export declare class AdverseEvent extends DomainResource  {
 
 
     ```
-  </TabsContent>
+  </Tab>
 </Tabs>
 
 ## Search Parameters
