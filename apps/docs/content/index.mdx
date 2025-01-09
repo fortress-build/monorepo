@@ -9,22 +9,23 @@ import {LogoIcon} from '../icons/logo.tsx'
 import { CodeIcon, PuzzleIcon } from 'lucide-react'
 
 ## Introduction
-Nerve is a unified API for healthtech developers to easily integrate with provider's EHR systems, and build using sandbox data. We
-support major platforms like Epic, Cerner, and AthenaHealth and [many more](/docs/integrations)! 
 
-Nerve is built on top of the [FHIR](https://hl7.org/fhir/) data model, and offers developers consistent abstractions 
+Nerve is a unified API for healthtech developers to easily integrate with provider's EHR systems, and build using sandbox data. We
+support major platforms like Epic, Cerner, and AthenaHealth and [many more](/docs/integrations)!
+
+Nerve is built on top of the [FHIR](https://hl7.org/fhir/) data model, and offers developers consistent abstractions
 for reading and writing data to EHR systems.
 
 <Cards>
-  <Card 
-    title="Join our Discord" 
+  <Card
+    title="Join our Discord"
     href="https://discord.gg/nerve"
     icon={<DiscordIcon className="w-8 h-8" />}
     description="Get help and connect with other developers"
     className="p-6"
   />
-  <Card 
-    title="Learn about FHIR" 
+  <Card
+    title="Learn about FHIR"
     href="/fhir/overview"
     icon={<FHIRIcon className="w-8 h-8" />}
     description="Understand the FHIR data model"
@@ -34,19 +35,14 @@ for reading and writing data to EHR systems.
 
 ## Quick Setup
 
-1. **Get API Key**
-   
-   Request your API key from the [Developer Portal](https://nerve.health/dashboard).
-  
-2. **Choose Environment**
-   
-   Nerve offers two environments:
-   - **Production**: Requires founder approval
-   - **Sandbox**: Available immediately with test data
+1. **Get your sandbox API Key**
 
-3. **Install SDK**
+   Request your sandbox API key from the [Developer Portal](https://nerve.run/dashboard).
+
+2. **Install SDK**
+
    ```bash
-   npm install nerve-js
+   npm install @nerve-js/client
    ```
 
 ## Basic Usage
@@ -63,16 +59,18 @@ const client = new NerveClient({
 const results = await client.patient.search("John Doe");
 ```
 
+See framework integrations for more specific instructions.
+
 <Cards>
-  <Card 
-    title="API Reference" 
-    href="/docs/api-reference"
+  <Card
+    title="Next.js Quickstart"
+    href="/quickstart-nextjs"
     icon={<CodeIcon className="w-6 h-6" />}
     className="p-6"
   />
-  <Card 
-    title="Component Library" 
-    href="/docs/components"
+  <Card
+    title="Component Library"
+    href="/components"
     icon={<PuzzleIcon className="w-6 h-6" />}
     className="p-6"
   />
