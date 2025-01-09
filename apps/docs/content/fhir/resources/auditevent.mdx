@@ -1,8 +1,269 @@
 ---
 title: "AuditEvent"
 ---
+
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
 import { Database } from 'lucide-react'
 
 | Maturity Level | Security Category | Resource Category |
 |----------------|------------------|-------------------|
-| 3 | Security | <div className="flex items-center gap-2"><Database className="h-5 w-5 text-blue-500" /> Foundation </div> |
+| 3 | Unclassified | <div className="flex items-center gap-2"> <Database className="h-5 w-5 text-blue-500" /> **Foundation Resources**</div> |
+
+A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
+
+## Resource Content
+<Tabs defaultValue="table">
+  <TabsList>
+    <TabsTrigger value="table">Table</TabsTrigger>
+    <TabsTrigger value="json">JSON</TabsTrigger>
+    <TabsTrigger value="types">Types</TabsTrigger>
+  </TabsList>
+  <TabsContent value="table">
+    | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
+    |------|----------|------|------------------------|
+    | type | <span style={{color: "#22c55e"}}>✓</span> | Coding | Type/identifier of event |
+    | subtype | | Coding[] | More specific type/id for the event |
+    | action | | code | Type of action performed during the event |
+    | period | | Period | When the activity occurred |
+    | recorded | <span style={{color: "#22c55e"}}>✓</span> | instant | Time when the event was recorded |
+    | outcome | | code | Whether the event succeeded or failed |
+    | outcomeDesc | | string | Description of the event outcome |
+    | purposeOfEvent | | CodeableConcept[] | The purposeOfUse of the event |
+    | agent | <span style={{color: "#22c55e"}}>✓</span> | BackboneElement[] | Actor involved in the event |
+    | └─ type | | CodeableConcept | How agent participated |
+    | └─ role | | CodeableConcept[] | Agent role in the event |
+    | └─ who | | Reference\<[PractitionerRole](/fhir/resources/practitionerrole)\| [Practitioner](/fhir/resources/practitioner)\| [Organization](/fhir/resources/organization)\| [Device](/fhir/resources/device)\| [Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)> | Identifier of who |
+    | └─ altId | | string | Alternative User identity |
+    | └─ name | | string | Human friendly name for the agent |
+    | └─ requestor | <span style={{color: "#22c55e"}}>✓</span> | boolean | Whether user is initiator |
+    | └─ location | | Reference\<[Location](/fhir/resources/location)> | Where |
+    | └─ policy | | uri[] | Policy that authorized event |
+    | └─ media | | Coding | Type of media |
+    | └─ network | | BackboneElement | Logical network location for application activity |
+    | └─── address | | string | Identifier for the network access point |
+    | └─── type | | code | The type of network access point |
+    | └─ purposeOfUse | | CodeableConcept[] | Reason given for this user |
+    | source | <span style={{color: "#22c55e"}}>✓</span> | BackboneElement | Audit Event Reporter |
+    | └─ site | | string | Logical source location within the enterprise |
+    | └─ observer | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[PractitionerRole](/fhir/resources/practitionerrole)\| [Practitioner](/fhir/resources/practitioner)\| [Organization](/fhir/resources/organization)\| [Device](/fhir/resources/device)\| [Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)> | The identity of source detecting the event |
+    | └─ type | | Coding[] | The type of source where event originated |
+    | entity | | BackboneElement[] | Data or objects used |
+    | └─ what | | Reference\<Any> | Specific instance of resource |
+    | └─ type | | Coding | Type of entity involved |
+    | └─ role | | Coding | What role the entity played |
+    | └─ lifecycle | | Coding | Life-cycle stage for the entity |
+    | └─ securityLabel | | Coding[] | Security labels on the entity |
+    | └─ name | | string | Descriptor for entity |
+    | └─ description | | string | Descriptive text |
+    | └─ query | | base64Binary | Query parameters |
+    | └─ detail | | BackboneElement[] | Additional Information about the entity |
+    | └─── type | <span style={{color: "#22c55e"}}>✓</span> | string | Name of the property |
+    | └─── value[x] | <span style={{color: "#22c55e"}}>✓</span> | string \| base64Binary | Property value |
+
+  </TabsContent>
+  <TabsContent value="json">
+    ```json
+{
+  "resourceType" : "AuditEvent",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "type" : { Coding }, // R!  Type/identifier of event
+  "subtype" : [{ Coding }], // More specific type/id for the event
+  "action" : "<code>", // Type of action performed during the event
+  "period" : { Period }, // When the activity occurred
+  "recorded" : "<instant>", // R!  Time when the event was recorded
+  "outcome" : "<code>", // Whether the event succeeded or failed
+  "outcomeDesc" : "<string>", // Description of the event outcome
+  "purposeOfEvent" : [{ CodeableConcept }], // The purposeOfUse of the event
+  "agent" : [{ // R!  Actor involved in the event
+    "type" : { CodeableConcept }, // How agent participated
+    "role" : [{ CodeableConcept }], // Agent role in the event
+    "who" : { Reference(PractitionerRole|Practitioner|Organization|Device|
+    Patient|RelatedPerson) }, // Identifier of who
+    "altId" : "<string>", // Alternative User identity
+    "name" : "<string>", // Human friendly name for the agent
+    "requestor" : <boolean>, // R!  Whether user is initiator
+    "location" : { Reference(Location) }, // Where
+    "policy" : ["<uri>"], // Policy that authorized event
+    "media" : { Coding }, // Type of media
+    "network" : { // Logical network location for application activity
+      "address" : "<string>", // Identifier for the network access point of the user device
+      "type" : "<code>" // The type of network access point
+    },
+    "purposeOfUse" : [{ CodeableConcept }] // Reason given for this user
+  }],
+  "source" : { // R!  Audit Event Reporter
+    "site" : "<string>", // Logical source location within the enterprise
+    "observer" : { Reference(PractitionerRole|Practitioner|Organization|Device|
+    Patient|RelatedPerson) }, // R!  The identity of source detecting the event
+    "type" : [{ Coding }] // The type of source where event originated
+  },
+  "entity" : [{ // Data or objects used
+    "what" : { Reference(Any) }, // Specific instance of resource
+    "type" : { Coding }, // Type of entity involved
+    "role" : { Coding }, // What role the entity played
+    "lifecycle" : { Coding }, // Life-cycle stage for the entity
+    "securityLabel" : [{ Coding }], // Security labels on the entity
+    "name" : "<string>", // C? Descriptor for entity
+    "description" : "<string>", // Descriptive text
+    "query" : "<base64Binary>", // C? Query parameters
+    "detail" : [{ // Additional Information about the entity
+      "type" : "<string>", // R!  Name of the property
+      // value[x]: Property value. One of these 2:
+      "valueString" : "<string>"
+      "valueBase64Binary" : "<base64Binary>"
+    }]
+  }]
+}
+        ```
+  </TabsContent>
+  <TabsContent value="types">
+    ```typescript
+export type  AuditEventAgentNetwork = {
+    address?: string;
+    type?: '1' | '2' | '3' | '4' | '5';
+}
+
+export type AuditEventEntityDetail= {
+    type: string;
+    valueString?: string;
+    valueBase64Binary?: string;
+}
+
+export type AuditEventEntity = {
+    what?: Reference<Resource>;
+    type?: Coding;
+    role?: Coding;
+    lifecycle?: Coding;
+    securityLabel?: Coding[];
+    name?: string;
+    description?: string;
+    query?: string;
+    detail?: AuditEventEntityDetail[];
+}
+
+export type AuditEventAgent = {
+    type?: CodeableConcept;
+    role?: CodeableConcept[];
+    who?: Reference<PractitionerRole|Practitioner|Organization|Device|Patient| RelatedPerson>;
+    altId?: string;
+    name?: string;
+    requestor: boolean;
+    location?: Reference<Location>;
+    policy?: string[];
+    media?: Coding;
+    network?: AuditEventAgentNetwork;
+    purposeOfUse?: CodeableConcept[];
+}
+
+export type AuditEventSource = {
+    site?: string;
+    observer: Reference<PractitionerRole|Practitioner|Organization|Device|Patient| RelatedPerson>;;
+    type?: Coding[];
+}
+
+export declare class AuditEvent extends DomainResource{
+    resourceType: 'AuditEvent';
+    type: Coding;
+    subtype?: Coding[];
+    action?: 'C' | 'R' | 'U' | 'D' | 'E';
+    period?: Period;
+    recorded: string;
+    outcome?: '0' | '4' | '8' | '12';
+    outcomeDesc?: string;
+    purposeOfEvent?: CodeableConcept[];
+    agent: AuditEventAgent[];
+    source: AuditEventSource;
+    entity?: AuditEventEntity[];
+}
+    ```
+  </TabsContent>
+</Tabs>
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| action | token | Type of action performed during the event | `AuditEvent.action` |
+| address | string | Identifier for the network access point of the user device | `AuditEvent.agent.network.address` |
+| agent | reference | Identifier of who | `AuditEvent.agent.who` |
+| agent-name | string | Human friendly name for the agent | `AuditEvent.agent.name` |
+| agent-role | token | Agent role in the event | `AuditEvent.agent.role` |
+| altid | token | Alternative User identity | `AuditEvent.agent.altId` |
+| date | date | Time when the event was recorded | `AuditEvent.recorded` |
+| entity | reference | Specific instance of resource | `AuditEvent.entity.what` |
+| entity-name | string | Descriptor for entity | `AuditEvent.entity.name` |
+| entity-role | token | What role the entity played | `AuditEvent.entity.role` |
+| entity-type | token | Type of entity involved | `AuditEvent.entity.type` |
+| outcome | token | Whether the event succeeded or failed | `AuditEvent.outcome` |
+| patient | reference | Identifier of who | `AuditEvent.agent.who.where(resolve() is Patient) \| AuditEvent.entity.what.where(resolve() is Patient)` |
+| policy | uri | Policy that authorized event | `AuditEvent.agent.policy` |
+| site | token | Logical source location within the enterprise | `AuditEvent.source.site` |
+| source | reference | The identity of source detecting the event | `AuditEvent.source.observer` |
+| subtype | token | More specific type/id for the event | `AuditEvent.subtype` |
+| type | token | Type/identifier of event | `AuditEvent.type` |
+
+## Scope and Usage
+
+The audit event is based on the IHE-ATNA Audit record definitions, originally from RFC 3881, and now managed by DICOM (see DICOM Part 15 Annex A5).
+
+### Standards and Specifications
+- **ASTM E2147** – Setup the concept of security audit logs for healthcare including accounting of disclosures
+- **IETF RFC 3881** – Defined the Information Model (IETF rule forced this to be informative)
+- **DICOM Audit Log Message** – Made the information model Normative, defined Vocabulary, Transport Binding, and Schema
+- **IHE ATNA** – Defines the grouping with secure transport and access controls; and defined specific audit log records for specific IHE transactions
+- **NIST SP800-92** – Shows how to do audit log management and reporting – consistent with our model
+- **HL7 PASS** – Defined an Audit Service with responsibilities and a query interface for reporting use
+- **ISO 27789** – Defined the subset of audit events that an EHR would need
+- **ISO/HL7 10781** – EHR System Functional Model Release 2
+- **ISO 21089** – Trusted End-to-End Information Flows
+
+This resource is managed collaboratively between HL7, DICOM, and IHE.
+
+### Primary Purpose
+The primary purpose of this resource is the maintenance of security audit log information. However, it can also be used for any audit logging needs and simple event-based notification.
+
+## Background and Context
+
+All actors - such as applications, processes, and services - involved in an auditable event should record an AuditEvent. This will likely result in multiple AuditEvent entries that show whether privacy and security safeguards, such as access control, are properly functioning across an enterprise's system-of-systems. 
+
+It is typical to get an auditable event recorded by both the application in a workflow process and the servers that support them. For this reason, duplicate entries are expected, which is helpful because it may aid in the detection of:
+- Fewer than expected actors being recorded in a multi-actor process
+- Attributes related to those records being in conflict (an indication of a security problem)
+
+There may be non-participating actors, such as trusted intermediaries, that also detect a security relevant event and thus would record an AuditEvent.
+
+### Security Relevant Events
+Security relevant events are not limited to communications or RESTful events. They include:
+
+- Software start-up and shutdown
+- User login and logout
+- Access control decisions
+- Configuration events
+- Software installation
+- Policy rules changes
+- Manipulation of data that exposes the data to users
+
+> See the Audit Event Sub-Type vocabulary for guidance on some security relevant events.
+
+### Usage and Access
+The content of an AuditEvent is intended for use by:
+- Security system administrators
+- Security and privacy information managers
+- Records management personnel
+
+This content is not intended to be accessible or used directly by other healthcare users, such as providers or patients, although reports generated from the raw data would be useful (e.g., a patient-centric accounting of disclosures or an access report).
+
+### Server Behavior
+- Servers that provide support for AuditEvent resources would not generally accept update or delete operations on the resources, as this would compromise the integrity of the audit record
+- Access to the AuditEvent would typically be limited to security, privacy, or other system administration purposes
+
+### Relationship with Provenance
+AuditEvent and Provenance resources are often (though not exclusively) created by the application responding to the create/read/query/update/delete/execute etc. event. 
+
+A Provenance resource:
+- Contains overlapping information
+- Is a record-keeping assertion that gathers information about the context in which the information in a resource "came to be" in its current state
+- Records whether information was created de novo or obtained from another entity in whole, part, or by transformation
+- Is prepared by the application that initiates the create/update of the resource
+- May be persisted with the AuditEvent target resource
+
