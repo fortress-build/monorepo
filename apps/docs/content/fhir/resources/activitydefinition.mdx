@@ -1,0 +1,297 @@
+---
+title: "ActivityDefinition"
+---
+import { Microscope } from 'lucide-react'
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 2 | Anonymous | <div className="flex items-center gap-2"><Microscope className="h-5 w-5 text-purple-500"/> Specialized </div> |
+
+ActivityDefinition allows for the definition of some activity to be performed, independent of a particular patient, practitioner, or other performance context.
+
+## Resource Content
+
+<Tabs defaultValue="structure">
+  <TabsList>
+    <TabsTrigger value="structure">Structure</TabsTrigger>
+    <TabsTrigger value="json">JSON</TabsTrigger>
+    <TabsTrigger value="typescript">TypeScript</TabsTrigger>
+  </TabsList>
+  <TabsContent value="structure">
+    | <div style={{width: "100px"}}>Name</div> | <div style={{width: "60px"}}>Required</div> | <div style={{width: "100px"}}>Type</div> | <div style={{width: "calc(100% - 480px)"}}>Description & Constraints</div> |
+    |------|--------|------|------------------------|
+    | url | | uri | Canonical identifier for this activity definition, represented as a URI (globally unique) |
+    | identifier | | Identifier[] | Additional identifier for the activity definition |
+    | version | | string | Business version of the activity definition |
+    | name | | string | Name for this activity definition (computer friendly) |
+    | title | | string | Name for this activity definition (human friendly) |
+    | subtitle | | string | Subordinate title of the activity definition |
+    | status | <span style={{color: "#22c55e"}}>✓</span> | code | draft \| active \| retired \| unknown |
+    | experimental | | boolean | For testing purposes, not real usage |
+    | subject[x] | | *See sub-fields* | Type of individual the activity definition is intended for |
+    | └─ subjectCodeableConcept | | CodeableConcept | Type of individual specified as a coded concept |
+    | └─ subjectReference | | Reference\<[Group](/fhir/resources/group)> | Type of individual specified as a group reference |
+    | date | | dateTime | Date last changed |
+    | publisher | | string | Name of the publisher (organization or individual) |
+    | contact | | ContactDetail[] | Contact details for the publisher |
+    | description | | markdown | Natural language description of the activity definition |
+    | useContext | | UsageContext[] | The context that the content is intended to support |
+    | jurisdiction | | CodeableConcept[] | Intended jurisdiction for activity definition |
+    | purpose | | markdown | Why this activity definition is defined |
+    | usage | | string | Describes the clinical usage of the activity definition |
+    | copyright | | markdown | Use and/or publishing restrictions |
+    | approvalDate | | date | When the activity definition was approved by publisher |
+    | lastReviewDate | | date | When the activity definition was last reviewed |
+    | effectivePeriod | | Period | When the activity definition is expected to be used |
+    | topic | | CodeableConcept[] | E.g. Education, Treatment, Assessment, etc. |
+    | author | | ContactDetail[] | Who authored the content |
+    | editor | | ContactDetail[] | Who edited the content |
+    | reviewer | | ContactDetail[] | Who reviewed the content |
+    | endorser | | ContactDetail[] | Who endorsed the content |
+    | relatedArtifact | | RelatedArtifact[] | Additional documentation, citations, etc. |
+    | library | | canonical\<[Library](/fhir/resources/library)>[] | Logic used by the activity definition |
+    | kind | | code | Kind of resource |
+    | profile | | canonical\<[StructureDefinition](/fhir/resources/structuredefinition)> | What profile the resource needs to conform to |
+    | code | | CodeableConcept | Detail type of activity |
+    | intent | | code | proposal \| plan \| directive \| order \| original-order \| reflex-order \| filler-order \| instance-order \| option |
+    | priority | | code | routine \| urgent \| asap \| stat |
+    | doNotPerform | | boolean | True if the activity should not be performed |
+    | timing[x] | | Timing \| dateTime \| Age \| Period \| Range \| Duration | When activity is to occur |
+    | location | | Reference\<[Location](/fhir/resources/location)> | Where it should happen |
+    | participant | | BackboneElement | Who should participate in the action |
+    | └─ type | <span style={{color: "#22c55e"}}>✓</span> | code | patient \| practitioner \| related-person \| device |
+    | └─ role | | CodeableConcept | E.g. Nurse, Surgeon, Parent, etc. |
+    | product[x] | | Reference\<[Medication](/fhir/resources/medication)\|[Substance](/fhir/resources/substance)> \| CodeableConcept | What's administered/supplied |
+    | quantity | | SimpleQuantity | How much is administered/consumed/supplied |
+    | dosage | | Dosage[] | Detailed dosage instructions |
+    | bodySite | | CodeableConcept[] | What part of body to perform on |
+    | specimenRequirement | | Reference\<[SpecimenDefinition](/fhir/resources/specimendefinition)>[] | What specimens are required to perform this action |
+    | observationRequirement | | Reference\<[ObservationDefinition](/fhir/resources/observationdefinition)>[] | What observations are required to perform this action |
+    | observationResultRequirement | | Reference\<[ObservationDefinition](/fhir/resources/observationdefinition)>[] | What observations must be produced by this action |
+    | transform | | canonical\<[StructureMap](/fhir/resources/structuremap)> | Transform to apply the template |
+    | dynamicValue | | BackboneElement | Dynamic aspects of the definition |
+    | └─ path | <span style={{color: "#22c55e"}}>✓</span> | string | The path to the element to be set dynamically |
+    | └─ expression | <span style={{color: "#22c55e"}}>✓</span> | Expression | An expression that provides the dynamic value for the customization |
+  </TabsContent>
+
+  <TabsContent value="json">
+    ```json
+    {
+      "resourceType" : "ActivityDefinition",
+      // from Resource: id, meta, implicitRules, and language
+      // from DomainResource: text, contained, extension, and modifierExtension
+      "url" : "<uri>", // Canonical identifier for this activity definition, represented as a URI (globally unique)
+      "identifier" : [{ Identifier }], // Additional identifier for the activity definition
+      "version" : "<string>", // Business version of the activity definition
+      "name" : "<string>", // C? Name for this activity definition (computer friendly)
+      "title" : "<string>", // Name for this activity definition (human friendly)
+      "subtitle" : "<string>", // Subordinate title of the activity definition
+      "status" : "<code>", // R!  draft | active | retired | unknown
+      "experimental" : <boolean>, // For testing purposes, not real usage
+      // subject[x]: Type of individual the activity definition is intended for. One of these 2:
+      "subjectCodeableConcept" : { CodeableConcept },
+      "subjectReference" : { Reference(Group) },
+      "date" : "<dateTime>", // Date last changed
+      "publisher" : "<string>", // Name of the publisher (organization or individual)
+      "contact" : [{ ContactDetail }], // Contact details for the publisher
+      "description" : "<markdown>", // Natural language description of the activity definition
+      "useContext" : [{ UsageContext }], // The context that the content is intended to support
+      "jurisdiction" : [{ CodeableConcept }], // Intended jurisdiction for activity definition (if applicable)
+      "purpose" : "<markdown>", // Why this activity definition is defined
+      "usage" : "<string>", // Describes the clinical usage of the activity definition
+      "copyright" : "<markdown>", // Use and/or publishing restrictions
+      "approvalDate" : "<date>", // When the activity definition was approved by publisher
+      "lastReviewDate" : "<date>", // When the activity definition was last reviewed
+      "effectivePeriod" : { Period }, // When the activity definition is expected to be used
+      "topic" : [{ CodeableConcept }], // E.g. Education, Treatment, Assessment, etc.
+      "author" : [{ ContactDetail }], // Who authored the content
+      "editor" : [{ ContactDetail }], // Who edited the content
+      "reviewer" : [{ ContactDetail }], // Who reviewed the content
+      "endorser" : [{ ContactDetail }], // Who endorsed the content
+      "relatedArtifact" : [{ RelatedArtifact }], // Additional documentation, citations, etc.
+      "library" : [{ canonical(Library) }], // Logic used by the activity definition
+      "kind" : "<code>", // Kind of resource
+      "profile" : { canonical(StructureDefinition) }, // What profile the resource needs to conform to
+      "code" : { CodeableConcept }, // Detail type of activity
+      "intent" : "<code>", // proposal | plan | directive | order | original-order | reflex-order | filler-order | instance-order | option
+      "priority" : "<code>", // routine | urgent | asap | stat
+      "doNotPerform" : <boolean>, // True if the activity should not be performed
+      // timing[x]: When activity is to occur. One of these 6:
+      "timingTiming" : { Timing },
+      "timingDateTime" : "<dateTime>",
+      "timingAge" : { Age },
+      "timingPeriod" : { Period },
+      "timingRange" : { Range },
+      "timingDuration" : { Duration },
+      "location" : { Reference(Location) }, // Where it should happen
+      "participant" : [{ // Who should participate in the action
+        "type" : "<code>", // R!  patient | practitioner | related-person | device
+        "role" : { CodeableConcept } // E.g. Nurse, Surgeon, Parent, etc.
+      }],
+      // product[x]: What's administered/supplied. One of these 2:
+      "productReference" : { Reference(Medication|Substance) },
+      "productCodeableConcept" : { CodeableConcept },
+      "quantity" : { Quantity(SimpleQuantity) }, // How much is administered/consumed/supplied
+      "dosage" : [{ Dosage }], // Detailed dosage instructions
+      "bodySite" : [{ CodeableConcept }], // What part of body to perform on
+      "specimenRequirement" : [{ Reference(SpecimenDefinition) }], // What specimens are required to perform this action
+      "observationRequirement" : [{ Reference(ObservationDefinition) }], // What observations are required to perform this action
+      "observationResultRequirement" : [{ Reference(ObservationDefinition) }], // What observations must be produced by this action
+      "transform" : { canonical(StructureMap) }, // Transform to apply the template
+      "dynamicValue" : [{ // Dynamic aspects of the definition
+        "path" : "<string>", // R!  The path to the element to be set dynamically
+        "expression" : { Expression } // R!  An expression that provides the dynamic value for the customization
+      }]
+    }
+    ```
+  </TabsContent>
+
+  <TabsContent value="typescript">
+    ```typescript
+    type ActivityDefinitionDynamicValue = {
+      path: string;
+      expression: Expression;
+    };
+
+    type ActivityDefinitionParticipant = {
+      type: "patient" | "practitioner" | "related-person" | "device";
+      role?: CodeableConcept;
+    };
+
+    declare class ActivityDefinition extends DomainResource {
+        resourceType: "ActivityDefinition"
+        identifier?: Identifier[];
+        version?: string;
+        name?: string;
+        title?: string;
+        subtitle?: string;
+        status: "draft" | "active" | "retired" | "unknown";
+        experimental?: boolean;
+        kind?:
+            | "Appointment"
+            | "AppointmentResponse"
+            | "CarePlan"
+            | "Claim"
+            | "CommunicationRequest"
+            | "Contract"
+            | "DeviceRequest"
+            | "EnrollmentRequest"
+            | "ImmunizationRecommendation"
+            | "MedicationRequest"
+            | "NutritionOrder"
+            | "ServiceRequest"
+            | "SupplyRequest"
+            | "Task"
+            | "VisionPrescription";
+        participant?: ActivityDefinitionParticipant[];
+        dynamicValue?: ActivityDefinitionDynamicValue[];
+        subjectCodeableConcept?: CodeableConcept;
+        subjectReference?: Reference<Group>;
+        date?: string;
+        publisher?: string;
+        contact?: ContactDetail[];
+        description?: string;
+        useContext?: UsageContext[];
+        jurisdiction?: CodeableConcept[];
+        purpose?: string;
+        usage?: string;
+        copyright?: string;
+        approvalDate?: string;
+        lastReviewDate?: string;
+        effectivePeriod?: Period;
+        topic?: CodeableConcept[];
+        author?: ContactDetail[];
+        editor?: ContactDetail[];
+        reviewer?: ContactDetail[];
+        endorser?: ContactDetail[];
+        relatedArtifact?: RelatedArtifact[];
+        libary?: string[];
+        profile?: string;
+        code?: CodeableConcept;
+        intent?:
+            | "proposal"
+            | "plan"
+            | "directive"
+            | "order"
+            | "original-order"
+            | "reflex-order"
+            | "filler-order"
+            | "instance-order"
+            | "option";
+        priority?: "routine" | "urgent" | "asap" | "stat";
+        doNotPerform?: boolean;
+        timingTiming?: Timing;
+        timingDateTime?: string;
+        timingAge?: Age;
+        timingPeriod?: Period;
+        timingRange?: Range;
+        timingDuration?: Duration;
+        location?: Reference<Location>;
+        productReference?: Reference<Medication | Substance>;
+        productCodeableConcept?: CodeableConcept;
+        quantity?: Quantity;
+        dosage?: Dosage[];
+        bodySite?: CodeableConcept[];
+        specimenRequirement?: Reference<SpecimenDefinition>[];
+        observationRequirement?: Reference<ObservationDefinition>[];
+        observationResultRequirement?: Reference<ObservationDefinition>[];
+        transform?: string;
+    }
+    ```
+  </TabsContent>
+</Tabs>
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| composed-of | reference | What resource is being referenced | `ActivityDefinition.relatedArtifact.where(type = 'composed-of').resource` |
+| context | token | A use context assigned to the activity definition | `ActivityDefinition.useContext.value as CodeableConcept` |
+| context-quantity | quantity | A quantity- or range-valued use context assigned to the activity definition | `ActivityDefinition.useContext.value as Quantity \| ActivityDefinition.useContext.value as Range` |
+| context-type | token | A type of use context assigned to the activity definition | `ActivityDefinition.useContext.code` |
+| date | date | The activity definition publication date | `ActivityDefinition.date` |
+| depends-on | reference | What resource is being referenced | `ActivityDefinition.relatedArtifact.where(type = 'depends-on').resource \| ActivityDefinition.library` |
+| derived-from | reference | What resource is being referenced | `ActivityDefinition.relatedArtifact.where(type = 'derived-from').resource` |
+| description | string | The description of the activity definition | `ActivityDefinition.description` |
+| effective | date | The time during which the activity definition is intended to be in use | `ActivityDefinition.effectivePeriod` |
+| identifier | token | External identifier for the activity definition | `ActivityDefinition.identifier` |
+| jurisdiction | token | Intended jurisdiction for the activity definition | `ActivityDefinition.jurisdiction` |
+| name | string | Computationally friendly name of the activity definition | `ActivityDefinition.name` |
+| predecessor | reference | What resource is being referenced | `ActivityDefinition.relatedArtifact.where(type = 'predecessor').resource` |
+| publisher | string | Name of the publisher of the activity definition | `ActivityDefinition.publisher` |
+| status | token | The current status of the activity definition | `ActivityDefinition.status` |
+| successor | reference | What resource is being referenced | `ActivityDefinition.relatedArtifact.where(type = 'successor').resource` |
+| title | string | The human-friendly name of the activity definition | `ActivityDefinition.title` |
+| topic | token | Topics associated with the module | `ActivityDefinition.topic` |
+| url | uri | The uri that identifies the activity definition | `ActivityDefinition.url` |
+| version | token | The business version of the activity definition | `ActivityDefinition.version` |
+| context-type-quantity | composite | A use context type and quantity- or range-based value assigned to the activity definition | `ActivityDefinition.useContext` |
+| context-type-value | composite | A use context type and value assigned to the activity definition | `ActivityDefinition.useContext` |
+
+## Scope and Usage
+An ActivityDefinition is a shareable, consumable description of some activity to be performed. It may be used to specify actions to be taken as part of a workflow, order set, or protocol, or it may be used independently as part of a catalog of activities such as orderables.
+
+For more information on how activity definitions can be used to construct request resources, see the Applying an ActivityDefinition topic below.
+
+## Background and Context
+In general, an activity definition is simply a conceptual description of some specific action that should be taken. An instance of an ActivityDefinition does not indicate that any action has been performed (as an event resource does), nor does it indicate the actual intent to carry out any particular action (as a request resource does). Instead, an activity definition provides a reusable template that can be used to construct specific request resources such as ServiceRequest and MedicationRequest.
+
+Note that this is conceptually similar to the [Task](/fhir/resources/task) resource as well, with the distinction being that ActivityDefinition represents the description of a task in the abstract, while the Task resource is used to track a specific instance of a task as it moves through the steps of a workflow.
+
+## Referenced Elements
+This resource is referenced by:
+- [CarePlan](/fhir/resources/careplan)
+- [CatalogEntry](/fhir/resources/catalogentry)
+- [Communication](/fhir/resources/communication)
+- [DeviceRequest](/fhir/resources/devicerequest)
+- [EvidenceVariable](/fhir/resources/evidencevariable)
+- [FamilyMemberHistory](/fhir/resources/familymemberhistory)
+- [MessageDefinition](/fhir/resources/messagedefinition)
+- [NutritionOrder](/fhir/resources/nutritionorder)
+- [PlanDefinition](/fhir/resources/plandefinition)
+- [Procedure](/fhir/resources/procedure)
+- [ServiceRequest](/fhir/resources/servicerequest)
+- [Task](/fhir/resources/task)
+
+
+

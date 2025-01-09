@@ -1,0 +1,261 @@
+---
+title: "Appointment"
+---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
+import { Users } from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 3 | Patient | <div className="flex items-center gap-2"> <Users className="h-5 w-5 text-green-500" /> Base </div> |
+
+A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a specific date/time. This may result in one or more Encounter(s).
+
+## Resource Content
+<Tabs defaultValue="table">
+  <TabsList>
+    <TabsTrigger value="table">Table</TabsTrigger>
+    <TabsTrigger value="json">JSON</TabsTrigger>
+    <TabsTrigger value="types">Types</TabsTrigger>
+  </TabsList>
+  <TabsContent value="table">
+    | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
+    |------|----------|------|------------------------|
+    | identifier | | Identifier[] | External Ids for this item |
+    | status | <span style={{color: "#22c55e"}}>✓</span> | code | proposed \| pending \| booked \| arrived \| fulfilled \| cancelled \| noshow \| entered-in-error \| checked-in \| waitlist |
+    | cancelationReason | | CodeableConcept | The coded reason for the appointment being cancelled |
+    | serviceCategory | | CodeableConcept[] | A broad categorization of the service |
+    | serviceType | | CodeableConcept[] | The specific service to be performed |
+    | specialty | | CodeableConcept[] | Required practitioner specialty |
+    | appointmentType | | CodeableConcept | The style of appointment booked |
+    | reasonCode | | CodeableConcept[] | Coded reason this appointment is scheduled |
+    | reasonReference | | Reference\<[Condition](/fhir/resources/condition)\|[Procedure](/fhir/resources/procedure)\|[Observation](/fhir/resources/observation)\|[ImmunizationRecommendation](/fhir/resources/immunizationrecommendation)>[] | Reason the appointment is to take place |
+    | priority | | unsignedInt | Used to make informed decisions if needing to re-prioritize |
+    | description | | string | Shown on subject line in meeting request |
+    | supportingInformation | | Reference\<Any>[] | Additional information to support the appointment |
+    | start | | instant | When appointment is to take place |
+    | end | | instant | When appointment is to conclude |
+    | minutesDuration | | positiveInt | Can be less than start/end (e.g. estimate) |
+    | slot | | Reference\<[Slot](/fhir/resources/slot)>[] | The slots that this appointment is filling |
+    | created | | dateTime | The date that this appointment was initially created |
+    | comment | | string | Additional comments |
+    | patientInstruction | | string | Detailed information and instructions for the patient |
+    | basedOn | | Reference\<[ServiceRequest](/fhir/resources/servicerequest)>[] | The service request this appointment is allocated to assess |
+    | participant | <span style={{color: "#22c55e"}}>✓</span> | BackboneElement | Participants involved in appointment |
+    | └─ type | | CodeableConcept[] | Role of participant in the appointment |
+    | └─ actor | | Reference\<[Patient](/fhir/resources/patient)\|[Practitioner](/fhir/resources/practitioner)\|[PractitionerRole](/fhir/resources/practitionerrole)\|[RelatedPerson](/fhir/resources/relatedperson)\|[Device](/fhir/resources/device)\|[HealthcareService](/fhir/resources/healthcareservice)\|[Location](/fhir/resources/location)> | Person, Location/HealthcareService or Device |
+    | └─ required | | code | required \| optional \| information-only |
+    | └─ status | <span style={{color: "#22c55e"}}>✓</span> | code | accepted \| declined \| tentative \| needs-action |
+    | └─ period | | Period | Participation period of the actor |
+    | requestedPeriod | | Period[] | Potential date/time interval(s) requested |
+  </TabsContent>
+  <TabsContent value="json">
+    ```json
+{
+{
+  "resourceType" : "Appointment",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // External Ids for this item
+  "status" : "<code>", // R!  proposed | pending | booked | arrived | fulfilled | cancelled | noshow | entered-in-error | checked-in | waitlist
+  "cancelationReason" : { CodeableConcept }, // The coded reason for the appointment being cancelled
+  "serviceCategory" : [{ CodeableConcept }], // A broad categorization of the service that is to be performed during this appointment
+  "serviceType" : [{ CodeableConcept }], // The specific service that is to be performed during this appointment
+  "specialty" : [{ CodeableConcept }], // The specialty of a practitioner that would be required to perform the service requested in this appointment
+  "appointmentType" : { CodeableConcept }, // The style of appointment or patient that has been booked in the slot (not service type)
+  "reasonCode" : [{ CodeableConcept }], // Coded reason this appointment is scheduled
+  "reasonReference" : [{ Reference(Condition|Procedure|Observation|
+   ImmunizationRecommendation) }], // Reason the appointment is to take place (resource)
+  "priority" : "<unsignedInt>", // Used to make informed decisions if needing to re-prioritize
+  "description" : "<string>", // Shown on a subject line in a meeting request, or appointment list
+  "supportingInformation" : [{ Reference(Any) }], // Additional information to support the appointment
+  "start" : "<instant>", // When appointment is to take place
+  "end" : "<instant>", // When appointment is to conclude
+  "minutesDuration" : "<positiveInt>", // Can be less than start/end (e.g. estimate)
+  "slot" : [{ Reference(Slot) }], // The slots that this appointment is filling
+  "created" : "<dateTime>", // The date that this appointment was initially created
+  "comment" : "<string>", // Additional comments
+  "patientInstruction" : "<string>", // Detailed information and instructions for the patient
+  "basedOn" : [{ Reference(ServiceRequest) }], // The service request this appointment is allocated to assess
+  "participant" : [{ // R!  Participants involved in appointment
+    "type" : [{ CodeableConcept }], // Role of participant in the appointment
+    "actor" : { Reference(Patient|Practitioner|PractitionerRole|RelatedPerson|
+    Device|HealthcareService|Location) }, // Person, Location/HealthcareService or Device
+    "required" : "<code>", // required | optional | information-only
+    "status" : "<code>", // R!  accepted | declined | tentative | needs-action
+    "period" : { Period } // Participation period of the actor
+  }],
+  "requestedPeriod" : [{ Period }] // Potential date/time interval(s) requested to allocate the appointment within
+}
+}
+        ```
+  </TabsContent>
+  <TabsContent value="types">
+    ```typescript
+export declare class Appointment extends DomainResource {
+    resourceType: "Appointment";
+    identifier?: Identifier[];
+    status:
+        | "proposed"
+        | "pending"
+        | "booked"
+        | "arrived"
+        | "fulfilled"
+        | "cancelled"
+        | "noshow"
+        | "entered-in-error"
+        | "checked-in"
+        | "waitlist";
+    cancelationReason?: CodeableConcept;
+    serviceCategory?: CodeableConcept[];
+    serviceType?: CodeableConcept[];
+    specialty?: CodeableConcept[];
+    appointmentType?: CodeableConcept;
+    reasonCode?: CodeableConcept[];
+    reasonReference?: Reference<
+        Condition | Procedure | Observation | ImmunizationRecommendation
+    >[];
+    priority?: number;
+    description?: string;
+    supportingInformation?: Reference<Resource>[];
+    start?: string;
+    end?: string;
+    minutesDuration?: number;
+    slot?: Reference<Slot>[];
+    created?: string;
+    comment?: string;
+    patientInstruction?: string;
+    basedOn?: Reference<ServiceRequest>[];
+    participant: {
+        type?: CodeableConcept[];
+        actor: Reference<
+        | Patient
+        | Practitioner
+        | PractitionerRole
+        | RelatedPerson
+        | Device
+        | HealthcareService
+        | Location
+        >;
+    }[];
+    requestedPeriod?: Period[];
+}
+    ```
+  </TabsContent>
+</Tabs>
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| actor | reference | Any one of the individuals participating in the appointment | `Appointment.participant.actor` |
+| appointment-type | token | The style of appointment or patient that has been booked in the slot (not service type) | `Appointment.appointmentType` |
+| based-on | reference | The service request this appointment is allocated to assess | `Appointment.basedOn` |
+| date | date | Appointment date/time. | `Appointment.start` |
+| identifier | token | An Identifier of the Appointment | `Appointment.identifier` |
+| location | reference | This location is listed in the participants of the appointment | `Appointment.participant.actor.where(resolve() is Location)` |
+| part-status | token | The Participation status of the subject, or other participant on the appointment | `Appointment.participant.status` |
+| patient | reference | One of the individuals of the appointment is this patient | `Appointment.participant.actor.where(resolve() is Patient)` |
+| practitioner | reference | One of the individuals of the appointment is this practitioner | `Appointment.participant.actor.where(resolve() is Practitioner)` |
+| reason-code | token | Coded reason this appointment is scheduled | `Appointment.reasonCode` |
+| reason-reference | reference | Reason the appointment is to take place (resource) | `Appointment.reasonReference` |
+| service-category | token | A broad categorization of the service that is to be performed during this appointment | `Appointment.serviceCategory` |
+| service-type | token | The specific service that is to be performed during this appointment | `Appointment.serviceType` |
+| slot | reference | The slots that this appointment is filling | `Appointment.slot` |
+| specialty | token | The specialty of a practitioner that would be required to perform the service | `Appointment.specialty` |
+| status | token | The overall status of the appointment | `Appointment.status` |
+| supporting-info | reference | Additional information to support the appointment | `Appointment.supportingInformation` |
+| end | date | The end time of the Appointment | `Appointment.end` |
+
+## Scope and Usage
+Appointment resources provide information about planned meetings, whether future or past. Each resource represents a single meeting - repeating visits require multiple appointment resources. Examples include:
+- Scheduled surgeries
+- Follow-up clinical visits
+- Clinical case conference calls
+- Diagnostic equipment reservations
+
+### Appointment Workflows
+There are two typical workflows that occur with appointments:
+
+#### Outlook Style - Community
+These types of requests are typically handled by selecting a specific time from a list of available slots, then making the request for that timeslot.
+
+#### Hospital Scheduling - Clinical
+Clinical scheduling is often far more complex in its requirements and processing. Often this involves checking multiple availabilities across multiple systems and timing with other internal systems, not just those exposed by the Slot resources.
+
+> **Implementation Note:** This type of clinical appointment scheduling has not been specifically covered with this definition of the Appointment resource (and other related resources). If you would like to contribute to the modification of this resource to cover these use cases, please contact the HL7 Patient Administration work-group.
+
+Consideration should be given to situations where scheduling needs to be handled in more of a queue-like process.
+
+### Basic Workflow
+
+#### 1. Discovery/Addressing
+- Determine address/endpoint details for scheduling
+- Based on healthcare service type and formatting requirements
+- Typically handled via Schedule resource
+
+#### 2. Checking Availability (Optional)
+- Review available times (Slot resources) on selected Schedule
+- Available time doesn't guarantee booking success
+- Booking system may apply additional qualifying criteria
+  - Permissions
+  - Assessments
+  - Resource availability
+
+#### 3. Making the Appointment Request
+- Create new Appointment resource with `status="proposed"`
+- All participants should have `status="needs-action"`
+- System business rules may trigger automatic status updates
+
+#### 4. Replying to the Request
+- Handlers update participant statuses as needed
+- Multiple systems create AppointmentResponse entries
+- Overall Appointment status updated after all participants respond
+
+#### 5. Checking Overall Status
+- Requester monitors appointment status using FHIR pub-sub
+- May restart process if rescheduling needed
+
+#### 6. Waitlisting (Optional)
+- Create waitlisted appointment when preferred times unavailable
+- Requires two appointments:
+  - Booked appointment in available slot
+  - Waitlisted appointment with preferred `requestedPeriod`
+- Patient notification process for new availability is implementation-specific
+
+## Background and Context
+The Appointment resource follows specific patterns and workflows that are important to understand for implementation.
+
+### Request/Response Pattern
+Appointments use a request-response pattern implemented through Appointment and AppointmentResponse resources:
+- Initial requests use an Appointment with `status="proposed"` or `"pending"`
+- Participants start with `status="needs-action"`
+- Participants respond via AppointmentResponse resources
+- Overall Appointment status updates after all responses received
+
+The participant type property can specify required practitioner roles, even before specific actors are assigned. This property must match between Appointment-participant and AppointmentResponse for proper allocation.
+
+### Relationship with Encounters
+- Appointments are primarily administrative, while Encounters have clinical implications
+- Encounters typically created when service starts, not at patient arrival
+- Patient arrival marked by Appointment `status="arrived"`
+- Emergency Room scenarios should use Encounters directly, not Appointments
+
+### Integration Considerations
+The Appointment pattern differs from typical FHIR order-response patterns to maintain compatibility with:
+- iCal standard
+- Non-clinical appointment systems
+- Consumer-facing calendar applications
+
+### Location Management
+- Locations specified through participant references to Location or HealthcareService resources
+- Enables schedule checking and conflict management
+- Allows tracking of location availability
+
+## Referenced Elements
+This resource is referenced by:
+- [AppointmentResponse](/fhir/resources/appointmentresponse)
+- [CarePlan](/fhir/resources/careplan)
+- [Encounter](/fhir/resources/encounter)
+- [ImagingStudy](/fhir/resources/imagingstudy)
+
+
+

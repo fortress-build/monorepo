@@ -1,4 +1,4 @@
 {
   "title": "FHIR",
-  "pages": ["overview", "resources"]
+  "pages": ["overview", "resourcelist", "resources"]
 }

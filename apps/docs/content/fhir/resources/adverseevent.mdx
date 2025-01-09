@@ -1,0 +1,241 @@
+---
+title: "AdverseEvent"
+---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
+import { Stethoscope } from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 0 | Patient | <div className="flex items-center gap-2"><Stethoscope className="h-5 w-5 text-red-500" /> Clinical </div> |
+
+Actual or potential/avoided event causing unintended physical injury resulting from or contributed to by medical care, a research study or other healthcare setting factors that requires additional monitoring, treatment, or hospitalization, or that results in death.
+
+## Resource Content
+<Tabs defaultValue="structure">
+  <TabsList>
+    <TabsTrigger value="structure">Structure</TabsTrigger>
+    <TabsTrigger value="json">JSON</TabsTrigger>
+    <TabsTrigger value="types">Types</TabsTrigger>
+  </TabsList>
+  <TabsContent value="structure">
+    | <div style={{width: "180px"}}>Name</div> | Required| <div style={{width: "180px"}}>Type</div> | <div style={{width: "calc(100% - 480px)"}}>Description & Constraints</div> |
+    |------|----------|------|------------------------|
+    | identifier | | Identifier | Business identifier for the event |
+    | actuality | <span style={{color: "#22c55e"}}>✓</span> | code | actual \| potential <br/>*(AdverseEventActuality - Required)* |
+    | category | | CodeableConcept[] | product-problem \| product-quality \| product-use-error \| wrong-dose \| incorrect-prescribing-information \| wrong-technique \| wrong-route-of-administration \| wrong-rate \| wrong-duration \| wrong-time \| expired-drug \| medical-device-use-error \| problem-different-manufacturer \| unsafe-physical-environment <br/>*(AdverseEventCategory - Extensible)* |
+    | event | | CodeableConcept | Type of the event itself in relation to the subject <br/>*(SNOMED CT Clinical Findings - Example)* |
+    | subject | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[Patient](/fhir/resources/patient)\| [Group](/fhir/resources/group)\| [Practitioner](/fhir/resources/practitioner)\| [RelatedPerson](/fhir/resources/relatedperson)> | Subject impacted by event |
+    | encounter | | Reference\<[Encounter](/fhir/resources/encounter)> | Encounter created as part of |
+    | date | | dateTime | When the event occurred |
+    | detected | | dateTime | When the event was detected |
+    | recordedDate | | dateTime | When the event was recorded |
+    | resultingCondition | | Reference\<[Condition](/fhir/resources/condition)>[] | Effect on the subject due to this event |
+    | location | | Reference\<[Location](/fhir/resources/location)> | Location where adverse event occurred |
+    | seriousness | | CodeableConcept | Seriousness of the event <br/>*(AdverseEventSeriousness - Example)* |
+    | severity | | CodeableConcept | mild \| moderate \| severe <br/>*(AdverseEventSeverity - Required)* |
+    | outcome | | CodeableConcept | resolved \| recovering \| ongoing \| resolvedWithSequelae \| fatal \| unknown <br/>*(AdverseEventOutcome - Required)* |
+    | recorder | | Reference\<[Patient](/fhir/resources/patient)\| [Practitioner](/fhir/resources/practitioner)\| [PractitionerRole](/fhir/resources/practitionerrole)\| [RelatedPerson](/fhir/resources/relatedperson)> | Who recorded the adverse event |
+    | contributor | | Reference\<[Practitioner](/fhir/resources/practitioner)\| [PractitionerRole](/fhir/resources/practitionerrole)\| [Device](/fhir/resources/device)>[] | Who was involved in the adverse event or the potential adverse event |
+    | suspectEntity | | BackboneElement[] | The suspected agent causing the adverse event |
+    | └─ instance | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[Immunization](/fhir/resources/immunization)\| [Procedure](/fhir/resources/procedure)\| [Substance](/fhir/resources/substance)\| [Medication](/fhir/resources/medication)\| [MedicationAdministration](/fhir/resources/medicationadministration)\| [MedicationStatement](/fhir/resources/medicationstatement)\| [Device](/fhir/resources/device)> | Refers to the specific entity that caused the adverse event |
+    | └─ causality | | BackboneElement[] | Information on the possible cause of the event |
+    | └─── assessment | | CodeableConcept | Assessment of if the entity caused the event <br/>*(AdverseEventCausalityAssessment - Example)* |
+    | └─── productRelatedness | | string | AdverseEvent.suspectEntity.causalityProductRelatedness |
+    | └─── author | | Reference\<[Practitioner](/fhir/resources/practitioner)\| [PractitionerRole](/fhir/resources/practitionerrole)> | AdverseEvent.suspectEntity.causalityAuthor |
+    | └─── method | | CodeableConcept | ProbabilityScale \| Bayesian \| Checklist <br/>*(AdverseEventCausalityMethod - Example)* |
+    | subjectMedicalHistory | | Reference\<[Condition](/fhir/resources/condition)\| [Observation](/fhir/resources/observation)\| [AllergyIntolerance](/fhir/resources/allergyintolerance)\| [FamilyMemberHistory](/fhir/resources/familymemberhistory)\| [Immunization](/fhir/resources/immunization)\| [Procedure](/fhir/resources/procedure)\| [Media](/fhir/resources/media)\| [DocumentReference](/fhir/resources/documentreference)>[] | AdverseEvent.subjectMedicalHistory |
+    | referenceDocument | | Reference\<[DocumentReference](/fhir/resources/documentreference)>[] | AdverseEvent.referenceDocument |
+    | study | | Reference\<[ResearchStudy](/fhir/resources/researchstudy)>[] | AdverseEvent.study |
+  </TabsContent>
+  <TabsContent value="json">
+    ```json
+{
+  "resourceType" : "AdverseEvent",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : { Identifier }, // Business identifier for the event
+  "actuality" : "<code>", // R!  actual | potential
+  "category" : [{ CodeableConcept }], // product-problem | product-quality | product-use-error | wrong-dose | incorrect-prescribing-information | wrong-technique | wrong-route-of-administration | wrong-rate | wrong-duration | wrong-time | expired-drug | medical-device-use-error | problem-different-manufacturer | unsafe-physical-environment
+  "event" : { CodeableConcept }, // Type of the event itself in relation to the subject
+  "subject" : { Reference(Patient|Group|Practitioner|RelatedPerson) }, // R!  Subject impacted by event
+  "encounter" : { Reference(Encounter) }, // Encounter created as part of
+  "date" : "<dateTime>", // When the event occurred
+  "detected" : "<dateTime>", // When the event was detected
+  "recordedDate" : "<dateTime>", // When the event was recorded
+  "resultingCondition" : [{ Reference(Condition) }], // Effect on the subject due to this event
+  "location" : { Reference(Location) }, // Location where adverse event occurred
+  "seriousness" : { CodeableConcept }, // Seriousness of the event
+  "severity" : { CodeableConcept }, // mild | moderate | severe
+  "outcome" : { CodeableConcept }, // resolved | recovering | ongoing | resolvedWithSequelae | fatal | unknown
+  "recorder" : { Reference(Patient|Practitioner|PractitionerRole|
+   RelatedPerson) }, // Who recorded the adverse event
+  "contributor" : [{ Reference(Practitioner|PractitionerRole|Device) }], // Who  was involved in the adverse event or the potential adverse event
+  "suspectEntity" : [{ // The suspected agent causing the adverse event
+    "instance" : { Reference(Immunization|Procedure|Substance|Medication|
+    MedicationAdministration|MedicationStatement|Device) }, // R!  Refers to the specific entity that caused the adverse event
+    "causality" : [{ // Information on the possible cause of the event
+      "assessment" : { CodeableConcept }, // Assessment of if the entity caused the event
+      "productRelatedness" : "<string>", // AdverseEvent.suspectEntity.causalityProductRelatedness
+      "author" : { Reference(Practitioner|PractitionerRole) }, // AdverseEvent.suspectEntity.causalityAuthor
+      "method" : { CodeableConcept } // ProbabilityScale | Bayesian | Checklist
+    }]
+  }],
+  "subjectMedicalHistory" : [{ Reference(Condition|Observation|
+   AllergyIntolerance|FamilyMemberHistory|Immunization|Procedure|Media|
+   DocumentReference) }], // AdverseEvent.subjectMedicalHistory
+  "referenceDocument" : [{ Reference(DocumentReference) }], // AdverseEvent.referenceDocument
+  "study" : [{ Reference(ResearchStudy) }] // AdverseEvent.study
+}
+        ```
+  </TabsContent>
+  <TabsContent value="types">
+    ```typescript
+export type SuspectEntity = {
+    instance: Reference<Immunization|Procedure|Substance|Medication|MedicationAdministration|MedicationStatement|Device>;
+    causality: Causality;
+}
+
+export type Causality = {
+    assessment?: CodeableConcept;
+    productRelatedness?: string;
+    author?: Reference<Practitioner|PractitionerRole>
+    method?: CodeableConcept;
+}
+
+export declare class AdverseEvent extends DomainResource  {
+    resourceType: "AdverseEvent";
+    identifier?: Identifier;
+    actuality: string;
+    category: CodeableConcept[];
+    event?: CodeableConcept;
+    subject: Reference<Patient|Group|Practitioner|RelatedPerson>;
+    encounter?: Reference<Encounter>;
+    date?: string;
+    recordedDate?: string;
+    resultingCondition?: Reference<Condition>[];
+    location?: Reference<Location>;
+    seriousness: CodeableConcept;
+    severity: CodeableConcept;
+    outcome: CodeableConcept;
+    recorder: Reference<Patient|Practitioner|PractitionerRole|RelatedPerson>;
+    contributor: Reference<Practitioner|PractitionerRole|Device>;
+    suspectEntity: SuspectEntity;
+    subjectMedicalHistory?: Reference<Condition|Observation|AllergyIntolerance|FamilyMemberHistory|Immunization|Procedure|Media|DocumentReference>[];
+    referenceDocument?: Reference<DocumentReference>;
+    study?: Reference<ResearchStudy>;
+};
+
+
+    ```
+  </TabsContent>
+</Tabs>
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| actuality | token | actual \| potential | `AdverseEvent.actuality` |
+| category | token | product-problem \| product-quality \| product-use-error \| wrong-dose \| incorrect-prescribing-information \| wrong-technique \| wrong-route-of-administration \| wrong-rate \| wrong-duration \| wrong-time \| expired-drug \| medical-device-use-error \| problem-different-manufacturer \| unsafe-physical-environment | `AdverseEvent.category` |
+| date | date | When the event occurred | `AdverseEvent.date` |
+| event | token | Type of the event itself in relation to the subject | `AdverseEvent.event` |
+| location | reference | Location where adverse event occurred | `AdverseEvent.location` |
+| recorder | reference | Who recorded the adverse event | `AdverseEvent.recorder` |
+| resultingcondition | reference | Effect on the subject due to this event | `AdverseEvent.resultingCondition` |
+| seriousness | token | Seriousness of the event | `AdverseEvent.seriousness` |
+| severity | token | mild \| moderate \| severe | `AdverseEvent.severity` |
+| study | reference | AdverseEvent.study | `AdverseEvent.study` |
+| subject | reference | Subject impacted by event | `AdverseEvent.subject` |
+| substance | reference | Refers to the specific entity that caused the adverse event | `AdverseEvent.suspectEntity.instance` |
+
+## Scope and Usage
+This resource applies to events that occur during the course of medical care or medical research which may impact an individual as the recipient of care or the participant in a research study. There are also events that occur within a care setting that might or might not impact an individual but had the potential to cause an adverse event. Health care organizations monitor and report both adverse events as well as events that had the potential to cause patient harm. Data are often aggregated for reporting purposes.
+
+An adverse event is the result of an intervention that caused unintentional harm to a specific subject or group of subjects. Examples of adverse events include the administration of an incorrect drug or an incorrect dose of a drug causing an adverse reaction, the use of an implanted device that causes an infection, or a biologic used during a research study that causes unanticipated renal failure. These events are characterized by the need to capture cause and effect (although they might not be known at the time of the event), severity, and outcome.
+
+The context of an adverse event is also important. A subject may have condition(s) or current treatments (medications, diet, devices) that impact their response to a newly introduced medication, device or procedure. Knowledge of these variables is essential in establishing a cause and effect relationship for an adverse event.
+
+A potential adverse event may also be called a near miss or an error. These are also events but because they were detected did not cause harm to a subject. Examples of potential adverse events include a product problem such as a faulty pacemaker that is detected prior implantation, a doctor working simultaneously on two electronic health records realizing the order for a drug was entered on the incorrect patient and then canceling the order, or a patient with a peanut allergy notices that his hospital dinner tray includes peanuts, and he does not eat the peanuts.
+
+## Background and Context
+The AdverseEvent resource is designed to represent events that have a harmful impact on a subject, or had the potential to cause harm to a subject but were avoided. In the course of medical care there are many actions that may impact how a subject responds to a particular treatment impacting patient safety. Therefore the AdverseEvent resource may reference multiple other resources to represent the context or details of an adverse event including but not limited to Observation, Condition, MedicationAdminsitration, Immunization, Procedure, or ResearchStudy.
+
+A DetectedIssue reference is also related to the context of an AdverseEvent to the extent that a known risk for a potential issue such as a drug-drug interaction is documented. If in the context of a known issue, and adverse event occurs, citing this relationship is important for preventing such an occurrence in the future.
+
+The AdverseEvent resource should not be used when a more specific resource exists.
+
+The AllergyIntolerance resource is a case specific means of capturing the condition of an allergy or intolerance and the criticality (or potential for future harm) based on the response of a particular individual.
+The Clinical Reasoning module provides resources and operations to enable the representation, distribution, and evaluation of clinical knowledge artifacts such as clinical decision support rules, quality measures, order sets, and protocols. The suite of resources within the clinical reasoning module should be used to capture clinical quality measures and clinical protocols that help drive clinical best practices.
+The AdverseEvent resource is not intended to be used to capture potential subject risk in a prospective manner. A more appropriate resource for this purpose would be Risk Assessment which captures predicted outcomes for a patient or population on the basis of source information. Examples include a prognosis statement for a particular condition, risk of health outcome (heart attack, particular type of cancer) on the basis of lifestyle factors and/or family history or list of potential health risks based on a patient's genetic analysis.
+
+## Example Usage
+```json
+{
+  "resourceType": "AdverseEvent",
+  "id": "example",
+  "actuality": "actual",
+  "category": [{
+    "coding": [{
+      "system": "http://terminology.hl7.org/CodeSystem/adverse-event-category",
+      "code": "wrong-dose",
+      "display": "Wrong Dose"
+    }]
+  }],
+  "event": {
+    "coding": [{
+      "system": "http://snomed.info/sct",
+      "code": "281647001",
+      "display": "Adverse reaction to drug"
+    }]
+  },
+  "subject": {
+    "reference": "Patient/example",
+    "display": "John Smith"
+  },
+  "date": "2024-03-15T10:30:00Z",
+  "recordedDate": "2024-03-15T10:45:00Z",
+  "seriousness": {
+    "coding": [{
+      "system": "http://terminology.hl7.org/CodeSystem/adverse-event-seriousness",
+      "code": "moderate",
+      "display": "Moderate"
+    }]
+  },
+  "severity": {
+    "coding": [{
+      "system": "http://terminology.hl7.org/CodeSystem/adverse-event-severity",
+      "code": "moderate",
+      "display": "Moderate"
+    }]
+  },
+  "outcome": {
+    "coding": [{
+      "system": "http://terminology.hl7.org/CodeSystem/adverse-event-outcome",
+      "code": "recovering",
+      "display": "Recovering"
+    }]
+  },
+  "recorder": {
+    "reference": "Practitioner/example",
+    "display": "Dr. Sarah Jones"
+  },
+  "suspectEntity": [{
+    "instance": {
+      "reference": "MedicationAdministration/example",
+      "display": "Penicillin 500mg oral tablet"
+    },
+    "causality": [{
+      "assessment": {
+        "coding": [{
+          "system": "http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess",
+          "code": "certain",
+          "display": "Certain"
+        }]
+      },
+      "author": {
+        "reference": "Practitioner/example",
+        "display": "Dr. Sarah Jones"
+      }
+    }]
+  }]
+}
+```
+

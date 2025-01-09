@@ -1,0 +1,269 @@
+---
+title: "AllergyIntolerance"
+---
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
+import { Stethoscope } from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 3  | Patient | <div className="flex items-center gap-2"><Stethoscope className="h-5 w-5 text-red-500" /> Clinical </div> |
+
+Risk of harmful or undesirable, physiological response which is unique to an individual and associated with exposure to a substance.
+
+
+## Resource Content
+<Tabs defaultValue="table">
+  <TabsList>
+    <TabsTrigger value="table">Table</TabsTrigger>
+    <TabsTrigger value="json">JSON</TabsTrigger>
+    <TabsTrigger value="types">Types</TabsTrigger>
+  </TabsList>
+  <TabsContent value="table">
+    | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
+    |------|--------|------|------------------------|
+    | identifier | | Identifier[] | External ids for this item |
+    | clinicalStatus | | CodeableConcept | active \| inactive \| resolved |
+    | verificationStatus | | CodeableConcept | unconfirmed \| confirmed \| refuted \| entered-in-error |
+    | type | | code | allergy \| intolerance - Underlying mechanism (if known) |
+    | category | | code[] | food \| medication \| environment \| biologic |
+    | criticality | | code | low \| high \| unable-to-assess |
+    | code | | CodeableConcept | Code that identifies the allergy or intolerance |
+    | patient | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[Patient](/fhir/resources/patient)> | Who the sensitivity is for |
+    | encounter | | Reference\<[Encounter](/fhir/resources/encounter)> | Encounter when the allergy or intolerance was asserted |
+    | onset[x] | | dateTime \| Age \| Period \| Range \| string | When allergy or intolerance was identified |
+    | recordedDate | | dateTime | Date first version of the resource instance was recorded |
+    | recorder | | Reference\<[Practitioner](/fhir/resources/practitioner)\| [PractitionerRole](/fhir/resources/practitionerrole)\| [Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)> | Who recorded the sensitivity |
+    | asserter | | Reference\<[Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)\| [Practitioner](/fhir/resources/practitioner)\| [PractitionerRole](/fhir/resources/practitionerrole)> | Source of the information about the allergy |
+    | lastOccurrence | | dateTime | Date(/time) of last known occurrence of a reaction |
+    | note | | Annotation[] | Additional text not captured in other fields |
+    | reaction | | BackboneElement[] | Adverse Reaction Events linked to exposure to substance |
+    | └─ substance | | CodeableConcept | Specific substance or pharmaceutical product considered to be responsible for event |
+    | └─ manifestation | <span style={{color: "#22c55e"}}>✓</span> | CodeableConcept[] | Clinical symptoms/signs associated with the Event |
+    | └─ description | | string | Description of the event as a whole |
+    | └─ onset | | dateTime | Date(/time) when manifestations showed |
+    | └─ severity | | code | mild \| moderate \| severe (of event as a whole) |
+    | └─ exposureRoute | | CodeableConcept | How the subject was exposed to the substance |
+    | └─ note | | Annotation[] | Text about event not captured in other fields |
+  </TabsContent>
+  <TabsContent value="json">
+    ```json
+{
+  "resourceType" : "AllergyIntolerance",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // External ids for this item
+  "clinicalStatus" : { CodeableConcept }, // C? active | inactive | resolved
+  "verificationStatus" : { CodeableConcept }, // C? unconfirmed | confirmed | refuted | entered-in-error
+  "type" : "<code>", // allergy | intolerance - Underlying mechanism (if known)
+  "category" : ["<code>"], // food | medication | environment | biologic
+  "criticality" : "<code>", // low | high | unable-to-assess
+  "code" : { CodeableConcept }, // Code that identifies the allergy or intolerance
+  "patient" : { Reference(Patient) }, // R!  Who the sensitivity is for
+  "encounter" : { Reference(Encounter) }, // Encounter when the allergy or intolerance was asserted
+  // onset[x]: When allergy or intolerance was identified. One of these 5:
+  "onsetDateTime" : "<dateTime>",
+  "onsetAge" : { Age },
+  "onsetPeriod" : { Period },
+  "onsetRange" : { Range },
+  "onsetString" : "<string>",
+  "recordedDate" : "<dateTime>", // Date first version of the resource instance was recorded
+  "recorder" : { Reference(Practitioner|PractitionerRole|Patient|
+   RelatedPerson) }, // Who recorded the sensitivity
+  "asserter" : { Reference(Patient|RelatedPerson|Practitioner|
+   PractitionerRole) }, // Source of the information about the allergy
+  "lastOccurrence" : "<dateTime>", // Date(/time) of last known occurrence of a reaction
+  "note" : [{ Annotation }], // Additional text not captured in other fields
+  "reaction" : [{ // Adverse Reaction Events linked to exposure to substance
+    "substance" : { CodeableConcept }, // Specific substance or pharmaceutical product considered to be responsible for event
+    "manifestation" : [{ CodeableConcept }], // R!  Clinical symptoms/signs associated with the Event
+    "description" : "<string>", // Description of the event as a whole
+    "onset" : "<dateTime>", // Date(/time) when manifestations showed
+    "severity" : "<code>", // mild | moderate | severe (of event as a whole)
+    "exposureRoute" : { CodeableConcept }, // How the subject was exposed to the substance
+    "note" : [{ Annotation }] // Text about event not captured in other fields
+  }]
+}
+        ```
+  </TabsContent>
+  <TabsContent value="types">
+    ```typescript
+export type AllergyIntoleranceReaction = {
+    substance?: CodeableConcept;
+    manifestation: CodeableConcept[];
+    description?: string;
+    onset?: string;
+    severity?: 'mild' | 'moderate' | 'severe';
+    exposureRoute?: CodeableConcept;
+    note?: Annotation[];
+}
+
+export declare class AllergyIntolerance extends DomainResource{
+    resourceType: 'AllergyIntolerance';
+    identifier?: Identifier[];
+    clinicalStatus?: CodeableConcept;
+    verificationStatus?: CodeableConcept;
+    type?: 'allergy' | 'intolerance';
+    category?: Array<'food' | 'medication' | 'environment' | 'biologic'>;
+    criticality?: 'low' | 'high' | 'unable-to-assess';
+    code?: CodeableConcept;
+    patient: Reference<Patient>;
+    encounter?: Reference<Encounter>;
+    onsetDateTime?: string;
+    onsetAge?: Age;
+    onsetPeriod?: Period;
+    onsetRange?: Range;
+    onsetString?: string;
+    recordedDate?: string;
+    recorder?: Reference<Practitioner|PractitionerRole|Patient|RelatedPerson>;
+    asserter?: Reference<Patient|RelatedPerson|Practitioner|PractitionerRole>;
+    lastOccurrence?: string;
+    note?: Annotation[];
+    reaction?: AllergyIntoleranceReaction[];
+}
+    ```
+  </TabsContent>
+</Tabs>
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| asserter | reference | Source of the information about the allergy | `AllergyIntolerance.asserter` |
+| category | token | food \| medication \| environment \| biologic | `AllergyIntolerance.category` |
+| clinical-status | token | active \| inactive \| resolved | `AllergyIntolerance.clinicalStatus` |
+| code | token | Code that identifies the allergy or intolerance | `AllergyIntolerance.code \| AllergyIntolerance.reaction.substance` |
+| criticality | token | low \| high \| unable-to-assess | `AllergyIntolerance.criticality` |
+| date | date | Date first version of the resource instance was recorded | `AllergyIntolerance.recordedDate` |
+| identifier | token | External ids for this item | `AllergyIntolerance.identifier` |
+| last-date | date | Date(/time) of last known occurrence of a reaction | `AllergyIntolerance.lastOccurrence` |
+| manifestation | token | Clinical symptoms/signs associated with the Event | `AllergyIntolerance.reaction.manifestation` |
+| onset | date | Date(/time) when manifestations showed | `AllergyIntolerance.reaction.onset` |
+| patient | reference | Who the sensitivity is for | `AllergyIntolerance.patient` |
+| recorder | reference | Who recorded the sensitivity | `AllergyIntolerance.recorder` |
+| route | token | How the subject was exposed to the substance | `AllergyIntolerance.reaction.exposureRoute` |
+| severity | token | mild \| moderate \| severe (of event as a whole) | `AllergyIntolerance.reaction.severity` |
+| type | token | allergy \| intolerance - Underlying mechanism (if known) | `AllergyIntolerance.type` |
+| verification-status | token | unconfirmed \| confirmed \| refuted \| entered-in-error | `AllergyIntolerance.verificationStatus` |
+
+## Scope and Usage
+A record of a clinical assessment of an allergy or intolerance; a propensity, or a potential risk to an individual, to have an adverse reaction on future exposure to the specified substance, or class of substance.
+
+Where a propensity is identified, to record information or evidence about a reaction event that is characterized by any harmful or undesirable physiological response that is specific to the individual and triggered by exposure of an individual to the identified substance or class of substance.
+
+Substances include, but are not limited to: a therapeutic substance administered correctly at an appropriate dosage for the individual; food; material derived from plants or animals; or venom from insect stings.
+
+## Background and Context
+
+### Purpose
+This resource provides a single place within the health record to document clinical statements about adverse reactions to substances/products, including:
+
+- Recording clinical assessment of potential future reactions upon re-exposure
+- Recording cumulative information about reactions to each exposure, including 'no reaction'
+
+### Use Cases
+Record information about adverse reaction risks for:
+- Direct clinical care of an individual
+- Managed adverse reaction or allergy/intolerance lists
+- Information exchange about adverse reaction events
+- Adverse reaction reporting
+- Clinical decision support and alerts
+
+### Scope
+Can record reactions to:
+- Biological & blood products
+- Medicinal preparations (incipients and excipients)
+- Foods
+- Metal salts
+- Organic chemical compounds
+
+### Types of Adverse Reactions
+
+#### Allergy
+- Typically type I hypersensitivity
+- Includes other "allergy-like" reactions and pseudoallergy
+
+#### Intolerance
+- Non-immune adverse reactions
+- Not determined/perceived to be allergic
+- Idiosyncratic and individually specific
+- Not expected to occur in most patients under similar circumstances
+
+> **Note:** In clinical practice, distinguishing between allergy and intolerance can be difficult. If uncertainty exists, the `type` element should be omitted.
+
+### Important Considerations
+
+#### Individual Sensitivity
+- Reactions must be unique to the individual
+- Distinguished from circumstantial reactions like:
+  - Food/drug toxicity
+  - Overdose
+  - Drug-drug interactions
+  - Drug-food interactions
+  - Drug-disease interactions
+
+#### Recording Guidelines
+1. **Causative Substance:**
+   - Must identify a proposed causative substance or class
+   - Use `verificationStatus` to indicate uncertainty
+   - Create separate instances for multiple possible causes
+   
+2. **Substance Documentation:**
+   - Can record specific substances (e.g., amoxicillin, oysters, bee sting venom)
+   - Can record class of substances (e.g., penicillins)
+   - Exact substance can be recorded per exposure
+
+3. **Risk Assessment:**
+   - Default `criticality` should be 'Low Risk'
+   - Set to 'High Risk' if re-exposure is unsafe (e.g., after life-threatening anaphylaxis)
+
+### Clinical Information Hierarchy
+
+#### First-Level Information
+- Previous clinical manifestations
+- Information source/reporter
+- Criticality flag
+
+#### Second-Level Information
+- Exposure event details
+- Links to additional clinical information:
+  - History
+  - Examination
+  - Diagnoses
+
+### Related Resources
+
+#### AllergyIntolerance vs RiskAssessment
+- AllergyIntolerance: Specific substance reaction risks
+- RiskAssessment: General patient risks not based on reactions
+
+#### AllergyIntolerance vs Immunization.reaction
+- Create separate AllergyIntolerance record if immunization reaction indicates allergy
+- Most systems don't query immunization.reactions
+
+### Misuse Prevention
+
+Do NOT use this resource for:
+- Physical stimuli reactions (use Condition instead):
+  - Light
+  - Heat
+  - Cold
+  - Pressure
+  - Vibration
+- Adverse events from:
+  - Clinical process failures
+  - Intervention errors
+  - Product malfunctions
+  - Incorrect dosage
+  - Mislabeling
+  - Procedure injuries
+  - Overdose/poisoning
+- Standalone adverse event reports
+- Alerts (use Flag or DetectedIssue)
+- Failed therapy documentation
+
+## Referenced Elements
+This resource is referenced by:
+- [AdverseEvent](/fhir/resources/adverseevent)
+- [ClinicalImpression](/fhir/resources/clinicalimpression)
+- [FamilyMemberHistory](/fhir/resources/familymemberhistory)
+- [NutritionOrder](/fhir/resources/nutritionorder)
+
