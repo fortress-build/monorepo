@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@basehub/mutation-api-helpers": "^2.0.7",
     "@t3-oss/env-nextjs": "^0.11.1",
     "basehub": "^8.0.1",
     "react": "^19.0.0",

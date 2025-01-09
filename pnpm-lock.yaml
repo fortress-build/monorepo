@@ -572,6 +572,9 @@ importers:
 
   packages/cms:
     dependencies:
+      '@basehub/mutation-api-helpers':
+        specifier: ^2.0.7
+        version: 2.0.7
       '@t3-oss/env-nextjs':
         specifier: ^0.11.1
         version: 0.11.1(typescript@5.7.3)(zod@3.24.1)
