@@ -1,0 +1,12 @@
+{
+  "name": "@repo/client-js",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "devDependencies": {
+    "globals": "^15.13.0"
+  }
+}

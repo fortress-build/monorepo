@@ -1,0 +1,42 @@
+import type { Annotation } from "./Annotation";
+import type { CodeableConcept } from "./CodeableConcept";
+import type { ContactDetail } from "./ContactDetail";
+import type { EvidenceVariable } from "./EvidenceVariable";
+import type { Identifier } from "./Identifier";
+import type { Period } from "./Period";
+import type { Reference } from "./Reference";
+import type { RelatedArtifact } from "./RelatedArtifact";
+import type { DomainResource } from "./Resource";
+import type { UsageContext } from "./UsageContext";
+
+export declare class Evidence extends DomainResource{
+  resourceType: "Evidence";
+  url?: string;
+  identifier?: Identifier[];
+  version?: string;
+  name?: string;
+  title?: string;
+  shortTitle?: string;
+  subtitle?: string;
+  status: "draft" | "active" | "retired" | "unknown";
+  date?: string;
+  publisher?: string;
+  contact?: ContactDetail[];
+  description?: string;
+  note?: Annotation[];
+  useContext?: UsageContext[];
+  jurisdiction?: CodeableConcept[];
+  copyright?: string;
+  approvalDate?: string;
+  lastReviewDate?: string;
+  effectivePeriod?: Period;
+  topic?: CodeableConcept[];
+  author?: ContactDetail[];
+  editor?: ContactDetail[];
+  reviewer?: ContactDetail[];
+  endorser?: ContactDetail[];
+  relatedArtifact?: RelatedArtifact[];
+  exposureBackground: Reference<EvidenceVariable>;
+  exposureVariant?: Reference<EvidenceVariable>[];
+  outcome?: Reference<EvidenceVariable>[];
+}
