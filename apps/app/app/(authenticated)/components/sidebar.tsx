@@ -35,7 +35,6 @@ import {
   FrameIcon,
   Home,
   LifeBuoyIcon,
-  MapIcon,
   SendIcon,
   Settings2Icon,
   SquareTerminalIcon,
