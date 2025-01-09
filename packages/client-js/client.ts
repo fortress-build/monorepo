@@ -50,14 +50,14 @@ export type FHIRSession = {
 
 export type PartialFHIRClientConfig = {
   redirectUrl: string;
-  scope?: string;
+  scopes?: string[];
 
   headers?: Record<string, string>;
 };
 
 export type FHIRClientConfig = {
   redirectUrl: string;
-  scope: string;
+  scopes: string[];
 
   headers: Record<string, string>;
 };
@@ -68,7 +68,7 @@ export type FHIRProviderInfo = {
   clientId: string;
 };
 
-export class FHIRClient {
+export class Nerve {
   config: FHIRClientConfig;
   provider?: FHIRProviderInfo;
 
@@ -82,7 +82,7 @@ export class FHIRClient {
 
   constructor(config: PartialFHIRClientConfig) {
     this.config = {
-      scope: "openid fhirUser",
+      scopes: ["openid", "fhirUser"],
       headers: {},
       ...config,
     };
@@ -183,7 +183,7 @@ export class FHIRClient {
       response_type: "code",
       // state: crypto.randomUUID(),
       aud: this.provider.fhirUrl,
-      scope: this.config.scope,
+      scope: this.config.scopes.join(" "),
       // scope: "launch/patient patient/*.read openid fhirUser",
       client_id: this.provider.clientId,
       // client_secret: this.config.clientSecret ?? undefined,
@@ -205,7 +205,7 @@ export class FHIRClient {
       client_id: this.provider.clientId,
       redirect_uri: this.config.redirectUrl,
       grant_type: "authorization_code",
-      scope: this.config.scope ?? "openid fhirUser",
+      scope: this.config.scopes?.join(" ") ?? "openid fhirUser",
       code,
     });
 
@@ -307,10 +307,7 @@ export class FHIRClient {
   }
 }
 
-async function resolveReferences(
-  obj: Record<string, unknown>,
-  client: FHIRClient,
-) {
+async function resolveReferences(obj: Record<string, unknown>, client: Nerve) {
   //loops over all of the items
   for (const [k, v] of Object.entries(obj as object)) {
     if (v == null || typeof v !== "object") {
@@ -330,9 +327,9 @@ async function resolveReferences(
 }
 
 class PatientResource {
-  private client: FHIRClient;
+  private client: Nerve;
 
-  constructor(client: FHIRClient) {
+  constructor(client: Nerve) {
     this.client = client;
   }
 
@@ -414,9 +411,9 @@ export type ObservationSearchRequest = {
 };
 
 class ObservationResource {
-  private client: FHIRClient;
+  private client: Nerve;
 
-  constructor(client: FHIRClient) {
+  constructor(client: Nerve) {
     this.client = client;
   }
 
