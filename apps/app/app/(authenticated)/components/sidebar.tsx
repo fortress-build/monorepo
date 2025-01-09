@@ -7,13 +7,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from '@repo/design-system/components/ui/collapsible';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@repo/design-system/components/ui/dropdown-menu';
+import {} from '@repo/design-system/components/ui/dropdown-menu';
 import {
   Sidebar,
   SidebarContent,
@@ -35,20 +29,12 @@ import {
 import { cn } from '@repo/design-system/lib/utils';
 import {
   AnchorIcon,
-  BookOpenIcon,
   BotIcon,
   ChevronRightIcon,
-  FolderIcon,
-  FrameIcon,
+  Home,
   LifeBuoyIcon,
-  MapIcon,
-  MoreHorizontalIcon,
-  PieChartIcon,
   SendIcon,
-  Settings2Icon,
-  ShareIcon,
   SquareTerminalIcon,
-  Trash2Icon,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -64,91 +50,50 @@ const data = {
   },
   navMain: [
     {
-      title: 'Playground',
-      url: '#',
+      title: 'Sandbox',
+      url: '/sandbox',
       icon: SquareTerminalIcon,
-      isActive: true,
-      items: [
-        {
-          title: 'History',
-          url: '#',
-        },
-        {
-          title: 'Starred',
-          url: '#',
-        },
-        {
-          title: 'Settings',
-          url: '#',
-        },
-      ],
     },
     {
-      title: 'Models',
-      url: '#',
+      title: 'Products',
+      url: '/products',
       icon: BotIcon,
       items: [
         {
           title: 'Genesis',
-          url: '#',
+          url: '/products/genesis',
         },
         {
           title: 'Explorer',
-          url: '#',
+          url: '/products/explorer',
         },
         {
           title: 'Quantum',
-          url: '#',
+          url: '/products/quantum',
         },
       ],
     },
     {
-      title: 'Documentation',
-      url: '#',
-      icon: BookOpenIcon,
+      title: 'Platform',
+      url: '/platform',
+      icon: SquareTerminalIcon,
       items: [
         {
-          title: 'Introduction',
-          url: '#',
+          title: 'Documentation',
+          url: '/docs',
         },
         {
-          title: 'Get Started',
-          url: '#',
-        },
-        {
-          title: 'Tutorials',
-          url: '#',
-        },
-        {
-          title: 'Changelog',
-          url: '#',
-        },
-      ],
-    },
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings2Icon,
-      items: [
-        {
-          title: 'General',
-          url: '#',
-        },
-        {
-          title: 'Team',
-          url: '#',
-        },
-        {
-          title: 'Billing',
-          url: '#',
-        },
-        {
-          title: 'Limits',
-          url: '#',
+          title: 'API',
+          url: '/api',
         },
       ],
     },
   ],
+  homeNav: {
+    title: 'Home',
+    url: '/home',
+    icon: Home,
+  },
   navSecondary: [
     {
       title: 'Webhooks',
@@ -166,23 +111,7 @@ const data = {
       icon: SendIcon,
     },
   ],
-  projects: [
-    {
-      name: 'Design Engineering',
-      url: '#',
-      icon: FrameIcon,
-    },
-    {
-      name: 'Sales & Marketing',
-      url: '#',
-      icon: PieChartIcon,
-    },
-    {
-      name: 'Travel',
-      url: '#',
-      icon: MapIcon,
-    },
-  ],
+  products: [],
 };
 
 export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
@@ -210,7 +139,44 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>Platform</SidebarGroupLabel>
+            <SidebarMenu>
+              <Collapsible asChild defaultOpen={data.homeNav.isActive}>
+                <SidebarMenuItem>
+                  <SidebarMenuButton asChild tooltip={data.homeNav.title}>
+                    <a href={data.homeNav.url}>
+                      <data.homeNav.icon />
+                      <span>{data.homeNav.title}</span>
+                    </a>
+                  </SidebarMenuButton>
+                  {data.homeNav.items?.length ? (
+                    <>
+                      <CollapsibleTrigger asChild>
+                        <SidebarMenuAction className="data-[state=open]:rotate-90">
+                          <ChevronRightIcon />
+                          <span className="sr-only">Toggle</span>
+                        </SidebarMenuAction>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {data.homeNav.items?.map((subItem) => (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton asChild>
+                                <a href={subItem.url}>
+                                  <span>{subItem.title}</span>
+                                </a>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                    </>
+                  ) : null}
+                </SidebarMenuItem>
+              </Collapsible>
+            </SidebarMenu>
+          </SidebarGroup>
+          <SidebarGroup>
+            <SidebarGroupLabel>Developer Platform</SidebarGroupLabel>
             <SidebarMenu>
               {data.navMain.map((item) => (
                 <Collapsible
@@ -254,52 +220,8 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
             </SidebarMenu>
           </SidebarGroup>
           <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>Projects</SidebarGroupLabel>
-            <SidebarMenu>
-              {data.projects.map((item) => (
-                <SidebarMenuItem key={item.name}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.name}</span>
-                    </a>
-                  </SidebarMenuButton>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <SidebarMenuAction showOnHover>
-                        <MoreHorizontalIcon />
-                        <span className="sr-only">More</span>
-                      </SidebarMenuAction>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent
-                      className="w-48"
-                      side="bottom"
-                      align="end"
-                    >
-                      <DropdownMenuItem>
-                        <FolderIcon className="text-muted-foreground" />
-                        <span>View Project</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <ShareIcon className="text-muted-foreground" />
-                        <span>Share Project</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <Trash2Icon className="text-muted-foreground" />
-                        <span>Delete Project</span>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </SidebarMenuItem>
-              ))}
-              <SidebarMenuItem>
-                <SidebarMenuButton>
-                  <MoreHorizontalIcon />
-                  <span>More</span>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
+            <SidebarGroupLabel>Products</SidebarGroupLabel>
+            <SidebarMenu></SidebarMenu>
           </SidebarGroup>
           <SidebarGroup className="mt-auto">
             <SidebarGroupContent>
