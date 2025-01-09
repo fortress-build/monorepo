@@ -2,7 +2,97 @@
 title: "Basic"
 ---
 import { Database } from 'lucide-react'
+import { Tab, Tabs} from 'fumadocs-ui/components/tabs'
 
 | Maturity Level | Security Category | Resource Category |
 |----------------|------------------|-------------------|
 | 1 | Other | <div className="flex items-center gap-2"><Database className="h-5 w-5 text-blue-500" /> Foundation </div> |
+
+Basic is used for handling concepts not yet defined in FHIR, narrative-only resources that don't map to an existing resource, and custom resources not appropriate for inclusion in the FHIR specification.
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+    | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
+    |------|--------|------|------------------------|
+    | Basic | | DomainResource | Resource for non-supported content |
+    | └─ *Elements defined in Ancestors:* | | | *id, meta, implicitRules, language, text, contained, extension, modifierExtension* |
+    | identifier | | Identifier[] | Business identifier |
+    | code | <span style={{color: "#22c55e"}}>✓</span> | CodeableConcept | Kind of Resource |
+    | subject | | Reference\<Any> | Identifies the focus of this resource |
+    | created | | date | When created |
+    | author | | Reference\<[Practitioner](/fhir/resources/practitioner)\| [PractitionerRole](/fhir/resources/practitionerrole)\| [Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)\| [Organization](/fhir/resources/organization)> | Who created |
+  </Tab>
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "Basic",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // Business identifier
+  "code" : { CodeableConcept }, // R!  Kind of Resource
+  "subject" : { Reference(Any) }, // Identifies the focus of this resource
+  "created" : "<date>", // When created
+  "author" : { Reference(Practitioner|PractitionerRole|Patient|RelatedPerson|
+   Organization) } // Who created
+}
+        ```
+  </Tab>
+  <Tab value="types">
+    ```typescript
+export declare class Basic extends DomainResource {
+    resourceType: "Basic";
+    identifier?: Identifier[];
+    code: CodeableConcept;
+    subject?: Reference<Resource>;
+    created?: string;
+    author?: Reference<Practitioner| PractitionerRole|Patient|RelatedPerson|Organization>;
+}
+
+    ```
+  </Tab>
+</Tabs>
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| author | reference | Who created | `Basic.author` |
+| code | token | Kind of Resource | `Basic.code` |
+| created | date | When created | `Basic.created` |
+| identifier | token | Business identifier | `Basic.identifier` |
+| patient | reference | Identifies the focus of this resource | `Basic.subject.where(resolve() is Patient)` |
+| subject | reference | Identifies the focus of this resource | `Basic.subject` |
+
+## Intended Use Cases
+
+The Basic resource is intended for use in three primary circumstances:
+
+1. **Future HL7 Resources**
+   - When an implementer needs a resource concept likely to be defined by HL7 in the future
+   - Delays may be due to bandwidth issues, insufficient requirements, or lower prioritization
+
+2. **Narrative-Only Constructs**
+   - For content that doesn't map cleanly to existing resources
+   - Examples include:
+     - Combined aspects of several resources (e.g., Assessment + Plan)
+     - Flexible content where the system can't predict narrative content structure
+
+3. **Site-Specific Requirements**
+   - Limited use for unique implementation needs
+   - Not intended for requirements that won't be officially defined in HL7
+   - Helps keep the FHIR specification manageable
+
+### Non-Conformant Use Case
+
+There is also a fourth circumstance, though this use is not conformant:
+
+- When implementers want to represent standard resource information in a custom format
+- While wire-format compatible, this prevents:
+  - Safe processing
+  - Proper querying
+  - Analysis by other conformant systems
+
+> **Note**: Implementers should use Basic whenever they need a resource that doesn't clearly fit one of the currently defined resources, regardless of which category their use case falls into.
+
+## Background and Context
+Basic defines only a minimal set of data elements - those necessary to identify what kind of resource it represents and those necessary to support resource compartmenting. All other data elements are represented using the extension mechanism. It's entirely possible to have a Basic resource instance with nothing other than narrative, a subject and code. And, in practice, that's all many systems will understand.
