@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header } from "./components/header";
 
-const title = "Acme Inc";
+const title = "Nerve";
 const description = "My application.";
 
 export const metadata: Metadata = {

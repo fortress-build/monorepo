@@ -41,9 +41,7 @@ import {
   FolderIcon,
   FrameIcon,
   LifeBuoyIcon,
-  MapIcon,
   MoreHorizontalIcon,
-  PieChartIcon,
   SendIcon,
   Settings2Icon,
   ShareIcon,
@@ -62,27 +60,13 @@ const data = {
     email: 'm@example.com',
     avatar: '/avatars/shadcn.jpg',
   },
-  navMain: [
-    {
-      title: 'Playground',
-      url: '#',
-      icon: SquareTerminalIcon,
-      isActive: true,
-      items: [
-        {
-          title: 'History',
-          url: '#',
-        },
-        {
-          title: 'Starred',
-          url: '#',
-        },
-        {
-          title: 'Settings',
-          url: '#',
-        },
-      ],
-    },
+  home: {
+    title: 'Home',
+    url: '/home',
+    icon: FrameIcon,
+    isActive: true,
+  },
+  products: [
     {
       title: 'Models',
       url: '#',
@@ -103,6 +87,38 @@ const data = {
       ],
     },
     {
+      title: 'Playground',
+      url: '#',
+      icon: SquareTerminalIcon,
+      items: [
+        {
+          title: 'History',
+          url: '#',
+        },
+        {
+          title: 'Starred',
+          url: '#',
+        },
+      ],
+    },
+    {
+      title: 'Sandbox',
+      url: 'sandbox',
+      icon: FrameIcon,
+      items: [
+        {
+          title: 'New Sandbox',
+          url: 'sandbox',
+        },
+        {
+          title: 'Templates',
+          url: '#',
+        },
+      ],
+    },
+  ],
+  platform: [
+    {
       title: 'Documentation',
       url: '#',
       icon: BookOpenIcon,
@@ -117,10 +133,6 @@ const data = {
         },
         {
           title: 'Tutorials',
-          url: '#',
-        },
-        {
-          title: 'Changelog',
           url: '#',
         },
       ],
@@ -142,10 +154,6 @@ const data = {
           title: 'Billing',
           url: '#',
         },
-        {
-          title: 'Limits',
-          url: '#',
-        },
       ],
     },
   ],
@@ -164,23 +172,6 @@ const data = {
       title: 'Feedback',
       url: '#',
       icon: SendIcon,
-    },
-  ],
-  projects: [
-    {
-      name: 'Design Engineering',
-      url: '#',
-      icon: FrameIcon,
-    },
-    {
-      name: 'Sales & Marketing',
-      url: '#',
-      icon: PieChartIcon,
-    },
-    {
-      name: 'Travel',
-      url: '#',
-      icon: MapIcon,
     },
   ],
 };
@@ -210,9 +201,21 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild>
+                  <a href={data.home.url}>
+                    <data.home.icon />
+                    <span>{data.home.title}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+          <SidebarGroup>
             <SidebarGroupLabel>Platform</SidebarGroupLabel>
             <SidebarMenu>
-              {data.navMain.map((item) => (
+              {data.platform.map((item) => (
                 <Collapsible
                   key={item.title}
                   asChild
@@ -256,12 +259,12 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
           <SidebarGroup className="group-data-[collapsible=icon]:hidden">
             <SidebarGroupLabel>Projects</SidebarGroupLabel>
             <SidebarMenu>
-              {data.projects.map((item) => (
-                <SidebarMenuItem key={item.name}>
+              {data.products.map((item) => (
+                <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
                       <item.icon />
-                      <span>{item.name}</span>
+                      <span>{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                   <DropdownMenu>
