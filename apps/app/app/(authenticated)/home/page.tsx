@@ -1,7 +1,7 @@
 "use client";
 
-import { Quickstart } from "@/app/(authenticated)/components/quickstart";
-import OnboardingSteps from "@/app/(authenticated)/components/onboarding";
+import OnboardingSteps from "@/components/Home/OnboardingSteps";
+import { Quickstart } from "@/components/Home/Quickstart";
 
 export default function Home() {
   return (

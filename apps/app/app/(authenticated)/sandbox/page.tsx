@@ -2,6 +2,12 @@
 
 import { Button } from "@repo/design-system/components/ui/button";
 import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@repo/design-system/components/ui/card";
+import {
   Tabs,
   TabsContent,
   TabsList,
