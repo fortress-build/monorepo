@@ -1,3 +1,145 @@
 ---
 title: "Flag"
 ---
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import {Users} from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+|  | Unclassified | <div className="flex items-center gap-2"> <Users className="h-5 w-5 text-blue-500" /> **Base Resources**</div> |
+
+A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+    | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
+    |------|----------|------|------------------------|
+    | identifier | | Identifier[] | Business identifier |
+    | status | <span style={{color: "#22c55e"}}>✓</span> | code | active \| inactive \| entered-in-error<br/>FlagStatus (Required) |
+    | category | | CodeableConcept[] | Clinical, administrative, etc.<br/>Flag Category (Example) |
+    | code | <span style={{color: "#22c55e"}}>✓</span> | CodeableConcept | Coded or textual message to display to user<br/>Flag Code (Example) |
+    | subject | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[Patient](/fhir/resources/patient)\|[Location](/fhir/resources/location)\|[Group](/fhir/resources/group)\|[Organization](/fhir/resources/organization)\|[Practitioner](/fhir/resources/practitioner)\|[PlanDefinition](/fhir/resources/plandefinition)\|[Medication](/fhir/resources/medication)\|[Procedure](/fhir/resources/procedure)> | Who/What is flag about? |
+    | period | | Period | Time period when flag is active |
+    | encounter | | Reference\<[Encounter](/fhir/resources/encounter)> | Alert relevant during encounter |
+    | author | | Reference\<[Device](/fhir/resources/device)\|[Organization](/fhir/resources/organization)\|[Patient](/fhir/resources/patient)\|[Practitioner](/fhir/resources/practitioner)\|[PractitionerRole](/fhir/resources/practitionerrole)> | Flag creator |
+  </Tab>
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "Flag",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // Business identifier
+  "status" : "<code>", // R!  active | inactive | entered-in-error
+  "category" : [{ CodeableConcept }], // Clinical, administrative, etc.
+  "code" : { CodeableConcept }, // R!  Coded or textual message to display to user
+  "subject" : { Reference(Patient|Location|Group|Organization|Practitioner|
+   PlanDefinition|Medication|Procedure) }, // R!  Who/What is flag about?
+  "period" : { Period }, // Time period when flag is active
+  "encounter" : { Reference(Encounter) }, // Alert relevant during encounter
+  "author" : { Reference(Device|Organization|Patient|Practitioner|
+   PractitionerRole) } // Flag creator
+}
+        ```
+  </Tab>
+  <Tab value="types">
+```typescript
+declare class Flag extends DomainResource {
+    resourceType: "Flag";
+    identifier?: Identifier[];
+    status: "active" | "inactive" | "entered-in-error";
+    category?: CodeableConcept[];
+    code: CodeableConcept;
+    subject: Reference<
+        | Patient
+        | Location
+        | Group
+        | Organization
+        | Practitioner
+        | PlanDefinition
+        | Medication
+        | Procedure
+    >;
+    period?: Period;
+    encounter?: Reference<Encounter>;
+    author?: Reference<
+        Device | Organization | Patient | Practitioner | PractitionerRole
+    >;
+    }
+    ```
+  </Tab>
+</Tabs>
+
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| date | date | Time period when flag is active | `Flag.period` |
+| patient | reference | The identity of a subject to list flags for | `Flag.subject.where(resolve() is Patient)` |
+| encounter | reference | Alert relevant during encounter | `Flag.encounter` |
+| author | reference | Flag creator | `Flag.author` |
+| identifier | token | Business identifier | `Flag.identifier` |
+| subject | reference | The identity of a subject to list flags for | `Flag.subject` |
+| category | token | The category of the flag, such as clinical, administrative, etc. | `Flag.category` |
+
+## Scope and Usage
+
+### Overview
+A flag is a warning or notification presented to users (clinicians or other healthcare providers) that:
+- Represents significant information warranting special display
+- Contains a subject that triggers its display
+- Is typically shown as a prominent label in the patient record
+- Should be concise and highlight high-priority issues
+
+### Subject Types and Examples
+Flags can reference different subject types:
+- **Patient**: Overdue account notifications for discussion
+- **Location**: Regional health alerts (e.g., Ebola outbreak risks)
+- **Practitioner**: Provider availability status
+- **Group**: Clinical trial enrollment
+- **PlanDefinition**: Protocol-specific guidance
+- **Medication**: Special approval requirements for drugs
+
+### Common Use Cases
+**Patient-Related Flags:**
+- **Risk Factors**
+  - Functional risk of falls
+  - Spousal restraining orders
+  - Latex allergy
+
+- **Special Accommodations**
+  - Hard of hearing
+  - Need for easy-open caps
+
+- **Provider Safety**
+  - Presence of pets/animals
+  - Potential aggressive behavior
+  - Infection control precautions
+
+- **Administrative**
+  - Incomplete information
+  - Pre-payment requirements
+
+### Out of Scope
+Flags should **not** be used for:
+1. Potential allergy or drug interactions (use `DetectedIssue` instead)
+2. Known adverse reactions (use `AllergyIntolerance` instead)
+
+### Important Considerations
+- Flags may contain information not captured elsewhere (e.g., "Patient has large dog at home")
+- Create flags judiciously to prevent information overload
+- Flags persist in records for defined periods
+- Implementation guidelines vary by community
+- While some information may be redundant (e.g., latex allergy), this redundancy serves a safety purpose
+
+## Boundaries and Relationships
+Flags may highlight a highly condensed view of information found in the AllergyIntolerance, Condition, Observation, Procedure and possibly other resources. A common extension allows the linkage of a Flag to the supporting detail resource. The purpose of these other resources is to provide detailed clinical information. The purpose of a Flag is to alert practitioners to information that is important to influence their interaction with a Patient prior to detailed review of the record.
+
+Flags are not used to convey information to a specific individual or organization (e.g. an abnormal lab result reported to the ordering clinician, reporting of an adverse reaction to a regulatory authority). These are handled using the CommunicationRequest and the Communication resources.
+
+Flags are not raised as a result of a reported or proposed action (e.g. drug-drug interactions, duplicate therapy warnings). These would be handled using DetectedIssue.
+
+## Referenced Elements
+
+N/A

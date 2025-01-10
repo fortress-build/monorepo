@@ -1,3 +1,321 @@
 ---
 title: "CarePlan"
 ---
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Stethoscope } from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 2 | Patient | <div className="flex items-center gap-2"><Stethoscope className="h-5 w-5 text-red-500" /> Clinical </div> |
+
+Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+| Name | Card. | Type | Description |
+|------|--------|------|------------|
+| TU | | DomainResource | Healthcare plan for patient or group |
+| *Elements defined in Ancestors:* id, meta, implicitRules, language, text, contained, extension, modifierExtension |
+| identifier | 0..* | Identifier | External Ids for this plan |
+| instantiatesCanonical | 0..* | canonical(PlanDefinition \| Questionnaire \| Measure \| ActivityDefinition \| OperationDefinition) | Instantiates FHIR protocol or definition |
+| instantiatesUri | 0..* | uri | Instantiates external protocol or definition |
+| basedOn | 0..* | Reference(CarePlan) | Fulfills CarePlan |
+| replaces | 0..* | Reference(CarePlan) | CarePlan replaced by this CarePlan |
+| partOf | 0..* | Reference(CarePlan) | Part of referenced CarePlan |
+| status | 1..1 | code | draft \| active \| on-hold \| revoked \| completed \| entered-in-error \| unknown |
+| intent | 1..1 | code | proposal \| plan \| order \| option |
+| category | 0..* | CodeableConcept | Type of plan |
+| title | 0..1 | string | Human-friendly name for the care plan |
+| description | 0..1 | string | Summary of nature of plan |
+| subject | 1..1 | Reference(Patient \| Group) | Who the care plan is for |
+| encounter | 0..1 | Reference(Encounter) | Encounter created as part of |
+| period | 0..1 | Period | Time period plan covers |
+| created | 0..1 | dateTime | Date record was first recorded |
+| author | 0..1 | Reference(Patient \| Practitioner \| PractitionerRole \| Device \| RelatedPerson \| Organization \| CareTeam) | Who is the designated responsible party |
+| contributor | 0..* | Reference(Patient \| Practitioner \| PractitionerRole \| Device \| RelatedPerson \| Organization \| CareTeam) | Who provided the content of the care plan |
+| careTeam | 0..* | Reference(CareTeam) | Who's involved in plan? |
+| addresses | 0..* | Reference(Condition) | Health issues this plan addresses |
+| supportingInfo | 0..* | Reference(Any) | Information considered as part of plan |
+| goal | 0..* | Reference(Goal) | Desired outcome of plan |
+| activity | 0..* | BackboneElement | Action to occur as part of plan |
+| <span style={{color: "#777777"}}>└─ outcomeCodeableConcept</span> | 0..* | CodeableConcept | Results of the activity |
+| <span style={{color: "#777777"}}>└─ outcomeReference</span> | 0..* | Reference(Any) | Appointment, Encounter, Procedure, etc. |
+| <span style={{color: "#777777"}}>└─ progress</span> | 0..* | Annotation | Comments about the activity status/progress |
+| <span style={{color: "#777777"}}>└─ reference</span> | 0..1 | Reference(Appointment \| CommunicationRequest \| DeviceRequest \| MedicationRequest \| NutritionOrder \| Task \| ServiceRequest \| VisionPrescription) | Activity details defined in specific resource |
+| <span style={{color: "#777777"}}>└─ detail</span> | 0..1 | BackboneElement | In-line definition of activity |
+| <span style={{color: "#4B9CD3"}}>└───kind</span> | 0..1 | code | Appointment \| CommunicationRequest \| DeviceRequest \| MedicationRequest \| NutritionOrder \| Task \| ServiceRequest \| VisionPrescription |
+| <span style={{color: "#4B9CD3"}}>└───instantiatesCanonical</span> | 0..* | canonical(PlanDefinition \| ActivityDefinition \| Questionnaire \| Measure \| OperationDefinition) | Instantiates FHIR protocol or definition |
+| <span style={{color: "#4B9CD3"}}>└───instantiatesUri</span> | 0..* | uri | Instantiates external protocol or definition |
+| <span style={{color: "#4B9CD3"}}>└───code</span> | 0..1 | CodeableConcept | Detail type of activity |
+| <span style={{color: "#4B9CD3"}}>└───reasonCode</span> | 0..* | CodeableConcept | Why activity should be done or why activity was prohibited |
+| <span style={{color: "#4B9CD3"}}>└───reasonReference</span> | 0..* | Reference(Condition \| Observation \| DiagnosticReport \| DocumentReference) | Why activity is needed |
+| <span style={{color: "#4B9CD3"}}>└───goal</span> | 0..* | Reference(Goal) | Goals this activity relates to |
+| <span style={{color: "#4B9CD3"}}>└───status</span> | 1..1 | code | not-started \| scheduled \| in-progress \| on-hold \| completed \| cancelled \| stopped \| unknown \| entered-in-error |
+| <span style={{color: "#4B9CD3"}}>└───statusReason</span> | 0..1 | CodeableConcept | Reason for current status |
+| <span style={{color: "#4B9CD3"}}>└───doNotPerform</span> | 0..1 | boolean | If true, activity is prohibiting action |
+| <span style={{color: "#4B9CD3"}}>└───scheduled[x]</span> | 0..1 | Timing \| Period \| string | When activity is to occur |
+| <span style={{color: "#4B9CD3"}}>└───location</span> | 0..1 | Reference(Location) | Where it should happen |
+| <span style={{color: "#4B9CD3"}}>└───performer</span> | 0..* | Reference(Practitioner \| PractitionerRole \| Organization \| RelatedPerson \| Patient \| CareTeam \| HealthcareService \| Device) | Who will be responsible? |
+| <span style={{color: "#4B9CD3"}}>└───product[x]</span> | 0..1 | CodeableConcept \| Reference(Medication \| Substance) | What is to be administered/supplied |
+| <span style={{color: "#4B9CD3"}}>└───dailyAmount</span> | 0..1 | SimpleQuantity | How to consume/day? |
+| <span style={{color: "#4B9CD3"}}>└───quantity</span> | 0..1 | SimpleQuantity | How much to administer/supply/consume |
+| <span style={{color: "#4B9CD3"}}>└───description</span> | 0..1 | string | Extra info describing activity to perform |
+| note | 0..* | Annotation | Comments about the plan |
+  </Tab>
+  
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "CarePlan",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // External Ids for this plan
+  "instantiatesCanonical" : [{ canonical(PlanDefinition|Questionnaire|Measure|
+   ActivityDefinition|OperationDefinition) }], // Instantiates FHIR protocol or definition
+  "instantiatesUri" : ["<uri>"], // Instantiates external protocol or definition
+  "basedOn" : [{ Reference(CarePlan) }], // Fulfills CarePlan
+  "replaces" : [{ Reference(CarePlan) }], // CarePlan replaced by this CarePlan
+  "partOf" : [{ Reference(CarePlan) }], // Part of referenced CarePlan
+  "status" : "<code>", // R!  draft | active | on-hold | revoked | completed | entered-in-error | unknown
+  "intent" : "<code>", // R!  proposal | plan | order | option
+  "category" : [{ CodeableConcept }], // Type of plan
+  "title" : "<string>", // Human-friendly name for the care plan
+  "description" : "<string>", // Summary of nature of plan
+  "subject" : { Reference(Patient|Group) }, // R!  Who the care plan is for
+  "encounter" : { Reference(Encounter) }, // Encounter created as part of
+  "period" : { Period }, // Time period plan covers
+  "created" : "<dateTime>", // Date record was first recorded
+  "author" : { Reference(Patient|Practitioner|PractitionerRole|Device|
+   RelatedPerson|Organization|CareTeam) }, // Who is the designated responsible party
+  "contributor" : [{ Reference(Patient|Practitioner|PractitionerRole|Device|
+   RelatedPerson|Organization|CareTeam) }], // Who provided the content of the care plan
+  "careTeam" : [{ Reference(CareTeam) }], // Who's involved in plan?
+  "addresses" : [{ Reference(Condition) }], // Health issues this plan addresses
+  "supportingInfo" : [{ Reference(Any) }], // Information considered as part of plan
+  "goal" : [{ Reference(Goal) }], // Desired outcome of plan
+  "activity" : [{ // Action to occur as part of plan
+    "outcomeCodeableConcept" : [{ CodeableConcept }], // Results of the activity
+    "outcomeReference" : [{ Reference(Any) }], // Appointment, Encounter, Procedure, etc.
+    "progress" : [{ Annotation }], // Comments about the activity status/progress
+    "reference" : { Reference(Appointment|CommunicationRequest|DeviceRequest|
+    MedicationRequest|NutritionOrder|Task|ServiceRequest|VisionPrescription|
+    RequestGroup) }, // C? Activity details defined in specific resource
+    "detail" : { // C? In-line definition of activity
+      "kind" : "<code>", // Appointment | CommunicationRequest | DeviceRequest | MedicationRequest | NutritionOrder | Task | ServiceRequest | VisionPrescription
+      "instantiatesCanonical" : [{ canonical(PlanDefinition|ActivityDefinition|
+     Questionnaire|Measure|OperationDefinition) }], // Instantiates FHIR protocol or definition
+      "instantiatesUri" : ["<uri>"], // Instantiates external protocol or definition
+      "code" : { CodeableConcept }, // Detail type of activity
+      "reasonCode" : [{ CodeableConcept }], // Why activity should be done or why activity was prohibited
+      "reasonReference" : [{ Reference(Condition|Observation|DiagnosticReport|
+     DocumentReference) }], // Why activity is needed
+      "goal" : [{ Reference(Goal) }], // Goals this activity relates to
+      "status" : "<code>", // R!  not-started | scheduled | in-progress | on-hold | completed | cancelled | stopped | unknown | entered-in-error
+      "statusReason" : { CodeableConcept }, // Reason for current status
+      "doNotPerform" : <boolean>, // If true, activity is prohibiting action
+      // scheduled[x]: When activity is to occur. One of these 3:
+      "scheduledTiming" : { Timing },
+      "scheduledPeriod" : { Period },
+      "scheduledString" : "<string>",
+      "location" : { Reference(Location) }, // Where it should happen
+      "performer" : [{ Reference(Practitioner|PractitionerRole|Organization|
+     RelatedPerson|Patient|CareTeam|HealthcareService|Device) }], // Who will be responsible?
+      // product[x]: What is to be administered/supplied. One of these 2:
+      "productCodeableConcept" : { CodeableConcept },
+      "productReference" : { Reference(Medication|Substance) },
+      "dailyAmount" : { Quantity(SimpleQuantity) }, // How to consume/day?
+      "quantity" : { Quantity(SimpleQuantity) }, // How much to administer/supply/consume
+      "description" : "<string>" // Extra info describing activity to perform
+    }
+  }],
+  "note" : [{ Annotation }] // Comments about the plan
+}
+    ```
+  </Tab>
+  
+  <Tab value="types">
+    ```typescript
+type CarePlanActivity = {
+  outcomeCodeableConcept?: CodeableConcept[];
+  outcomeReference?: Reference<Resource>[];
+  detail?: {
+    kind?: string;
+    instantiatesCanonical?: string[]; // TODO: Fix
+    instantiatesUri?: string[];
+    code?: CodeableConcept;
+    reasonCode?: CodeableConcept[];
+    reasonReference?: Reference<Resource>[];
+    goal?: Reference<Goal>[];
+    status: string;
+    statusReason?: CodeableConcept;
+    doNotPerform?: boolean;
+    scheduledTiming?: Timing;
+    scheduledPeriod?: Period;
+    scheduledString?: string;
+    location?: Reference<Location>;
+    performer?: Reference<
+      | Practitioner
+      | PractitionerRole
+      | Organization
+      | RelatedPerson
+      | Patient
+      | CareTeam
+      | HealthcareService
+      | Device
+    >[];
+
+    productCodeableConcept?: CodeableConcept;
+    productReference?: Reference<Resource>;
+
+    dailyAmount?: Quantity;
+    quantity?: Quantity;
+    description?: string;
+  };
+}
+
+declare class CarePlan extends DomainResource {
+  resourceType: "CarePlan";
+
+  identifier?: Identifier[];
+  instantiatesCanonical?: string[]; // TODO: Fix
+  instantiatesUri?: string[];
+  basedOn?: Reference<CarePlan>[];
+  replaces?: Reference<CarePlan>[];
+  partOf?: Reference<CarePlan>[];
+  status: string;
+  intent: string;
+  category?: CodeableConcept[];
+  title?: string;
+  description?: string;
+  subject: Reference<Patient | Group>;
+  encounter?: Reference<Encounter>;
+  period?: Period;
+  created?: string;
+  author?: Reference<
+    | Patient
+    | Practitioner
+    | PractitionerRole
+    | Device
+    | RelatedPerson
+    | Organization
+    | CareTeam
+  >;
+  contributor?: Reference<
+    | Patient
+    | Practitioner
+    | PractitionerRole
+    | Device
+    | RelatedPerson
+    | Organization
+    | CareTeam
+  >[];
+  careTeam?: Reference<CareTeam>[];
+  addresses?: Reference<Condition>[];
+  supportingInfo?: Reference<Resource>[];
+  goal?: Reference<Goal>[];
+
+  activity?: CarePlanActivity[];
+  note?: Annotation[];
+}
+    ```
+  </Tab>
+</Tabs>
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| date | date | Time period plan covers | `CarePlan.period` |
+| identifier | token | External Ids for this plan | `CarePlan.identifier` |
+| patient | reference | Who the care plan is for | `CarePlan.subject.where(resolve() is Patient)` |
+| activity-code | token | Detail type of activity | `CarePlan.activity.detail.code` |
+| activity-date | date | Specified date occurs within period specified by CarePlan.activity.detail.scheduled[x] | `CarePlan.activity.detail.scheduled` |
+| activity-reference | reference | Activity details defined in specific resource | `CarePlan.activity.reference` |
+| based-on | reference | Fulfills CarePlan | `CarePlan.basedOn` |
+| care-team | reference | Who's involved in plan? | `CarePlan.careTeam` |
+| category | token | Type of plan | `CarePlan.category` |
+| condition | reference | Health issues this plan addresses | `CarePlan.addresses` |
+| encounter | reference | Encounter created as part of | `CarePlan.encounter` |
+| goal | reference | Desired outcome of plan | `CarePlan.goal` |
+| instantiates-canonical | reference | Instantiates FHIR protocol or definition | `CarePlan.instantiatesCanonical` |
+| instantiates-uri | uri | Instantiates external protocol or definition | `CarePlan.instantiatesUri` |
+| intent | token | proposal \| plan \| order \| option | `CarePlan.intent` |
+| part-of | reference | Part of referenced CarePlan | `CarePlan.partOf` |
+| performer | reference | Matches if the practitioner is listed as a performer in any of the "simple" activities | `CarePlan.activity.detail.performer` |
+| replaces | reference | CarePlan replaced by this CarePlan | `CarePlan.replaces` |
+| status | token | draft \| active \| on-hold \| revoked \| completed \| entered-in-error \| unknown | `CarePlan.status` |
+| subject | reference | Who the care plan is for | `CarePlan.subject` |
+
+## Scope and Usage
+CarePlan is one of the request resources in the FHIR workflow specification.
+
+### Overview
+Care Plans are used across healthcare with varying levels of complexity:
+- **Simple Plans**: Basic tracking (e.g., tetanus immunization schedules)
+- **Complex Plans**: Detailed treatment protocols (e.g., oncology plans including diet, chemotherapy, radiation, lab work, and counseling)
+- **Special Uses**: 
+  - Veterinary care for herds/groups of animals
+  - Public health campaigns (education, immunization)
+
+### Implementation Approach
+This resource uses an intermediate complexity approach:
+- Captures basic details about participants and intended actions
+- Does not handle complex dependencies or timing relationships
+- Supports additional complexity through extensions when needed
+
+### Common Use Cases
+1. **Multi-disciplinary Care**
+   - Cross-organizational coordination
+   - Example: Oncology plans involving multiple specialists
+
+2. **Condition Management**
+   - Nutritional plans post surgery
+   - Neurological plans post injury
+   - Pre-natal and post-partum care
+   - Grief management
+
+3. **Protocol-Based Care**
+   - Decision support generated plans
+   - Clinical practice guidelines
+   - Examples: Stroke care, diabetes management, falls prevention
+
+4. **Patient-Centered Plans**
+   - Self-maintained by patients/caregivers
+   - Focus on personal goals and actions
+
+## Boundaries and Relationships
+
+### Implementation Details
+1. **Activity Definition**
+   - Can be defined inline using `activity.detail`
+   - Can reference external "request" resources
+   - Activities can exist independently without a CarePlan
+
+2. **Relationship to Conditions**
+   - May be condition-specific
+   - Can be condition-independent (focused on care type or provider)
+
+### Important Distinctions
+1. **Scope Limitations**
+   - Represents specific patient/group instances
+   - Not for defining generic protocols
+   - Protocols and order sets use PlanDefinition resource
+
+2. **Related Resources**
+   - ImmunizationRecommendation preferred for immunization-specific plans
+   - PlanDefinition used for generic protocols
+
+## Referenced Elements
+This resource is referenced by:
+- [CarePlan](/fhir/resources/careplan)
+- [DiagnosticReport](/fhir/resources/diagnosticreport)
+- [GuidanceResponse](/fhir/resources/guidanceresponse)
+- [ImagingStudy](/fhir/resources/imagingstudy)
+- [Media](/fhir/resources/media)
+- [MedicationRequest](/fhir/resources/medicationrequest)
+- [MedicationStatement](/fhir/resources/medicationstatement)
+- [Observation](/fhir/resources/observation)
+- [Procedure](/fhir/resources/procedure)
+- [QuestionnaireResponse](/fhir/resources/questionnaireresponse)
+- [ServiceRequest](/fhir/resources/servicerequest)
+

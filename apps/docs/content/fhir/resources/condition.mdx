@@ -1,3 +1,250 @@
 ---
 title: "Condition"
 ---
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Stethoscope } from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 3 | Patient | <div className="flex items-center gap-2"><Stethoscope className="h-5 w-5 text-red-500" /> Clinical </div> |
+
+A clinical condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern.
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+    | <div style={{width: "100px"}}>Name</div> | <div style={{width: "60px"}}>Required</div> | <div style={{width: "100px"}}>Type</div> | <div style={{width: "calc(100% - 480px)"}}>Description & Constraints</div> |
+    |------|--------|------|------------------------|
+    | identifier | | Identifier[] | External Ids for this condition |
+    | clinicalStatus | | CodeableConcept | active \| recurrence \| relapse \| inactive \| remission \| resolved |
+    | verificationStatus | | CodeableConcept | unconfirmed \| provisional \| differential \| confirmed \| refuted \| entered-in-error |
+    | category | | CodeableConcept[] | problem-list-item \| encounter-diagnosis |
+    | severity | | CodeableConcept | Subjective severity of condition |
+    | code | | CodeableConcept | Identification of the condition, problem or diagnosis |
+    | bodySite | | CodeableConcept[] | Anatomical location, if relevant |
+    | subject | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[Patient](/fhir/resources/patient)\|[Group](/fhir/resources/group)> | Who has the condition? |
+    | encounter | | Reference\<[Encounter](/fhir/resources/encounter)> | Encounter created as part of |
+    | onset[x] | | * | Estimated or actual date, date-time, or age |
+    | <span style={{color: "#777777"}}>└─ onsetDateTime</span> | | dateTime | |
+    | <span style={{color: "#777777"}}>└─ onsetAge</span> | | Age | |
+    | <span style={{color: "#777777"}}>└─ onsetPeriod</span> | | Period | |
+    | <span style={{color: "#777777"}}>└─ onsetRange</span> | | Range | |
+    | <span style={{color: "#777777"}}>└─ onsetString</span> | | string | |
+    | abatement[x] | | * | When in resolution/remission |
+    | <span style={{color: "#777777"}}>└─ abatementDateTime</span> | | dateTime | |
+    | <span style={{color: "#777777"}}>└─ abatementAge</span> | | Age | |
+    | <span style={{color: "#777777"}}>└─ abatementPeriod</span> | | Period | |
+    | <span style={{color: "#777777"}}>└─ abatementRange</span> | | Range | |
+    | <span style={{color: "#777777"}}>└─ abatementString</span> | | string | |
+    | recordedDate | | dateTime | Date record was first recorded |
+    | recorder | | Reference\<[Practitioner](/fhir/resources/practitioner)\|[PractitionerRole](/fhir/resources/practitionerrole)\|[Patient](/fhir/resources/patient)\|[RelatedPerson](/fhir/resources/relatedperson)> | Who recorded the condition |
+    | asserter | | Reference\<[Practitioner](/fhir/resources/practitioner)\|[PractitionerRole](/fhir/resources/practitionerrole)\|[Patient](/fhir/resources/patient)\|[RelatedPerson](/fhir/resources/relatedperson)> | Person who asserts this condition |
+    | stage | | BackboneElement[] | Stage/grade, usually assessed formally |
+    | <span style={{color: "#777777"}}>└─ summary</span> | | CodeableConcept | Simple summary (disease specific) |
+    | <span style={{color: "#777777"}}>└─ assessment</span> | | Reference\<[ClinicalImpression](/fhir/resources/clinicalimpression)\|[DiagnosticReport](/fhir/resources/diagnosticreport)\|[Observation](/fhir/resources/observation)>[] | Formal record of assessment |
+    | <span style={{color: "#777777"}}>└─ type</span> | | CodeableConcept | Kind of staging |
+    | evidence | | BackboneElement[] | Supporting evidence |
+    | <span style={{color: "#777777"}}>└─ code</span> | | CodeableConcept[] | Manifestation/symptom |
+    | <span style={{color: "#777777"}}>└─ detail</span> | | Reference\<Any>[] | Supporting information found elsewhere |
+    | note | | Annotation[] | Additional information about the Condition |
+  </Tab>
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "Condition",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // External Ids for this condition
+  "clinicalStatus" : { CodeableConcept }, // C? active | recurrence | relapse | inactive | remission | resolved
+  "verificationStatus" : { CodeableConcept }, // C? unconfirmed | provisional | differential | confirmed | refuted | entered-in-error
+  "category" : [{ CodeableConcept }], // problem-list-item | encounter-diagnosis
+  "severity" : { CodeableConcept }, // Subjective severity of condition
+  "code" : { CodeableConcept }, // Identification of the condition, problem or diagnosis
+  "bodySite" : [{ CodeableConcept }], // Anatomical location, if relevant
+  "subject" : { Reference(Patient|Group) }, // R!  Who has the condition?
+  "encounter" : { Reference(Encounter) }, // Encounter created as part of
+  // onset[x]: Estimated or actual date,  date-time, or age. One of these 5:
+  "onsetDateTime" : "<dateTime>",
+  "onsetAge" : { Age },
+  "onsetPeriod" : { Period },
+  "onsetRange" : { Range },
+  "onsetString" : "<string>",
+  // abatement[x]: When in resolution/remission. One of these 5:
+  "abatementDateTime" : "<dateTime>",
+  "abatementAge" : { Age },
+  "abatementPeriod" : { Period },
+  "abatementRange" : { Range },
+  "abatementString" : "<string>",
+  "recordedDate" : "<dateTime>", // Date record was first recorded
+  "recorder" : { Reference(Practitioner|PractitionerRole|Patient|
+   RelatedPerson) }, // Who recorded the condition
+  "asserter" : { Reference(Practitioner|PractitionerRole|Patient|
+   RelatedPerson) }, // Person who asserts this condition
+  "stage" : [{ // Stage/grade, usually assessed formally
+    "summary" : { CodeableConcept }, // C? Simple summary (disease specific)
+    "assessment" : [{ Reference(ClinicalImpression|DiagnosticReport|Observation) }], // C? Formal record of assessment
+    "type" : { CodeableConcept } // Kind of staging
+  }],
+  "evidence" : [{ // Supporting evidence
+    "code" : [{ CodeableConcept }], // C? Manifestation/symptom
+    "detail" : [{ Reference(Any) }] // C? Supporting information found elsewhere
+  }],
+  "note" : [{ Annotation }] // Additional information about the Condition
+}
+        ```
+  </Tab>
+  <Tab value="types">
+```typescript
+ 
+declare class Condition extends DomainResource {
+    resourceType: "Condition";
+
+    identifier?: Identifier[];
+    clinicalStatus?: CodeableConcept;
+    verificationStatus?: CodeableConcept;
+    category?: CodeableConcept[];
+    severity?: CodeableConcept;
+    code?: CodeableConcept;
+    bodySite?: CodeableConcept[];
+
+    subject: Reference<Patient | Group>;
+    encounter?: Reference<Encounter>;
+
+    onsetDateTime?: string;
+    onsetAge?: Age;
+    onsetPeriod?: Period;
+    onsetRange?: Range;
+    onsetString?: string;
+    abatementDateTime?: string;
+    abatementAge?: Age;
+    abatementPeriod?: Period;
+    abatementRange?: Range;
+    abatementString?: string;
+    recordedDate?: string;
+    recorder?: Reference<
+        Practitioner | PractitionerRole | Patient | RelatedPerson
+    >;
+    asserter?: Reference<
+        Practitioner | PractitionerRole | Patient | RelatedPerson
+    >;
+    stage?: {
+        summary?: CodeableConcept;
+        assessment?: Reference<
+        // ClinicalImpression |
+        DiagnosticReport | Observation
+        >[];
+        type?: CodeableConcept;
+    };
+    evidence?: {
+        code?: CodeableConcept[];
+        detail?: Reference<Resource>[];
+    };
+    note?: Annotation[];
+}
+    ```
+  </Tab>
+</Tabs>
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| code | token | Code for the condition | `Condition.code` |
+| identifier | token | A unique identifier of the condition record | `Condition.identifier` |
+| patient | reference | Who has the condition? | `Condition.subject.where(resolve() is Patient)` |
+| abatement-age | quantity | Abatement as age or age range | `Condition.abatement.as(Age) \| Condition.abatement.as(Range)` |
+| abatement-date | date | Date-related abatements (dateTime and period) | `Condition.abatement.as(dateTime) \| Condition.abatement.as(Period)` |
+| abatement-string | string | Abatement as a string | `Condition.abatement.as(string)` |
+| asserter | reference | Person who asserts this condition | `Condition.asserter` |
+| body-site | token | Anatomical location, if relevant | `Condition.bodySite` |
+| category | token | The category of the condition | `Condition.category` |
+| clinical-status | token | The clinical status of the condition | `Condition.clinicalStatus` |
+| encounter | reference | Encounter created as part of | `Condition.encounter` |
+| evidence | token | Manifestation/symptom | `Condition.evidence.code` |
+| evidence-detail | reference | Supporting information found elsewhere | `Condition.evidence.detail` |
+| onset-age | quantity | Onsets as age or age range | `Condition.onset.as(Age) \| Condition.onset.as(Range)` |
+| onset-date | date | Date related onsets (dateTime and Period) | `Condition.onset.as(dateTime) \| Condition.onset.as(Period)` |
+| onset-info | string | Onsets as a string | `Condition.onset.as(string)` |
+| recorded-date | date | Date record was first recorded | `Condition.recordedDate` |
+| severity | token | The severity of the condition | `Condition.severity` |
+| stage | token | Simple summary (disease specific) | `Condition.stage.summary` |
+| subject | reference | Who has the condition? | `Condition.subject` |
+| verification-status | token | unconfirmed \| provisional \| differential \| confirmed \| refuted \| entered-in-error | `Condition.verificationStatus` |
+
+## Scope and Usage
+Condition is one of the event resources in the FHIR workflow specification.
+
+This resource is used to record detailed information about a condition, problem, diagnosis, or other event, situation, issue, or clinical concept that has risen to a level of concern. The condition could be a point in time diagnosis in context of an encounter, it could be an item on the practitioner’s Problem List, or it could be a concern that doesn’t exist on the practitioner’s Problem List. Often times, a condition is about a clinician's assessment and assertion of a particular aspect of a patient's state of health. It can be used to record information about a disease/illness identified from application of clinical reasoning over the pathologic and pathophysiologic findings (diagnosis), or identification of health issues/situations that a practitioner considers harmful, potentially harmful and may be investigated and managed (problem), or other health issue/situation that may require ongoing monitoring and/or management (health issue/concern).
+
+The condition resource may be used to record a certain health state of a patient which does not normally present a negative outcome, e.g. pregnancy. The condition resource may be used to record a condition following a procedure, such as the condition of Amputee-BKA following an amputation procedure.
+
+While conditions are frequently a result of a clinician's assessment and assertion of a particular aspect of a patient's state of health, conditions can also be expressed by the patient, related person, or any care team member. A clinician may have a concern about a patient condition (e.g. anorexia) that the patient is not concerned about. Likewise, the patient may have a condition (e.g. hair loss) that does not rise to the level of importance such that it belongs on a practitioner’s Problem List.
+
+For example, each of the following conditions could rise to the level of importance such that it belongs on a problem or concern list due to its direct or indirect impact on the patient's health. These examples may also be represented using other resources, such as FamilyMemberHistory, Observation, or Procedure.
+
+**Medical Conditions & Procedures**
+- Cardiac pacemaker
+- Amputee-BKA
+- Patient has had coronary bypass graft
+
+**Risk Factors & Health Status**
+- Susceptibility to falls
+- Former smoker
+- Exposure to communicable disease
+- Risk of Zika virus following travel to a country
+
+**Social Determinants of Health**
+- Unemployed
+- Without transportation (or other barriers)
+
+**Family History**
+- Family History of cardiovascular disease
+
+**Mental Health & Concerns**
+- Fear of cancer
+
+**Life Events**
+- Travel to a country planned (that warrants immunizations)
+- Motor Vehicle Accident
+
+## Boundaries and Relationships
+The condition resource may be referenced by other resources as "reasons" for an action (e.g. MedicationRequest, Procedure, ServiceRequest, etc.)
+
+This resource is not typically used to record information about subjective and objective information that might lead to the recording of a Condition resource. Such signs and symptoms are typically captured using the Observation resource; although in some cases a persistent symptom, e.g. fever, headache may be captured as a condition before a definitive diagnosis can be discerned by a clinician. By contrast, headache may be captured as an Observation when it contributes to the establishment of a meningitis Condition.
+
+Use the Observation resource when a symptom is resolved without long term management, tracking, or when a symptom contributes to the establishment of a condition.
+
+Use Condition when a symptom requires long term management, tracking, or is used as a proxy for a diagnosis or problem that is not yet determined.
+
+When the diagnosis is related to an allergy or intolerance, the Condition and AllergyIntolerance resources can both be used. However, to be actionable for decision support, using Condition alone is not sufficient as the allergy or intolerance condition needs to be represented as an AllergyIntolerance.
+
+## Referenced Elements
+This resource is referenced by:
+- [AdverseEvent](/fhir/resources/adverseevent)
+- [Appointment](/fhir/resources/appointment)
+- [CarePlan](/fhir/resources/careplan)
+- [CareTeam](/fhir/resources/careteam)
+- [Claim](/fhir/resources/claim)
+- [ClinicalImpression](/fhir/resources/clinicalimpression)
+- [Communication](/fhir/resources/communication)
+- [CommunicationRequest](/fhir/resources/communicationrequest)
+- [Contract](/fhir/resources/contract)
+- [CoverageEligibilityRequest](/fhir/resources/coverageeligibilityrequest)
+- [DeviceRequest](/fhir/resources/devicerequest)
+- [DeviceUseStatement](/fhir/resources/deviceusestatement)
+- [Encounter](/fhir/resources/encounter)
+- [EpisodeOfCare](/fhir/resources/episodeofcare)
+- [ExplanationOfBenefit](/fhir/resources/explanationofbenefit)
+- [FamilyMemberHistory](/fhir/resources/familymemberhistory)
+- [Goal](/fhir/resources/goal)
+- [GuidanceResponse](/fhir/resources/guidanceresponse)
+- [ImagingStudy](/fhir/resources/imagingstudy)
+- [Immunization](/fhir/resources/immunization)
+- [MedicationAdministration](/fhir/resources/medicationadministration)
+- [MedicationRequest](/fhir/resources/medicationrequest)
+- [MedicationStatement](/fhir/resources/medicationstatement)
+- [Procedure](/fhir/resources/procedure)
+- [RequestGroup](/fhir/resources/requestgroup)
+- [RiskAssessment](/fhir/resources/riskassessment)
+- [ServiceRequest](/fhir/resources/servicerequest)
+- [SupplyRequest](/fhir/resources/supplyrequest)
+

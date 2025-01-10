@@ -150,7 +150,7 @@ The context of an adverse event is also important. A subject may have condition(
 
 A potential adverse event may also be called a near miss or an error. These are also events but because they were detected did not cause harm to a subject. Examples of potential adverse events include a product problem such as a faulty pacemaker that is detected prior implantation, a doctor working simultaneously on two electronic health records realizing the order for a drug was entered on the incorrect patient and then canceling the order, or a patient with a peanut allergy notices that his hospital dinner tray includes peanuts, and he does not eat the peanuts.
 
-## Background and Context
+## Boundaries and Relationships
 The AdverseEvent resource is designed to represent events that have a harmful impact on a subject, or had the potential to cause harm to a subject but were avoided. In the course of medical care there are many actions that may impact how a subject responds to a particular treatment impacting patient safety. Therefore the AdverseEvent resource may reference multiple other resources to represent the context or details of an adverse event including but not limited to Observation, Condition, MedicationAdminsitration, Immunization, Procedure, or ResearchStudy.
 
 A DetectedIssue reference is also related to the context of an AdverseEvent to the extent that a known risk for a potential issue such as a drug-drug interaction is documented. If in the context of a known issue, and adverse event occurs, citing this relationship is important for preventing such an occurrence in the future.

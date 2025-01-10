@@ -1,3 +1,227 @@
 ---
 title: "DocumentReference"
 ---
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import {Database} from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 3 | Unclassified | <div className="flex items-center gap-2"> <Database className="h-5 w-5 text-blue-500" /> **Foundation Resources**</div> |
+
+A reference to a document of any kind for any purpose. Provides metadata about the document so that the document can be discovered and managed. The scope of a document is any seralized object with a mime-type, so includes formal patient centric documents (CDA), cliical notes, scanned paper, and non-patient specific documents like policy text.
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+    | <div style={{width: "50px"}}>Name</div> | <div style={{width: "70px"}}>Required</div> | <div>Type</div> | <div style = {{width: "100px"}} >Description & Constraints</div> |
+    |------|--------|------|------------------------|
+    | identifier | | Identifier[] | Other identifiers for the document |
+    | masterIdentifier | | Identifier | Master Version Specific Identifier |
+    | status | <span style={{color: "#22c55e"}}>✓</span> | code | current \| superseded \| entered-in-error |
+    | docStatus | | code | preliminary \| final \| amended \| entered-in-error |
+    | type | | CodeableConcept | Kind of document (LOINC if possible) |
+    | category | | CodeableConcept[] | Categorization of document |
+    | subject | | Reference\<Patient\|Practitioner\|Group\|Device> | Who/what is the subject of the document |
+    | date | | instant | When this document reference was created |
+    | author | | Reference\<Practitioner\|PractitionerRole\|Organization\|Device\|Patient\|RelatedPerson>[] | Who and/or what authored the document |
+    | authenticator | | Reference\<Practitioner\|PractitionerRole\|Organization> | Who/what authenticated the document |
+    | custodian | | Reference\<Organization> | Organization which maintains the document |
+    | relatesTo | | BackboneElement[] | Relationships to other documents |
+    | <span style={{color: "#777777"}}>└─ code</span> | <span style={{color: "#22c55e"}}>✓</span> | code | replaces \| transforms \| signs \| appends |
+    | <span style={{color: "#777777"}}>└─ target</span> | <span style={{color: "#22c55e"}}>✓</span> | Reference\<DocumentReference> | Target of the relationship |
+    | description | | string | Human-readable description |
+    | securityLabel | | CodeableConcept[] | Document security-tags |
+    | content | <span style={{color: "#22c55e"}}>✓</span> | BackboneElement[] | Document referenced |
+    | <span style={{color: "#777777"}}>└─ attachment</span> | <span style={{color: "#22c55e"}}>✓</span> | Attachment | Where to access the document |
+    | <span style={{color: "#777777"}}>└─ format</span> | | Coding | Format/content rules for the document |
+    | context | | BackboneElement | Clinical context of document |
+    | <span style={{color: "#777777"}}>└─ encounter</span> | | Reference\<Encounter\|EpisodeOfCare>[] | Context of the document content |
+    | <span style={{color: "#777777"}}>└─ event</span> | | CodeableConcept[] | Main clinical acts documented |
+    | <span style={{color: "#777777"}}>└─ period</span> | | Period | Time of service that is being documented |
+    | <span style={{color: "#777777"}}>└─ facilityType</span> | | CodeableConcept | Kind of facility where patient was seen |
+    | <span style={{color: "#777777"}}>└─ practiceSetting</span> | | CodeableConcept | Additional details about where the content was created |
+    | <span style={{color: "#777777"}}>└─ sourcePatientInfo</span> | | Reference\<Patient> | Patient demographics from source |
+    | <span style={{color: "#777777"}}>└─ related</span> | | Reference\<Any>[] | Related identifiers or resources |
+  </Tab>
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "DocumentReference",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "masterIdentifier" : { Identifier }, // Master Version Specific Identifier
+  "identifier" : [{ Identifier }], // Other identifiers for the document
+  "status" : "<code>", // R!  current | superseded | entered-in-error
+  "docStatus" : "<code>", // preliminary | final | amended | entered-in-error
+  "type" : { CodeableConcept }, // Kind of document (LOINC if possible)
+  "category" : [{ CodeableConcept }], // Categorization of document
+  "subject" : { Reference(Patient|Practitioner|Group|Device) }, // Who/what is the subject of the document
+  "date" : "<instant>", // When this document reference was created
+  "author" : [{ Reference(Practitioner|PractitionerRole|Organization|Device|
+   Patient|RelatedPerson) }], // Who and/or what authored the document
+  "authenticator" : { Reference(Practitioner|PractitionerRole|Organization) }, // Who/what authenticated the document
+  "custodian" : { Reference(Organization) }, // Organization which maintains the document
+  "relatesTo" : [{ // Relationships to other documents
+    "code" : "<code>", // R!  replaces | transforms | signs | appends
+    "target" : { Reference(DocumentReference) } // R!  Target of the relationship
+  }],
+  "description" : "<string>", // Human-readable description
+  "securityLabel" : [{ CodeableConcept }], // Document security-tags
+  "content" : [{ // R!  Document referenced
+    "attachment" : { Attachment }, // R!  Where to access the document
+    "format" : { Coding } // Format/content rules for the document
+  }],
+  "context" : { // Clinical context of document
+    "encounter" : [{ Reference(Encounter|EpisodeOfCare) }], // Context of the document  content
+    "event" : [{ CodeableConcept }], // Main clinical acts documented
+    "period" : { Period }, // Time of service that is being documented
+    "facilityType" : { CodeableConcept }, // Kind of facility where patient was seen
+    "practiceSetting" : { CodeableConcept }, // Additional details about where the content was created (e.g. clinical specialty)
+    "sourcePatientInfo" : { Reference(Patient) }, // Patient demographics from source
+    "related" : [{ Reference(Any) }] // Related identifiers or resources
+  }
+}
+        ```
+  </Tab>
+  <Tab value="types">
+```typescript
+declare class DocumentReference extends DomainResource {
+  resourceType: "DocumentReference";
+
+  masterIdentifier?: Identifier;
+  identifier?: Identifier[];
+  status: "current" | "superseded" | "entered-in-error";
+  docStatus?: "preliminary" | "final" | "amended" | "entered-in-error";
+  type?: CodeableConcept;
+  category?: CodeableConcept[];
+  subject?: Reference<Patient | Practitioner | Group | Device>;
+  date?: string;
+  author?: Reference<
+    | Practitioner
+    | PractitionerRole
+    | Organization
+    | Device
+    | Patient
+    | RelatedPerson
+  >[];
+  authenticator?: Reference<Practitioner | PractitionerRole | Organization>;
+  custodian?: Reference<Organization>;
+
+  relatesTo?: {
+    code: "replaces" | "transforms" | "signs" | "appends";
+    target: Reference<DocumentReference>;
+  }[];
+  description?: string;
+  securityLabel?: CodeableConcept[];
+  content: {
+    attachment: Attachment;
+    format?: Coding;
+  }[];
+  context?: {
+    encounter?: Reference<Encounter | EpisodeOfCare>[];
+    event?: CodeableConcept[];
+    period?: Period;
+    facilityType?: CodeableConcept;
+    practiceSetting?: CodeableConcept;
+    sourcePatientInfo?: Reference<Patient>;
+    related?: Reference<Resource>[];
+  };
+}
+    ```
+  </Tab>
+</Tabs>
+
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| identifier | token | Master Version Specific Identifier | `DocumentReference.masterIdentifier \| DocumentReference.identifier` |
+| patient | reference | Who/what is the subject of the document | `DocumentReference.subject.where(resolve() is Patient)` |
+| type | token | Kind of document (LOINC if possible) | `DocumentReference.type` |
+| encounter | reference | Context of the document content | `DocumentReference.context.encounter` |
+| authenticator | reference | Who/what authenticated the document | `DocumentReference.authenticator` |
+| author | reference | Who and/or what authored the document | `DocumentReference.author` |
+| category | token | Categorization of document | `DocumentReference.category` |
+| contenttype | token | Mime type of the content, with charset etc. | `DocumentReference.content.attachment.contentType` |
+| custodian | reference | Organization which maintains the document | `DocumentReference.custodian` |
+| date | date | When this document reference was created | `DocumentReference.date` |
+| description | string | Human-readable description | `DocumentReference.description` |
+| event | token | Main clinical acts documented | `DocumentReference.context.event` |
+| facility | token | Kind of facility where patient was seen | `DocumentReference.context.facilityType` |
+| format | token | Format/content rules for the document | `DocumentReference.content.format` |
+| language | token | Human language of the content (BCP-47) | `DocumentReference.content.attachment.language` |
+| location | uri | Uri where the data can be found | `DocumentReference.content.attachment.url` |
+| period | date | Time of service that is being documented | `DocumentReference.context.period` |
+| related | reference | Related identifiers or resources | `DocumentReference.context.related` |
+| relatesto | reference | Target of the relationship | `DocumentReference.relatesTo.target` |
+| relation | token | replaces \| transforms \| signs \| appends | `DocumentReference.relatesTo.code` |
+| security-label | token | Document security-tags | `DocumentReference.securityLabel` |
+| setting | token | Additional details about where the content was created (e.g. clinical specialty) | `DocumentReference.context.practiceSetting` |
+| status | token | current \| superseded \| entered-in-error | `DocumentReference.status` |
+| subject | reference | Who/what is the subject of the document | `DocumentReference.subject` |
+| relationship | composite | Combination of relation and relatesTo | `DocumentReference.relatesTo` |
+
+## Scope and Usage
+
+A DocumentReference resource is used to index a document, clinical note, and other binary objects to make them available to a healthcare system. A document is some sequence of bytes that is identifiable, establishes its own context (e.g., what subject, author, etc. can be displayed to the user), and has defined update management. The DocumentReference resource can be used with any document format that has a recognized mime type and that conforms to this definition.
+
+Typically, DocumentReference resources are used in document indexing systems, such as IHE XDS , such as profiled in IHE Mobile access to Health Documents .
+
+DocumentReference is metadata describing a document such as:
+
+* CDA documents in FHIR systems
+* FHIR documents stored elsewhere (i.e. registry/repository following the XDS model)
+* PDF documents, Scanned Paper, and digital records of faxes
+* Clinical Notes in various forms
+* Image files (e.g., JPEG, GIF, TIFF)
+* Non-Standard formats (e.g., WORD)
+* Other kinds of documents, such as records of prescriptions or immunizations
+
+## Boundaries and Relationships
+
+FHIR defines both a document format and this document reference. FHIR documents are for documents that are authored and assembled in FHIR. This resource is mainly intended for general references to assembled documents.
+
+The document that is a target of the reference can be a reference to a FHIR document served by another server, or the target can be stored in the special FHIR Binary Resource, or the target can be stored on some other server system. The document reference is also able to address documents that are retrieved by a service call such as an XDS.b RetrieveDocumentSet, or a DICOM exchange, or an HL7 v2  message query - though the way each of these service calls works must be specified in some external standard or other documentation.
+
+A DocumentReference describes some other document. This means that there are two sets of provenance information relevant here: the provenance of the document, and the provenance of the document reference. Sometimes, the provenance information is closely related, as when the document producer also produces the document reference, but in other workflows, the document reference is generated later by other actors. In the DocumentReference resource, the meta content refers to the provenance of the reference itself, while the content described below concerns the document it references. Like all resources, there is overlap between the information in the resource directly, and in the general Provenance resource. This is discussed as part of the description of the Provenance resource.
+
+#### 1. List Resource
+- Manages flat collections of resources
+- Dynamic nature - items can be added/removed
+- Supports curation with specific business meaning
+- References other resources directly
+
+#### 2. Group Resource
+- Defines collections of specific entities (people, animals, devices)
+- Can enumerate explicitly or describe qualifying characteristics
+- Commonly used for:
+  - Public health (at-risk populations)
+  - Clinical trials (test subject pools)
+  - Group-level operations/observations
+
+## Referenced Elements
+
+This resource is referenced by:
+- [AdverseEvent](/fhir/resources/adverseevent)
+- [CarePlan](/fhir/resources/careplan)
+- [Communication](/fhir/resources/communication)
+- [CommunicationRequest](/fhir/resources/communicationrequest)
+- [Consent](/fhir/resources/consent)
+- [Contract](/fhir/resources/contract)
+- [DeviceRequest](/fhir/resources/devicerequest)
+- [DeviceUseStatement](/fhir/resources/deviceusestatement)
+- [DocumentReference](/fhir/resources/documentreference)
+- [FamilyMemberHistory](/fhir/resources/familymemberhistory)
+- [GuidanceResponse](/fhir/resources/guidanceresponse)
+- [ImagingStudy](/fhir/resources/imagingstudy)
+- [MedicationKnowledge](/fhir/resources/medicationknowledge)
+- [MedicinalProduct](/fhir/resources/medicinalproduct)
+- [Observation](/fhir/resources/observation)
+- [Procedure](/fhir/resources/procedure)
+- [RequestGroup](/fhir/resources/requestgroup)
+- [RiskAssessment](/fhir/resources/riskassessment)
+- [ServiceRequest](/fhir/resources/servicerequest)
+- [SubstanceReferenceInformation](/fhir/resources/substancereferenceinformation)
+- [SubstanceSpecification](/fhir/resources/substancespecification)
+- [SupplyRequest](/fhir/resources/supplyrequest)
