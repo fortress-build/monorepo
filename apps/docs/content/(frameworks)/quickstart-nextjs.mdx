@@ -1,5 +1,108 @@
 ---
 title: Next.js
-description: Learn how to integrate Nerve API into your Next.js application
+description: Learn how to integrate Nerve API into your Next.js application.
 ---
 
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Files, File } from 'fumadocs-ui/components/files';
+import { Callout } from 'fumadocs-ui/components/callout';
+
+<Callout type="info">
+  This guide assumes you are using the Next.js App Router (Next.js 14+).
+</Callout>
+
+<Steps>
+  <Step>
+
+    ## Install the Nerve SDK
+
+    ```package-install
+    npm i @nerve-js/client @nerve-js/next
+    ```
+
+  </Step>
+
+  <Step>
+
+    ## Add the `NerveProvider` component to your root layout
+
+    ```tsx twoslash
+    // @noErrors
+    import { NerveProvider } from "@nerve-js/next"; // [!code ++]
+
+    export default function RootLayout({
+      children,
+    }: Readonly<{
+      children: React.ReactNode;
+    }>) {
+      return (
+        <html lang="en">
+          <body>
+            {/* [!code ++]*/}
+            <NerveProvider>
+              {children}
+            {/* [!code ++] */}
+            </NerveProvider>
+          </body>
+        </html>
+      );
+    }
+    ```
+
+  </Step>
+
+  <Step>
+
+    ## Add the EHR selection component to your login page
+
+    <Files className="space-y-2">
+      <File name="app/auth/login/page.tsx"/>
+
+      ```tsx twoslash
+      // @noErrors
+      import { NerveSignIn } from "@nerve-js/next"; // [!code ++]
+
+      export default async function LoginPage() {
+        return (
+          <>
+            {/* your login page header/content... */}
+            {/* [!code ++] */}
+            <NerveSignIn />
+          </>
+        )
+      }
+      ```
+
+    </Files>
+
+  </Step>
+
+  <Step>
+
+    ## Add a route for the auth redirect
+
+
+    <Files className="space-y-2">
+      <File name="app/auth/callback/page.tsx"/>
+
+      ```tsx twoslash
+      // @noErrors
+      export { CallbackPage as default } from "@nerve-js/next" // [!code ++]
+      ```
+
+    </Files>
+
+    <Callout type="info">
+      You can customize the callback url using the `callbackUrl` option
+      in the `NerveProvider` component.
+    </Callout>
+
+  </Step>
+</Steps>
+
+All done! 
+
+You can access the Nerve client with the `useNerveClient` hook. 
+
+Click [here](/) to return to the getting started page.
