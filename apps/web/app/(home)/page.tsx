@@ -1,6 +1,5 @@
 import { createMetadata } from "@repo/seo/metadata";
 import type { Metadata } from "next";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/design-system/components/ui/tabs";
 import { Cases } from "./components/cases";
 import { CTA } from "./components/cta";
 import { FAQ } from "./components/faq";

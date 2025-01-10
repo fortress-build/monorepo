@@ -10,18 +10,18 @@ import type { RelatedPerson } from "./RelatedPerson";
 import type { Device } from "./Device";
 import type { Patient } from "./Patient";
 
-export declare class AuditEventAgentNetwork {
+export type AuditEventAgentNetwork = {
   address?: string;
   type?: '1' | '2' | '3' | '4' | '5';
 }
 
-export declare class AuditEventEntityDetail {
+export type AuditEventEntityDetail = {
   type: string;
   valueString?: string;
   valueBase64Binary?: string;
 }
 
-export declare class AuditEventEntity {
+export type AuditEventEntity = {
   what?: Reference<Resource>;
   type?: Coding;
   role?: Coding;
@@ -33,7 +33,7 @@ export declare class AuditEventEntity {
   detail?: AuditEventEntityDetail[];
 }
 
-export declare class AuditEventAgent {
+export type AuditEventAgent = {
   type?: CodeableConcept;
   role?: CodeableConcept[];
   who?: Reference<PractitionerRole|Practitioner|Organization|Device|Patient| RelatedPerson>;
@@ -47,9 +47,9 @@ export declare class AuditEventAgent {
   purposeOfUse?: CodeableConcept[];
 }
 
-export declare class AuditEventSource {
+export type AuditEventSource = {
   site?: string;
-  observer: Reference<PractitionerRole|Practitioner|Organization|Device|Patient| RelatedPerson>;;
+  observer: Reference<PractitionerRole|Practitioner|Organization|Device|Patient| RelatedPerson>;
   type?: Coding[];
 }
 

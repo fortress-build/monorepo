@@ -2,7 +2,7 @@ import type { Identifier } from "./Identifier";
 import type { Resource } from "./Resource";
 import type { Signature } from "./Signature";
 
-export declare class BundleLink {
+export type BundleLink ={
   // See http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1
   relation: "self" | "next" | "previous" | "first" | "last";
   url: string;

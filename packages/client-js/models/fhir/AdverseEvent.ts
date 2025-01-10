@@ -24,12 +24,12 @@ import type { MedicationAdministration } from "./MedicationAdministration";
 import type { MedicationStatement } from "./MedicationStatement";
 
 
-export declare class SuspectEntity{
+export type SuspectEntity = {
   instance: Reference<Immunization|Procedure|Substance|Medication|MedicationAdministration|MedicationStatement|Device>;
   causality: Causality;
 }
 
-export declare class Causality {
+export type Causality = {
   assessment?: CodeableConcept;
   productRelatedness?: string;
   author?: Reference<Practitioner|PractitionerRole>

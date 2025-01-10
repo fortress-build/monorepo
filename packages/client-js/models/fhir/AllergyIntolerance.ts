@@ -12,7 +12,7 @@ import type { Reference } from "./Reference";
 import type { RelatedPerson } from "./RelatedPerson";
 import { DomainResource } from "./Resource";
 
-export declare class AllergyIntoleranceReaction {
+export type AllergyIntoleranceReaction = {
   substance?: CodeableConcept;
   manifestation: CodeableConcept[];
   description?: string;
