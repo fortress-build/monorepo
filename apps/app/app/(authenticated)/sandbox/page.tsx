@@ -9,8 +9,9 @@ import {
 } from "@repo/design-system/components/ui/tabs";
 import { Copy } from "lucide-react";
 import type React from "react";
+import { useQuery } from "@tanstack/react-query";
 
-const credentials = {
+const mockCredentials = {
   clientId: "sandbox-client-123",
   clientSecret: "sandbox-secret-456",
   apiKey: "sk_sandbox_abcdef123456",
@@ -40,38 +41,49 @@ function Tab({
 }
 
 function SandboxCredentials() {
+  const { data: credentials, isLoading } = useQuery({
+    queryKey: ["sandbox-credentials"],
+    queryFn: () => mockCredentials,
+  });
+
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
   };
 
   return (
     <Tab value="credentials" title="Sandbox EHR Credentials">
-      <div className="space-y-4">
-        {Object.entries(credentials).map(([key, value]) => (
-          <div key={key} className="space-y-2">
-            <span className="font-medium text-gray-500 text-sm capitalize">
-              {key.replace(/([A-Z])/g, " $1").trim()}
-            </span>
-            <div className="flex items-center space-x-2">
-              <code className="flex-1 rounded-md bg-gray-100 p-2 font-mono text-sm">
-                {value}
-              </code>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => copyToClipboard(value)}
-                className="focus:ring-0 focus-visible:ring-0"
-              >
-                <Copy className="h-4 w-4" />
-              </Button>
-            </div>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <>
+          <div className="space-y-4">
+            {Object.entries(credentials ?? []).map(([key, value]) => (
+              <div key={key} className="space-y-2">
+                <span className="font-medium text-gray-500 text-sm capitalize">
+                  {key.replace(/([A-Z])/g, " $1").trim()}
+                </span>
+                <div className="flex items-center space-x-2">
+                  <code className="flex-1 rounded-md bg-gray-100 p-2 font-mono text-sm">
+                    {value}
+                  </code>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => copyToClipboard(value)}
+                    className="focus:ring-0 focus-visible:ring-0"
+                  >
+                    <Copy className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div className="text-gray-500 text-sm">
-        These credentials are for testing purposes only and provide access to
-        mock data.
-      </div>
+          <div className="text-gray-500 text-sm">
+            These credentials are for testing purposes only and provide access
+            to mock data.
+          </div>
+        </>
+      )}
     </Tab>
   );
 }
