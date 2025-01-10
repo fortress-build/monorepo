@@ -7416,6 +7416,9 @@ packages:
   estree-util-to-js@2.0.0:
     resolution: {integrity: sha512-WDF+xj5rRWmD5tj6bIqRi6CkLIXbbNQUcxQHzGysQzvHmdYG2G7p/Tf0J0gpxGgkeMZNTIjT/AoSvC9Xehcgdg==}
 
+  estree-util-value-to-estree@3.1.2:
+    resolution: {integrity: sha512-S0gW2+XZkmsx00tU2uJ4L9hUT7IFabbml9pHh2WQqFmAbxit++YGZne0sKJbNwkj9Wvg9E4uqWl4nCIFQMmfag==}
+
   estree-util-value-to-estree@3.2.1:
     resolution: {integrity: sha512-Vt2UOjyPbNQQgT5eJh+K5aATti0OjCIAGc9SgMdOFYbohuifsWclR74l0iZTJwePMgWYdX1hlVS+dedH9XV8kw==}
 
@@ -18872,6 +18875,10 @@ snapshots:
       astring: 1.8.6
       source-map: 0.7.4
 
+  estree-util-value-to-estree@3.1.2:
+    dependencies:
+      '@types/estree': 1.0.6
+
   estree-util-value-to-estree@3.2.1:
     dependencies:
       '@types/estree': 1.0.6
@@ -19456,7 +19463,7 @@ snapshots:
 
   has-tostringtag@1.0.2:
     dependencies:
-      has-symbols: 1.1.0
+      has-symbols: 1.0.3
 
   hash-base@3.0.5:
     dependencies:
@@ -19968,7 +19975,7 @@ snapshots:
 
   is-symbol@1.0.4:
     dependencies:
-      has-symbols: 1.1.0
+      has-symbols: 1.0.3
 
   is-symbol@1.1.1:
     dependencies:
@@ -22114,7 +22121,7 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
       estree-util-is-identifier-name: 3.0.0
-      estree-util-value-to-estree: 3.2.1
+      estree-util-value-to-estree: 3.1.2
       toml: 3.0.0
       unified: 11.0.5
       yaml: 2.6.0
