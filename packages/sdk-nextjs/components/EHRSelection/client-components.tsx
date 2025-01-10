@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use client";
 
 import type { Patient } from "@nerve-js/client/models/fhir/Patient";
@@ -6,6 +7,16 @@ import { useNerveClient } from "../../client";
 import type { EHRProvider, PermissionList } from "../nerve-sign-in";
 import ConsentScreen from "./ConsentScreen";
 import EHRScreen from "./EHRScreen";
+=======
+'use client';
+
+import type { Patient } from '@repo/client-js/models/fhir/Patient';
+import { useEffect, useState } from 'react';
+import { useNerveClient } from '../../client';
+import type { EHRProvider, PermissionList } from '../nerve-integration';
+import ConsentScreen from './ConsentScreen';
+import EHRScreen from './EHRScreen';
+>>>>>>> 7e306a5 (abstracted nerve component)
 
 export function AuthenticatedView() {
   const client = useNerveClient();
@@ -18,7 +29,11 @@ export function AuthenticatedView() {
       <button
         type="button"
         onClick={() => {
+<<<<<<< HEAD
           client.patient.read("erXuFYUfucBZaryVksYEcMg3").then((res) => {
+=======
+          client.patient.read('erXuFYUfucBZaryVksYEcMg3').then((res) => {
+>>>>>>> 7e306a5 (abstracted nerve component)
             setPatient(res);
           });
         }}
@@ -28,8 +43,13 @@ export function AuthenticatedView() {
       <button
         type="button"
         onClick={() => {
+<<<<<<< HEAD
           globalThis.localStorage.removeItem("__fhir_oauth_provider");
           globalThis.localStorage.removeItem("__fhir_access_token");
+=======
+          globalThis.localStorage.removeItem('__fhir_oauth_provider');
+          globalThis.localStorage.removeItem('__fhir_access_token');
+>>>>>>> 7e306a5 (abstracted nerve component)
           globalThis.window.location.reload();
         }}
       >
@@ -49,7 +69,11 @@ export function UnauthenticatedView({
   const [providers] = useState<EHRProvider[]>(initialProviders);
   const [permissions] = useState<PermissionList>(initialPermissions);
   const [selectedProvider, setSelectedProvider] = useState<EHRProvider | null>(
+<<<<<<< HEAD
     null,
+=======
+    null
+>>>>>>> 7e306a5 (abstracted nerve component)
   );
   const client = useNerveClient();
 
@@ -59,12 +83,21 @@ export function UnauthenticatedView({
         provider={selectedProvider}
         onAccept={() => {
           globalThis.localStorage.setItem(
+<<<<<<< HEAD
             "__fhir_oauth_provider",
             JSON.stringify(selectedProvider),
           );
 
           client.authenticate().then((res) => {
             if (res.state === "unauthenticated") {
+=======
+            '__fhir_oauth_provider',
+            JSON.stringify(selectedProvider)
+          );
+
+          client.authenticate().then((res) => {
+            if (res.state === 'unauthenticated') {
+>>>>>>> 7e306a5 (abstracted nerve component)
               console.log(`${res.authUrl}`);
               globalThis.window.location.assign(res.authUrl);
               return;
@@ -77,12 +110,16 @@ export function UnauthenticatedView({
     );
   }
 
+<<<<<<< HEAD
   return (
     <EHRScreen
       providers={providers}
       onProviderSelect={(provider) => setSelectedProvider(provider)}
     />
   );
+=======
+  return <EHRScreen providers={providers} />;
+>>>>>>> 7e306a5 (abstracted nerve component)
 }
 
 export function AuthStateWrapper({
@@ -99,12 +136,20 @@ export function AuthStateWrapper({
   const client = useNerveClient();
 
   useEffect(() => {
+<<<<<<< HEAD
     if (!localStorage.getItem("__fhir_oauth_provider")) {
+=======
+    if (!localStorage.getItem('__fhir_oauth_provider')) {
+>>>>>>> 7e306a5 (abstracted nerve component)
       setAuthenticatedState(false);
       return;
     }
 
+<<<<<<< HEAD
     const selectedProviderJson = localStorage.getItem("__fhir_oauth_provider");
+=======
+    const selectedProviderJson = localStorage.getItem('__fhir_oauth_provider');
+>>>>>>> 7e306a5 (abstracted nerve component)
     const selectedProvider = JSON.parse(selectedProviderJson!);
     if (!selectedProvider) {
       setAuthenticatedState(false);
@@ -112,14 +157,24 @@ export function AuthStateWrapper({
     }
 
     const params = new URLSearchParams(window.location.search);
+<<<<<<< HEAD
     if (params.has("code")) {
       client
         .authCallback(params.get("code")!)
+=======
+    if (params.has('code')) {
+      client
+        .authCallback(params.get('code')!)
+>>>>>>> 7e306a5 (abstracted nerve component)
         .then(() => client.getToken())
         .then((token) => {
           setAuthenticatedState(true);
         });
+<<<<<<< HEAD
     } else if (localStorage.getItem("__fhir_access_token")) {
+=======
+    } else if (localStorage.getItem('__fhir_access_token')) {
+>>>>>>> 7e306a5 (abstracted nerve component)
       setAuthenticatedState(true);
     } else {
       setAuthenticatedState(false);
