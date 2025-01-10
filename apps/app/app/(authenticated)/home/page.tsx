@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import OnboardingSteps from '@/components/Dashboard/Home/OnboardingSteps';
-import { Quickstart } from '@/components/Dashboard/Home/Quickstart';
+import { Quickstart } from "@/app/(authenticated)/components/quickstart";
+import OnboardingSteps from "@/app/(authenticated)/components/onboarding";
 
 export default function Home() {
   return (
