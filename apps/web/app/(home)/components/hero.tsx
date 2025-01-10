@@ -5,14 +5,11 @@ import { Button } from '@repo/design-system/components/ui/button';
 import { MoveRight, PhoneCall } from 'lucide-react';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
-import NerveSignIn from '@repo/sdk-nextjs/components/nerve-sign-in';
-import { NerveProvider } from '@repo/sdk-nextjs/client';
 
 export const Hero = async () => {
   const draft = await draftMode();
 
   return (
-    <NerveProvider>
       <div className="w-full">
         <div className="container mx-auto">
           <div className="flex flex-col items-center justify-center gap-8 py-20 lg:py-40">
@@ -41,7 +38,6 @@ export const Hero = async () => {
               </Feed>
             </div>
             <div className="flex flex-col gap-4">
-              <NerveSignIn />
               <h1 className="max-w-2xl text-center font-regular text-5xl tracking-tighter md:text-7xl">
                 This is the start of something new
               </h1>
@@ -67,6 +63,5 @@ export const Hero = async () => {
           </div>
         </div>
       </div>
-    </NerveProvider>
   );
 };
