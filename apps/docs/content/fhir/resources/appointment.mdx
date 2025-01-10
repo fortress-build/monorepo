@@ -36,11 +36,11 @@ A booking of a healthcare event among patient(s), practitioner(s), related perso
     | patientInstruction | | string | Detailed information and instructions for the patient |
     | basedOn | | Reference\<[ServiceRequest](/fhir/resources/servicerequest)>[] | The service request this appointment is allocated to assess |
     | participant | <span style={{color: "#22c55e"}}>✓</span> | BackboneElement | Participants involved in appointment |
-    | └─ type | | CodeableConcept[] | Role of participant in the appointment |
-    | └─ actor | | Reference\<[Patient](/fhir/resources/patient)\|[Practitioner](/fhir/resources/practitioner)\|[PractitionerRole](/fhir/resources/practitionerrole)\|[RelatedPerson](/fhir/resources/relatedperson)\|[Device](/fhir/resources/device)\|[HealthcareService](/fhir/resources/healthcareservice)\|[Location](/fhir/resources/location)> | Person, Location/HealthcareService or Device |
-    | └─ required | | code | required \| optional \| information-only |
-    | └─ status | <span style={{color: "#22c55e"}}>✓</span> | code | accepted \| declined \| tentative \| needs-action |
-    | └─ period | | Period | Participation period of the actor |
+    | <span style={{color: "#777777"}}>└─ type</span> | | CodeableConcept[] | Role of participant in the appointment |
+    | <span style={{color: "#777777"}}>└─ actor</span> | | Reference\<[Patient](/fhir/resources/patient)\|[Practitioner](/fhir/resources/practitioner)\|[PractitionerRole](/fhir/resources/practitionerrole)\|[RelatedPerson](/fhir/resources/relatedperson)\|[Device](/fhir/resources/device)\|[HealthcareService](/fhir/resources/healthcareservice)\|[Location](/fhir/resources/location)> | Person, Location/HealthcareService or Device |
+    | <span style={{color: "#777777"}}>└─ required</span> | | code | required \| optional \| information-only |
+    | <span style={{color: "#777777"}}>└─ status</span> | <span style={{color: "#22c55e"}}>✓</span> | code | accepted \| declined \| tentative \| needs-action |
+    | <span style={{color: "#777777"}}>└─ period</span> | | Period | Participation period of the actor |
     | requestedPeriod | | Period[] | Potential date/time interval(s) requested |
   </Tab>
   <Tab value="json">

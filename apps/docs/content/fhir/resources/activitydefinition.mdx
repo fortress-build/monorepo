@@ -25,8 +25,8 @@ ActivityDefinition allows for the definition of some activity to be performed, i
     | status | <span style={{color: "#22c55e"}}>✓</span> | code | draft \| active \| retired \| unknown |
     | experimental | | boolean | For testing purposes, not real usage |
     | subject[x] | | *See sub-fields* | Type of individual the activity definition is intended for |
-    | └─ subjectCodeableConcept | | CodeableConcept | Type of individual specified as a coded concept |
-    | └─ subjectReference | | Reference\<[Group](/fhir/resources/group)> | Type of individual specified as a group reference |
+    | <span style={{color: "#777777"}}>└─ subjectCodeableConcept</span> | | CodeableConcept | Type of individual specified as a coded concept |
+    | <span style={{color: "#777777"}}>└─ subjectReference</span> | | Reference\<[Group](/fhir/resources/group)> | Type of individual specified as a group reference |
     | date | | dateTime | Date last changed |
     | publisher | | string | Name of the publisher (organization or individual) |
     | contact | | ContactDetail[] | Contact details for the publisher |
@@ -55,8 +55,8 @@ ActivityDefinition allows for the definition of some activity to be performed, i
     | timing[x] | | Timing \| dateTime \| Age \| Period \| Range \| Duration | When activity is to occur |
     | location | | Reference\<[Location](/fhir/resources/location)> | Where it should happen |
     | participant | | BackboneElement | Who should participate in the action |
-    | └─ type | <span style={{color: "#22c55e"}}>✓</span> | code | patient \| practitioner \| related-person \| device |
-    | └─ role | | CodeableConcept | E.g. Nurse, Surgeon, Parent, etc. |
+    | <span style={{color: "#777777"}}>└─ type</span> | <span style={{color: "#22c55e"}}>✓</span> | code | patient \| practitioner \| related-person \| device |
+    | <span style={{color: "#777777"}}>└─ role</span> | | CodeableConcept | E.g. Nurse, Surgeon, Parent, etc. |
     | product[x] | | Reference\<[Medication](/fhir/resources/medication)\|[Substance](/fhir/resources/substance)> \| CodeableConcept | What's administered/supplied |
     | quantity | | SimpleQuantity | How much is administered/consumed/supplied |
     | dosage | | Dosage[] | Detailed dosage instructions |
@@ -66,8 +66,8 @@ ActivityDefinition allows for the definition of some activity to be performed, i
     | observationResultRequirement | | Reference\<[ObservationDefinition](/fhir/resources/observationdefinition)>[] | What observations must be produced by this action |
     | transform | | canonical\<[StructureMap](/fhir/resources/structuremap)> | Transform to apply the template |
     | dynamicValue | | BackboneElement | Dynamic aspects of the definition |
-    | └─ path | <span style={{color: "#22c55e"}}>✓</span> | string | The path to the element to be set dynamically |
-    | └─ expression | <span style={{color: "#22c55e"}}>✓</span> | Expression | An expression that provides the dynamic value for the customization |
+    | <span style={{color: "#777777"}}>└─ path</span> | <span style={{color: "#22c55e"}}>✓</span> | string | The path to the element to be set dynamically |
+    | <span style={{color: "#777777"}}>└─ expression</span> | <span style={{color: "#22c55e"}}>✓</span> | Expression | An expression that provides the dynamic value for the customization |
   </Tab>
   
   <Tab value="json">

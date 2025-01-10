@@ -13,7 +13,7 @@ Account is a resource that serves as a financial tool for tracking value accrued
 ## Resource Content
 <Tabs items={["structure", "json", "types"]} defaultValue="structure">
   <Tab value="structure">
-    | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
+    | <div style={{width: "100px"}}>Name</div> | <div style={{width: "60px"}}>Required</div> | <div style={{width: "100px"}}>Type</div> | <div style={{width: "calc(100% - 480px)"}}>Description & Constraints</div> |
     |------|--------|------|------------------------|
     | identifier | | Identifier[] | Account number |
     | status | <span style={{color: "#22c55e"}}>✓</span> | code | active \| inactive \| entered-in-error \| on-hold \| unknown |
@@ -22,14 +22,14 @@ Account is a resource that serves as a financial tool for tracking value accrued
     | subject | | <div style={{width: "150px"}}>Reference\<[Patient](/fhir/resources/patient)\| [Device](/fhir/resources/device)\| [Practitioner](/fhir/resources/practitioner)\| [PractitionerRole](/fhir/resources/practitionerrole)\| [Location](/fhir/resources/location)\| [HealthcareService](/fhir/resources/healthcareservice)\| [Organization](/fhir/resources/organization)>[]</div> | The entity that caused the expenses |
     | servicePeriod | | Period | Transaction window |
     | coverage | | BackboneElement | The party(s) responsible for covering payment |
-    | └─ coverage | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[Coverage](/fhir/resources/coverage)> | The party(s) that may contribute to payment |
-    | └─ priority | | positiveInt | Coverage priority in account context |
+    | <span style={{color: "#777777"}}>└─ coverage</span> | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[Coverage](/fhir/resources/coverage)> | The party(s) that may contribute to payment |
+    | <span style={{color: "#777777"}}>└─ priority</span> | | positiveInt | Coverage priority in account context |
     | owner | | Reference\<[Organization](/fhir/resources/organization)> | Entity managing the Account |
     | description | | string | Explanation of purpose/use |
     | guarantor | | BackboneElement | Parties responsible for balancing Account |
-    | └─ party | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)\| [Organization](/fhir/resources/organization)> | Responsible entity |
-    | └─ onHold | | boolean | Credit or other hold applied |
-    | └─ period | | Period | Guarantee account during |
+    | <span style={{color: "#777777"}}>└─ party</span> | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)\| [Organization](/fhir/resources/organization)> | Responsible entity |
+    | <span style={{color: "#777777"}}>└─ onHold</span> | | boolean | Credit or other hold applied |
+    | <span style={{color: "#777777"}}>└─ period</span> | | Period | Guarantee account during |
     | partOf | | Reference\<[Account](/fhir/resources/account)> | Reference to a parent Account |
   </Tab>
   <Tab value="json">

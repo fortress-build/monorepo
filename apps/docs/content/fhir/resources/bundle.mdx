@@ -1,3 +1,217 @@
 ---
 title: "Bundle"
 ---
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import {Database} from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 3 | Unclassified | <div className="flex items-center gap-2"> <Database className="h-5 w-5 text-blue-500" /> **Foundation Resources**</div> |
+
+A container for a collection of resources.
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+    | <div style={{width: "180px"}}>Name</div> | Required| <div style={{width: "180px"}}>Type</div> | <div style={{width: "calc(100% - 480px)"}}>Description & Constraints</div> |
+    |------|--------|------|------------------------|
+    | identifier | | Identifier | Persistent identifier for the bundle |
+    | type | <span style={{color: "#22c55e"}}>✓</span> | code | document \| message \| transaction \| transaction-response \| batch \| batch-response \| history \| searchset \| collection |
+    | timestamp | | instant | When the bundle was assembled |
+    | total | | unsignedInt | If search, the total number of matches |
+    | link | | BackboneElement | Links related to this Bundle |
+    | <span style={{color: "#777777"}}>└─ relation</span> | <span style={{color: "#22c55e"}}>✓</span> | string | See http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1 |
+    | <span style={{color: "#777777"}}>└─ url</span> | <span style={{color: "#22c55e"}}>✓</span> | uri | Reference details for the link |
+    | entry | | BackboneElement | Entry in the bundle - will have a resource or information |
+    | <span style={{color: "#777777"}}>└─ link</span> | | BackboneElement | Links related to this entry |
+    | <span style={{color: "#777777"}}>└─ fullUrl</span> | | uri | URI for resource (Absolute URL server address or URI for UUID/OID) |
+    | <span style={{color: "#777777"}}>└─ resource</span> | | Resource | A resource in the bundle |
+    | <span style={{color: "#777777"}}>└─ search</span> | | BackboneElement | Search related information |
+    | <span style={{color: "#4B9CD3"}}>└─── mode</span> | | code | match \| include \| outcome - why this is in the result set |
+    | <span style={{color: "#4B9CD3"}}>└─── score</span> | | decimal | Search ranking (between 0 and 1) |
+    | <span style={{color: "#777777"}}>└─ request</span> | | BackboneElement | Additional execution information (transaction/batch/history) |
+    | <span style={{color: "#4B9CD3"}}>└─── method</span> | <span style={{color: "#22c55e"}}>✓</span> | code | GET \| HEAD \| POST \| PUT \| DELETE \| PATCH |
+    | <span style={{color: "#4B9CD3"}}>└─── url</span> | <span style={{color: "#22c55e"}}>✓</span> | uri | URL for HTTP equivalent of this entry |
+    | <span style={{color: "#4B9CD3"}}>└─── ifNoneMatch</span> | | string | For managing cache currency |
+    | <span style={{color: "#4B9CD3"}}>└─── ifModifiedSince</span> | | instant | For managing cache currency |
+    | <span style={{color: "#4B9CD3"}}>└─── ifMatch</span> | | string | For managing update contention |
+    | <span style={{color: "#4B9CD3"}}>└─── ifNoneExist</span> | | string | For conditional creates |
+    | <span style={{color: "#777777"}}>└─ response</span> | | BackboneElement | Results of execution (transaction/batch/history) |
+    | <span style={{color: "#4B9CD3"}}>└─── status</span> | <span style={{color: "#22c55e"}}>✓</span> | string | Status response code (text optional) |
+    | <span style={{color: "#4B9CD3"}}>└─── location</span> | | uri | The location (if the operation returns a location) |
+    | <span style={{color: "#4B9CD3"}}>└─── etag</span> | | string | The Etag for the resource (if relevant) |
+    | <span style={{color: "#4B9CD3"}}>└─── lastModified</span> | | instant | Server's date time modified |
+    | <span style={{color: "#4B9CD3"}}>└─── outcome</span> | | Resource | OperationOutcome with hints and warnings (for batch/transaction) |
+    | signature | | Signature | Digital Signature |
+  </Tab>
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "Bundle",
+  // from Resource: id, meta, implicitRules, and language
+  "identifier" : { Identifier }, // Persistent identifier for the bundle
+  "type" : "<code>", // R!  document | message | transaction | transaction-response | batch | batch-response | history | searchset | collection
+  "timestamp" : "<instant>", // When the bundle was assembled
+  "total" : "<unsignedInt>", // C? If search, the total number of matches
+  "link" : [{ // Links related to this Bundle
+    "relation" : "<string>", // R!  See http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1
+    "url" : "<uri>" // R!  Reference details for the link
+  }],
+  "entry" : [{ // Entry in the bundle - will have a resource or information
+    "link" : [{ Content as for Bundle.link }], // Links related to this entry
+    "fullUrl" : "<uri>", // URI for resource (Absolute URL server address or URI for UUID/OID)
+    "resource" : { Resource }, // A resource in the bundle
+    "search" : { // C? Search related information
+      "mode" : "<code>", // match | include | outcome - why this is in the result set
+      "score" : <decimal> // Search ranking (between 0 and 1)
+    },
+    "request" : { // C? Additional execution information (transaction/batch/history)
+      "method" : "<code>", // R!  GET | HEAD | POST | PUT | DELETE | PATCH
+      "url" : "<uri>", // R!  URL for HTTP equivalent of this entry
+      "ifNoneMatch" : "<string>", // For managing cache currency
+      "ifModifiedSince" : "<instant>", // For managing cache currency
+      "ifMatch" : "<string>", // For managing update contention
+      "ifNoneExist" : "<string>" // For conditional creates
+    },
+    "response" : { // C? Results of execution (transaction/batch/history)
+      "status" : "<string>", // R!  Status response code (text optional)
+      "location" : "<uri>", // The location (if the operation returns a location)
+      "etag" : "<string>", // The Etag for the resource (if relevant)
+      "lastModified" : "<instant>", // Server's date time modified
+      "outcome" : { Resource } // OperationOutcome with hints and warnings (for batch/transaction)
+    }
+  }],
+  "signature" : { Signature } // Digital Signature
+}
+        ```
+  </Tab>
+  <Tab value="types">
+```typescript
+export type BundleLink = {
+    // See http://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1
+    relation: "self" | "next" | "previous" | "first" | "last";
+    url: string;
+}
+
+export declare class Bundle extends Resource {
+    resourceType: "Bundle";
+    identifier?: Identifier;
+    type:
+        | "document"
+        | "message"
+        | "transaction"
+        | "transaction-response"
+        | "batch"
+        | "batch-response"
+        | "history"
+        | "searchset"
+        | "collection";
+
+    timestamp?: string;
+    total?: number;
+    link?: BundleLink[];
+    entry?: {
+        link?: BundleLink[];
+        fullUrl?: string;
+        resource: Resource;
+        search?: {
+        mode?: "match" | "include" | "outcome";
+        score?: number;
+        };
+        request?: {
+        method: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "PATCH";
+        url: string;
+
+        ifNoneMatch?: string;
+        ifModifiedSince?: string;
+        ifMatch?: string;
+        ifNoneExist?: string;
+        };
+        response?: {
+        status: string;
+        location?: string;
+        etag?: string;
+        lastModified?: string;
+        outcome?: Resource;
+        };
+    }[];
+    signature?: Signature;
+}
+    ```
+  </Tab>
+</Tabs>
+
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| composition | reference | The first resource in the bundle, if the bundle type is "document" - this is a composition, and this parameter provides access to search its contents | `Bundle.entry[0].resource` |
+| identifier | token | Persistent identifier for the bundle | `Bundle.identifier` |
+| message | reference | The first resource in the bundle, if the bundle type is "message" - this is a message header, and this parameter provides access to search its contents | `Bundle.entry[0].resource` |
+| timestamp | date | When the bundle was assembled | `Bundle.timestamp` |
+| type | token | document \| message \| transaction \| transaction-response \| batch \| batch-response \| history \| searchset \| collection | `Bundle.type` |
+
+## Scope and Usage
+
+A Bundle is used to gather collections of FHIR resources into a single instance with containing context. Common use cases include:
+
+- **Server Operations**
+  - Returning resources that meet search criteria
+  - Providing version histories of resources
+  
+- **Data Exchange**
+  - Sending resources in message exchanges
+  - Grouping resources into clinical documents
+  
+- **Batch Operations**
+  - Creating/updating/deleting multiple resources atomically
+  - Managing collections of resources as transactions
+  
+- **Storage**
+  - Persisting related resources together
+
+## Background and Context
+
+### Resource Collection Methods
+
+There are two primary approaches for collecting resources:
+
+1. **Contained Resources**
+   - Resources exist within the container resource
+   - Can only be interpreted/modified in container context
+
+2. **Bundles**
+   - Resources maintain independent existence
+   - Can be accessed directly via RESTful API
+
+### Related Grouping Resources
+
+While Bundles serve as technical containers, FHIR provides three additional resources for logical grouping:
+
+#### 1. List Resource
+- Manages flat collections of resources
+- Dynamic nature - items can be added/removed
+- Supports curation with specific business meaning
+- References other resources directly
+
+#### 2. Group Resource
+- Defines collections of specific entities (people, animals, devices)
+- Can enumerate explicitly or describe qualifying characteristics
+- Commonly used for:
+  - Public health (at-risk populations)
+  - Clinical trials (test subject pools)
+  - Group-level operations/observations
+
+#### 3. Composition Resource
+- Assembles healthcare information into logical documents
+- Provides structure for FHIR documents
+- Establishes context and clinical attestation
+- Often references Lists within sections
+- Full content expressed using Bundles
+
+> **Note**: While these resources create meaningful groupings with specific purposes, a Bundle primarily serves as a technical container for resource transfer and storage. Additional resources may provide other grouping functionality.
+
+## Referenced Elements
+
+N/A
+

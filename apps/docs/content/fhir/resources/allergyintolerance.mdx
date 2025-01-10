@@ -32,13 +32,13 @@ Risk of harmful or undesirable, physiological response which is unique to an ind
     | lastOccurrence | | dateTime | Date(/time) of last known occurrence of a reaction |
     | note | | Annotation[] | Additional text not captured in other fields |
     | reaction | | BackboneElement[] | Adverse Reaction Events linked to exposure to substance |
-    | └─ substance | | CodeableConcept | Specific substance or pharmaceutical product considered to be responsible for event |
-    | └─ manifestation | <span style={{color: "#22c55e"}}>✓</span> | CodeableConcept[] | Clinical symptoms/signs associated with the Event |
-    | └─ description | | string | Description of the event as a whole |
-    | └─ onset | | dateTime | Date(/time) when manifestations showed |
-    | └─ severity | | code | mild \| moderate \| severe (of event as a whole) |
-    | └─ exposureRoute | | CodeableConcept | How the subject was exposed to the substance |
-    | └─ note | | Annotation[] | Text about event not captured in other fields |
+    | <span style={{color: "#777777"}}>└─ substance</span> | | CodeableConcept | Specific substance or pharmaceutical product considered to be responsible for event |
+    | <span style={{color: "#777777"}}>└─ manifestation</span> | <span style={{color: "#22c55e"}}>✓</span> | CodeableConcept[] | Clinical symptoms/signs associated with the Event |
+    | <span style={{color: "#777777"}}>└─ description</span> | | string | Description of the event as a whole |
+    | <span style={{color: "#777777"}}>└─ onset</span> | | dateTime | Date(/time) when manifestations showed |
+    | <span style={{color: "#777777"}}>└─ severity</span> | | code | mild \| moderate \| severe (of event as a whole) |
+    | <span style={{color: "#777777"}}>└─ exposureRoute</span> | | CodeableConcept | How the subject was exposed to the substance |
+    | <span style={{color: "#777777"}}>└─ note</span> | | Annotation[] | Text about event not captured in other fields |
   </Tab>
   <Tab value="json">
     ```json

@@ -24,35 +24,35 @@ A record of an event made for purposes of maintaining a security log. Typical us
     | outcomeDesc | | string | Description of the event outcome |
     | purposeOfEvent | | CodeableConcept[] | The purposeOfUse of the event |
     | agent | <span style={{color: "#22c55e"}}>✓</span> | BackboneElement[] | Actor involved in the event |
-    | └─ type | | CodeableConcept | How agent participated |
-    | └─ role | | CodeableConcept[] | Agent role in the event |
-    | └─ who | | Reference\<[PractitionerRole](/fhir/resources/practitionerrole)\| [Practitioner](/fhir/resources/practitioner)\| [Organization](/fhir/resources/organization)\| [Device](/fhir/resources/device)\| [Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)> | Identifier of who |
-    | └─ altId | | string | Alternative User identity |
-    | └─ name | | string | Human friendly name for the agent |
-    | └─ requestor | <span style={{color: "#22c55e"}}>✓</span> | boolean | Whether user is initiator |
-    | └─ location | | Reference\<[Location](/fhir/resources/location)> | Where |
-    | └─ policy | | uri[] | Policy that authorized event |
-    | └─ media | | Coding | Type of media |
-    | └─ network | | BackboneElement | Logical network location for application activity |
-    | └─── address | | string | Identifier for the network access point |
-    | └─── type | | code | The type of network access point |
-    | └─ purposeOfUse | | CodeableConcept[] | Reason given for this user |
+    | <span style={{color: "#777777"}}>└─ type</span> | | CodeableConcept | How agent participated |
+    | <span style={{color: "#777777"}}>└─ role</span> | | CodeableConcept[] | Agent role in the event |
+    | <span style={{color: "#777777"}}>└─ who</span> | | Reference\<[PractitionerRole](/fhir/resources/practitionerrole)\| [Practitioner](/fhir/resources/practitioner)\| [Organization](/fhir/resources/organization)\| [Device](/fhir/resources/device)\| [Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)> | Identifier of who |
+    | <span style={{color: "#777777"}}>└─ altId</span> | | string | Alternative User identity |
+    | <span style={{color: "#777777"}}>└─ name</span> | | string | Human friendly name for the agent |
+    | <span style={{color: "#777777"}}>└─ requestor</span> | <span style={{color: "#22c55e"}}>✓</span> | boolean | Whether user is initiator |
+    | <span style={{color: "#777777"}}>└─ location</span> | | Reference\<[Location](/fhir/resources/location)> | Where |
+    | <span style={{color: "#777777"}}>└─ policy</span> | | uri[] | Policy that authorized event |
+    | <span style={{color: "#777777"}}>└─ media</span> | | Coding | Type of media |
+    | <span style={{color: "#777777"}}>└─ network</span> | | BackboneElement | Logical network location for application activity |
+    | <span style={{color: "#4B9CD3"}}>└─── address</span> | | string | Identifier for the network access point |
+    | <span style={{color: "#4B9CD3"}}>└─── type</span> | | code | The type of network access point |
+    | <span style={{color: "#777777"}}>└─ purposeOfUse</span> | | CodeableConcept[] | Reason given for this user |
     | source | <span style={{color: "#22c55e"}}>✓</span> | BackboneElement | Audit Event Reporter |
-    | └─ site | | string | Logical source location within the enterprise |
-    | └─ observer | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[PractitionerRole](/fhir/resources/practitionerrole)\| [Practitioner](/fhir/resources/practitioner)\| [Organization](/fhir/resources/organization)\| [Device](/fhir/resources/device)\| [Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)> | The identity of source detecting the event |
-    | └─ type | | Coding[] | The type of source where event originated |
+    | <span style={{color: "#777777"}}>└─ site</span> | | string | Logical source location within the enterprise |
+    | <span style={{color: "#777777"}}>└─ observer</span> | <span style={{color: "#22c55e"}}>✓</span> | Reference\<[PractitionerRole](/fhir/resources/practitionerrole)\| [Practitioner](/fhir/resources/practitioner)\| [Organization](/fhir/resources/organization)\| [Device](/fhir/resources/device)\| [Patient](/fhir/resources/patient)\| [RelatedPerson](/fhir/resources/relatedperson)> | The identity of source detecting the event |
+    | <span style={{color: "#777777"}}>└─ type</span> | | Coding[] | The type of source where event originated |
     | entity | | BackboneElement[] | Data or objects used |
-    | └─ what | | Reference\<Any> | Specific instance of resource |
-    | └─ type | | Coding | Type of entity involved |
-    | └─ role | | Coding | What role the entity played |
-    | └─ lifecycle | | Coding | Life-cycle stage for the entity |
-    | └─ securityLabel | | Coding[] | Security labels on the entity |
-    | └─ name | | string | Descriptor for entity |
-    | └─ description | | string | Descriptive text |
-    | └─ query | | base64Binary | Query parameters |
-    | └─ detail | | BackboneElement[] | Additional Information about the entity |
-    | └─── type | <span style={{color: "#22c55e"}}>✓</span> | string | Name of the property |
-    | └─── value[x] | <span style={{color: "#22c55e"}}>✓</span> | string \| base64Binary | Property value |
+    | <span style={{color: "#777777"}}>└─ what</span> | | Reference\<Any> | Specific instance of resource |
+    | <span style={{color: "#777777"}}>└─ type</span> | | Coding | Type of entity involved |
+    | <span style={{color: "#777777"}}>└─ role</span> | | Coding | What role the entity played |
+    | <span style={{color: "#777777"}}>└─ lifecycle</span> | | Coding | Life-cycle stage for the entity |
+    | <span style={{color: "#777777"}}>└─ securityLabel</span> | | Coding[] | Security labels on the entity |
+    | <span style={{color: "#777777"}}>└─ name</span> | | string | Descriptor for entity |
+    | <span style={{color: "#777777"}}>└─ description</span> | | string | Descriptive text |
+    | <span style={{color: "#777777"}}>└─ query</span> | | base64Binary | Query parameters |
+    | <span style={{color: "#777777"}}>└─ detail</span> | | BackboneElement[] | Additional Information about the entity |
+    | <span style={{color: "#4B9CD3"}}>└─── type</span> | <span style={{color: "#22c55e"}}>✓</span> | string | Name of the property |
+    | <span style={{color: "#4B9CD3"}}>└─── value[x]</span> | <span style={{color: "#22c55e"}}>✓</span> | string \| base64Binary | Property value |
   </Tab>
   <Tab value="json">
     ```json

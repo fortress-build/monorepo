@@ -22,25 +22,25 @@ import { Users } from 'lucide-react'
     | quantity | | integer | The amount of this biologically derived product |
     | parent | | Reference\<[BiologicallyDerivedProduct](/fhir/resources/biologicallyderivedproduct)>[] | BiologicallyDerivedProduct parent |
     | collection | | BackboneElement | How this product was collected |
-    | └─ collector | | Reference\<[Practitioner](/fhir/resources/practitioner)\|[PractitionerRole](/fhir/resources/practitionerrole)> | Individual performing collection |
-    | └─ source | | Reference\<[Patient](/fhir/resources/patient)\|[Organization](/fhir/resources/organization)> | Who is product from |
-    | └─ collectedDateTime | | dateTime | Time of product collection |
-    | └─ collectedPeriod | | Period | Time of product collection |
+    | <span style={{color: "#777777"}}>└─ collector</span> | | Reference\<[Practitioner](/fhir/resources/practitioner)\|[PractitionerRole](/fhir/resources/practitionerrole)> | Individual performing collection |
+    | <span style={{color: "#777777"}}>└─ source</span> | | Reference\<[Patient](/fhir/resources/patient)\|[Organization](/fhir/resources/organization)> | Who is product from |
+    | <span style={{color: "#777777"}}>└─ collectedDateTime</span> | | dateTime | Time of product collection |
+    | <span style={{color: "#777777"}}>└─ collectedPeriod</span> | | Period | Time of product collection |
     | processing | | BackboneElement[] | Any processing of the product during collection |
-    | └─ description | | string | Description of processing |
-    | └─ procedure | | CodeableConcept | Processing code |
-    | └─ additive | | Reference\<[Substance](/fhir/resources/substance)> | Substance added during processing |
-    | └─ timeDateTime | | dateTime | Time of processing |
-    | └─ timePeriod | | Period | Time of processing |
+    | <span style={{color: "#777777"}}>└─ description</span> | | string | Description of processing |
+    | <span style={{color: "#777777"}}>└─ procedure</span> | | CodeableConcept | Processing code |
+    | <span style={{color: "#777777"}}>└─ additive</span> | | Reference\<[Substance](/fhir/resources/substance)> | Substance added during processing |
+    | <span style={{color: "#777777"}}>└─ timeDateTime</span> | | dateTime | Time of processing |
+    | <span style={{color: "#777777"}}>└─ timePeriod</span> | | Period | Time of processing |
     | manipulation | | BackboneElement | Any manipulation of product post-collection |
-    | └─ description | | string | Description of manipulation |
-    | └─ timeDateTime | | dateTime | Time of manipulation |
-    | └─ timePeriod | | Period | Time of manipulation |
+    | <span style={{color: "#777777"}}>└─ description</span> | | string | Description of manipulation |
+    | <span style={{color: "#777777"}}>└─ timeDateTime</span> | | dateTime | Time of manipulation |
+    | <span style={{color: "#777777"}}>└─ timePeriod</span> | | Period | Time of manipulation |
     | storage | | BackboneElement[] | Product storage |
-    | └─ description | | string | Description of storage |
-    | └─ temperature | | decimal | Storage temperature |
-    | └─ scale | | code | farenheit \| celsius \| kelvin |
-    | └─ duration | | Period | Storage timeperiod |
+    | <span style={{color: "#777777"}}>└─ description</span> | | string | Description of storage |
+    | <span style={{color: "#777777"}}>└─ temperature</span> | | decimal | Storage temperature |
+    | <span style={{color: "#777777"}}>└─ scale</span> | | code | farenheit \| celsius \| kelvin |
+    | <span style={{color: "#777777"}}>└─ duration</span> | | Period | Storage timeperiod |
   </Tab>
   <Tab value="json">
     ```json
