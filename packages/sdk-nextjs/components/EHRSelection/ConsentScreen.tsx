@@ -11,13 +11,14 @@ import { ArrowLeft, ArrowUpRight, Check, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Button } from '../../../design-system/components/ui/button';
-import type { EHRProvider } from '../nerve-integration';
-import type { PermissionList } from '../nerve-integration';
+import type { EHRProvider } from '../nerve-sign-in';
+import type { PermissionList } from '../nerve-sign-in';
 
 export default function ConsentScreen({
   onAccept,
   provider,
   onBack,
+  healthInfo,
 }: {
   onAccept: () => void;
   provider: EHRProvider;
@@ -186,7 +187,12 @@ export default function ConsentScreen({
       <CardFooter className="flex justify-center">
         <span className="flex items-center text-xs text-gray-500 gap-2">
           Powered by Nerve
-          <Image src="/logo.svg" alt="Nerve Logo" width={16} height={16} />
+          <Image
+            src="https://d31yg8dlyykylt.cloudfront.net/logo.svg"
+            alt="Nerve Logo"
+            width={16}
+            height={16}
+          />
         </span>
       </CardFooter>
     </Card>

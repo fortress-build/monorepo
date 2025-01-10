@@ -3,7 +3,7 @@
 import type { Patient } from '@repo/client-js/models/fhir/Patient';
 import { useEffect, useState } from 'react';
 import { useNerveClient } from '../../client';
-import type { EHRProvider, PermissionList } from '../nerve-integration';
+import type { EHRProvider, PermissionList } from '../nerve-sign-in';
 import ConsentScreen from './ConsentScreen';
 import EHRScreen from './EHRScreen';
 
@@ -77,7 +77,12 @@ export function UnauthenticatedView({
     );
   }
 
-  return <EHRScreen providers={providers} />;
+  return (
+    <EHRScreen
+      providers={providers}
+      onProviderSelect={(provider) => setSelectedProvider(provider)}
+    />
+  );
 }
 
 export function AuthStateWrapper({

@@ -1,4 +1,4 @@
-import type { PermissionList } from '../nerve-integration';
+import type { PermissionList } from '../nerve-sign-in';
 
 export const mockPermissionList: PermissionList = {
   read: [

@@ -30,50 +30,50 @@ export interface PermissionList {
 }
 
 async function getEHRProviders(): Promise<EHRProvider[]> {
-  try {
-    const response = await fetch('/api/ehr-providers', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  // try {
+  //   const response = await fetch('/api/ehr-providers', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+  //   if (!response.ok) {
+  //     throw new Error(`HTTP error! status: ${response.status}`);
+  //   }
 
-    // Simulate real API response
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    return mockEHRProviders; // For now, still return mock data
-  } catch (error) {
-    console.error('Failed to fetch EHR providers:', error);
+  //   // Simulate real API response
+  //   await new Promise((resolve) => setTimeout(resolve, 300));
+  //   return mockEHRProviders; // For now, still return mock data
+  // } catch (error) {
+  //   console.error('Failed to fetch EHR providers:', error);
     return mockEHRProviders; // Fallback to mock data
-  }
+  
 }
 
 async function getPermissionList(): Promise<PermissionList> {
-  try {
-    const response = await fetch('/api/permissions', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  // try {
+  //   const response = await fetch('/api/permissions', {
+  //     method: 'GET',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+  //   if (!response.ok) {
+  //     throw new Error(`HTTP error! status: ${response.status}`);
+  //   }
 
-    // Simulate real API response
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    return mockPermissionList; // For now, still return mock data
-  } catch (error) {
-    console.error('Failed to fetch permissions:', error);
+  //   // Simulate real API response
+  //   await new Promise((resolve) => setTimeout(resolve, 300));
+  //   return mockPermissionList; // For now, still return mock data
+  // } catch (error) {
+  //   console.error('Failed to fetch permissions:', error);
     return mockPermissionList; // Fallback to mock data
-  }
+  
 }
 
-export default async function NerveIntegration() {
+export default async function NerveSignIn() {
   const providers = await getEHRProviders();
   const permissions = await getPermissionList();
   const initialAuthState = false; // You might want to determine this server-side
