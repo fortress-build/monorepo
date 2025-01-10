@@ -2,20 +2,14 @@
 title: "FHIR Resourcelist"
 description: "A list of FHIR resources, and which ones may be relevant"
 ---
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/components/ui/tabs'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
 <Callout>
   We use the R4 standard for FHIR implementations.
 </Callout>
 
-<Tabs defaultValue="category" className="mt-6">
-  <TabsList>
-    <TabsTrigger value="category">By Category</TabsTrigger>
-    <TabsTrigger value="alphabetical">Alphabetical</TabsTrigger>
-    <TabsTrigger value="recommended">By Product Type</TabsTrigger>
-  </TabsList>
-
-  <TabsContent value="category">
+<Tabs defaultValue="category" items={["category", "alphabetical", "recommended"]}>
+  <Tab value="category">
     ## Foundation Resources
 
     | Category | Resource | Maturity Level |
@@ -186,19 +180,133 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/co
     | | SubstanceReferenceInformation | Level 0 |
     | | SubstanceSpecification | Level 0 |
     | | SubstanceSourceMaterial | Level 0 |
-  </TabsContent>
+  </Tab>
 
-  <TabsContent value="alphabetical">
+  <Tab value="alphabetical">
     ## All FHIR Resources
     | Resource | Category | Maturity Level |
     |----------|----------|----------------|
     | Account | Financial - General | Level 2 |
     | ActivityDefinition | Specialized - Definitional Artifacts | Level 2 |
     | AdverseEvent | Clinical - Summary | Level 0 |
-    {/* ... continue with all resources alphabetically ... */}
-  </TabsContent>
+    | AllergyIntolerance | Clinical - Summary | Level 3 |
+    | Appointment | Base - Workflow | Level 3 |
+    | AppointmentResponse | Base - Workflow | Level 3 |
+    | AuditEvent | Foundation - Security | Level 3 |
+    | Basic | Foundation - Other | Level 1 |
+    | Binary | Foundation - Other | Normative |
+    | Bundle | Foundation - Other | Normative |
+    | CatalogEntry | Other | Level 0 |
+    | CapabilityStatement | Foundation - Conformance | Normative |
+    | CarePlan | Care Provision | Level 2 |
+    | CareTeam | Care Provision | Level 2 |
+    | ChargeItem | General | Level 0 |
+    | ChargeItemDefinition | General | Level 0 |
+    | Claim | Billing | Level 2 |
+    | ClaimResponse | Billing | Level 2 |
+    | CodeSystem | Terminology | Normative |
+    | CommunicationRequest | Request & Response | Level 2 |
+    | Composition | Documents | Level 2 |
+    | Condition | Clinical - Summary | Level 3 |
+    | Consent | Security | Level 2 |
+    | Contract | General | Level 1 |
+    | Coverage | Support | Level 2 |
+    | CoverageEligibilityRequest | Support | Level 2 |
+    | CoverageEligibilityResponse | Support | Level 2 |
+    | DetectedIssue | Clinical - Summary | Level 1 |
+    | Device | Entities | Level 2 |
+    | DeviceDefinition | Specialized - Definitional Artifacts | Level 0 |
+    | DeviceMetric | Entities | Level 1 |
+    | DeviceRequest | Request & Response | Level 1 |
+    | DeviceUseStatement | Request & Response | Level 0 |
+    | DiagnosticReport | Diagnostics | Level 3 |
+    | DocumentManifest | Documents | Level 2 |
+    | DocumentReference | Documents | Level 3 |
+    | Encounter | Management | Level 2 |
+    | EnrollmentRequest | Support | Level 0 |
+    | EnrollmentResponse | Support | Level 0 |
+    | EventDefinition | Specialized - Definitional Artifacts | Level 0 |
+    | Evidence | Evidence-Based Medicine | Level 0 |
+    | EvidenceVariable | Evidence-Based Medicine | Level 0 |
+    | EffectEvidenceSynthesis | Evidence-Based Medicine | Level 0 |
+    | Encounter | Management | Level 2 |
+    | EpisodeOfCare | Management | Level 2 |
+    | ExplanationOfBenefit | General | Level 2 |
+    | FamilyMemberHistory | Clinical - Summary | Level 2 |
+    | Flag | Management | Level 1 |
+    | Goal | Care Provision | Level 2 |
+    | GraphDefinition | Specialized - Definitional Artifacts | Level 1 |
+    | HealthcareService | Entities | Level 2 |
+    | Immunization | Medications | Level 3 |
+    | ImmunizationEvaluation | Medications | Level 0 |
+    | ImmunizationRecommendation | Medications | Level 1 |
+    | ImplementationGuide | Foundation - Conformance | Level 1 |
+    | InsurancePlan | General | Level 0 |
+    | Invoice | Billing | Level 0 |
+    | Linkage | Other | Level 0 |
+    | Location | Entities | Level 3 |
+    | Medication | Medications | Level 3 |
+    | MedicationAdministration | Medications | Level 2 |
+    | MedicationDispense | Medications | Level 2 |
+    | MedicationKnowledge | Medications | Level 0 |
+    | MedicationRequest | Medications | Level 3 |
+    | MedicationStatement | Medications | Level 3 |
+    | MessageDefinition | Foundation - Security | Level 1 |
+    | MessageHeader | Other | Level 4 |
+    | NamingSystem | Terminology | Level 1 |
+    | NutritionOrder | Care Provision | Level 2 |
+    | Observation | Clinical - Summary | Level 0 |
+    | ObservationDefinition | Specialized - Definitional Artifacts | Level 0 |
+    | OperationDefinition | Foundation - Security | Normative |
+    | Organization | Entities | Level 3 |
+    | OrganizationAffiliation | Entities | Level 0 |
+    | Patient | Individuals | Normative |
+    | PaymentNotice | Payment | Level 2 |
+    | PaymentReconciliation | Payment | Level 2 |
+    | Person | Individuals | Level 2 |
+    | PlanDefinition | Specialized - Definitional Artifacts | Level 2 |
+    | Practitioner | Individuals | Level 3 |
+    | PractitionerRole | Individuals | Level 2 |
+    | Procedure | Clinical - Summary | Level 3 |
+    | ProcedureDefinition | Specialized - Definitional Artifacts | Level 0 |
+    | ProcessRequest | Request & Response | Level 2 |
+    | ProcessResponse | Request & Response | Level 2 |
+    | Provenance | Security | Level 3 |
+    | Questionnaire | Specialized - Definitional Artifacts | Level 3 |
+    | QuestionnaireResponse | Clinical - Summary | Level 3 |
+    | RelatedPerson | Individuals | Level 2 |
+    | RequestGroup | Request & Response | Level 2 |
+    | ResearchDefinition | Evidence-Based Medicine | Level 0 |
+    | ResearchElementDefinition | Evidence-Based Medicine | Level 0 |
+    | ResearchStudy | Public Health & Research | Level 1 |
+    | ResearchSubject | Public Health & Research | Level 1 |
+    | RequestGroup | Request & Response | Level 2 |
+    | RiskAssessment | Care Provision | Level 1 |
+    | RiskEvidenceSynthesis | Evidence-Based Medicine | Level 0 |
+    | Schedule | Base - Workflow | Level 3 |
+    | SearchParameter | Foundation - Conformance | Level 3 |
+    | ServiceRequest | Care Provision | Level 2 |
+    | Specimen | Diagnostics | Level 2 |
+    | SpecimenDefinition | Specialized - Definitional Artifacts | Level 0 |
+    | StructureDefinition | Foundation - Conformance | Normative |
+    | StructureMap | Specialized - Definitional Artifacts | Level 2 |
+    | Subscription | Request & Response | Level 3 |
+    | Substance | Entities | Level 2 |
+    | SubstanceNucleicAcid | Medication Definition | Level 0 |
+    | SubstancePolymer | Medication Definition | Level 0 |
+    | SubstanceProtein | Medication Definition | Level 0 |
+    | SubstanceReferenceInformation | Medication Definition | Level 0 |
+    | SubstanceSpecification | Medication Definition | Level 0 |
+    | SubstanceSourceMaterial | Medication Definition | Level 0 |
+    | System | Entities | Level 3 |
+    | Task | Workflow | Level 2 |
+    | TestReport | Quality Reporting & Testing | Level 0 |
+    | TestScript | Quality Reporting & Testing | Level 2 |
+    | ValueSet | Terminology | Normative |
+    | VisionPrescription | Care Provision | Level 2 |
+  </Tab>
 
-  <TabsContent value="recommended">
+  <Tab value="recommended">
     ## Recommended Resources by Product Type
 
     ### Electronic Health Records (EHR)
@@ -224,5 +332,5 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@repo/design-system/co
     | Coverage | Level 2 | Insurance coverage |
     | ExplanationOfBenefit | Level 2 | Claim processing results |
     | Invoice | Level 0 | Billing invoices |
-  </TabsContent>
+  </Tab>
 </Tabs>

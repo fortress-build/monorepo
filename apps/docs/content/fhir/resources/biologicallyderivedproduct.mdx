@@ -1,3 +1,180 @@
 ---
 title: "BiologicallyDerivedProduct"
 ---
+import { Tab, Tabs} from 'fumadocs-ui/components/tabs'
+import { Users } from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 0 | Patient | <div className="flex items-center gap-2"><Users className="h-5 w-5 text-green-500" /> Base Resources </div> |
+
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+    | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
+    |------|--------|------|------------------------|
+    | identifier | | Identifier[] | External ids for this item |
+    | productCategory | | code | organ \| tissue \| fluid \| cells \| biologicalAgent |
+    | productCode | | CodeableConcept | What this biologically derived product is |
+    | status | | code | available \| unavailable |
+    | request | | Reference\<[ServiceRequest](/fhir/resources/servicerequest)>[] | Procedure request |
+    | quantity | | integer | The amount of this biologically derived product |
+    | parent | | Reference\<[BiologicallyDerivedProduct](/fhir/resources/biologicallyderivedproduct)>[] | BiologicallyDerivedProduct parent |
+    | collection | | BackboneElement | How this product was collected |
+    | └─ collector | | Reference\<[Practitioner](/fhir/resources/practitioner)\|[PractitionerRole](/fhir/resources/practitionerrole)> | Individual performing collection |
+    | └─ source | | Reference\<[Patient](/fhir/resources/patient)\|[Organization](/fhir/resources/organization)> | Who is product from |
+    | └─ collectedDateTime | | dateTime | Time of product collection |
+    | └─ collectedPeriod | | Period | Time of product collection |
+    | processing | | BackboneElement[] | Any processing of the product during collection |
+    | └─ description | | string | Description of processing |
+    | └─ procedure | | CodeableConcept | Processing code |
+    | └─ additive | | Reference\<[Substance](/fhir/resources/substance)> | Substance added during processing |
+    | └─ timeDateTime | | dateTime | Time of processing |
+    | └─ timePeriod | | Period | Time of processing |
+    | manipulation | | BackboneElement | Any manipulation of product post-collection |
+    | └─ description | | string | Description of manipulation |
+    | └─ timeDateTime | | dateTime | Time of manipulation |
+    | └─ timePeriod | | Period | Time of manipulation |
+    | storage | | BackboneElement[] | Product storage |
+    | └─ description | | string | Description of storage |
+    | └─ temperature | | decimal | Storage temperature |
+    | └─ scale | | code | farenheit \| celsius \| kelvin |
+    | └─ duration | | Period | Storage timeperiod |
+  </Tab>
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "BiologicallyDerivedProduct",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // External ids for this item
+  "productCategory" : "<code>", // organ | tissue | fluid | cells | biologicalAgent
+  "productCode" : { CodeableConcept }, // What this biologically derived product is
+  "status" : "<code>", // available | unavailable
+  "request" : [{ Reference(ServiceRequest) }], // Procedure request
+  "quantity" : <integer>, // The amount of this biologically derived product
+  "parent" : [{ Reference(BiologicallyDerivedProduct) }], // BiologicallyDerivedProduct parent
+  "collection" : { // How this product was collected
+    "collector" : { Reference(Practitioner|PractitionerRole) }, // Individual performing collection
+    "source" : { Reference(Patient|Organization) }, // Who is product from
+    // collected[x]: Time of product collection. One of these 2:
+    "collectedDateTime" : "<dateTime>"
+    "collectedPeriod" : { Period }
+  },
+  "processing" : [{ // Any processing of the product during collection
+    "description" : "<string>", // Description of of processing
+    "procedure" : { CodeableConcept }, // Procesing code
+    "additive" : { Reference(Substance) }, // Substance added during processing
+    // time[x]: Time of processing. One of these 2:
+    "timeDateTime" : "<dateTime>"
+    "timePeriod" : { Period }
+  }],
+  "manipulation" : { // Any manipulation of product post-collection
+    "description" : "<string>", // Description of manipulation
+    // time[x]: Time of manipulation. One of these 2:
+    "timeDateTime" : "<dateTime>"
+    "timePeriod" : { Period }
+  },
+  "storage" : [{ // Product storage
+    "description" : "<string>", // Description of storage
+    "temperature" : <decimal>, // Storage temperature
+    "scale" : "<code>", // farenheit | celsius | kelvin
+    "duration" : { Period } // Storage timeperiod
+  }]
+}    ```
+  </Tab>
+  <Tab value="types">
+    ```typescript
+type BiologicallyDerivedProductStorage = {
+    description?: string;
+    temperature?: number;
+    scale?: "farenheit" | "celsius" | "kelvin";
+    duration?: Period;
+}
+
+type BiologicallyDerivedProductProcessing = {
+    description?: string;
+    procedure?: CodeableConcept;
+    additive?: Reference<Substance>;
+    timeDateTime?: string;
+    timePeriod?: Period;
+}
+
+type BiologicallyDerivedProductManipulation = {
+    description?: string;
+    timeDateTime?: string;
+    timePeriod?: Period;
+}
+
+type BiologicallyDerivedProductCollection = {
+    collector?: Reference<Practitioner|PractitionerRole>;
+    source?: Reference<Patient|Organization>;
+    collectedDateTime?: string;
+    collectedPeriod?: Period;
+}
+
+declare class BiologicallyDerivedProduct extends DomainResource{
+    resourceType: "BiologicallyDerivedProduct";
+    identifier?: Identifier[];
+    productCategory?: "organ" | "tissue" | "fluid" | "cells" | "biologicalAgent";
+    productCode?: CodeableConcept;
+    status?: "available" | "unavailable";
+    request?: Reference<ServiceRequest>[];
+    quantity?: number;
+    parent?: Reference<BiologicallyDerivedProduct>[];
+    collection?: BiologicallyDerivedProductCollection;
+    processing?: BiologicallyDerivedProductProcessing[];
+    manipulation?: BiologicallyDerivedProductManipulation;
+    storage?: BiologicallyDerivedProductStorage[];
+}
+    ```
+  </Tab>
+</Tabs>
+
+## Search Parameters
+N/A
+
+## Scope and Usage
+A material substance originating from a biological entity intended to be transplanted or infused into another (possibly the same) biological entity.
+
+### Common Examples
+- Hematopoietic stem cells
+  - Bone marrow
+  - Peripheral blood
+  - Cord blood extraction
+- Blood products
+  - Whole blood
+  - Extracted cells
+  - Plasma
+- Organs
+- Tissues
+  - Porcine valves
+  - Skin
+  - Bovine cardiac tissue
+- Manipulated cells (e.g., CAR T-cells)
+
+### Workflow Considerations
+The workflow for this resource (including request and administration) should be implemented consistently with other similar resources like devices and medications.
+
+## Background and Context
+### Related Resources
+- **Collection Process**
+  - ProcedureRequest: Used for collection requests
+  - Practitioner: Documents who collected the product
+  - Procedure: Documents the collection procedure
+  
+- **Source and Recipients**
+  - Patient: Represents both receiver and source
+  - BiologicallyDerivedProduct: References parent product for multi-day collections
+  
+- **Processing and Analysis**
+  - Substance: Used in product processing
+  - DiagnosticReport: Contains HLA-typing information
+  
+- **Usage**
+  - Procedure: Documents transplantation (references BiologicallyDerivedProduct in "usedReference")
+  - BiologicallyDerivedProduct: Self-referential for related products
+
+## Referenced Elements
+This resource is referenced by itself

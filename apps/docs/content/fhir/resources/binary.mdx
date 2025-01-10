@@ -2,7 +2,82 @@
 title: "Binary"
 ---
 import { Database } from 'lucide-react'
+import { Tab, Tabs} from 'fumadocs-ui/components/tabs'
 
 | Maturity Level | Security Category | Resource Category |
 |----------------|------------------|-------------------|
 | Normative | Other | <div className="flex items-center gap-2"><Database className="h-5 w-5 text-blue-500" /> Foundation </div> |
+
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+    | Name | Required | <div style={{width: "150px"}}>Type</div> | Description & Constraints |
+    |------|--------|------|------------------------|
+    | contentType | <span style={{color: "#22c55e"}}>✓</span> | code | MimeType of the binary content |
+    | securityContext | | Reference\<Any> | Identifies another resource to use as proxy when enforcing access control |
+    | data | | base64Binary | The actual content |
+  </Tab>
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "Binary",
+  // from Resource: id, meta, implicitRules, and language
+  "contentType" : "<code>", // R!  MimeType of the binary content
+  "securityContext" : { Reference(Any) }, // Identifies another resource to use as proxy when enforcing access control
+  "data" : "<base64Binary>" // The actual content
+}
+    ```
+  </Tab>
+  <Tab value="types">
+```typescript
+export declare class Binary extends DomainResource {
+    resourceType: "Binary";
+    contentType: string;  
+    securityContext?: Reference<Resource>;  
+    data?: string;  
+}
+    ```
+  </Tab>
+</Tabs>
+
+## Search Parameters
+N/A
+
+## Scope and Usage
+There are situations where it is useful or required to handle pure binary content using the same framework as other resources. Typically, this is when the binary content is referred to from other FHIR Resources. Using the same framework means that the existing servers, security arrangements, code libraries, etc. can handle additional related content.
+
+Common uses for Binary resources include:
+- CDA Documents (i.e. with XDS)
+- PDF Documents
+- Images
+- Any other binary content (text, zip archives, etc.)
+
+These resources are served in their native form on the REST interface, but can also be represented in XML, JSON, or other formats when included in a Bundle. This is particularly useful when you need to include the content directly in a response rather than leaving it as a reference.
+
+## Background and Context
+The Binary resource serves several key purposes in the FHIR ecosystem:
+
+### Integration with Attachments
+- Used as a target in the Attachment data type via the `.url` element
+- Commonly referenced by DocumentReference and Media resources
+- Can be a target wherever the Attachment data type is used
+
+### Important Characteristics
+- **No Search Support**: Unlike DocumentReference and Media resources, Binary resources do not support search operations
+- **No Context**: The Binary resource itself doesn't carry metadata like author, procedure, or technique
+  - For contextual information, use Media or DocumentReference resources instead
+  - Binary resources focus solely on conveying the actual file content
+
+### Document Handling
+- CDA and PDF documents must be conveyed as Binary (non-native FHIR formats)
+- FHIR Documents can be sent natively using Bundle
+  - However, they may sometimes be sent as Binary to maintain consistency with other document types
+- For images, the Media resource is preferred
+  - Exception: when content is already in binary form (e.g., some IHE XDS implementations)
+
+## Referenced Elements
+This resource is referenced by:
+- [CatalogEntry](/fhir/resources/catalogentry)
+- [ImplementationGuide](/fhir/resources/implementationguide)
+
