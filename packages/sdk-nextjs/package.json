@@ -9,8 +9,6 @@
   "dependencies": {
     "@repo/client-js": "workspace:*",
     "@repo/next-config": "workspace:*",
-    "@tanstack/react-query": "^5.63.0",
-    "@tanstack/react-query-devtools": "^5.63.0",
     "next": "15.1.4"
   },
   "devDependencies": {
