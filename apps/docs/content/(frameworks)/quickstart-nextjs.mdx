@@ -99,10 +99,45 @@ import { Callout } from 'fumadocs-ui/components/callout';
     </Callout>
 
   </Step>
+
+  <Step>
+
+    ## That's all!
+
+    You can start using the Nerve client in your application.
+
+    <Callout type="warn">
+      Currently only a client-side API is available.
+    </Callout>
+
+    ### In a component w/ React Query
+
+    ```tsx twoslash
+    // @noErrors
+    import { useQuery } from "@tanstack/react-query"
+
+    function MyComponent() {
+      const nerve = useNerveClient();
+
+      const { data, error, isLoading } = useQuery({
+        queryKey: ["example-fhir-query"],
+        queryFn: () => client.patient.search({
+          // ... search params
+        })
+      });
+
+      if (error) {
+        return <div>Error: {error.message}</div>
+      }
+      if (isLoading) {
+        return <div>Loading...</div>
+      }
+
+      return <div>Data: {JSON.stringify(data)}</div>;
+    }
+    ```
+
+  </Step>
 </Steps>
-
-All done! 
-
-You can access the Nerve client with the `useNerveClient` hook. 
 
 Click [here](/) to return to the getting started page.
