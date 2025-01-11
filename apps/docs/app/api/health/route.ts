@@ -1,5 +1,8 @@
-import type { NextRequest } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 
 export async function GET(_req: NextRequest) {
-  return "OK";
+  return new NextResponse(undefined, {
+    status: 200,
+    statusText: "OK",
+  });
 }

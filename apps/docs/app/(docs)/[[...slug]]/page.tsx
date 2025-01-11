@@ -9,6 +9,7 @@ import { Popup, PopupContent, PopupTrigger } from "fumadocs-twoslash/ui";
 import { notFound } from "next/navigation";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { Tabs, Tab } from "fumadocs-ui/components/tabs";
+import { Stethoscope } from "lucide-react";
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
@@ -34,6 +35,7 @@ export default async function Page(props: {
             Popup,
             PopupContent,
             PopupTrigger,
+            Stethoscope,
           }}
         />
       </DocsBody>

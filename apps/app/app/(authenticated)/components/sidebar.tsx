@@ -1,13 +1,13 @@
-'use client';
+"use client";
 
-import { OrganizationSwitcher, UserButton } from '@repo/auth/client';
-import { ModeToggle } from '@repo/design-system/components/mode-toggle';
+import { OrganizationSwitcher, UserButton } from "@repo/auth/client";
+import { ModeToggle } from "@repo/design-system/components/mode-toggle";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@repo/design-system/components/ui/collapsible';
-import {} from '@repo/design-system/components/ui/dropdown-menu';
+} from "@repo/design-system/components/ui/collapsible";
+import {} from "@repo/design-system/components/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -25,8 +25,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   useSidebar,
-} from '@repo/design-system/components/ui/sidebar';
-import { cn } from '@repo/design-system/lib/utils';
+} from "@repo/design-system/components/ui/sidebar";
+import { cn } from "@repo/design-system/lib/utils";
 import {
   AnchorIcon,
   BotIcon,
@@ -35,8 +35,8 @@ import {
   LifeBuoyIcon,
   SendIcon,
   SquareTerminalIcon,
-} from 'lucide-react';
-import type { ReactNode } from 'react';
+} from "lucide-react";
+import type { ReactNode } from "react";
 
 type GlobalSidebarProperties = {
   readonly children: ReactNode;
@@ -44,70 +44,72 @@ type GlobalSidebarProperties = {
 
 const data = {
   user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
+    name: "shadcn",
+    email: "m@example.com",
+    avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
-      title: 'Sandbox',
-      url: '/sandbox',
+      title: "Sandbox",
+      url: "/sandbox",
       icon: SquareTerminalIcon,
     },
     {
-      title: 'Products',
-      url: '/products',
+      title: "Products",
+      url: "/products",
       icon: BotIcon,
       items: [
         {
-          title: 'Genesis',
-          url: '/products/genesis',
+          title: "Genesis",
+          url: "/products/genesis",
         },
         {
-          title: 'Explorer',
-          url: '/products/explorer',
+          title: "Explorer",
+          url: "/products/explorer",
         },
         {
-          title: 'Quantum',
-          url: '/products/quantum',
+          title: "Quantum",
+          url: "/products/quantum",
         },
       ],
     },
     {
-      title: 'Platform',
-      url: '/platform',
+      title: "Platform",
+      url: "/platform",
       icon: SquareTerminalIcon,
       items: [
         {
-          title: 'Documentation',
-          url: '/docs',
+          title: "Documentation",
+          url: "/docs",
         },
         {
-          title: 'API',
-          url: '/api',
+          title: "API",
+          url: "/api",
         },
       ],
     },
   ],
   homeNav: {
-    title: 'Home',
-    url: '/home',
+    title: "Home",
+    url: "/home",
     icon: Home,
+    isActive: false,
+    items: [] as { url: string; title: string }[],
   },
   navSecondary: [
     {
-      title: 'Webhooks',
-      url: '/webhooks',
+      title: "Webhooks",
+      url: "/webhooks",
       icon: AnchorIcon,
     },
     {
-      title: 'Support',
-      url: '#',
+      title: "Support",
+      url: "#",
       icon: LifeBuoyIcon,
     },
     {
-      title: 'Feedback',
-      url: '#',
+      title: "Feedback",
+      url: "#",
       icon: SendIcon,
     },
   ],
@@ -125,8 +127,8 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
             <SidebarMenuItem>
               <div
                 className={cn(
-                  'h-[36px] overflow-hidden transition-all [&>div]:w-full',
-                  sidebar.open ? '' : '-mx-1'
+                  "h-[36px] overflow-hidden transition-all [&>div]:w-full",
+                  sidebar.open ? "" : "-mx-1",
                 )}
               >
                 <OrganizationSwitcher
@@ -182,7 +184,7 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
                 <Collapsible
                   key={item.title}
                   asChild
-                  defaultOpen={item.isActive}
+                  // defaultOpen={item.isActive}
                 >
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild tooltip={item.title}>
@@ -219,10 +221,6 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
               ))}
             </SidebarMenu>
           </SidebarGroup>
-          <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-            <SidebarGroupLabel>Products</SidebarGroupLabel>
-            <SidebarMenu></SidebarMenu>
-          </SidebarGroup>
           <SidebarGroup className="mt-auto">
             <SidebarGroupContent>
               <SidebarMenu>
@@ -247,9 +245,9 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
                 showName
                 appearance={{
                   elements: {
-                    rootBox: 'flex overflow-hidden w-full',
-                    userButtonBox: 'flex-row-reverse',
-                    userButtonOuterIdentifier: 'truncate pl-0',
+                    rootBox: "flex overflow-hidden w-full",
+                    userButtonBox: "flex-row-reverse",
+                    userButtonOuterIdentifier: "truncate pl-0",
                   },
                 }}
               />
