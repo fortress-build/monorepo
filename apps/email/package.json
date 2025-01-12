@@ -1,6 +1,7 @@
 {
   "name": "email",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "build": "email build",
     "dev": "email dev --port 3003",
