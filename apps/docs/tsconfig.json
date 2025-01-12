@@ -1,12 +1,12 @@
 {
-  "extends": "@nerve-js/typescript-config/nextjs.json",
+  "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": [
         "./*"
       ],
-      "@nerve-js/*": [
+      "@repo/*": [
         "../../packages/*"
       ]
     }

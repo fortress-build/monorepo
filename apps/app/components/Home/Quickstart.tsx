@@ -1,3 +1,11 @@
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Settings, UserPlus, Database, Search } from "lucide-react";
 
 export function Quickstart() {

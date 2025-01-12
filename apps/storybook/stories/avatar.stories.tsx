@@ -4,7 +4,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from '@nerve-js/design-system/components/ui/avatar';
+} from '@repo/design-system/components/ui/avatar';
 
 /**
  * An image element with a fallback for representing the user.

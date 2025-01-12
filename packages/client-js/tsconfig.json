@@ -1,10 +1,10 @@
 {
-  "extends": "@nerve-js/typescript-config/react-library.json",
+  "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@nerve-js/*": ["../../packages/*"]
+      "@repo/*": ["../../packages/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

@@ -1,4 +1,4 @@
-import { ContactTemplate } from '@nerve-js/email/templates/contact';
+import { ContactTemplate } from '@repo/email/templates/contact';
 
 const ExampleContactEmail = () => (
   <ContactTemplate

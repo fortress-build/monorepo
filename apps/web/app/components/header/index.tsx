@@ -1,8 +1,8 @@
 'use client';
 
 import { env } from '@/env';
-import { ModeToggle } from '@nerve-js/design-system/components/mode-toggle';
-import { Button } from '@nerve-js/design-system/components/ui/button';
+import { ModeToggle } from '@repo/design-system/components/mode-toggle';
+import { Button } from '@repo/design-system/components/ui/button';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,7 +10,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from '@nerve-js/design-system/components/ui/navigation-menu';
+} from '@repo/design-system/components/ui/navigation-menu';
 import { Menu, MoveRight, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';

@@ -1,10 +1,10 @@
 import type { HTTP_METHOD } from "next/dist/server/web/http";
 import type { NextRequest } from "next/server";
 
-import { unkey } from "@nerve-js/tokens";
-import { getSandboxInfo } from "@nerve-js/healthlake";
+import { unkey } from "@repo/tokens";
+import { getSandboxInfo } from "@repo/healthlake";
 import { env } from "@/env";
-import { log } from "@nerve-js/observability/log";
+import { log } from "@repo/observability/log";
 
 interface Params {
   tenant: string;

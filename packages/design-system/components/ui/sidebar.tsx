@@ -3,19 +3,19 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
-import { useIsMobile } from "@nerve-js/design-system/hooks/use-mobile"
-import { cn } from "@nerve-js/design-system/lib/utils"
-import { Button } from "@nerve-js/design-system/components/ui/button"
-import { Input } from "@nerve-js/design-system/components/ui/input"
-import { Separator } from "@nerve-js/design-system/components/ui/separator"
-import { Sheet, SheetContent } from "@nerve-js/design-system/components/ui/sheet"
-import { Skeleton } from "@nerve-js/design-system/components/ui/skeleton"
+import { useIsMobile } from "@repo/design-system/hooks/use-mobile"
+import { cn } from "@repo/design-system/lib/utils"
+import { Button } from "@repo/design-system/components/ui/button"
+import { Input } from "@repo/design-system/components/ui/input"
+import { Separator } from "@repo/design-system/components/ui/separator"
+import { Sheet, SheetContent } from "@repo/design-system/components/ui/sheet"
+import { Skeleton } from "@repo/design-system/components/ui/skeleton"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@nerve-js/design-system/components/ui/tooltip"
+} from "@repo/design-system/components/ui/tooltip"
 import { ViewVerticalIcon } from "@radix-ui/react-icons"
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state"

@@ -1,7 +1,7 @@
 import { env } from "@/env";
-import { auth, currentUser } from "@nerve-js/auth/server";
-import { SidebarProvider } from "@nerve-js/design-system/components/ui/sidebar";
-import { secure } from "@nerve-js/security";
+import { auth, currentUser } from "@repo/auth/server";
+import { SidebarProvider } from "@repo/design-system/components/ui/sidebar";
+import { secure } from "@repo/security";
 import type { ReactNode } from "react";
 import { PostHogIdentifier } from "./components/posthog-identifier";
 import { GlobalSidebar } from "./components/sidebar";

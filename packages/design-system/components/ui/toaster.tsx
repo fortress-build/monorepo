@@ -1,6 +1,6 @@
 "use client"
 
-import { useToast } from "@nerve-js/design-system/hooks/use-toast"
+import { useToast } from "@repo/design-system/hooks/use-toast"
 import {
   Toast,
   ToastClose,
@@ -8,7 +8,7 @@ import {
   ToastProvider,
   ToastTitle,
   ToastViewport,
-} from "@nerve-js/design-system/components/ui/toast"
+} from "@repo/design-system/components/ui/toast"
 
 export function Toaster() {
   const { toasts } = useToast()

@@ -1,1 +1,1 @@
-export { default } from '@nerve-js/design-system/postcss.config.mjs';
+export { default } from '@repo/design-system/postcss.config.mjs';

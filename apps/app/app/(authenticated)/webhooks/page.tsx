@@ -1,4 +1,4 @@
-import { webhooks } from '@nerve-js/webhooks';
+import { webhooks } from '@repo/webhooks';
 import { notFound } from 'next/navigation';
 
 export const metadata = {

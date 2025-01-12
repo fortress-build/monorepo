@@ -14,7 +14,7 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from '@nerve-js/design-system/components/ui/context-menu';
+} from '@repo/design-system/components/ui/context-menu';
 
 /**
  * Displays a menu to the user — such as a set of actions or functions —

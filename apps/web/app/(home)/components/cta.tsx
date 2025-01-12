@@ -1,5 +1,5 @@
 import { env } from '@/env';
-import { Button } from '@nerve-js/design-system/components/ui/button';
+import { Button } from '@repo/design-system/components/ui/button';
 import { MoveRight, PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 

@@ -1,1 +1,1 @@
-export { default } from '@nerve-js/testing';
+export { default } from '@repo/testing';

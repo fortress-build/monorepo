@@ -1,10 +1,10 @@
-import { blog } from '@nerve-js/cms';
-import { Feed } from '@nerve-js/cms/components/feed';
-import { Image } from '@nerve-js/cms/components/image';
-import { cn } from '@nerve-js/design-system/lib/utils';
-import type { Blog, WithContext } from '@nerve-js/seo/json-ld';
-import { JsonLd } from '@nerve-js/seo/json-ld';
-import { createMetadata } from '@nerve-js/seo/metadata';
+import { blog } from '@repo/cms';
+import { Feed } from '@repo/cms/components/feed';
+import { Image } from '@repo/cms/components/image';
+import { cn } from '@repo/design-system/lib/utils';
+import type { Blog, WithContext } from '@repo/seo/json-ld';
+import { JsonLd } from '@repo/seo/json-ld';
+import { createMetadata } from '@repo/seo/metadata';
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
