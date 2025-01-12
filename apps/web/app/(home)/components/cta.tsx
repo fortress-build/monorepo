@@ -9,23 +9,21 @@ export const CTA = () => (
       <div className="flex flex-col items-center gap-8 rounded-md bg-muted p-4 text-center lg:p-14">
         <div className="flex flex-col gap-2">
           <h3 className="max-w-xl font-regular text-3xl tracking-tighter md:text-5xl">
-            Try our platform today!
+            Got the Nerve?
           </h3>
           <p className="max-w-xl text-lg text-muted-foreground leading-relaxed tracking-tight">
-            Managing a small business today is already tough. Avoid further
-            complications by ditching outdated, tedious trade methods. Our goal
-            is to streamline SMB trade, making it easier and faster than ever.
+            Start building now.
           </p>
         </div>
         <div className="flex flex-row gap-4">
           <Button className="gap-4" variant="outline" asChild>
-            <Link href="/contact">
-              Jump on a call <PhoneCall className="h-4 w-4" />
+            <Link href="/docs">
+              Read the docs <PhoneCall className="h-4 w-4" />
             </Link>
           </Button>
           <Button className="gap-4" asChild>
             <Link href={env.NEXT_PUBLIC_APP_URL}>
-              Sign up here <MoveRight className="h-4 w-4" />
+              Start now <MoveRight className="h-4 w-4" />
             </Link>
           </Button>
         </div>

@@ -74,7 +74,7 @@ importers:
         version: 0.11.1(typescript@5.7.3)(zod@3.24.1)
       next:
         specifier: 15.1.4
-        version: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -165,7 +165,7 @@ importers:
         version: 0.469.0(react@19.0.0)
       next:
         specifier: 15.1.4
-        version: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-themes:
         specifier: ^0.4.4
         version: 0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -250,7 +250,7 @@ importers:
         version: 0.469.0(react@19.0.0)
       next:
         specifier: 15.1.4
-        version: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -440,6 +440,9 @@ importers:
       '@t3-oss/env-nextjs':
         specifier: ^0.11.1
         version: 0.11.1(typescript@5.7.3)(zod@3.24.1)
+      '@types/prismjs':
+        specifier: ^1.26.5
+        version: 1.26.5
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
@@ -454,10 +457,16 @@ importers:
         version: 0.469.0(react@19.0.0)
       mdx-bundler:
         specifier: ^10.0.3
-        version: 10.0.3(esbuild@0.24.2)
+        version: 10.0.3(acorn@8.14.0)(esbuild@0.24.2)
       next:
         specifier: 15.1.4
-        version: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      prism-react-renderer:
+        specifier: ^2.4.1
+        version: 2.4.1(react@19.0.0)
+      prismjs:
+        specifier: ^1.29.0
+        version: 1.29.0
       react:
         specifier: 19.0.0
         version: 19.0.0
@@ -714,7 +723,7 @@ importers:
         version: 19.0.2(@types/react@19.0.4)
       next:
         specifier: 15.1.4
-        version: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   packages/database:
     dependencies:
@@ -788,7 +797,7 @@ importers:
         version: 22.10.5
       next:
         specifier: 15.1.4
-        version: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   packages/design-system:
     dependencies:
@@ -1059,7 +1068,7 @@ importers:
         version: link:../typescript-config
       next:
         specifier: 15.1.4
-        version: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   packages/observability:
     dependencies:
@@ -1242,7 +1251,7 @@ importers:
         version: 19.0.2(@types/react@19.0.4)
       next:
         specifier: 15.1.4
-        version: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        version: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   packages/tailwind-config:
     dependencies:
@@ -5676,6 +5685,9 @@ packages:
   '@types/pg@8.6.1':
     resolution: {integrity: sha512-1Kc4oAGzAl7uqUStZCDvaLFqZrW9qWSjXOmBfdgyBP5La7Us6Mg4GBvRlSoaZMhQF/zSj1C8CtKMBkoiT8eL8w==}
 
+  '@types/prismjs@1.26.5':
+    resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
+
   '@types/react-dom@19.0.1':
     resolution: {integrity: sha512-hljHij7MpWPKF6u5vojuyfV0YA4YURsQG7KT6SzV0Zs2BXAtgdTxG6A229Ub/xiWV4w/7JL8fi6aAyjshH4meA==}
 
@@ -9632,6 +9644,11 @@ packages:
     resolution: {integrity: sha512-973driJZvxiGOQ5ONsFhOF/DtzPMOMtgC11kCpUrPGMTgqp2q/1gwzCquocrN33is0VZ5GFHXZYMM9l6h67v2Q==}
     engines: {node: '>=10'}
 
+  prism-react-renderer@2.4.1:
+    resolution: {integrity: sha512-ey8Ls/+Di31eqzUxC46h8MksNuGx/n0AAC8uKpwFau4RPDYLuE3EXTp8N8G2vX2N7UC/+IXeNUnlWBGGcAG+Ig==}
+    peerDependencies:
+      react: '>=16.0.0'
+
   prisma@6.2.1:
     resolution: {integrity: sha512-hhyM0H13pQleQ+br4CkzGizS5I0oInoeTw3JfLw1BRZduBSQxPILlJLwi+46wZzj9Je7ndyQEMGw/n5cN2fknA==}
     engines: {node: '>=18.18'}
@@ -11601,7 +11618,7 @@ snapshots:
       '@arcjet/protocol': 1.0.0-alpha.34
       '@arcjet/transport': 1.0.0-alpha.34(@bufbuild/protobuf@1.10.0)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.0))
       arcjet: 1.0.0-alpha.34
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     transitivePeerDependencies:
       - '@bufbuild/protobuf'
       - '@connectrpc/connect'
@@ -13007,7 +13024,7 @@ snapshots:
       '@clerk/shared': 2.20.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@clerk/types': 4.40.2
       crypto-js: 4.2.0
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       server-only: 0.0.1
@@ -13652,16 +13669,46 @@ snapshots:
 
   '@logtail/next@0.1.7(next@15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       whatwg-fetch: 3.6.20
 
-  '@mdx-js/esbuild@3.0.1(esbuild@0.24.2)':
+  '@mdx-js/esbuild@3.0.1(acorn@8.14.0)(esbuild@0.24.2)':
     dependencies:
       '@mdx-js/mdx': 3.1.0(acorn@8.14.0)
       '@types/unist': 3.0.3
       esbuild: 0.24.2
       vfile: 6.0.3
       vfile-message: 4.0.2
+    transitivePeerDependencies:
+      - acorn
+      - supports-color
+
+  '@mdx-js/mdx@3.1.0(acorn@8.14.0)':
+    dependencies:
+      '@types/estree': 1.0.6
+      '@types/estree-jsx': 1.0.5
+      '@types/hast': 3.0.4
+      '@types/mdx': 2.0.13
+      collapse-white-space: 2.1.0
+      devlop: 1.1.0
+      estree-util-is-identifier-name: 3.0.0
+      estree-util-scope: 1.0.0
+      estree-walker: 3.0.3
+      hast-util-to-jsx-runtime: 2.3.2
+      markdown-extensions: 2.0.0
+      recma-build-jsx: 1.0.0
+      recma-jsx: 1.0.0(acorn@8.14.0)
+      recma-stringify: 1.0.0
+      rehype-recma: 1.0.0
+      remark-mdx: 3.0.1
+      remark-parse: 11.0.0
+      remark-rehype: 11.1.0
+      source-map: 0.7.4
+      unified: 11.0.5
+      unist-util-position-from-estree: 2.0.0
+      unist-util-stringify-position: 4.0.0
+      unist-util-visit: 5.0.0
+      vfile: 6.0.3
     transitivePeerDependencies:
       - acorn
       - supports-color
@@ -13797,7 +13844,7 @@ snapshots:
 
   '@next/third-parties@15.1.4(next@15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)':
     dependencies:
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       third-party-capital: 1.0.20
 
@@ -13817,7 +13864,7 @@ snapshots:
 
   '@nosecone/next@1.0.0-alpha.34(next@15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))':
     dependencies:
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       nosecone: 1.0.0-alpha.34
 
   '@octokit/auth-token@2.5.0':
@@ -15406,7 +15453,7 @@ snapshots:
       '@sentry/vercel-edge': 8.48.0
       '@sentry/webpack-plugin': 2.22.7(webpack@5.91.0(@swc/core@1.3.101(@swc/helpers@0.5.15))(esbuild@0.24.2))
       chalk: 3.0.0
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       resolve: 1.22.8
       rollup: 3.29.5
       stacktrace-parser: 0.1.10
@@ -15432,7 +15479,7 @@ snapshots:
       '@sentry/vercel-edge': 8.48.0
       '@sentry/webpack-plugin': 2.22.7(webpack@5.91.0(@swc/core@1.3.101(@swc/helpers@0.5.15)))
       chalk: 3.0.0
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       resolve: 1.22.8
       rollup: 3.29.5
       stacktrace-parser: 0.1.10
@@ -16607,6 +16654,8 @@ snapshots:
       pg-protocol: 1.6.1
       pg-types: 2.2.0
 
+  '@types/prismjs@1.26.5': {}
+
   '@types/react-dom@19.0.1':
     dependencies:
       '@types/react': 19.0.4
@@ -16767,7 +16816,7 @@ snapshots:
 
   '@vercel/analytics@1.4.1(next@15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(svelte@5.2.7)(vue@3.5.13(typescript@5.7.3))':
     optionalDependencies:
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       svelte: 5.2.7
       vue: 3.5.13(typescript@5.7.3)
@@ -17006,6 +17055,10 @@ snapshots:
       acorn: 8.14.0
 
   acorn-import-attributes@1.9.5(acorn@8.14.0):
+    dependencies:
+      acorn: 8.14.0
+
+  acorn-jsx@5.3.2(acorn@8.14.0):
     dependencies:
       acorn: 8.14.0
 
@@ -19116,7 +19169,7 @@ snapshots:
       unist-util-visit: 5.0.0
     optionalDependencies:
       algoliasearch: 4.24.0
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
     transitivePeerDependencies:
@@ -19147,7 +19200,7 @@ snapshots:
       fumadocs-core: 14.7.2(@types/react@19.0.4)(algoliasearch@4.24.0)(next@15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       gray-matter: 4.0.3
       micromatch: 4.0.8
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       unist-util-visit: 5.0.0
       zod: 3.24.1
     transitivePeerDependencies:
@@ -19201,7 +19254,7 @@ snapshots:
       fumadocs-core: 14.7.2(@types/react@19.0.4)(algoliasearch@4.24.0)(next@15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       lodash.merge: 4.6.2
       lucide-react: 0.469.0(react@19.0.0)
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       next-themes: 0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       postcss-selector-parser: 7.0.0
       react: 19.0.0
@@ -19238,7 +19291,7 @@ snapshots:
 
   geist@1.3.1(next@15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)):
     dependencies:
-      next: 15.1.4(@babel/core@7.26.0)(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      next: 15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   gensync@1.0.0-beta.2: {}
 
@@ -20503,12 +20556,12 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
 
-  mdx-bundler@10.0.3(esbuild@0.24.2):
+  mdx-bundler@10.0.3(acorn@8.14.0)(esbuild@0.24.2):
     dependencies:
       '@babel/runtime': 7.24.6
       '@esbuild-plugins/node-resolve': 0.2.2(esbuild@0.24.2)
       '@fal-works/esbuild-plugin-global-externals': 2.1.2
-      '@mdx-js/esbuild': 3.0.1(esbuild@0.24.2)
+      '@mdx-js/esbuild': 3.0.1(acorn@8.14.0)(esbuild@0.24.2)
       esbuild: 0.24.2
       gray-matter: 4.0.3
       remark-frontmatter: 5.0.0
@@ -20956,6 +21009,32 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       styled-jsx: 5.1.6(@babel/core@7.26.0)(react@19.0.0)
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 15.1.4
+      '@next/swc-darwin-x64': 15.1.4
+      '@next/swc-linux-arm64-gnu': 15.1.4
+      '@next/swc-linux-arm64-musl': 15.1.4
+      '@next/swc-linux-x64-gnu': 15.1.4
+      '@next/swc-linux-x64-musl': 15.1.4
+      '@next/swc-win32-arm64-msvc': 15.1.4
+      '@next/swc-win32-x64-msvc': 15.1.4
+      '@opentelemetry/api': 1.9.0
+      sharp: 0.33.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - babel-plugin-macros
+
+  next@15.1.4(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      '@next/env': 15.1.4
+      '@swc/counter': 0.1.3
+      '@swc/helpers': 0.5.15
+      busboy: 1.6.0
+      caniuse-lite: 1.0.30001676
+      postcss: 8.4.31
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
+      styled-jsx: 5.1.6(react@19.0.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.1.4
       '@next/swc-darwin-x64': 15.1.4
@@ -21618,6 +21697,12 @@ snapshots:
     dependencies:
       parse-ms: 2.1.0
 
+  prism-react-renderer@2.4.1(react@19.0.0):
+    dependencies:
+      '@types/prismjs': 1.26.5
+      clsx: 2.1.1
+      react: 19.0.0
+
   prisma@6.2.1:
     dependencies:
       '@prisma/engines': 6.2.1
@@ -21954,6 +22039,16 @@ snapshots:
       '@types/estree': 1.0.6
       estree-util-build-jsx: 3.0.1
       vfile: 6.0.3
+
+  recma-jsx@1.0.0(acorn@8.14.0):
+    dependencies:
+      acorn-jsx: 5.3.2(acorn@8.14.0)
+      estree-util-to-js: 2.0.0
+      recma-parse: 1.0.0
+      recma-stringify: 1.0.0
+      unified: 11.0.5
+    transitivePeerDependencies:
+      - acorn
 
   recma-jsx@1.0.0(acorn@8.14.0):
     dependencies:
@@ -22818,6 +22913,11 @@ snapshots:
       react: 19.0.0
     optionalDependencies:
       '@babel/core': 7.26.0
+
+  styled-jsx@5.1.6(react@19.0.0):
+    dependencies:
+      client-only: 0.0.1
+      react: 19.0.0
 
   sucrase@3.35.0:
     dependencies:

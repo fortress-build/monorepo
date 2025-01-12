@@ -39,7 +39,7 @@ export const Hero = async () => {
             <div className="flex flex-col gap-4 text-center lg:text-left">
               <h1 className="font-regular text-5xl tracking-tighter md:text-7xl">
                 Healthcare Integrations for{" "}
-                <span className="inline-block bg-gradient-to-r from-[#7aaeed] to-[#142e4e] bg-clip-text text-transparent">
+                <span className="inline-block bg-gradient-to-r from-[#7aaeed] to-[#4a82c6] bg-clip-text text-transparent">
                   developers
                 </span>
               </h1>
