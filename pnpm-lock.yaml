@@ -1150,7 +1150,11 @@ importers:
 
   packages/sdk-nextjs:
     dependencies:
+<<<<<<< HEAD
       '@nerve-js/client':
+=======
+      '@repo/client-js':
+>>>>>>> 95e850d (fixed)
         specifier: workspace:*
         version: link:../client-js
       '@repo/next-config':
