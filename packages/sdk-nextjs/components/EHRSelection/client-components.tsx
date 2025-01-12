@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import type { Patient } from '@repo/client-js/models/fhir/Patient';
-import { useEffect, useState } from 'react';
-import { useNerveClient } from '../../client';
-import type { EHRProvider, PermissionList } from '../nerve-sign-in';
-import ConsentScreen from './ConsentScreen';
-import EHRScreen from './EHRScreen';
+import type { Patient } from "@nerve-js/client/models/fhir/Patient";
+import { useEffect, useState } from "react";
+import { useNerveClient } from "../../client";
+import type { EHRProvider, PermissionList } from "../nerve-sign-in";
+import ConsentScreen from "./ConsentScreen";
+import EHRScreen from "./EHRScreen";
 
 export function AuthenticatedView() {
   const client = useNerveClient();
@@ -18,7 +18,7 @@ export function AuthenticatedView() {
       <button
         type="button"
         onClick={() => {
-          client.patient.read('erXuFYUfucBZaryVksYEcMg3').then((res) => {
+          client.patient.read("erXuFYUfucBZaryVksYEcMg3").then((res) => {
             setPatient(res);
           });
         }}
@@ -28,8 +28,8 @@ export function AuthenticatedView() {
       <button
         type="button"
         onClick={() => {
-          globalThis.localStorage.removeItem('__fhir_oauth_provider');
-          globalThis.localStorage.removeItem('__fhir_access_token');
+          globalThis.localStorage.removeItem("__fhir_oauth_provider");
+          globalThis.localStorage.removeItem("__fhir_access_token");
           globalThis.window.location.reload();
         }}
       >
@@ -49,7 +49,7 @@ export function UnauthenticatedView({
   const [providers] = useState<EHRProvider[]>(initialProviders);
   const [permissions] = useState<PermissionList>(initialPermissions);
   const [selectedProvider, setSelectedProvider] = useState<EHRProvider | null>(
-    null
+    null,
   );
   const client = useNerveClient();
 
@@ -59,12 +59,12 @@ export function UnauthenticatedView({
         provider={selectedProvider}
         onAccept={() => {
           globalThis.localStorage.setItem(
-            '__fhir_oauth_provider',
-            JSON.stringify(selectedProvider)
+            "__fhir_oauth_provider",
+            JSON.stringify(selectedProvider),
           );
 
           client.authenticate().then((res) => {
-            if (res.state === 'unauthenticated') {
+            if (res.state === "unauthenticated") {
               console.log(`${res.authUrl}`);
               globalThis.window.location.assign(res.authUrl);
               return;
@@ -99,12 +99,12 @@ export function AuthStateWrapper({
   const client = useNerveClient();
 
   useEffect(() => {
-    if (!localStorage.getItem('__fhir_oauth_provider')) {
+    if (!localStorage.getItem("__fhir_oauth_provider")) {
       setAuthenticatedState(false);
       return;
     }
 
-    const selectedProviderJson = localStorage.getItem('__fhir_oauth_provider');
+    const selectedProviderJson = localStorage.getItem("__fhir_oauth_provider");
     const selectedProvider = JSON.parse(selectedProviderJson!);
     if (!selectedProvider) {
       setAuthenticatedState(false);
@@ -112,14 +112,14 @@ export function AuthStateWrapper({
     }
 
     const params = new URLSearchParams(window.location.search);
-    if (params.has('code')) {
+    if (params.has("code")) {
       client
-        .authCallback(params.get('code')!)
+        .authCallback(params.get("code")!)
         .then(() => client.getToken())
         .then((token) => {
           setAuthenticatedState(true);
         });
-    } else if (localStorage.getItem('__fhir_access_token')) {
+    } else if (localStorage.getItem("__fhir_access_token")) {
       setAuthenticatedState(true);
     } else {
       setAuthenticatedState(false);

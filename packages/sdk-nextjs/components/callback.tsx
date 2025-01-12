@@ -1,15 +1,11 @@
 "use client";
 
-import { useNerveClient, useNerveConfig } from "@/client";
+import { useNerveClient, useNerveConfig } from "../client";
 import { useRouter, useSearchParams } from "next/navigation";
 import type React from "react";
 import { useEffect } from "react";
 
-export default function CallbackPage({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export function CallbackPage({ children }: { children: React.ReactNode }) {
   const client = useNerveClient();
   const config = useNerveConfig();
   const router = useRouter();

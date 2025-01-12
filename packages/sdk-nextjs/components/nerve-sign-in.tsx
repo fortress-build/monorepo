@@ -1,11 +1,11 @@
-'use server';
+"use server";
 
-import {} from '@repo/design-system/components/ui/card';
-import {} from 'lucide-react';
-import type { JSX } from 'react';
-import { AuthStateWrapper } from './EHRSelection/client-components';
-import { mockEHRProviders } from './EHRSelection/mock-ehr-list';
-import { mockPermissionList } from './EHRSelection/mock-permission-list';
+import {} from "@repo/design-system/components/ui/card";
+import {} from "lucide-react";
+import type { JSX } from "react";
+import { AuthStateWrapper } from "./EHRSelection/client-components";
+import { mockEHRProviders } from "./EHRSelection/mock-ehr-list";
+import { mockPermissionList } from "./EHRSelection/mock-permission-list";
 
 export interface EHRProvider {
   name: string;
@@ -47,8 +47,7 @@ async function getEHRProviders(): Promise<EHRProvider[]> {
   //   return mockEHRProviders; // For now, still return mock data
   // } catch (error) {
   //   console.error('Failed to fetch EHR providers:', error);
-    return mockEHRProviders; // Fallback to mock data
-  
+  return mockEHRProviders; // Fallback to mock data
 }
 
 async function getPermissionList(): Promise<PermissionList> {
@@ -69,11 +68,10 @@ async function getPermissionList(): Promise<PermissionList> {
   //   return mockPermissionList; // For now, still return mock data
   // } catch (error) {
   //   console.error('Failed to fetch permissions:', error);
-    return mockPermissionList; // Fallback to mock data
-  
+  return mockPermissionList; // Fallback to mock data
 }
 
-export default async function NerveSignIn() {
+export async function NerveSignIn() {
   const providers = await getEHRProviders();
   const permissions = await getPermissionList();
   const initialAuthState = false; // You might want to determine this server-side

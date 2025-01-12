@@ -173,7 +173,7 @@ export class Nerve {
       }
 
       // TODO: Token expired, refresh
-      throw new Error("unimplemented");
+      // throw new Error("unimplemented");
     }
 
     // No token, start auth flow
@@ -194,6 +194,14 @@ export class Nerve {
       state: "unauthenticated",
       authUrl: `${this.provider.authUrl}/authorize?${request.toString()}`,
     };
+  }
+
+  isAuthenticated(): boolean {
+    return (
+      this.accessToken !== undefined &&
+      this.tokenExpiration !== undefined &&
+      this.tokenExpiration < Date.now() / 1000
+    );
   }
 
   async authCallback(code: string) {

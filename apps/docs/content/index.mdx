@@ -5,7 +5,7 @@ description: Learn how to integrate Nerve API into your healthcare application
 
 import { DiscordIcon } from '../icons/discord.tsx'
 import { FHIRIcon } from '../icons/fhir.tsx'
-import {LogoIcon} from '../icons/logo.tsx'
+import { LogoIcon } from '../icons/logo.tsx'
 import { CodeIcon, PuzzleIcon } from 'lucide-react'
 
 ## Introduction
@@ -41,14 +41,14 @@ for reading and writing data to EHR systems.
 
 2. **Install SDK**
 
-   ```bash
+   ```package-install
    npm install @nerve-js/client
    ```
 
 ## Basic Usage
 
 ```typescript
-import { NerveClient } from 'nerve-js';
+import { NerveClient } from '@nerve-js/client';
 
 const client = new NerveClient({
   redirectUrl: 'https://your-app.com/callback',

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/sdk-nextjs",
+  "name": "@nerve-js/next",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -7,10 +7,14 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@repo/client-js": "workspace:*",
+    "@nerve-js/client": "workspace:*",
     "@repo/next-config": "workspace:*",
     "lucide-react": "^0.469.0",
-    "next": "15.1.4"
+    "next": "15.1.4",
+    "@repo/tailwind-config": "workspace:*",
+    "next-themes": "^0.4.4",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
   },
   "devDependencies": {
     "@repo/typescript-config": "workspace:*",
@@ -23,5 +27,8 @@
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3"
   },
-  "files": ["dist", "public"]
+  "files": [
+    "dist",
+    "public"
+  ]
 }

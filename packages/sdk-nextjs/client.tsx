@@ -1,11 +1,13 @@
-'use client';
+"use client";
 
-import { Nerve } from '@repo/client-js';
-import { createContext, useContext } from 'react';
-import type React from 'react';
+import { Nerve } from "@nerve-js/client";
+import { useRouter } from "next/navigation";
+import { createContext, useContext, useEffect } from "react";
+import type React from "react";
 
 export interface NerveNextConfig {
   afterRedirectUrl: string;
+  signInUrl: string;
 }
 
 interface NerveNextContext {
@@ -13,19 +15,35 @@ interface NerveNextContext {
   config: NerveNextConfig;
 }
 
-export const NerveGlobalContext = createContext<NerveNextContext | undefined>(
-  undefined
+const NerveGlobalContext = createContext<NerveNextContext | undefined>(
+  undefined,
 );
+
+export function Authenticated({ children }: { children: React.ReactNode }) {
+  const client = useNerveClient();
+  const config = useNerveConfig();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!client.isAuthenticated()) {
+      router.replace(config.signInUrl);
+    }
+  }, [client, router, config]);
+
+  return children;
+}
 
 export function NerveProvider({
   children,
   redirectUrl,
   afterRedirectUrl,
-  scopes = ['openid', 'fhirUser', 'user/*.*'],
+  signInUrl,
+  scopes = ["openid", "fhirUser", "user/*.*"],
 }: {
   children: React.ReactNode;
   redirectUrl: string;
   afterRedirectUrl: string;
+  signInUrl: string;
   scopes?: string[];
 }) {
   return (
@@ -37,6 +55,7 @@ export function NerveProvider({
         }),
         config: {
           afterRedirectUrl,
+          signInUrl,
         },
       }}
     >
@@ -49,7 +68,7 @@ export function useNerveClient(): Nerve {
   const context = useContext(NerveGlobalContext);
 
   if (context === undefined) {
-    throw new Error('useNerveClient must be used within a NerveProvider');
+    throw new Error("useNerveClient must be used within a NerveProvider");
   }
 
   return context.client;
@@ -59,7 +78,7 @@ export function useNerveConfig(): NerveNextConfig {
   const context = useContext(NerveGlobalContext);
 
   if (context === undefined) {
-    throw new Error('useNerveConfig must be used within a NerveProvider');
+    throw new Error("useNerveConfig must be used within a NerveProvider");
   }
 
   return context.config;
