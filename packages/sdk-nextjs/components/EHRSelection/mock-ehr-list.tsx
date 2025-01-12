@@ -1,12 +1,12 @@
-import Image from 'next/image';
-import type { EHRProvider } from '../nerve-sign-in';
+import Image from "next/image";
+import type { EHRProvider } from "../nerve-sign-in";
 
 export const mockEHRProviders: EHRProvider[] = [
   {
-    name: 'Epic',
-    authUrl: 'https://fhir.epic.com/interconnect-fhir-oauth/oauth2',
-    fhirUrl: 'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4',
-    clientId: 'de0e1685-2b74-403f-b9b3-bda29bfc3e8a',
+    name: "Epic",
+    authUrl: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2",
+    fhirUrl: "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4",
+    clientId: "de0e1685-2b74-403f-b9b3-bda29bfc3e8a",
     icon: (
       <Image
         src="https://d31yg8dlyykylt.cloudfront.net/ehrs/Epic.svg"
@@ -17,10 +17,10 @@ export const mockEHRProviders: EHRProvider[] = [
     ),
   },
   {
-    name: 'Cerner',
-    authUrl: 'https://fhir.cerner.com/auth',
-    fhirUrl: 'https://fhir.cerner.com/r4',
-    clientId: '',
+    name: "Cerner",
+    authUrl: "https://fhir.cerner.com/auth",
+    fhirUrl: "https://fhir.cerner.com/r4",
+    clientId: "",
     icon: (
       <Image
         src="https://d31yg8dlyykylt.cloudfront.net/ehrs/Cerner.svg"
@@ -31,10 +31,10 @@ export const mockEHRProviders: EHRProvider[] = [
     ),
   },
   {
-    name: 'Athena Health',
-    authUrl: 'https://api.athenahealth.com/oauth',
-    fhirUrl: 'https://api.athenahealth.com/fhir/r4',
-    clientId: '',
+    name: "Athena Health",
+    authUrl: "https://api.athenahealth.com/oauth",
+    fhirUrl: "https://api.athenahealth.com/fhir/r4",
+    clientId: "",
     icon: (
       <Image
         src="https://d31yg8dlyykylt.cloudfront.net/ehrs/AthenaHealth.svg"
@@ -45,10 +45,10 @@ export const mockEHRProviders: EHRProvider[] = [
     ),
   },
   {
-    name: 'AllScripts',
-    authUrl: 'https://allscripts.com/auth',
-    fhirUrl: 'https://allscripts.com/fhir/r4',
-    clientId: '',
+    name: "AllScripts",
+    authUrl: "https://allscripts.com/auth",
+    fhirUrl: "https://allscripts.com/fhir/r4",
+    clientId: "",
     icon: (
       <Image
         src="https://d31yg8dlyykylt.cloudfront.net/ehrs/Allscripts.svg"
@@ -59,10 +59,10 @@ export const mockEHRProviders: EHRProvider[] = [
     ),
   },
   {
-    name: 'NextGen Healthcare',
-    authUrl: 'https://nextgen.com/auth',
-    fhirUrl: 'https://nextgen.com/fhir/r4',
-    clientId: '',
+    name: "NextGen Healthcare",
+    authUrl: "https://nextgen.com/auth",
+    fhirUrl: "https://nextgen.com/fhir/r4",
+    clientId: "",
     icon: (
       <Image
         src="https://d31yg8dlyykylt.cloudfront.net/ehrs/NextGen.svg"
@@ -73,10 +73,10 @@ export const mockEHRProviders: EHRProvider[] = [
     ),
   },
   {
-    name: 'eClinicalWorks',
-    authUrl: 'https://eclinicalworks.com/auth',
-    fhirUrl: 'https://eclinicalworks.com/fhir/r4',
-    clientId: '',
+    name: "eClinicalWorks",
+    authUrl: "https://eclinicalworks.com/auth",
+    fhirUrl: "https://eclinicalworks.com/fhir/r4",
+    clientId: "",
     icon: (
       <Image
         src="https://d31yg8dlyykylt.cloudfront.net/ehrs/eClinicalWorks.svg"

@@ -7,7 +7,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@repo/design-system/components/ui/collapsible";
-import {} from "@repo/design-system/components/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -29,11 +28,14 @@ import {
 import { cn } from "@repo/design-system/lib/utils";
 import {
   AnchorIcon,
+  BookOpenIcon,
   BotIcon,
   ChevronRightIcon,
+  FrameIcon,
   Home,
   LifeBuoyIcon,
   SendIcon,
+  Settings2Icon,
   SquareTerminalIcon,
 } from "lucide-react";
 import type { ReactNode } from "react";
@@ -48,30 +50,16 @@ const data = {
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
   },
-  navMain: [
+  home: {
+    title: "Home",
+    url: "/home",
+    icon: FrameIcon,
+  },
+  products: [
     {
       title: "Sandbox",
       url: "/sandbox",
       icon: SquareTerminalIcon,
-    },
-    {
-      title: "Products",
-      url: "/products",
-      icon: BotIcon,
-      items: [
-        {
-          title: "Genesis",
-          url: "/products/genesis",
-        },
-        {
-          title: "Explorer",
-          url: "/products/explorer",
-        },
-        {
-          title: "Quantum",
-          url: "/products/quantum",
-        },
-      ],
     },
     {
       title: "Platform",
@@ -113,7 +101,6 @@ const data = {
       icon: SendIcon,
     },
   ],
-  products: [],
 };
 
 export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
@@ -142,50 +129,22 @@ export const GlobalSidebar = ({ children }: GlobalSidebarProperties) => {
         <SidebarContent>
           <SidebarGroup>
             <SidebarMenu>
-              <Collapsible asChild defaultOpen={data.homeNav.isActive}>
-                <SidebarMenuItem>
-                  <SidebarMenuButton asChild tooltip={data.homeNav.title}>
-                    <a href={data.homeNav.url}>
-                      <data.homeNav.icon />
-                      <span>{data.homeNav.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                  {data.homeNav.items?.length ? (
-                    <>
-                      <CollapsibleTrigger asChild>
-                        <SidebarMenuAction className="data-[state=open]:rotate-90">
-                          <ChevronRightIcon />
-                          <span className="sr-only">Toggle</span>
-                        </SidebarMenuAction>
-                      </CollapsibleTrigger>
-                      <CollapsibleContent>
-                        <SidebarMenuSub>
-                          {data.homeNav.items?.map((subItem) => (
-                            <SidebarMenuSubItem key={subItem.title}>
-                              <SidebarMenuSubButton asChild>
-                                <a href={subItem.url}>
-                                  <span>{subItem.title}</span>
-                                </a>
-                              </SidebarMenuSubButton>
-                            </SidebarMenuSubItem>
-                          ))}
-                        </SidebarMenuSub>
-                      </CollapsibleContent>
-                    </>
-                  ) : null}
-                </SidebarMenuItem>
-              </Collapsible>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip={data.home.title}>
+                  <a href={data.home.url}>
+                    <data.home.icon />
+                    <span>{data.home.title}</span>
+                  </a>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroup>
+
           <SidebarGroup>
-            <SidebarGroupLabel>Developer Platform</SidebarGroupLabel>
+            <SidebarGroupLabel>Products</SidebarGroupLabel>
             <SidebarMenu>
-              {data.navMain.map((item) => (
-                <Collapsible
-                  key={item.title}
-                  asChild
-                  // defaultOpen={item.isActive}
-                >
+              {data.products.map((item) => (
+                <Collapsible key={item.title} asChild>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild tooltip={item.title}>
                       <a href={item.url}>

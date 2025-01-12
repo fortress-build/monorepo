@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@repo/design-system/components/ui/button";
+
 import {
   Card,
   CardContent,
@@ -29,7 +30,7 @@ export default function EHRScreen({
   );
 
   return (
-    <Card className="w-[500px] mx-auto mt-16 shadow-none border border-gray-200">
+    <Card className="w-[32rem] mx-auto mt-16 shadow-none border border-gray-200">
       <CardHeader className="flex flex-col gap-2">
         <CardTitle>Select Your EHR Provider</CardTitle>
         <Input
@@ -42,7 +43,7 @@ export default function EHRScreen({
       </CardHeader>
       <CardContent>
         <div
-          className={`max-h-[180px] grid grid-cols-2 gap-1 ${
+          className={`max-h-[45rem] grid grid-cols-2 gap-1 ${
             filteredProviders.length > 6 ? "overflow-y-scroll" : "grid-rows-3"
           }`}
         >

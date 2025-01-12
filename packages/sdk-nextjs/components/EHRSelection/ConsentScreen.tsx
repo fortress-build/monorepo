@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   Card,
@@ -6,13 +6,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@repo/design-system/components/ui/card';
-import { ArrowLeft, ArrowUpRight, Check, ChevronDown } from 'lucide-react';
-import Image from 'next/image';
-import { useState } from 'react';
-import { Button } from '../../../design-system/components/ui/button';
-import type { EHRProvider } from '../nerve-sign-in';
-import type { PermissionList } from '../nerve-sign-in';
+} from "@repo/design-system/components/ui/card";
+import { ArrowLeft, ArrowUpRight, Check, ChevronDown } from "lucide-react";
+import Image from "next/image";
+import { useState } from "react";
+import { Button } from "../../../design-system/components/ui/button";
+import type { EHRProvider } from "../nerve-sign-in";
+import type { PermissionList } from "../nerve-sign-in";
 
 export default function ConsentScreen({
   onAccept,
@@ -62,7 +62,7 @@ export default function ConsentScreen({
                   className="flex flex-col gap-2 p-3 border rounded-md bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
                   onClick={() =>
                     setSelectedItem(
-                      selectedItem === item.title ? null : item.title
+                      selectedItem === item.title ? null : item.title,
                     )
                   }
                 >
@@ -73,7 +73,7 @@ export default function ConsentScreen({
                     </div>
                     <ChevronDown
                       className={`h-4 w-4 text-gray-500 transition-transform ${
-                        selectedItem === item.title ? 'rotate-180' : ''
+                        selectedItem === item.title ? "rotate-180" : ""
                       }`}
                     />
                   </div>
@@ -111,7 +111,7 @@ export default function ConsentScreen({
                   className="flex flex-col gap-2 p-3 border rounded-md bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
                   onClick={() =>
                     setSelectedItem(
-                      selectedItem === item.title ? null : item.title
+                      selectedItem === item.title ? null : item.title,
                     )
                   }
                 >
@@ -122,7 +122,7 @@ export default function ConsentScreen({
                     </div>
                     <ChevronDown
                       className={`h-4 w-4 text-gray-500 transition-transform ${
-                        selectedItem === item.title ? 'rotate-180' : ''
+                        selectedItem === item.title ? "rotate-180" : ""
                       }`}
                     />
                   </div>
