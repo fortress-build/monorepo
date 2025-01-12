@@ -1,7 +1,5 @@
 "use server";
 
-import {} from "@repo/design-system/components/ui/card";
-import {} from "lucide-react";
 import type { JSX } from "react";
 import { AuthStateWrapper } from "./EHRSelection/client-components";
 import { mockEHRProviders } from "./EHRSelection/mock-ehr-list";
