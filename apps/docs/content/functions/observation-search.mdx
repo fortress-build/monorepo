@@ -1,0 +1,559 @@
+---
+title: "observation.search"
+---
+
+# Core Characteristics
+
+## Request Parameters
+
+### Native Parameters
+| Name (Type) | Description | Required | Is Array |
+|-------------|-------------|-----------|-----------|
+| category (String) | Use "core-characteristics" to search for characteristics observations. | Yes | No |
+| code (String) | LOINC code of observation. Can be 76516-4 for gestational age or 8339-4 for birth weight. | Yes | No |
+| patient (String) | Reference to a patient resource. If both patient and subject are provided, they must match. | Yes | No |
+
+### Post-filter Parameters
+| Name (Type) | Description | Is Optional | Is Array |
+|-------------|-------------|-------------|-----------|
+| combo-code (String) | This is the LOINC code corresponding to value returned in this observation. | true | false |
+| combo-value-concept (String) | Type of data returned. See the valueCodeableConcept response element for more information. | true | false |
+| issued (String) | The instant when this observation was last edited. | true | false |
+| performer (String) | The party responsible for documenting the observation. | true | false |
+| status (String) | The status of the observation. Always use "final" when searching for this type of data. | true | false |
+| value-concept (String) | Type of data returned. See the valueCodeableConcept response element for more information. | true | false |
+| value-string (String) | Type of data returned. See the valueString response element for more information. | true | false |
+
+## Response
+
+```json
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 2,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://hostname/instance/api/FHIR/R4/Observation?patient=eZO66HeGXB6VCJemL-ciSKA3&category=core-characteristics"
+    }
+  ],
+  "entry": [
+    {
+      "link": [
+        {
+          "relation": "self",
+          "url": "https://hostname/instance/api/FHIR/R4/Observation/eJW3Cy0gsPSma08Z6jFDVDFZqbJqmUZ63rNfdLxd0GiU3"
+        }
+      ],
+      "fullUrl": "https://hostname/instance/api/FHIR/R4/Observation/eJW3Cy0gsPSma08Z6jFDVDFZqbJqmUZ63rNfdLxd0GiU3",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "eJW3Cy0gsPSma08Z6jFDVDFZqbJqmUZ63rNfdLxd0GiU3",
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://open.epic.com/FHIR/StructureDefinition/observation-category",
+              "code": "core-characteristics",
+              "display": "Core Characteristics"
+            }
+          ],
+          "text": "Core Characteristics"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "76516-4",
+              "display": "Gestational age at birth"
+            }
+          ],
+          "text": "Gestational age at birth"
+        },
+        "subject": {
+          "reference": "Patient/eZO66HeGXB6VCJemL-ciSKA3",
+          "display": "Meiko Lufhir"
+        },
+        "issued": "2019-09-05T21:32:37Z",
+        "performer": {
+          "reference": "Practitioner/euJOUNeZyX6mofWELWG0Ibg3",
+          "display": "Starter Provider, MD"
+        },
+        "valueQuantity": {
+          "value": 264,
+          "unit": "d",
+          "system": "http://unitsofmeasure.org",
+          "code": "d"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "link": [
+        {
+          "relation": "self",
+          "url": "https://hostname/instance/api/FHIR/R4/Observation/eJW3Cy0gsPSma08Z6jFDVDPI7tUavtRv8uzTVG5MX4PQ3"
+        }
+      ],
+      "fullUrl": "https://hostname/instance/api/FHIR/R4/Observation/eJW3Cy0gsPSma08Z6jFDVDPI7tUavtRv8uzTVG5MX4PQ3",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "eJW3Cy0gsPSma08Z6jFDVDPI7tUavtRv8uzTVG5MX4PQ3",
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://open.epic.com/FHIR/StructureDefinition/observation-category",
+              "code": "core-characteristics",
+              "display": "Core Characteristics"
+            }
+          ],
+          "text": "Core Characteristics"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://loinc.org",
+              "code": "8339-4",
+              "display": "Birth weight measured"
+            }
+          ],
+          "text": "Birth weight measured"
+        },
+        "subject": {
+          "reference": "Patient/eZO66HeGXB6VCJemL-ciSKA3",
+          "display": "Meiko Lufhir"
+        },
+        "issued": "2019-09-05T21:32:37Z",
+        "performer": {
+          "reference": "Practitioner/euJOUNeZyX6mofWELWG0Ibg3",
+          "display": "Starter Provider, MD"
+        },
+        "valueQuantity": {
+          "value": 2.999,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
+```
+
+
+# Labs
+
+## Request Parameters
+
+### Native Parameters
+| Name (Type) | Description | Required | Is Array |
+|-------------|-------------|-----------|-----------|
+| category (String) | Use "laboratory" to search for all lab observations. Starting in the November 2021 version of Epic, this parameter also supports the following types of values:<br/><br/>- Epic order type, such as "Lab". Supported values vary based on organization-specific configuration.<br/>- Any of the following SNOMED codes:<br/>  - 252275004-Hematology<br/>  - 275711006-Chemistry<br/>  - 68793005-Serology<br/>  - 395124008-Virology<br/>  - 314076009-Toxicology<br/>  - 19851009-Microbiology<br/>  - 405825005-Molecular genetics<br/><br/>Starting in February 2024, "imaging" is supporting. | Yes | No |
+| code (String) | The observation identifier.<br/><br/>LOINC code search is supported in all versions.<br/><br/>Starting in the November 2021 version of Epic, this parameter also supports the following types of values which can be searched with or without a system specified (code=[code] or code=[system]|[code]). If specifying a system, the corresponding OID value must be provided:<br/><br/>- Order component identifiers from the Epic system<br/>- Other custom identifiers defined by the Epic organization | Yes | No |
+| date (String) | Date when the specimen was obtained. | No | No |
+| patient (String) | The reference to a patient resource. | Conditional | No |
+| subject (String) | The reference to a patient resource. | Conditional | No |
+
+### Post-filter Parameters
+| Name (Type) | Description | Is Optional | Is Array |
+|-------------|-------------|-------------|-----------|
+| based-on (String) | The procedure or service this observation is associated with. | true | false |
+| combo-code (String) | The observation identifier.<br/><br/>LOINC code search is supported in all versions.<br/><br/>Starting in the November 2021 version of Epic, this parameter also supports the following types of values which can be searched with or without a system specified (code=[code] or code=[system]|[code]). If specifying a system, the corresponding OID value must be provided:<br/><br/>- Order component identifiers from the Epic system<br/>- Other custom identifiers defined by the Epic organization | true | false |
+| combo-data-absent-reason (String) | The reason why normally expected content of the data element is missing. Set to "unknown" for lab result components with no values. This element is available starting in the February 2022 version of Epic. | true | false |
+| combo-value-concept (String) | SNOMED code associated with component | true | false |
+| data-absent-reason (String) | The reason why normally expected content of the data element is missing. Set to "unknown" for lab result components with no values. This element is available starting in the February 2022 version of Epic. | true | false |
+| derived-from (String) | The method or isolate level Observation FHIR ID. | true | false |
+| encounter (String) | The Encounter FHIR ID linked to the order. | true | false |
+| has-member (String) | Values include:<br/><br/>- has-member: used for sensitivity-level observations<br/>- derived-from: used for isolate-level observations | true | false |
+| issued (String) | The observation instant. | true | false |
+| method (String) | SNOMED code mapped to procedure record in Epic. | true | false |
+| performer (String) | A reference to the resulting agency's director's Practitioner resource. | true | false |
+| specimen (String) | A reference to the Specimen resource. | true | false |
+| status (String) | The status of the lab order.<br/><br/>For organizations in the Netherlands, this element can also include a TestResultStatus extension that indicates the test result status. | true | false |
+| value-concept (String) | SNOMED code associated with component | true | false |
+| value-string (String) | The result value if the result is a string. | true | false |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1,
+    "link": [
+        {
+            "relation": "next",
+            "url": "https://hostname/instance/api/FHIR/R4/Observation?patient=e3E2Rkizy.WmzItzk1PbZAQ3&category=laboratory&_count=1&sessionID=08-45714C68149711ECBEA4D2068206269D"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Observation/eAMXBdyxr2HSrK7BSIJoPna14R45Ho9Cwgyy5qfxFTqJraA5OWLQFNaXFUhKX.yTF3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Observation/eAMXBdyxr2HSrK7BSIJoPna14R45Ho9Cwgyy5qfxFTqJraA5OWLQFNaXFUhKX.yTF3",
+            "resource": {
+                "resourceType": "Observation",
+                "id": "eAMXBdyxr2HSrK7BSIJoPna14R45Ho9Cwgyy5qfxFTqJraA5OWLQFNaXFUhKX.yTF3",
+                "basedOn": [
+                    {
+                        "reference": "ServiceRequest/edgL1qrdpvDNnJNMxFUDV81i4toQJN0dTqmIcrPamkUI3"
+                    }
+                ],
+                "status": "final",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://snomed.info/sct",
+                                "code": "252275004",
+                                "display": "Hematology test (procedure)"
+                            }
+                        ],
+                        "text": "Hematology test (procedure)"
+                    },
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                                "code": "laboratory",
+                                "display": "Laboratory"
+                            }
+                        ],
+                        "text": "Laboratory"
+                    },
+                    {
+                        "coding": [
+                            {
+                                "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.10.798268.30",
+                                "code": "Lab",
+                                "display": "Lab"
+                            }
+                        ],
+                        "text": "Lab"
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.5.737384.188",
+                            "code": "68"
+                        },
+                        {
+                            "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.5.737384.431",
+                            "code": "AF-GLUKOOSI"
+                        },
+                        {
+                            "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.5.737384.430",
+                            "code": "1459"
+                        },
+                        {
+                            "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.2.768282",
+                            "code": "68",
+                            "display": "GLUCOSE"
+                        }
+                    ],
+                    "text": "GLUCOSE"
+                },
+                "subject": {
+                    "reference": "Patient/e3E2Rkizy.WmzItzk1PbZAQ3",
+                    "display": "Marshall, Fhir One"
+                },
+                "encounter": {
+                    "reference": "Encounter/eorXVhQrtx.V6AYpjcoaYBMEpqd5Y8s7Eq8Mr4Ltn.2U3",
+                    "display": "Office Visit"
+                },
+                "effectiveDateTime": "2021-09-02T18:41:00Z",
+                "issued": "2021-09-02T19:10:25Z",
+                "performer": [
+                    {
+                        "reference": "Practitioner/ecw01Sml5VFYLaE2Mp3-hgQ3",
+                        "display": "Lab Admin Tpr"
+                    }
+                ],
+                "valueQuantity": {
+                    "value": 95,
+                    "unit": "mmol/L",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mmol/L"
+                },
+                "specimen": {
+                    "reference": "Specimen/eiWBs9u0Cb1fNJ5IgL3cxqgWFghRXa9VQggFtlJ3i2303"
+                },
+                "referenceRange": [
+                    {
+                        "low": {
+                            "value": 80,
+                            "unit": "mmol/L",
+                            "system": "http://unitsofmeasure.org",
+                            "code": "mmol/L"
+                        },
+                        "high": {
+                            "value": 110,
+                            "unit": "mmol/L",
+                            "system": "http://unitsofmeasure.org",
+                            "code": "mmol/L"
+                        },
+                        "text": "80 - 110 mmol/L"
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```
+
+
+# Vitals
+
+## Request Parameters
+
+### Native Parameters
+| Name (Type) | Description | Required | Is Array |
+|-------------|-------------|-----------|-----------|
+| category (String) | Use "vital-signs" to search for vitals observations. | Conditional | No |
+| code (String) | LOINC code, CADSR code, flowsheet ID, or encoded flowsheet ID. Either this element or category must be provided.<br/><br/>The code element value varies depending upon what is passed (for example, a flowsheet ID vs. a LOINC code). If using a flowsheet ID, the system value is different between Epic organizations, and it is also different between production and non-production environments for the same organization. | Conditional | No |
+| date (String) | The date range for when the observation was taken.<br/><br/>For growth chart data (Epic version August 2021 and later), only the most recent observation within the timeframe is returned. | No | No |
+| patient (String) | Reference to a patient resource the observation is about. Either this element or subject must be provided. If both are provided, they must match. | Conditional | No |
+| subject (String) | Reference to a patient resource the observation is about. Either this element or patient must be provided. If both are provided, they must match. | Conditional | No |
+
+### Post-filter Parameters
+| Name (Type) | Description | Is Optional | Is Array |
+|-------------|-------------|-------------|-----------|
+| combo-code (String) | Matches to the code or component.code element in the response. | true | false |
+| combo-data-absent-reason (String) | The reason why the expected value in the element Observation.value[x] or Observation.component.value[x] is missing. | true | false |
+| combo-value-concept (String) | The value or component value of the observation, if that value is a CodeableConcept. | true | false |
+| data-absent-reason (String) | The reason why the expected value in the element Observation.value[x] is missing. | true | false |
+| encounter (String) | Encounter associated with this observation value. For growth chart percentiles, the most recent encounter must be specified. | true | false |
+| issued (String) | The date and time the observation was documented. | true | false |
+| method (String) | Method by which the observation was obtained. | true | false |
+| performer (String) | Who filed the observation. For patient-reported measurements, references the Patient resource. | true | false |
+| status (String) | The status of the observation. Typically "amended" or "final". | true | false |
+| value-concept (String) | The value of the observation if it is a CodeableConcept. | true | false |
+| value-string (String) | The value of the observation, if valueString is populated. | true | false |
+
+## Response
+
+```json
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 2,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://hostname/instance/api/FHIR/R4/Observation?patient=eZO66HeGXB6VCJemL-ciSKA3&category=vital-signs"
+    }
+  ],
+  "entry": [
+    {
+      "link": [
+        {
+          "relation": "self",
+          "url": "https://hostname/instance/api/FHIR/R4/Observation/eizmjygdN9YY0-abviOrMfcbd8esh7G-wPYmSzcav8lxr2UXzXzZi6xzTahySAtk3TZlXHycbFKaA65DwzTrx9A3"
+        }
+      ],
+      "fullUrl": "https://hostname/instance/api/FHIR/R4/Observation/eizmjygdN9YY0-abviOrMfcbd8esh7G-wPYmSzcav8lxr2UXzXzZi6xzTahySAtk3TZlXHycbFKaA65DwzTrx9A3",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "eizmjygdN9YY0-abviOrMfcbd8esh7G-wPYmSzcav8lxr2UXzXzZi6xzTahySAtk3TZlXHycbFKaA65DwzTrx9A3",
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/observation-category",
+              "code": "vital-signs",
+              "display": "Vital Signs"
+            }
+          ],
+          "text": "Vital Signs"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.2.707679",
+              "code": "5",
+              "display": "BP"
+            },
+            {
+              "system": "http://open.epic.com/FHIR/StructureDefinition/observation-flowsheet-id",
+              "code": "tK.3GdpCnBjtUSc8i9O-JVA0",
+              "display": "BP"
+            },
+            {
+              "system": "urn:oid:1.2.246.537.6.96",
+              "code": "8462-4"
+            },
+            {
+              "system": "urn:oid:1.2.246.537.6.96",
+              "code": "8480-6"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "55284-4",
+              "display": "Blood pressure systolic and diastolic"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "85354-9",
+              "display": "Blood pressure panel with all children optional"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital signs"
+            }
+          ],
+          "text": "BP"
+        },
+        "subject": {
+          "reference": "Patient/eZO66HeGXB6VCJemL-ciSKA3",
+          "display": "Meiko Lufhir"
+        },
+        "encounter": {
+          "reference": "Encounter/e.R4dWbUDqF01.Z6BEIfEkZecZklxAhL82tS5wzzlD0o3"
+        },
+        "effectiveDateTime": "2019-08-16T12:00:00Z",
+        "issued": "2019-09-05T20:49:27Z",
+        "performer": {
+          "reference": "Practitioner/euJOUNeZyX6mofWELWG0Ibg3",
+          "display": "Starter Provider, MD"
+        },
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8480-6",
+                  "display": "Systolic blood pressure"
+                }
+              ],
+              "text": "Systolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 108,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          },
+          {
+            "code": {
+              "coding": [
+                {
+                  "system": "http://loinc.org",
+                  "code": "8462-4",
+                  "display": "Diastolic blood pressure"
+                }
+              ],
+              "text": "Diastolic blood pressure"
+            },
+            "valueQuantity": {
+              "value": 73,
+              "unit": "mm[Hg]",
+              "system": "http://unitsofmeasure.org",
+              "code": "mm[Hg]"
+            }
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "link": [
+        {
+          "relation": "self",
+          "url": "https://hostname/instance/api/FHIR/R4/Observation/eizmjygdN9YY0-abviOrMfcbd8esh7G-wPYmSzcav8lxekRZfdsGmzwU9x-gKdyEyW0mlnkIDi0BK83wSZnkSlA3"
+        }
+      ],
+      "fullUrl": "https://hostname/instance/api/FHIR/R4/Observation/eizmjygdN9YY0-abviOrMfcbd8esh7G-wPYmSzcav8lxekRZfdsGmzwU9x-gKdyEyW0mlnkIDi0BK83wSZnkSlA3",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "eizmjygdN9YY0-abviOrMfcbd8esh7G-wPYmSzcav8lxekRZfdsGmzwU9x-gKdyEyW0mlnkIDi0BK83wSZnkSlA3",
+        "status": "final",
+        "category": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/observation-category",
+              "code": "vital-signs",
+              "display": "Vital Signs"
+            }
+          ],
+          "text": "Vital Signs"
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.2.707679",
+              "code": "14",
+              "display": "Weight"
+            },
+            {
+              "system": "http://open.epic.com/FHIR/StructureDefinition/observation-flowsheet-id",
+              "code": "ttjlASTxfaxgiecvotrb78w0",
+              "display": "Weight"
+            },
+            {
+              "system": "urn:oid:1.2.246.537.6.96",
+              "code": "29463-7"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "29463-7",
+              "display": "Body weight"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "3141-9",
+              "display": "Body weight Measured"
+            },
+            {
+              "system": "http://loinc.org",
+              "code": "8716-3",
+              "display": "Vital signs"
+            }
+          ],
+          "text": "Weight"
+        },
+        "subject": {
+          "reference": "Patient/eZO66HeGXB6VCJemL-ciSKA3",
+          "display": "Meiko Lufhir"
+        },
+        "encounter": {
+          "reference": "Encounter/e.R4dWbUDqF01.Z6BEIfEkZecZklxAhL82tS5wzzlD0o3"
+        },
+        "effectiveDateTime": "2019-09-05T20:00:00Z",
+        "issued": "2019-09-05T20:49:27Z",
+        "performer": {
+          "reference": "Practitioner/euJOUNeZyX6mofWELWG0Ibg3",
+          "display": "Starter Provider, MD"
+        },
+        "valueQuantity": {
+          "value": 50,
+          "unit": "kg",
+          "system": "http://unitsofmeasure.org",
+          "code": "kg"
+        }
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
+```

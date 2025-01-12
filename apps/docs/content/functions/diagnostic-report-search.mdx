@@ -1,0 +1,328 @@
+---
+title: "diagnosticReport.search"
+---
+
+### Native Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| category (String) | The service category. This can be either an Epic order type or a value from the US Core valueset for DiagnosticReport. In earlier versions, this must be a value from the US Core valueset for DiagnosticReport. | false | false |
+| code (String) | The code for the report as a whole, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result. This can be any code type associated with the procedures, including LOINC, CPT, SNOMED, or other code types mapped to a procedure in Epic. This parameter is formatted with or without a system specified (code=[code] or code=[system]\|[code]). If specifying a system, the corresponding code must be provided. | true | false |
+| date (String) | Clinically relevant time/time period for report. Matches to the effectiveDateTime response element. | false | false |
+| identifier (String) | The business identifier for the report. | false | false |
+| patient (String) | The patient for which to perform the search. | conditional | false |
+| subject (String) | The patient for which to perform the search. | conditional | false |
+
+
+### Post-filter Parameters
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| based-on | A reference to a ServiceRequest. | true | false |
+| conclusion | The order diagnosis. | true | false |
+| encounter | Encounter when the test was ordered. This will be either a FHIR Encounter reference in the encounter.reference element, or an encounter CSN identifier in the encounter.identifier element. | true | false |
+| issued | DateTime this version was released. | true | false |
+| media | Key images associated with the report. | true | false |
+| performer | Participants in producing the report. This always includes one or more references to the Practitioner resource. This element can also include a reference to an Organization resource. | true | false |
+| result | Observations, simple or complex nested groups. | true | false |
+| results-interpreter | A FHIR reference. | true | false |
+| specimen | Unsupported | false | false |
+
+
+## Response
+
+```json
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 2,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://hostname/instance/api/FHIR/R4/DiagnosticReport?category=1.2.840.114350.1.13.861.1.7.10.798268.30%7CImaging&patient=epnvY-g-k4v8aI71KfQzYYg3"
+    }
+  ],
+  "entry": [
+    {
+      "link": [
+        {
+          "relation": "self",
+          "url": "https://hostname/instance/api/FHIR/R4/DiagnosticReport/e5usz9Yv5FedaHMXrx-GLJj9MkK.pa4IM954m0zHWcwo3"
+        }
+      ],
+      "fullUrl": "https://hostname/instance/api/FHIR/R4/DiagnosticReport/e5usz9Yv5FedaHMXrx-GLJj9MkK.pa4IM954m0zHWcwo3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "e5usz9Yv5FedaHMXrx-GLJj9MkK.pa4IM954m0zHWcwo3",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PLAC",
+                  "display": "Placer Identifier"
+                }
+              ],
+              "text": "Placer Identifier"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.861.1.7.2.798268",
+            "value": "1012228165"
+          },
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "FILL",
+                  "display": "Filler Identifier"
+                }
+              ],
+              "text": "Filler Identifier"
+            },
+            "system": ""https://open.epic.com/FHIR/861/order-accession-number/ALB%20LAB",
+            "value": "CTC000123"
+          }
+        ],
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/eVkErihwIBI9jdRYuWq8DJotu.RME5xX6extRRqj7myI3",
+            "type": "ServiceRequest"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "urn:oid:1.2.840.114350.1.13.861.1.7.10.798268.30",
+                "code": "Imaging"
+              }
+            ],
+            "text": "Imaging"
+          },
+          {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "LP29684-5",
+                "display": "Radiology"
+              }
+            ],
+            "text": "Radiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:2.16.840.1.113883.6.12",
+              "code": "73500",
+              "display": "X-RAY HIP UNILAT 1 VW"
+            }
+          ],
+          "text": "X-RAY HIP UNILAT 1 VW"
+        },
+        "subject": {
+          "reference": "Patient/epnvY-g-k4v8aI71KfQzYYg3",
+          "display": "Test, Patient"
+        },
+        "encounter": {
+          "reference": "Encounter/eDWAJJqZKd3cp7uTJJQY8RLq9GPLTvkG9kg.fdAetIgs3",
+          "identifier": {
+            "use": "usual",
+            "system": "urn:oid:1.2.840.114350.1.13.861.1.7.3.698084.8",
+            "value": "10001370420"
+          }
+        },
+        "effectiveDateTime": "2019-10-11T05:00:00Z",
+        "issued": "2021-06-11T19:49:40Z",
+        "performer": [
+          {
+            "reference": "Practitioner/euJOUNeZyX6mofWELWG0Ibg3",
+            "display": "Epic User, MD"
+          },
+          {
+            "reference": "Practitioner/ezQhNivITGtqYbx5JeL79Kw3",
+            "display": "Otto Rioja Persona Ris Rad, MD"
+          }
+        ],
+        "resultsInterpreter": [
+          {
+            "reference": "Practitioner/ezQhNivITGtqYbx5JeL79Kw3",
+            "type": "Practitioner",
+            "display": "Otto Rioja Persona Ris Rad, MD"
+          },
+          {
+            "reference": "Practitioner/euJOUNeZyX6mofWELWG0Ibg3",
+            "type": "Practitioner",
+            "display": "Epic User, MD"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/eNnxYsrKX152K8OelRteq9xqbrdPpv8frLm0Wg0eq.g43",
+            "display": "Narrative"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "ImagingStudy/eUJc6.P8x0S8rHLurJXQuh.QRfPzdiRH4yLo8B-F-z.o3"
+          }
+        ],
+        "presentedForm": [
+          {
+            "contentType": "text/html",
+            "url": "Binary/eyxaMBLEsnTpnmI4c2YhNyZ6iY7Ei1s-SWHDtoh53NnU3",
+            "title": "Narrative"
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    },
+    {
+      "link": [
+        {
+          "relation": "self",
+          "url": "https://hostname/instance/api/FHIR/R4/DiagnosticReport/e43lhnx.XUNbUL3v-.PDcNrEifQ9LIJG0xmvd-KPr8CM3"
+        }
+      ],
+      "fullUrl": "https://hostname/instance/api/FHIR/R4/DiagnosticReport/e43lhnx.XUNbUL3v-.PDcNrEifQ9LIJG0xmvd-KPr8CM3",
+      "resource": {
+        "resourceType": "DiagnosticReport",
+        "id": "e43lhnx.XUNbUL3v-.PDcNrEifQ9LIJG0xmvd-KPr8CM3",
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PLAC",
+                  "display": "Placer Identifier"
+                }
+              ],
+              "text": "Placer Identifier"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.861.1.7.2.798268",
+            "value": "1012233558"
+          },
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "FILL",
+                  "display": "Filler Identifier"
+                }
+              ],
+              "text": "Filler Identifier"
+            },
+            "system": "urn:oid:1.2.840.114350.1.13.861.1.7.3.798268.320",
+            "value": "28550"
+          }
+        ],
+        "basedOn": [
+          {
+            "reference": "ServiceRequest/e-zJTgPbE4Mrf-nekgQJ.rRI5zqqeoxzDs4llNQSo69Y3",
+            "type": "ServiceRequest"
+          }
+        ],
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "system": "urn:oid:1.2.840.114350.1.13.861.1.7.10.798268.30",
+                "code": "Imaging"
+              }
+            ],
+            "text": "Imaging"
+          },
+          {
+            "coding": [
+              {
+                "system": "http://loinc.org",
+                "code": "LP29684-5",
+                "display": "Radiology"
+              }
+            ],
+            "text": "Radiology"
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "system": "urn:oid:1.2.840.114350.1.13.861.1.7.2.696580",
+              "code": "52665",
+              "display": "GENERIC RADIANT IMAGING EAP"
+            }
+          ],
+          "text": "X-RAY HIP UNILAT 1 VW"
+        },
+        "subject": {
+          "reference": "Patient/epnvY-g-k4v8aI71KfQzYYg3",
+          "display": "Test, Patient"
+        },
+        "encounter": {
+          "identifier": {
+            "use": "usual",
+            "system": "urn:oid:1.2.840.114350.1.13.861.1.7.3.698084.8",
+            "value": "10001456304"
+          }
+        },
+        "effectiveDateTime": "2019-10-11T05:00:00Z",
+        "issued": "2021-06-11T19:50:05Z",
+        "performer": [
+          {
+            "reference": "Practitioner/eNRT8GK-ZDKFtQwHDbar9EA3",
+            "display": "Becky Black, MD"
+          }
+        ],
+        "resultsInterpreter": [
+          {
+            "reference": "Practitioner/eNRT8GK-ZDKFtQwHDbar9EA3",
+            "type": "Practitioner",
+            "display": "Becky Black, MD"
+          },
+          {
+            "reference": "Practitioner/eNRT8GK-ZDKFtQwHDbar9EA3",
+            "type": "Practitioner",
+            "display": "Becky Black, MD"
+          }
+        ],
+        "result": [
+          {
+            "reference": "Observation/eavL3N-ZwVkoAEn48KHfezsXPoMlYiWPL7dT3bapLBes3",
+            "display": "Narrative"
+          }
+        ],
+        "imagingStudy": [
+          {
+            "reference": "ImagingStudy/ed0KtzxnrBpuTfBLPnOOr2XpQ2Xu8S4jXS2A5GAFGOX83"
+          }
+        ],
+        "presentedForm": [
+          {
+            "contentType": "text/html",
+            "url": "Binary/eTmCM2E.Uhk9L7Sp2NXPO6w8cPHVTfoFcslhYxPN7Mrw3",
+            "title": "Narrative"
+          },
+
+        {
+            "contentType": "application/pdf",
+            "url": "Binary/fsFqDRZrfdiJlA5Rwwc8wfw4",
+            "title": "Study Result Document"
+        }
+
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
+```

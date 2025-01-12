@@ -1,0 +1,380 @@
+---
+title: "flag.search"
+---
+
+# Infection
+
+## Request Parameters
+
+### Native Parameters
+| Name | Description | Required | Array |
+|------|-------------|----------|--------|
+| category | Always "infection" | Yes | No |
+| encounter | Associated encounter | No | No |
+| patient | The associated patient | Conditional | No |
+| status |  | No | No |
+| subject | The associated patient | Conditional | No |
+
+### Post-filter Parameters
+| Name | Description | Required | Array |
+|------|-------------|----------|--------|
+| date | The period during which the infection was marked as active | No | No |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 3,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/Flag?patient=exnWmPch0AyoUp7ZBplVf.Q3&category=infection"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Flag/e0k81lAJpUaaBWo6PSvirZJ8SPlUWfSwHCDA53Ab9-4A3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Flag/e0k81lAJpUaaBWo6PSvirZJ8SPlUWfSwHCDA53Ab9-4A3",
+            "resource": {
+                "resourceType": "Flag",
+                "id": "e0k81lAJpUaaBWo6PSvirZJ8SPlUWfSwHCDA53Ab9-4A3",
+                "extension": [
+                    {
+                        "valueReference": {
+                            "reference": "Condition/e73ENgCh7IMBe3fbv4ds.eQ3",
+                            "display": "ICON EL 2"
+                        },
+                        "url": "http://hl7.org/fhir/StructureDefinition/flag-detail"
+                    }
+                ],
+                "status": "entered-in-error",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://open.epic.com/FHIR/StructureDefinition/flag-category",
+                                "code": "infection",
+                                "display": "Infection Flag"
+                            },
+                            {
+                                "system": "http://loinc.org",
+                                "code": "75323-6",
+                                "display": "condition"
+                            }
+                        ],
+                        "text": "Infection Flag"
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "urn:oid:1.2.840.114350.1.13.861.1.7.4.698084.10375",
+                            "code": "66002",
+                            "display": "ICON EL 2"
+                        }
+                    ],
+                    "text": "ICON EL 2"
+                },
+                "subject": {
+                    "reference": "Patient/exnWmPch0AyoUp7ZBplVf.Q3",
+                    "display": "DXL, Contacts"
+                },
+                "period": {
+                    "start": "2021-09-08",
+                    "end": "2021-09-09T01:12:16Z"
+                },
+                "encounter": {
+                    "reference": "Encounter/eVCZHFbcaQME1z8q58dVMPrvvP82VAgtKbe4oVzwUB4A3",
+                    "identifier": {
+                        "use": "usual",
+                        "system": "urn:oid:1.2.840.114350.1.13.861.1.7.3.698084.8",
+                        "value": "10001585941"
+                    },
+                    "display": "History"
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Flag/eG0-zfyMqT1h29FBrsnrhdaNBCP-ydWPSUr44UbL4qfY3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Flag/eG0-zfyMqT1h29FBrsnrhdaNBCP-ydWPSUr44UbL4qfY3",
+            "resource": {
+                "resourceType": "Flag",
+                "id": "eG0-zfyMqT1h29FBrsnrhdaNBCP-ydWPSUr44UbL4qfY3",
+                "extension": [
+                    {
+                        "valueReference": {
+                            "reference": "Condition/elWQkOUZuvIYmpvkxzMAUXw3",
+                            "display": "ICON EL 1"
+                        },
+                        "url": "http://hl7.org/fhir/StructureDefinition/flag-detail"
+                    }
+                ],
+                "status": "active",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://open.epic.com/FHIR/StructureDefinition/flag-category",
+                                "code": "infection",
+                                "display": "Infection Flag"
+                            },
+                            {
+                                "system": "http://loinc.org",
+                                "code": "75323-6",
+                                "display": "condition"
+                            }
+                        ],
+                        "text": "Infection Flag"
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "urn:oid:1.2.840.114350.1.13.861.1.7.4.698084.10375",
+                            "code": "66001",
+                            "display": "ICON EL 1"
+                        },
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "73430006",
+                            "display": "Sleep Apnea"
+                        }
+                    ],
+                    "text": "ICON EL 1"
+                },
+                "subject": {
+                    "reference": "Patient/exnWmPch0AyoUp7ZBplVf.Q3",
+                    "display": "DXL, Contacts"
+                },
+                "period": {
+                    "start": "2021-09-08"
+                },
+                "encounter": {
+                    "reference": "Encounter/eyAizba4J4yI-R43baHTOg7nY3a3mztFu57ZsgPsfmGI3",
+                    "identifier": {
+                        "use": "usual",
+                        "system": "urn:oid:1.2.840.114350.1.13.861.1.7.3.698084.8",
+                        "value": "10001459125"
+                    },
+                    "display": "Office Visit"
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Flag/eFbv9LL28ikxKaUddrVLr-IVq.wf.k7BR.QGEqq8hfEM3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Flag/eFbv9LL28ikxKaUddrVLr-IVq.wf.k7BR.QGEqq8hfEM3",
+            "resource": {
+                "resourceType": "Flag",
+                "id": "eFbv9LL28ikxKaUddrVLr-IVq.wf.k7BR.QGEqq8hfEM3",
+                "extension": [
+                    {
+                        "valueReference": {
+                            "reference": "Condition/erEuPdnY2OKSUOSC-Y9M6DQ3",
+                            "display": "Influenza"
+                        },
+                        "url": "http://hl7.org/fhir/StructureDefinition/flag-detail"
+                    }
+                ],
+                "status": "active",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://open.epic.com/FHIR/StructureDefinition/flag-category",
+                                "code": "infection",
+                                "display": "Infection Flag"
+                            },
+                            {
+                                "system": "http://loinc.org",
+                                "code": "75323-6",
+                                "display": "condition"
+                            }
+                        ],
+                        "text": "Infection Flag"
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "urn:oid:1.2.840.114350.1.13.861.1.7.4.698084.10375",
+                            "code": "3",
+                            "display": "Influenza"
+                        }
+                    ],
+                    "text": "Influenza"
+                },
+                "subject": {
+                    "reference": "Patient/exnWmPch0AyoUp7ZBplVf.Q3",
+                    "display": "DXL, Contacts"
+                },
+                "period": {
+                    "start": "2021-07-27"
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```
+
+
+# Patient FYI
+
+## Request Parameters
+
+### Native Request Elements
+| Name | Description | Required | Array |
+|------|-------------|----------|--------|
+| category | Always "infection" | Yes | No |
+| patient | The associated patient | Conditional | No |
+| status |  | No | No |
+| subject | The associated patient | Conditional | No |
+
+### Post-filter Parameters
+| Name | Description | Required | Array |
+|------|-------------|----------|--------|
+| date | The most recent period when the flag was active. If the flag is currently active, only period.start is populated.| No | No |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 2,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/Flag?patient=ezHbeFCm6Ih8kgxuHUAdvJQ3"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Flag/eNKB8jKjP1zEk-FRpiajqnWp7beLw0YTA5ksNWTEnwQk3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Flag/eNKB8jKjP1zEk-FRpiajqnWp7beLw0YTA5ksNWTEnwQk3",
+            "resource": {
+                "resourceType": "Flag",
+                "id": "eNKB8jKjP1zEk-FRpiajqnWp7beLw0YTA5ksNWTEnwQk3",
+                "status": "active",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://open.epic.com/FHIR/StructureDefinition/flag-category",
+                                "code": "patient-fyi",
+                                "display": "Patient FYI Flag"
+                            },
+                            {
+                                "system": "http://loinc.org",
+                                "code": "74018-3",
+                                "display": "alert"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.10.727879.560",
+                            "code": "1",
+                            "display": "General"
+                        }
+                    ],
+                    "text": "Jennifer enjoys hiking."
+                },
+                "subject": {
+                    "reference": "Patient/ezHbeFCm6Ih8kgxuHUAdvJQ3",
+                    "display": "Smith, Jennifer"
+                },
+                "period": {
+                    "start": "2021-05-03T18:40:48Z"
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Flag/eNKB8jKjP1zEk-FRpiAHajqnsdfWp7beLw0YTA5ksNWT3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Flag/eNKB8jKjP1zEk-FRpiAHajqnsdfWp7beLw0YTA5ksNWT3",
+            "resource": {
+                "resourceType": "Flag",
+                "id": "eNKB8jKjP1zEk-FRpiAHajqnsdfWp7beLw0YTA5ksNWT3",
+                "status": "inactive",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://open.epic.com/FHIR/StructureDefinition/flag-category",
+                                "code": "patient-fyi",
+                                "display": "Patient FYI Flag"
+                            },
+                            {
+                                "system": "http://loinc.org",
+                                "code": "74018-3",
+                                "display": "alert"
+                            }
+                        ]
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.10.727879.560",
+                            "code": "1",
+                            "display": "General"
+                        }
+                    ],
+                    "text": "Patient is temporarily living with sister. Double check appointment and pharmacy locations during visits."
+                },
+                "subject": {
+                    "reference": "Patient/ezHbeFCm6Ih8kgxuHUAdvJQ3",
+                    "display": "Smith, Jennifer"
+                },
+                "period": {
+                    "start": "2018-04-03T16:12:37Z",
+                    "end": "2018-11-15T18:42:15Z"
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```

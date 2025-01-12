@@ -1,0 +1,118 @@
+---
+title: "carePlan.search"
+---
+
+## Request Parameters
+
+### Native Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| category (String) | Type of plan. 38717003 should be used to search for longitudinal care plans. In addition, category type "assess-plan" is always included in search results. | false | false |
+| subject (String) | Patient FHIR resource ID for the patient associated with the care plan. | conditional | false |
+
+### Post-filter Parameters
+| Name | Description | Is Optional | Array |
+|------|-------------|----------|--------|
+| activity-code (String) | Order or procedure code. | true | false |
+| activity-date (String) | Specified date occurs within period | true | false |
+| condition (String) | The list of health issues this longitudinal care plan addresses. | true | false |
+| goal (String) | Goals for this longitudinal care plan. | true | false |
+| instantiates-canonical (String) | Unsupported | true | false |
+| intent (String) | For longitudinal care plans, this always equals "plan". | true | false |
+| patient (String) | Patient FHIR resource ID for the patient associated with the care plan. | conditional | false |
+| status (String) | Always "active." | true | false |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/CarePlan?patient=eeIncfrCBjMQ5elSQx.I0zw3&category=38717003"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/CarePlan/ebOCg1uG759-qC5tMRYro0NL9EWqPcmUcTBRuekI6fIk3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/CarePlan/ebOCg1uG759-qC5tMRYro0NL9EWqPcmUcTBRuekI6fIk3",
+            "resource": {
+                "resourceType": "CarePlan",
+                "id": "ebOCg1uG759-qC5tMRYro0NL9EWqPcmUcTBRuekI6fIk3",
+                "text": {
+                    "status": "generated",
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><h1>Active Problems</h1><ul><li>Type 1 diabetes mellitus</li><li>Chronic back pain</li></ul><h1>Goals</h1><ul><li>Weight (lb) &lt; 200 lb</li></ul><h1>Upcoming Procedure Orders</h1><table><tr><th>Procedure Order</th><th>Start</th><th>End</th><th>Status</th></tr><tr><td>X-RAY ABDOMEN 2 VW</td><td>N/A</td><td>N/A</td><td>Not Started</td></tr></table></div>"
+                },
+                "status": "active",
+                "intent": "plan",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://hl7.org/fhir/us/core/CodeSystem/careplan-category",
+                                "code": "assess-plan",
+                                "display": "Assessment and Plan of Treatment"
+                            }
+                        ],
+                        "text": "Assessment and Plan of Treatment"
+                    },
+                    {
+                        "coding": [
+                            {
+                                "system": "http://snomed.info/sct",
+                                "code": "38717003",
+                                "display": "Longitudinal"
+                            }
+                        ],
+                        "text": "Longitudinal"
+                    }
+                ],
+                "subject": {
+                    "reference": "Patient/eeIncfrCBjMQ5elSQx.I0zw3",
+                    "display": "Test, Patient"
+                },
+                "addresses": [
+                    {
+                        "reference": "Condition/eGPLML1iXAk9RjEcE.SJ80gBxuNRI9.YnRHlOxDzGryw3",
+                        "display": "Type 1 diabetes mellitus"
+                    },
+                    {
+                        "reference": "Condition/eL35aP.iBX7duRU41HjXvZM49E0L2NeP8eH9LiCtVR.Q3",
+                        "display": "Chronic back pain"
+                    }
+                ],
+                "goal": [
+                    {
+                        "reference": "Goal/em9zZhdUaugZOu.ptOJUhKg3",
+                        "display": "Weight (lb) < 200 lb"
+                    }
+                ],
+                "activity": [
+                    {
+                        "detail": {
+                            "kind": "ServiceRequest",
+                            "code": {
+                                "text": "X-RAY ABDOMEN 2 VW"
+                            },
+                            "status": "not-started",
+                            "doNotPerform": false
+                        }
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```
+

@@ -1,0 +1,276 @@
+---
+title: "procedure.search"
+---
+
+# Surgical History
+
+## Request Parameters
+
+### Native Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| category (String) | A code that classifies the procedure. This will always be SNOMED code 387713003 (Surgical procedure) for the Procedure (Surgical history) API. | true | false |
+| patient (String) | The Patient FHIR resource ID. | conditional | false |
+| subject (String) | Subject of the Procedure. | conditional | false |
+
+### Post-filter Parameters
+| Name | Description | Is Optional | Array |
+|------|-------------|-------------|--------|
+| code (String) | External codes associated with the procedure. | true | false |
+| date (String) | When the procedure was performed | true | false |
+| status (String) | The status of the Procedure. Refer to the response element for more information. | true | false |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 2,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/Procedure?patient=eyb0wFCjScO4c54vJCAvBHg3&_revInclude=Provenance:target"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Procedure/esDSRiB-AywSL88jYw-ZM6pLL8uiKV5X2-iw.L7W5GCA4h8IoUDnwhxnDSiTbbo1A3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Procedure/esDSRiB-AywSL88jYw-ZM6pLL8uiKV5X2-iw.L7W5GCA4h8IoUDnwhxnDSiTbbo1A3",
+            "resource": {
+                "resourceType": "Procedure",
+                "id": "esDSRiB-AywSL88jYw-ZM6pLL8uiKV5X2-iw.L7W5GCA4h8IoUDnwhxnDSiTbbo1A3",
+                "extension": [
+                    {
+                        "valueString": "Provider",
+                        "url": "http://open.epic.com/FHIR/StructureDefinition/extension/surgical-history-source"
+                    }
+                ],
+                "status": "completed",
+                "category": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "387713003",
+                            "display": "Surgical procedure"
+                        }
+                    ],
+                    "text": "Surgical History"
+                },
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://www.ama-assn.org/go/cpt",
+                            "code": "36778483",
+                            "display": "LEG AMPUTATION"
+                        }
+                    ],
+                    "text": "LEG AMPUTATION"
+                },
+                "subject": {
+                    "reference": "Patient/eyb0wFCjScO4c54vJCAvBHg3",
+                    "display": "Name, Shroud, PhD"
+                },
+                "performedDateTime": "2020-11-03",
+                "bodySite": [
+                    {
+                        "extension": [
+                            {
+                                "valueCodeableConcept": {
+                                    "coding": [
+                                        {
+                                            "system": "http://snomed.info/sct",
+                                            "code": "447561005",
+                                            "display": "SNOMED CT source code to target map code correlation not specified"
+                                        }
+                                    ],
+                                    "text": "Left"
+                                },
+                                "url": "http://open.epic.com/FHIR/StructureDefinition/extension/surgical-history-laterality"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Provenance/eoUS7LVLK31M9n0hyriZ3GIx.1HdOLq.isIM.eyvrjg241T8RhUuD4oMPm4ShCnjCTiVBagLsJxdat6dsSqaEcOMaA3j7Va.i0R35vkRBY7g3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Provenance/eoUS7LVLK31M9n0hyriZ3GIx.1HdOLq.isIM.eyvrjg241T8RhUuD4oMPm4ShCnjCTiVBagLsJxdat6dsSqaEcOMaA3j7Va.i0R35vkRBY7g3",
+            "resource": {
+                "resourceType": "Provenance",
+                "id": "eoUS7LVLK31M9n0hyriZ3GIx.1HdOLq.isIM.eyvrjg241T8RhUuD4oMPm4ShCnjCTiVBagLsJxdat6dsSqaEcOMaA3j7Va.i0R35vkRBY7g3",
+                "target": [
+                    {
+                        "reference": "Procedure/esDSRiB-AywSL88jYw-ZM6pLL8uiKV5X2-iw.L7W5GCA4h8IoUDnwhxnDSiTbbo1A3"
+                    }
+                ],
+                "recorded": "2020-12-11T06:00:00Z",
+                "agent": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type",
+                                    "code": "author",
+                                    "display": "Author"
+                                }
+                            ],
+                            "text": "Author"
+                        },
+                        "who": {
+                            "reference": "Practitioner/eDYyJA9FNDKf7rD4dvhzgjQ3",
+                            "display": "User Name"
+                        },
+                        "onBehalfOf": {
+                            "display": "Current Development Environment (CDE) - Smaug"
+                        }
+                    },
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type",
+                                    "code": "transmitter",
+                                    "display": "Transmitter"
+                                }
+                            ],
+                            "text": "Transmitter"
+                        },
+                        "who": {
+                            "display": "Current Development Environment (CDE) - Smaug"
+                        }
+                    }
+                ]
+            },
+            "search": {
+                "mode": "include"
+            }
+        },
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Procedure/esDSRiB-AywSL88jYw-ZM6pLL8uiKV5X2-iw.L7W5GCDnI0kXxoI0dD5BGO9mOkxp3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Procedure/esDSRiB-AywSL88jYw-ZM6pLL8uiKV5X2-iw.L7W5GCDnI0kXxoI0dD5BGO9mOkxp3",
+            "resource": {
+                "resourceType": "Procedure",
+                "id": "esDSRiB-AywSL88jYw-ZM6pLL8uiKV5X2-iw.L7W5GCDnI0kXxoI0dD5BGO9mOkxp3",
+                "extension": [
+                    {
+                        "valueString": "Provider",
+                        "url": "http://open.epic.com/FHIR/StructureDefinition/extension/surgical-history-source"
+                    }
+                ],
+                "status": "not-done",
+                "category": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "387713003",
+                            "display": "Surgical procedure"
+                        }
+                    ],
+                    "text": "Surgical History"
+                },
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://www.ama-assn.org/go/cpt",
+                            "code": "15836",
+                            "display": "EXCISE EXCESS SKIN TISSUE,ARM"
+                        }
+                    ],
+                    "text": "EXCISE EXCESS SKIN TISSUE,ARM"
+                },
+                "subject": {
+                    "reference": "Patient/eyb0wFCjScO4c54vJCAvBHg3",
+                    "display": "Name, Shroud, PhD"
+                },
+                "performedDateTime": "2020-12-11",
+                "note": [
+                    {
+                        "text": "This is pertinent negative"
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Provenance/eoUS7LVLK31M9n0hyriZ3GIx.1HdOLq.isIM.eyvrjg241T8RhUuD4oMPm4ShCnjCb27JrzQw8Cps8cy52AKJ6MofAZ7eN1zXUWfyw66jF9A3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Provenance/eoUS7LVLK31M9n0hyriZ3GIx.1HdOLq.isIM.eyvrjg241T8RhUuD4oMPm4ShCnjCb27JrzQw8Cps8cy52AKJ6MofAZ7eN1zXUWfyw66jF9A3",
+            "resource": {
+                "resourceType": "Provenance",
+                "id": "eoUS7LVLK31M9n0hyriZ3GIx.1HdOLq.isIM.eyvrjg241T8RhUuD4oMPm4ShCnjCb27JrzQw8Cps8cy52AKJ6MofAZ7eN1zXUWfyw66jF9A3",
+                "target": [
+                    {
+                        "reference": "Procedure/esDSRiB-AywSL88jYw-ZM6pLL8uiKV5X2-iw.L7W5GCDnI0kXxoI0dD5BGO9mOkxp3"
+                    }
+                ],
+                "recorded": "2020-12-11T06:00:00Z",
+                "agent": [
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://terminology.hl7.org/CodeSystem/provenance-participant-type",
+                                    "code": "author",
+                                    "display": "Author"
+                                }
+                            ],
+                            "text": "Author"
+                        },
+                        "who": {
+                            "reference": "Practitioner/eDYyJA9FNDKf7rD4dvhzgjQ3",
+                            "display": "User Name"
+                        },
+                        "onBehalfOf": {
+                            "display": "Current Development Environment (CDE) - Smaug"
+                        }
+                    },
+                    {
+                        "type": {
+                            "coding": [
+                                {
+                                    "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-provenance-participant-type",
+                                    "code": "transmitter",
+                                    "display": "Transmitter"
+                                }
+                            ],
+                            "text": "Transmitter"
+                        },
+                        "who": {
+                            "display": "Current Development Environment (CDE) - Smaug"
+                        }
+                    }
+                ]
+            },
+            "search": {
+                "mode": "include"
+            }
+        }
+    ]
+}
+```
+

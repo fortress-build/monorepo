@@ -1,0 +1,241 @@
+---
+title: "documentReference.search"
+---
+
+This web service allows for retrieval of Document metadata information as well as any attached binaries if available.
+
+# Clinical Notes
+
+## Request Parameters
+
+### Native Parameters
+| Name | Description | Required | Array |
+|------|-------------|----------|--------|
+| category | Always "clinical-reference" | Yes | No |
+| encounter | Associated encounter | No | No |
+| patient | The associated patient | Conditional | No |
+| subject | The associated patient | Conditional | No |
+
+### Post-filter Parameters
+| Name | Description | Required | Array |
+|------|-------------|----------|--------|
+| date | The date and time when the Clinical Reference was attached | No | No |
+| format | Format/Content rules for the document (RTF vs HTML) | No | No |
+| status | Always "current" | No | No |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/DocumentReference?encounter=ewjLq6T8jD2jClb0dkMYS25HM0BGjl-uE31HHZUSdadw3&category=clinical-reference"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/DocumentReference/eGlGqhMrWY-D7S9UWdHMuOoeJ0ive0Yvo0ssmqFUSohM3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/DocumentReference/eGlGqhMrWY-D7S9UWdHMuOoeJ0ive0Yvo0ssmqFUSohM3",
+            "resource": {
+                "resourceType": "DocumentReference",
+                "id": "eGlGqhMrWY-D7S9UWdHMuOoeJ0ive0Yvo0ssmqFUSohM3",
+                "status": "current",
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://open.epic.com/FHIR/StructureDefinition/documentreference-category",
+                                "code": "clinical-reference",
+                                "display": "Clinical Reference"
+                            }
+                        ],
+                        "text": "Clinical Reference"
+                    }
+                ],
+                "subject": {
+                    "reference": "Patient/efS7U8khObcJM43siqMrZQ8qh4zBvSjftUk5VQhXXWGg3",
+                    "display": "Brauwer, Alistair"
+                },
+                "date": "2022-01-28T16:16:47Z",
+                "content": [
+                    {
+                        "attachment": {
+                            "contentType": "text/rtf",
+                            "url": "Binary/eg5G4a1wX1DGzkjxib3xh8P4.xnlTsrlTE0Ij6k6EDfw3"
+                        },
+                        "format": {
+                            "system": "http://ihe.net/fhir/ValueSet/IHE.FormatCode.codesystem",
+                            "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+                            "display": "mimeType Sufficient"
+                        }
+                    }
+                ],
+                "context": {
+                    "encounter": [
+                        {
+                            "reference": "Encounter/ewjLq6T8jD2jClb0dkMYS25HM0BGjl-uE31HHZUSdadw3",
+                            "identifier": {
+                                "use": "usual",
+                                "system": "urn:oid:1.2.840.114350.1.13.5325.1.7.3.698084.8",
+                                "value": "10003900569"
+                            },
+                            "display": "Hospital Encounter"
+                        }
+                    ]
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```
+
+
+# Radiology Results
+
+## Request Parameters
+
+### Native Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|----------|
+| author | FHIR ID for the providers who signed or addended the study | true | false |
+| category | Must be set to "imaging-result" if specified. Only category or type may be specified in a single query | true | false |
+| date | The instant or range of instants when a study was addended or finalized | true | false |
+| encounter | Encounter that order is linked to | true | false |
+| patient | The subject of the report if a patient | conditional | false |
+| period | The instant when the exam was performed | true | false |
+| status | The status of the result. Always "current" | true | false |
+| subject | The patient that is the subject of the note | conditional | false |
+| type | The LOINC or system code for the radiology result. Only category or type may be specified in a single query | true | false |
+
+### Post-filter Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|----------|
+| authenticator | The user who signed the study. Reference to the Practitioner resource. Returns only the first user who signed the study | true | false |
+| contenttype | Mime content type code. Always "application/pdf" | true | false |
+| description | The name of the procedure | true | false |
+| identifier | The order identifier from the Epic system | true | false |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/DocumentReference?patient=eP3l9BmBRjLTG9l6H4ldefA3&category=imaging-result"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/DocumentReference/e9QjNRTzNE1.EXdPgnfsxKXAuvVWkTquRvetfAt-v8D03"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/DocumentReference/e9QjNRTzNE1.EXdPgnfsxKXAuvVWkTquRvetfAt-v8D03",
+            "resource": {
+                "resourceType": "DocumentReference",
+                "id": "e9QjNRTzNE1.EXdPgnfsxKXAuvVWkTquRvetfAt-v8D03",
+                "masterIdentifier": {
+                    "system": "urn:oid:1.2.840.114350.1.13.861.1.7.2.798268",
+                    "value": "1012293993"
+                },
+                "identifier": [
+                    {
+                        "system": "urn:oid:1.2.840.114350.1.13.861.1.7.2.798268",
+                        "value": "1012293993"
+                    }
+                ],
+                "status": "current",
+                "docStatus": "final",
+                "type": {
+                    "text": "DLS WEB STUDY REVIEW"
+                },
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://open.epic.com/FHIR/StructureDefinition/document-reference-class",
+                                "code": "imaging-result",
+                                "display": "Imaging Result"
+                            }
+                        ],
+                        "text": "Imaging Result"
+                    }
+                ],
+                "subject": {
+                    "reference": "Patient/eP3l9BmBRjLTG9l6H4ldefA3",
+                    "display": "Bob, Big"
+                },
+                "date": "2021-08-02T16:57:20Z",
+                "author": [
+                    {
+                        "reference": "Practitioner/ebyrK--nn121NxCaaZJDEoA3",
+                        "display": "Daniel Hon, MD"
+                    }
+                ],
+                "authenticator": {
+                    "reference": "Practitioner/ebyrK--nn121NxCaaZJDEoA3",
+                    "display": "Daniel Hon, MD"
+                },
+                "description": "DLS WEB STUDY REVIEW",
+                "content": [
+                    {
+                        "attachment": {
+                            "contentType": "application/pdf",
+                            "url": "Binary/eRGuw4B2nN9B9ytkVIiLZugpER.TyU0fwGuUA2WJgQyA3"
+                        }
+                    }
+                ],
+                "context": {
+                    "encounter": [
+                        {
+                            "reference": "Encounter/epIg68WT.XDwLo7CgCKn952.4sInTUfO-Pim0ZRd7oTY3",
+                            "identifier": {
+                                "use": "usual",
+                                "system": "urn:oid:1.2.840.114350.1.13.861.1.7.3.698084.8",
+                                "value": "10001559470"
+                            },
+                            "display": "Hospital Encounter"
+                        }
+                    ],
+                    "period": {
+                        "start": "2021-07-15T15:22:14Z",
+                        "end": "2021-07-15T15:22:14Z"
+                    },
+                    "practiceSetting": {
+                        "coding": [
+                            {
+                                "system": "urn:oid:1.2.840.114350.1.13.861.1.7.10.686980.110",
+                                "code": "40",
+                                "display": "Radiology"
+                            }
+                        ],
+                        "text": "Radiology"
+                    }
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+        
+    ]
+}
+```

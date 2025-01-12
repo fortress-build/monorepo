@@ -1,0 +1,460 @@
+---
+title: "condition.search"
+---
+
+This web service retrieves problem list and health status data from a patient's chart.
+
+# Health Concern
+
+## Request Parameters
+
+### Native Parameters
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| category | Always "health-concern" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. | Yes | No |
+| clinical-status | Status of the condition. FHIR Status: `active`, `resolved` , `inactive` . If no status is specified all active (confirmed) conditions will be returned. *Note: Any FHIR Status not listed in the above table is not returned. | Yes | No |
+| encounter | Associated encounter | No | No |
+| patient | Reference to a patient resource the condition is for. | Conditional | No |
+| subject | Reference to a patient resource the condition is for. | Conditional | No |
+
+### Post-filter Parameters
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| code | Code for the condition. See the code response element for more information. | true | false |
+| onset-date | The date the problem was noted. | true | false |
+| recorded-date | The date the condition was recorded. | true | false |
+| severity | The priority of the problem. | true | false |
+| verification-status | If this is on the patient's local chart, the value is "confirmed". If it is outside data, it is "unconfirmed". | true | false |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1,
+    "link": [
+        {
+            "relation": "self",
+            "url": " https://hostname/instance/api/FHIR/R4/Condition?category=health-concern&patient=euI3cZMuLFNu6kO9mg4ScEg3"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": " https://hostname/instance/api/FHIR/R4/Condition/emYq8NzSEaKrCZtPWXa-GIioNncX-zeoLZG4utC3iD5w3"
+                }
+            ],
+            "fullUrl": " https://hostname/instance/api/FHIR/R4/Condition/emYq8NzSEaKrCZtPWXa-GIioNncX-zeoLZG4utC3iD5w3",
+            "resource": {
+                "resourceType": "Condition",
+                "id": "emYq8NzSEaKrCZtPWXa-GIioNncX-zeoLZG4utC3iD5w3",
+                "clinicalStatus": {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                            "version": "4.0.0",
+                            "code": "active",
+                            "display": "Active"
+                        }
+                    ],
+                    "text": "Active"
+                },
+                "verificationStatus": {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                            "version": "4.0.0",
+                            "code": "confirmed",
+                            "display": "Confirmed"
+                        }
+                    ],
+                    "text": "Confirmed"
+                },
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                                "code": "problem-list-item",
+                                "display": "Problem List Item"
+                            }
+                        ],
+                        "text": "Problem List Item"
+                    },
+                    {
+                        "coding": [
+                            {
+                                "system": "http://loinc.org",
+                                "code": "75310-3",
+                                "display": "Health concerns"
+                            },
+                            {
+                                "system": "http://hl7.org/fhir/us/core/CodeSystem/condition-category",
+                                "code": "health-concern",
+                                "display": "Health Concern"
+                            }
+                        ],
+                        "text": "Health Concern"
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                            "code": "R11.0",
+                            "display": "Nausea"
+                        },
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "422587007",
+                            "display": "Nausea"
+                        }
+                    ],
+                    "text": "Nauseous"
+                },
+                "subject": {
+                    "reference": "Patient/euI3cZMuLFNu6kO9mg4ScEg3",
+                    "display": "Test, Patient"
+                },
+                "recordedDate": "2023-06-28"
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```
+
+
+# Medical History
+
+## Request Parameters
+
+### Native Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| category | Always "medical-history" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. | Yes | No |
+| patient | Reference to a patient resource the condition is for. | Conditional | No |
+| subject | Reference to a patient resource the condition is for. | Conditional | No |
+
+### Post-filter Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|----------|
+| code | Code for the condition. See the code response element for more information. | true | false |
+| onset-date | The date when the medical problem began for the patient. Only applies to positive medical history.	 | true | false |
+| onset-info | The date when the medical problem began for the patient. Only applies to positive medical history. Applicable for dates saved as a string instead of a date format. Otherwise, use onset-date.	 | true | false |
+| recorded-date | For pertinent negative medical history, the date when the pertinent negative was noted on the patient’s chart.	 | true | false |
+| severity | The priority of the problem. | true | false |
+| verification-status | Use “confirmed” for positive medical history and “refuted” for pertinent negative medical history.	| true | false |
+
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 2,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/Condition?patient=ebb8tmJBI1FH-fdAzdqISZg3&category=medical-history"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Condition/esG9.LwMjNQmdDHbomjHegUxZzQ28jhTpnrZtIiXv35A3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Condition/esG9.LwMjNQmdDHbomjHegUxZzQ28jhTpnrZtIiXv35A3",
+            "resource": {
+                "resourceType": "Condition",
+                "id": "esG9.LwMjNQmdDHbomjHegUxZzQ28jhTpnrZtIiXv35A3",
+                "verificationStatus": {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                            "version": "4.0.0",
+                            "code": "confirmed",
+                            "display": "Confirmed"
+                        }
+                    ],
+                    "text": "Confirmed"
+                },
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://open.epic.com/FHIR/StructureDefinition/condition-category",
+                                "code": "medical-history",
+                                "display": "Medical History"
+                            }
+                        ],
+                        "text": "Medical History"
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "195967001",
+                            "display": "Asthma (disorder)"
+                        },
+                        {
+                            "system": "http://hl7.org/fhir/sid/icd-9-cm",
+                            "code": "493.90",
+                            "display": "Asthma"
+                        },
+                        {
+                            "system": "urn:oid:2.16.840.1.113883.6.90",
+                            "code": "J45.909",
+                            "display": "Asthma"
+                        }
+                    ],
+                    "text": "Asthma"
+                },
+                "subject": {
+                    "reference": "Patient/ebb8tmJBI1FH-fdAzdqISZg3",
+                    "display": "Stanley, James"
+                },
+                "onsetPeriod": {
+                    "start": "1991-01-01",
+                    "end": "1991-12-31"
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        },
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Condition/esG9.LwMjNQmdDHbomjHegR42AImiOPW2PbQW4A0r2CU3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Condition/esG9.LwMjNQmdDHbomjHegR42AImiOPW2PbQW4A0r2CU3",
+            "resource": {
+                "resourceType": "Condition",
+                "id": "esG9.LwMjNQmdDHbomjHegR42AImiOPW2PbQW4A0r2CU3",
+                "verificationStatus": {
+                    "coding": [
+                        {
+                            "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                            "version": "4.0.0",
+                            "code": "confirmed",
+                            "display": "Confirmed"
+                        }
+                    ],
+                    "text": "Confirmed"
+                },
+                "category": [
+                    {
+                        "coding": [
+                            {
+                                "system": "http://open.epic.com/FHIR/StructureDefinition/condition-category",
+                                "code": "medical-history",
+                                "display": "Medical History"
+                            }
+                        ],
+                        "text": "Medical History"
+                    }
+                ],
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "39423001",
+                            "display": "Stuttering (finding)"
+                        },
+                        {
+                            "system": "http://hl7.org/fhir/sid/icd-9-cm",
+                            "code": "315.35",
+                            "display": "Stammer"
+                        },
+                        {
+                            "system": "urn:oid:2.16.840.1.113883.6.90",
+                            "code": "F80.81",
+                            "display": "Stammer"
+                        }
+                    ],
+                    "text": "Stammer"
+                },
+                "subject": {
+                    "reference": "Patient/ebb8tmJBI1FH-fdAzdqISZg3",
+                    "display": "Stanley, James"
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```
+
+
+# Problems
+
+## Request Parameters
+
+### Native Parameters
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| category | Always "problem-list-item" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. | Yes | No |
+| clinical-status | Status of the condition. FHIR Status: `active`, `resolved`, `inactive`. If no status is specified all active (confirmed) conditions will be returned. *Note: Any FHIR Status not listed in the above table is not returned. | Yes | No |
+| encounter | Associated encounter | No | No |
+| patient | Reference to a patient resource the condition is for. | Conditional | No |
+| subject | Reference to a patient resource the condition is for. | Conditional | No |
+
+### Post-filter Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| abatement-date | The date the condition was resolved. | true | false |
+| abatement-string | The date the condition was resolved. | true | false |
+| code | External codings for the condition. | true | false |
+| onset-date | The date a condition was noted. | true | false |
+| onset-info | The date a condition was noted. | true | false |
+| recorded-date | The date the condition was recorded. | true | false |
+| severity | The priority of the problem. | true | false |
+| stage | The stage or grade of the condition. | true | false |
+| verification-status | If this is on the patient's local chart, the value is "confirmed". If it is outside data, it is "unconfirmed". If it is deleted, it is "entered-in-error". | true | false |
+
+## Response
+
+```json
+{ 
+     "resourceType": "Bundle", 
+     "type": "searchset", 
+     "total": 1, 
+     "link": [ 
+         { 
+             "relation": "self", 
+             "url": "https://hostname/instance/api/FHIR/R4/Condition?patient=eeiBNKuRR84uD0nIFn73BGQ3&category=problem-list-item&clinical-status=active" 
+         } 
+     ], 
+     "entry": [ 
+         { 
+             "link": [ 
+                 { 
+                     "relation": "self", 
+                     "url": "https://hostname/instance/api/FHIR/R4/Condition/eUKz6C-TOmW7XG.ar8yl0LjH2lUQgl8gOtjho9kp1wLw3" 
+                 } 
+             ], 
+             "fullUrl": "https://hostname/instance/api/FHIR/R4/Condition/eUKz6C-TOmW7XG.ar8yl0LjH2lUQgl8gOtjho9kp1wLw3", 
+             "resource": { 
+                 "resourceType": "Condition", 
+                 "id": "eUKz6C-TOmW7XG.ar8yl0LjH2lUQgl8gOtjho9kp1wLw3", 
+                 "extension": [ 
+                     { 
+                         "valueReference": { 
+                             "reference": "Observation/eh2QFseO6lyTWfT99-Uc3qXHB8.6ItBFllk7AcANAwKILgO90w5Pf5OY1ZPkr8j1Qcp-7TxuyY-90wxiV4cFU1k9cfsvbA3C6VRr69xNhBUw3", 
+                             "display": "DIAGNOSES/PROBLEMS - GENERAL - DIAGNOSIS DATE" 
+                         }, 
+                         "url": "http://open.epic.com/FHIR/StructureDefinition/extension/smartdata" 
+                     }, 
+                 "clinicalStatus": { 
+                     "coding": [ 
+                         { 
+                             "system": "http://terminology.hl7.org/CodeSystem/condition-clinical", 
+                             "version": "4.0.0", 
+                             "code": "active", 
+                             "display": "Active" 
+                         } 
+                     ], 
+                     "text": "Active" 
+                 }, 
+                 "verificationStatus": { 
+                     "coding": [ 
+                         { 
+                             "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status", 
+                             "version": "4.0.0", 
+                             "code": "confirmed", 
+                             "display": "Confirmed" 
+                         } 
+                     ], 
+                     "text": "Confirmed" 
+                 }, 
+                 "category": [ 
+                     { 
+                         "coding": [ 
+                             { 
+                                 "system": "http://terminology.hl7.org/CodeSystem/condition-category", 
+                                 "code": "problem-list-item", 
+                                 "display": "Problem List Item" 
+                             } 
+                         ], 
+                         "text": "Problem List Item" 
+                     } 
+                 ], 
+            
+"code": {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                            "code": "R10.84",
+                            "display": "Generalized abdominal pain"
+                        },
+                        {
+                            "system": "http://snomed.info/sct",
+                            "code": "102614006",
+                            "display": "Generalized Abdominal Pain"
+                        }
+                    ],
+                    "text": "Generalized abdominal pain"
+                 "subject": { 
+                     "reference": "Patient/eeiBNKuRR84uD0nIFn73BGQ3", 
+                     "display": "Thompson, Tom" 
+                 }, 
+                 "onsetPeriod": { 
+                     "start": "2021-03-01", 
+                     "end": "2021-03-01" 
+                 }, 
+                 "recordedDate": "2021-03-01" 
+                  "stage": [ 
+                     { 
+                         "summary": { 
+                             "text": "pTis, pN1, cM0" 
+                         } 
+                     }, 
+                     { 
+                         "assessment": [ 
+                             { 
+                                 "reference": "Observation/egi1-0RwRkCZEe.NJNHpyQPVzvkEaHE0XRplhioR3PQufSpa.gL-IhvYwDmDusNTC8Qai1TbLNU8H.VONdJY2xRczyMMU5sCqq2GUpzjwM.s3", 
+                                 "display": "FINDINGS - PHYSICAL EXAM - ONCOLOGY - STAGING - STAGE DATE" 
+                             }, 
+                             { 
+                                 "reference": "Observation/e2Pmf6ia87jUKSfEo8c4guye7yspMma6qK-cQaaxPmcMLdr.NdATpYGIjXRGGDsq00JjoIKW-DVCekNlzEEK5fwfdH5bV39L6Cv7vwl6h0hE3", 
+                                 "display": "FINDINGS - PHYSICAL EXAM - ONCOLOGY - STAGING - STAGE PREFIX" 
+                             }, 
+                             { 
+                                 "reference": "Observation/euNlAiddPhuXPOiM2Wv2AZUWEqHSEvDzXicHKQckb-xoj.HyiyMUAKdXxRnwOGLjH0IsjeQxC6CD3js4GttWswXrhvNJUeziqu3Sf01PePHc3", 
+                                 "display": "FINDINGS - PHYSICAL EXAM - ONCOLOGY - STAGING - TNM CLASSIFICATION - AJCC T - PRIMARY TUMOR (T)" 
+                             }, 
+                             { 
+                                 "reference": "Observation/eA0.Cmk4uzu0gihiD6KsLMEq3GTp5IfGC8liS3FMk0va3JqrNN3K2ph7FF86En4iJwdx3fVbBzgy.DIx8VgSEUXMPqXy.eVGNPD51UxH31ew3", 
+                                 "display": "FINDINGS - PHYSICAL EXAM - ONCOLOGY - STAGING - TNM CLASSIFICATION - AJCC N - REGIONAL LYMPH NODES (N)" 
+                             }, 
+                             { 
+                                 "reference": "Observation/eLqm.sfE07jYRHiNN16nSOJriZHHb-NbfhFAB7Hp0v49.hw-SGqzw4sIZHcJqePd3KrmrwYtLx1K.WqZkOiKh2p-wb8chrA9oIoiuQuhXkJY3", 
+                                 "display": "FINDINGS - PHYSICAL EXAM - ONCOLOGY - STAGING - TNM CLASSIFICATION - AJCC M - DISTANT METASTASIS (M)" 
+                             } 
+                         ] 
+                     } 
+                 ] 
+             }, 
+             }, 
+             "search": { 
+                 "mode": "match" 
+             } 
+         } 
+     ] 
+ } 
+```

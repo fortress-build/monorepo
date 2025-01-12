@@ -1,0 +1,681 @@
+---
+title: "list.search"
+---
+
+# Allergies
+
+## Request Parameters
+
+### Native Parameters
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|----------|
+| code | Must be "allergies" | false | false |
+| patient | The patient with whom the list is associated | conditional | false |
+| subject | The patient with whom the list is associated | conditional | false |
+
+### Post-filter Parameters
+| Name | Description | Required | Array |
+|------|-------------|----------|--------|
+| empty-reason | If the patient has no allergies documented, the API returns an empty reason of "notstarted". | Yes | No |
+| item | AllergyIntolerance FHIR ID | Yes | No |
+| status | Status of the allergy list. Always "current" because each list represents only the patient's current allergies. | Yes | No |
+| title | The title representing this entity. Always "Allergy List". | Yes | No |
+
+## Response
+
+```json
+TODO
+```
+
+
+# Family History
+
+## Request Parameters
+
+### Native Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|----------|
+| code | Must be "pedigree-list" | false | false |
+| patient | The patient with whom the list is associated | conditional | false |
+| subject | The patient with whom the list is associated | conditional | false |
+
+
+### Post-filter Parameters
+| Name | Description | Required | Array |
+|------|-------------|----------|--------|
+| item | FamilyHistory FHIR ID Reference | No | No |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/List?patient=eV6Ofju2.rCOp6TCunVM9Rg3&code=pedigree-list"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/List/epz8xX7jOTqs7.On.3GKrfupkrN3CHnG7JlM3DZRNJgQ3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/List/epz8xX7jOTqs7.On.3GKrfupkrN3CHnG7JlM3DZRNJgQ3",
+            "resource": {
+                "resourceType": "List",
+                "id": "epz8xX7jOTqs7.On.3GKrfupkrN3CHnG7JlM3DZRNJgQ3",
+                "status": "current",
+                "mode": "working",
+                "title": "Pedigree List",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://open.epic.com/FHIR/StructureDefinition/list-type",
+                            "code": "pedigree-list"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/eV6Ofju2.rCOp6TCunVM9Rg3",
+                    "display": "Smith, Sally"
+                },
+                "entry": [
+                    {
+                        "item": {
+                            "reference": "FamilyMemberHistory/ePM.Qux3IY3tsLDfCmpxnDhhUJ4WWDI.DRtTk-LVsHD03",
+                            "display": "Paula (Mother)"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "FamilyMemberHistory/ePM.Qux3IY3tsLDfCmpxnDiFB6Z7eKudu2cH4dK2ZLDg3",
+                            "display": "Joe (Father)"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "FamilyMemberHistory/ePM.Qux3IY3tsLDfCmpxnDhOstn1GTFlXhxiGglTaVdA3",
+                            "display": "Ellen (Other)"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "FamilyMemberHistory/ePM.Qux3IY3tsLDfCmpxnDreCpIDxiDYvSwSdd2GZMl83",
+                            "display": "Lou (Other)"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "FamilyMemberHistory/ePM.Qux3IY3tsLDfCmpxnDveFxWGXW2.MzRylZeKEzKw3",
+                            "display": "Half-sister"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "FamilyMemberHistory/ePM.Qux3IY3tsLDfCmpxnDsX.rHMIGLfLICc9e8rjlNE3",
+                            "display": "Adoptive mother"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "FamilyMemberHistory/ePM.Qux3IY3tsLDfCmpxnDktL26zVbCVSewma1pEizDg3",
+                            "display": "Adoptive father"
+                        }
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```
+
+# Immunization
+
+## Request Parameters
+
+### Native Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|----------|
+| code | Must be "immunizations" | false | false |
+| patient | The patient with whom the list is associated | conditional | false |
+| subject | The patient with whom the list is associated | conditional | false |
+
+
+### Post-filter Parameters
+| Name | Description | Required | Array |
+|------|-------------|----------|--------|
+| empty-reason | If the patient has no allergies documented, the API returns an empty reason of "notstarted". | Yes | No |
+| item | Immunization FHIR ID | Yes | No |
+| status | Always "current" | Yes | No |
+| title | The title representing this entity. Always "Immunization List". | Yes | No |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/List?code=Immunizations&patient=efGUPRUPTZ0qbVksFCaHa5g3"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/List/e2UBbeZz4JqyBEkRh7XY.cW6axa4YURkTKL.OKTeqnKUKnkadFH7NECtiaihV.EqH3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/List/e2UBbeZz4JqyBEkRh7XY.cW6axa4YURkTKL.OKTeqnKUKnkadFH7NECtiaihV.EqH3",
+            "resource": {
+                "resourceType": "List",
+                "id": "e2UBbeZz4JqyBEkRh7XY.cW6axa4YURkTKL.OKTeqnKUKnkadFH7NECtiaihV.EqH3",
+                "status": "current",
+                "mode": "working",
+                "title": "Immunization List",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://open.epic.com/FHIR/StructureDefinition/list-type",
+                            "code": "immunizations"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/efGUPRUPTZ0qbVksFCaHa5g3",
+                    "display": "Myers, Avery"
+                },
+                "entry": [
+                    {
+                        "item": {
+                            "reference": "Immunization/ewiNtF8peilxookuxlyK067RI0YoTcugPWLn-p9gyHBc3",
+                            "display": "DTaP Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ewiNtF8peilxookuxlyK065RaJpObi43fcVP0HX.U7vA3",
+                            "display": "Influenza, Injectable (IST) Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ebK5HJGeJN-veHlCbYWbCoXl7zvS.-YPuQaBm0CWwmyE3",
+                            "display": "Cat Allergen"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eLfKXdJRa2TrEn2yDxvL6JqVIFWcHou51FfkeR8g4lA83",
+                            "display": "MMR"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eLfKXdJRa2TrEn2yDxvL6JkJblGX4VmALD9V0HUervpo3",
+                            "display": "Tetanus"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ey4pQKHbY0NX71oAYf-5SyWOBEhrcyx0HrRwRmWdTOig3",
+                            "display": "Tetanus"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ey4pQKHbY0NX71oAYf-5SyVzKiJHlajknjooHJsyWy543",
+                            "display": "MMR"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ey4pQKHbY0NX71oAYf-5SyZRQhQlhY4KEO-WkZid9e-o3",
+                            "display": "DTaP Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/erZ-bGEKoYNmlUJOiwlayO9Vh7ZB.Eeq.TCMqaVU7rrA3",
+                            "display": "Tetanus"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/erZ-bGEKoYNmlUJOiwlayOwnFY-Q0M8NVRNn7VUZEbI03",
+                            "display": "MMR"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/erZ-bGEKoYNmlUJOiwlayOzaKL5CtRZtFQuKMKqrhjJk3",
+                            "display": "DTaP Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/edoYdto5AkxZfclltPl9A0s-EON-OWOd3VAoJximXLJs3",
+                            "display": "Tetanus"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eRpzJz884Lz1Q2OSVj6w1gyYRrWP1pEZrezMDz29.b3A3",
+                            "display": "MCV4, Unspecified Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ezljMrdQn1ROHI01WA8-xTlhtdyGhc9Y1.wUOjKtO4Js3",
+                            "display": "DTP"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eO5IlOQeh9to2-sX5VuTLPx5Z4MpbP-JoZQbMllR8XAQ3",
+                            "display": "Rabies Vaccine"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eGwElJaMPxfBfBcHBn818XgaBIBO-mtXvtGky1LXr5mk3",
+                            "display": "Cholera Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eYPo0ZkVg.AXGMsDJ-kPMxXeqE7mVPu1gnFa0T0U3yj83",
+                            "display": "4vHPV Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ebI7RK8Fr3HxelmLidodBum5dtDIGV0H7EsITR0FBO6U3",
+                            "display": "Lyme Disease"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/er7eEGxeEHxgkla8aEM4JXKTUNQY9RIoQ0fFq0YbixVw3",
+                            "display": "Comvax"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/e-20z5Euakf3VdZVmxlJ9cIial8ne1FJ0LP7mSbRbyl83",
+                            "display": "Tetanus"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ehb-k5l9VkHpqx0icl3wMTE3yzFqlmDX-MQyfiezEqhA3",
+                            "display": "MMR"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eMq2K9-6kyABJIqLZ7oZknwoGasHW8MMXl9.mClcWEAs3",
+                            "display": "Tetanus"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eTMUQK0nryKQcRrQgl0RdPSYhvIUrpJz1I2SxMIIwF3s3",
+                            "display": "Comvax"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eAtMsS.1q9vGKc-CHTbo9d6YJuxdMx5egQFIkB0Vr3x43",
+                            "display": "4vHPV Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/em3YQHzlvZI8HrX5JIXySwiWt5rfyCqok6jmfcjZKBA43",
+                            "display": "Comvax"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/etVJdn9ZDdYbVkXlIPfWnmL82ZzOGeKROWzPAUK5GSFk3",
+                            "display": "Aas Test"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eJXbOYmRX2BtIqSmLI81j8A5PeIrsL7tmEDTJV1xjDyM3",
+                            "display": "Aas Test"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eJXbOYmRX2BtIqSmLI81j8ORJaA-tlB0EO56.N7WrqAU3",
+                            "display": "Aas Test"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eVKxIP.zVvZrSd2Jbeer037xmHFs0HVt.IqKcpoN94pM3",
+                            "display": "Moderna COVID-19 Vaccine"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/e3RaTQIhw1lL.P4SPp461FUpT9-yCS2PKSmfGbB.M5iA3",
+                            "display": "Moderna COVID-19 Vaccine"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eX1aEGaZwZxJ6T8KdqNx7Ec2.YJjCON2593flTSPP.xk3",
+                            "display": "Moderna COVID-19 Vaccine"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eqeQzbm8dOlaGi9iVI4cg86suGjS-FKkerlRrbdCKiCc3",
+                            "display": "Pfizer Covid-19 Vaccine"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eqeQzbm8dOlaGi9iVI4cg85YXtEVutbyV0NSCF75u5ao3",
+                            "display": "Pfizer Covid-19 Vaccine"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/e2phSGlVxQnOmzkJsjqgA4YymbiVs7N8U4t72NvgWqVA3",
+                            "display": "Tetanus"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eeTQHWw08Zlc-YOdm0GC-ndjP.BSkTFAkhIcmCgxbU.Q3",
+                            "display": "Cholera Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eeTQHWw08Zlc-YOdm0GC-neeghPkpbkEsqWONAi9D0qA3",
+                            "display": "Cholera Imm-rx"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ep9nEcxhKol7KlhCLSjxOQiYN3ir-2.B9iun-4S1.u283",
+                            "display": "Tetanus"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/ep9nEcxhKol7KlhCLSjxOQm8FsGy5Htsaz8HHuKD8-fk3",
+                            "display": "Hepatitis A"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eRJFl2gqDuM5PuDNqZgs0PreAa810wjbVxZmoEpa.gBs3",
+                            "display": "Hepatitis B Immune Globulin"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/eYyaWWeGHI39LWzTE8XnNpDnMMvRbx0U4MSloNoBD5Do3",
+                            "display": "AstraZeneca COVID-19 Vaccination"
+                        }
+                    },
+                    {
+                        "item": {
+                            "reference": "Immunization/erKrV6gw.rGv74SuJQedPNmFai3WIag7lRU38TTy03lw3",
+                            "display": "Pfizer Covid-19 Vaccine"
+                        }
+                    }
+                ]
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```
+
+# Medications
+
+## Request Parameters
+
+### Native Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|----------|
+| code | The code representing the type of list to search. Must be "medications" | conditional | false |
+| encounter | Reference to the Encounter resource with which the List is associated | conditional | false |
+| patient | The Patient resource with whom the List is associated | conditional | false |
+| subject | Reference to the Patient resource with whom the List is associated | conditional | false |
+
+
+### Post-filter Parameters
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| date | Unsupported | true | false |
+| empty-reason | The reason why the list is empty. Only populated when the list is empty, and preferred to be one of the values here.\nWill be "nilknown" when the med list has been marked as reviewed for the encounter.\nWill be "notasked" for all other encounters.\nWill be "withheld" when in a MyChart context and all meds have been filtered.\nWill be "unavailable" when we recorded a message in the "note" property above and quit before searching for meds. | true | false |
+| identifier | Unsupported | true | false |
+| item | Populated with a reference to the MedicationRequest resource for the represented order. | true | false |
+| notes | The annotation - text content | true | false |
+| source | Unsupported | true | false |
+| status | Status of the medication list. Always "retired" because each list only represents an encounter's changes. Values can be found here. | true | false |
+| title | Unsupported | true | false |
+
+## Response
+
+
+```json
+{
+  "resourceType": "Bundle",
+  "type": "searchset",
+  "total": 5,
+  "link": [
+    {
+      "relation": "self",
+      "url": "https://hostname/instance/api/FHIR/R4/List?patient=eIUTBCnalW5avrAyG.4ihQg3&code=medications"
+    }
+  ],
+  "entry": [
+    {
+      "link": [
+        {
+          "relation": "self",
+          "url": "https://hostname/instance/api/FHIR/R4/List/e3kCPUD7SPT10cIgcatMkFhmzTkMy2m2uhB6A.ASh1h-WemqFxKTLfW1IuWERDxEpA11iUXPr100Zc9FOqLk02Q3"
+        }
+      ],
+      "fullUrl": "https://hostname/instance/api/FHIR/R4/List/e3kCPUD7SPT10cIgcatMkFhmzTkMy2m2uhB6A.ASh1h-WemqFxKTLfW1IuWERDxEpA11iUXPr100Zc9FOqLk02Q3",
+      "resource": {
+        "resourceType": "List",
+        "id": "e3kCPUD7SPT10cIgcatMkFhmzTkMy2m2uhB6A.ASh1h-WemqFxKTLfW1IuWERDxEpA11iUXPr100Zc9FOqLk02Q3",
+        "status": "retired",
+        "mode": "changes",
+        "code": {
+          "coding": [
+            {
+              "system": "http://open.epic.com/FHIR/StructureDefinition/list-type",
+              "code": "medications",
+              "display": "Medication List"
+            }
+          ],
+          "text": "Medication List"
+        },
+        "subject": {
+          "reference": "Patient/eIUTBCnalW5avrAyG.4ihQg3",
+          "display": "Inpatient, Tdm"
+        },
+        "encounter": {
+          "reference": "Encounter/ekMZ46DUtO16UTpk1-CPJODeIRAlS-.6sWVH7cNU4IMs3"
+        },
+        "note": {
+          "authorReference": {
+            "reference": "Practitioner/eLFz7QQvmpQcdFluMoY-MHA3",
+            "type": "Practitioner",
+            "display": "Tristan Mitchell"
+          },
+          "time": "2021-01-04T19:18:50Z",
+          "text": "Test med list comment. Fourth edit"
+        },
+        "entry": [
+          {
+            "flag": {
+              "coding": [
+                {
+                  "system": "http://open.epic.com/FHIR/StructureDefinition/med-list-flag",
+                  "code": "prior-to-admission",
+                  "display": "Prior to Admission"
+                }
+              ],
+              "text": "Prior to Admission"
+            },
+            "item": {
+              "reference": "MedicationRequest/e.P.8v42HK56oJOTBRDZ78Iw1qI5J0k-CvQyMF6tZkL03",
+              "identifier": {
+                "use": "usual",
+                "system": "urn:oid:1.2.840.114350.1.13.861.1.7.2.798268",
+                "value": "1000334976"
+              },
+              "display": "fluticasone (FLONASE) 50 MCG/ACT nasal spray"
+            }
+          }
+        ]
+      },
+      "search": {
+        "mode": "match"
+      }
+    }
+  ]
+}
+```
+
+
+
+# Problems
+
+## Request Parameters
+
+### Native Request Elements
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|----------|
+| code (String) | The type of list to search for. Must be set to "problems" | false | false |
+| patient (String) | The Patient resource with which the List is associated | conditional | false |
+| subject (String) | The Patient resource with which the List is associated | conditional | false |
+
+
+### Post-filter Parameters
+| Name | Description | Is Optional | Is Array |
+|------|-------------|-------------|-----------|
+| date (String) | Unsupported | true | false |
+| empty-reason (String) | If the patient has no problems documented, the API returns an emptyReason of "notstarted". | true | false |
+| encounter (String) | Unsupported | true | false |
+| identifier (String) | Unsupported | true | false |
+| item (String) | Condition (Problems) FHIR ID | true | false |
+| notes (String) | Unsupported | true | false |
+| source (String) | Unsupported | true | false |
+| status (String) | Status of the problem list. Always "current" because each list represents only the patient's current problems. | true | false |
+| title (String) | The title representing this entity. Always "Problem List". | true | false |
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1,
+    "link": [{
+        "relation": "self",
+        "url": "https://hostname/instance/api/FHIR/R4/List?patient=exsKF19Z.1GVmpD2e3d.RIQ3&code=problems&_revInclude=AuditEvent:entity"
+    }],
+    "entry": [{
+        "fullUrl": "https://hostname/instance/api/FHIR/R4/List/eIpSjjINTljmpiCA6WglPdM.uAFAZ2DWCZ98sPxJAOhYiIFQn.ki6sAgMyiZ5ZfsB3",
+        "resource": {
+            "resourceType": "List",
+            "id": "eIpSjjINTljmpiCA6WglPdM.uAFAZ2DWCZ98sPxJAOhYiIFQn.ki6sAgMyiZ5ZfsB3",
+            "status": "current",
+            "mode": "working",
+            "title": "Problem List",
+            "code": {
+                "coding": [{
+                    "system": "http://open.epic.com/FHIR/StructureDefinition/list-type",
+                    "code": "problems"
+                }]
+            },
+            "subject": {
+                "reference": "Patient/exsKF19Z.1GVmpD2e3d.RIQ3",
+                "display": "LastName, FirstName"
+            },
+            "entry": [{
+                "item": {
+                    "reference": "Condition/eNNIspYNV4t-uXXI2iqkW7TY49HZOmiWCLe0RkFNQjqs3",
+                    "display": "Generalized abdominal pain"
+                }
+            }, {
+                "item": {
+                    "reference": "Condition/egP7rCnj4ekRiz2SVDRelhnhj7HCnPqplEjS.vxARCJE3", 
+                    "display": "Acute non-ST elevation myocardial infarction (NSTEMI)"
+                }
+            }, {
+                "item": {
+                    "reference": "Condition/eO9zPXhbkgk1ezY-NDhfUsUH0Y2JpLh.Ajc3BEy6Z-Is3",
+                    "display": "Gout"
+                }
+            }]
+        },
+        "search": {
+            "mode": "match"
+        }
+    }, {
+        "fullUrl": "https://hostname/instance/api/FHIR/R4/AuditEvent/e5CN.zQlbIHF7CK30ShFtPJsKcOf274tJZfiXA6Ilvw0tI-XDsOmjZD9T88nBuwUN4Bx2RZoW4d34E0vHsnowwoe8fazZHo5drQT8vOWmnowxVD5tqyfg17gXWjQDZbCh3",
+        "resource": {
+            "resourceType": "AuditEvent",
+            "id": "e5CN.zQlbIHF7CK30ShFtPJsKcOf274tJZfiXA6Ilvw0tI-XDsOmjZD9T88nBuwUN4Bx2RZoW4d34E0vHsnowwoe8fazZHo5drQT8vOWmnowxVD5tqyfg17gXWjQDZbCh3",
+            "type": {
+                "system": "http://open.epic.com/FHIR/StructureDefinition/audit-event-type",
+                "code": "Review History",
+                "display": "Review History"
+            },
+            "recorded": "2020-06-22T17:07:43Z",
+            "agent": [{
+                "role": {
+                    "coding": [{
+                        "system": "http://open.epic.com/FHIR/StructureDefinition/audit-event-agent-role",
+                        "code": "Reviewer",
+                        "display": "Reviewer"
+                    }]
+                },
+                "who": {
+                    "reference": "Practitioner/e3h.ZuGTnpnoqzYu4LAcboA3",
+                    "display": "Physician LastName, MD"
+                },
+                "requestor": true
+            }],
+            "entity": [{
+                "what": {
+                    "reference": "List/eIpSjjINTljmpiCA6WglPdM.uAFAZ2DWCZ98sPxJAOhYiIFQn.ki6sAgMyiZ5ZfsB3"
+                }
+            }]
+        },
+        "search": {
+            "mode": "include"
+        }
+    }]
+}
+```
