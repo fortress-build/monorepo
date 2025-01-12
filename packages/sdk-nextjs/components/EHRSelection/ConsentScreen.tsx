@@ -10,7 +10,7 @@ import {
 import { ArrowLeft, ArrowUpRight, Check, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { Button } from "../../../design-system/components/ui/button";
+import { Button } from "@repo/design-system/components/ui/button";
 import type { EHRProvider } from "../nerve-sign-in";
 import type { PermissionList } from "../nerve-sign-in";
 
@@ -56,7 +56,7 @@ export default function ConsentScreen({
           <div className="space-y-4">
             <h3 className="font-medium text-gray-900">Read Access</h3>
             <ul className="space-y-2 text-gray-600">
-              {healthInfo.read.map((item) => (
+              {healthInfo.read?.map((item) => (
                 <li
                   key={item.title}
                   className="flex flex-col gap-2 p-3 border rounded-md bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
@@ -105,7 +105,7 @@ export default function ConsentScreen({
 
             <h3 className="font-medium text-gray-900 pt-4">Write Access</h3>
             <ul className="space-y-2 text-gray-600">
-              {healthInfo.write.map((item) => (
+              {healthInfo.write?.map((item) => (
                 <li
                   key={item.title}
                   className="flex flex-col gap-2 p-3 border rounded-md bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"

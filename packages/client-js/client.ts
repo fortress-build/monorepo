@@ -152,6 +152,13 @@ export class Nerve {
 
   setProvider(provider: FHIRProviderInfo) {
     this.provider = provider;
+
+    if (globalThis.localStorage !== undefined) {
+      globalThis.localStorage.setItem(
+        "__fhir_oauth_provider",
+        JSON.stringify(provider),
+      );
+    }
   }
 
   async authenticate(): Promise<BeginAuthResult> {
@@ -210,11 +217,10 @@ export class Nerve {
     }
 
     const request = new URLSearchParams({
-      client_id: this.provider.clientId,
-      redirect_uri: this.config.redirectUrl,
       grant_type: "authorization_code",
-      scope: this.config.scopes?.join(" ") ?? "openid fhirUser",
       code,
+      redirect_uri: this.config.redirectUrl,
+      client_id: this.provider.clientId,
     });
 
     const response = await fetch(`${this.provider.authUrl}/token`, {
@@ -222,8 +228,6 @@ export class Nerve {
       body: request.toString(),
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
-        Accept: "application/json",
-        ...this.config.headers,
       },
     });
 

@@ -9,17 +9,18 @@ export function CallbackPage({ children }: { children: React.ReactNode }) {
   const client = useNerveClient();
   const config = useNerveConfig();
   const router = useRouter();
-  const code = useSearchParams().get("code");
+  const params = useSearchParams();
 
   useEffect(() => {
-    if (code !== null) {
+    const code = params.get("code");
+    if (code !== null && code !== "") {
       client.authCallback(code).then(() => {
         router.replace(config.afterRedirectUrl);
       });
     }
-  }, [client, code, router, config]);
+  }, [client, params, router, config]);
 
-  if (code === null) {
+  if (params.get("code") === null) {
     return <div>Something went wrong: No authentication code found</div>;
   }
 

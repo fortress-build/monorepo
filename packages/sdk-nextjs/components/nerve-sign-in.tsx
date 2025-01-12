@@ -1,9 +1,8 @@
 "use server";
 
 import type { JSX } from "react";
-import { AuthStateWrapper } from "./EHRSelection/client-components";
-import { mockEHRProviders } from "./EHRSelection/mock-ehr-list";
-import { mockPermissionList } from "./EHRSelection/mock-permission-list";
+import { SignInInner } from "./EHRSelection/client-components";
+import { mockEHRProviders, mockPermissionList } from "./EHRSelection/mocks";
 
 export interface EHRProvider {
   name: string;
@@ -28,56 +27,20 @@ export interface PermissionList {
 }
 
 async function getEHRProviders(): Promise<EHRProvider[]> {
-  // try {
-  //   const response = await fetch('/api/ehr-providers', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
-
-  //   if (!response.ok) {
-  //     throw new Error(`HTTP error! status: ${response.status}`);
-  //   }
-
-  //   // Simulate real API response
-  //   await new Promise((resolve) => setTimeout(resolve, 300));
-  //   return mockEHRProviders; // For now, still return mock data
-  // } catch (error) {
-  //   console.error('Failed to fetch EHR providers:', error);
-  return mockEHRProviders; // Fallback to mock data
+  return mockEHRProviders;
 }
 
 async function getPermissionList(): Promise<PermissionList> {
-  // try {
-  //   const response = await fetch('/api/permissions', {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   });
-
-  //   if (!response.ok) {
-  //     throw new Error(`HTTP error! status: ${response.status}`);
-  //   }
-
-  //   // Simulate real API response
-  //   await new Promise((resolve) => setTimeout(resolve, 300));
-  //   return mockPermissionList; // For now, still return mock data
-  // } catch (error) {
-  //   console.error('Failed to fetch permissions:', error);
-  return mockPermissionList; // Fallback to mock data
+  return mockPermissionList;
 }
 
 export async function NerveSignIn() {
   const providers = await getEHRProviders();
   const permissions = await getPermissionList();
-  const initialAuthState = false; // You might want to determine this server-side
 
   return (
     <div className="min-h-svh flex flex-row justify-center items-center">
-      <AuthStateWrapper
-        initialAuthState={initialAuthState}
+      <SignInInner
         initialProviders={providers}
         initialPermissions={permissions}
       />

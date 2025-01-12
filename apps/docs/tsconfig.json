@@ -15,8 +15,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.mdx",
     ".next/types/**/*.ts"
-, "content/fhir/resources/allergyintolerance.mdx"  ],
+, "next.config.mjs"  ],
   "exclude": [
     "node_modules"
   ]

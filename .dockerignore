@@ -1,21 +1,5 @@
 **/node_modules/
 **/.next/
-**/out/
-**/dist/
-**/target/
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Misc
-.DS_Store
-*.pem
-
-# Sentry Config File
-.env.sentry-build-plugin
 
 .turbo
-.basehub
 .vercel

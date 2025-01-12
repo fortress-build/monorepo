@@ -1,45 +1,14 @@
 "use client";
 
-import type { Patient } from "@nerve-js/client/models/fhir/Patient";
 import { useEffect, useState } from "react";
-import { useNerveClient } from "../../client";
+
+import { useNerveClient, useNerveConfig } from "../../client";
 import type { EHRProvider, PermissionList } from "../nerve-sign-in";
 import ConsentScreen from "./ConsentScreen";
 import EHRScreen from "./EHRScreen";
+import { useRouter } from "next/navigation";
 
-export function AuthenticatedView() {
-  const client = useNerveClient();
-  const [patient, setPatient] = useState<Patient | null>(null);
-
-  return (
-    <div className="flex flex-col items-center justify-center gap-2">
-      <h1>Authenticated</h1>
-      <p>{JSON.stringify(patient, undefined, 2)}</p>
-      <button
-        type="button"
-        onClick={() => {
-          client.patient.read("erXuFYUfucBZaryVksYEcMg3").then((res) => {
-            setPatient(res);
-          });
-        }}
-      >
-        On Click
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          globalThis.localStorage.removeItem("__fhir_oauth_provider");
-          globalThis.localStorage.removeItem("__fhir_access_token");
-          globalThis.window.location.reload();
-        }}
-      >
-        Logout
-      </button>
-    </div>
-  );
-}
-
-export function UnauthenticatedView({
+export function SignInInner({
   initialProviders,
   initialPermissions,
 }: {
@@ -52,20 +21,28 @@ export function UnauthenticatedView({
     null,
   );
   const client = useNerveClient();
+  const config = useNerveConfig();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (client.isAuthenticated()) {
+      router.replace(config.afterRedirectUrl);
+    }
+  }, [router, client, config]);
 
   if (selectedProvider && permissions) {
     return (
       <ConsentScreen
         provider={selectedProvider}
         onAccept={() => {
-          globalThis.localStorage.setItem(
-            "__fhir_oauth_provider",
-            JSON.stringify(selectedProvider),
-          );
+          client.setProvider({
+            fhirUrl: selectedProvider.fhirUrl,
+            authUrl: selectedProvider.authUrl,
+            clientId: selectedProvider.clientId,
+          });
 
           client.authenticate().then((res) => {
             if (res.state === "unauthenticated") {
-              console.log(`${res.authUrl}`);
               globalThis.window.location.assign(res.authUrl);
               return;
             }
@@ -81,57 +58,6 @@ export function UnauthenticatedView({
     <EHRScreen
       providers={providers}
       onProviderSelect={(provider) => setSelectedProvider(provider)}
-    />
-  );
-}
-
-export function AuthStateWrapper({
-  initialAuthState,
-  initialProviders,
-  initialPermissions,
-}: {
-  initialAuthState: boolean;
-  initialProviders: EHRProvider[];
-  initialPermissions: PermissionList;
-}) {
-  const [authenticatedState, setAuthenticatedState] =
-    useState<boolean>(initialAuthState);
-  const client = useNerveClient();
-
-  useEffect(() => {
-    if (!localStorage.getItem("__fhir_oauth_provider")) {
-      setAuthenticatedState(false);
-      return;
-    }
-
-    const selectedProviderJson = localStorage.getItem("__fhir_oauth_provider");
-    const selectedProvider = JSON.parse(selectedProviderJson!);
-    if (!selectedProvider) {
-      setAuthenticatedState(false);
-      return;
-    }
-
-    const params = new URLSearchParams(window.location.search);
-    if (params.has("code")) {
-      client
-        .authCallback(params.get("code")!)
-        .then(() => client.getToken())
-        .then((token) => {
-          setAuthenticatedState(true);
-        });
-    } else if (localStorage.getItem("__fhir_access_token")) {
-      setAuthenticatedState(true);
-    } else {
-      setAuthenticatedState(false);
-    }
-  }, [client]);
-
-  return authenticatedState ? (
-    <AuthenticatedView />
-  ) : (
-    <UnauthenticatedView
-      initialProviders={initialProviders}
-      initialPermissions={initialPermissions}
     />
   );
 }

@@ -10,7 +10,7 @@ export const config: Config = {
     "./node_modules/@repo/design-system/components/**/*.{ts,tsx}",
     "./node_modules/@repo/design-system/lib/**/*.{ts,tsx}",
     "./node_modules/@repo/design-system/index.tsx",
-    "./node_modules/@nerve-js/**/*.{ts,tsx,css}",
+    "./node_modules/@nerve-js/next/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./lib/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",

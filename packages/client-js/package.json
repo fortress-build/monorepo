@@ -6,6 +6,6 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "devDependencies": {
-    "globals": "^15.13.0"
+    "globals": "^15.14.0"
   }
 }
