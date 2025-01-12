@@ -193,3 +193,8 @@ export * from "./models/fhir/MedicinalProductUndesirableEffect";
 export * from "./models/fhir/FamilyMemberHistory";
 export * from "./models/fhir/CarePlan";
 export * from "./models/fhir/DeviceUseStatement";
+
+export const KEYS = {
+  PROVIDER: "__fhir_oauth_provider",
+  TOKEN: "__fhir_oauth_token",
+};

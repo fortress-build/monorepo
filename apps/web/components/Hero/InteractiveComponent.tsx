@@ -1,15 +1,15 @@
-'use client';
+"use client";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@repo/design-system/components/ui/card';
-import { Input } from '@repo/design-system/components/ui/input';
-import { ArrowUpRight } from 'lucide-react';
-import Image from 'next/image';
-import { type JSX, useEffect, useState } from 'react';
+} from "@repo/design-system/components/ui/card";
+import { Input } from "@repo/design-system/components/ui/input";
+import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import { type JSX, useEffect, useState } from "react";
 
 interface EHRProvider {
   name: string;
@@ -23,54 +23,54 @@ interface EHRProvider {
 //This is a static list
 const ehrProviders: EHRProvider[] = [
   {
-    name: 'Epic',
-    authUrl: 'https://fhir.epic.com/interconnect-fhir-oauth/oauth2',
-    fhirUrl: 'https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4',
-    clientId: 'de0e1685-2b74-403f-b9b3-bda29bfc3e8a',
+    name: "Epic",
+    authUrl: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2",
+    fhirUrl: "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4",
+    clientId: "de0e1685-2b74-403f-b9b3-bda29bfc3e8a",
     icon: <Image src="/ehrs/Epic.svg" alt="Epic" width={24} height={24} />,
-    docsUrl: 'https://docs.nerve.run/ehr/epic',
+    docsUrl: "https://docs.nerve.run/ehr/epic",
   },
   {
-    name: 'Cerner',
-    authUrl: 'https://fhir.cerner.com/auth',
-    fhirUrl: 'https://fhir.cerner.com/r4',
-    clientId: '',
+    name: "Cerner",
+    authUrl: "https://fhir.cerner.com/auth",
+    fhirUrl: "https://fhir.cerner.com/r4",
+    clientId: "",
     icon: <Image src="/ehrs/Cerner.svg" alt="Cerner" width={24} height={24} />,
-    docsUrl: 'https://docs.nerve.run/ehr/cerner',
+    docsUrl: "https://docs.nerve.run/ehr/cerner",
   },
   {
-    name: 'Athena Health',
-    authUrl: 'https://api.athenahealth.com/oauth',
-    fhirUrl: 'https://api.athenahealth.com/fhir/r4',
-    clientId: '',
+    name: "Athena Health",
+    authUrl: "https://api.athenahealth.com/oauth",
+    fhirUrl: "https://api.athenahealth.com/fhir/r4",
+    clientId: "",
     icon: (
       <Image src="/ehrs/AthenaHealth.svg" alt="Cerner" width={24} height={24} />
     ),
-    docsUrl: 'https://docs.nerve.run/ehr/athena-health',
+    docsUrl: "https://docs.nerve.run/ehr/athena-health",
   },
   {
-    name: 'AllScripts',
-    authUrl: 'https://allscripts.com/auth',
-    fhirUrl: 'https://allscripts.com/fhir/r4',
-    clientId: '',
+    name: "AllScripts",
+    authUrl: "https://allscripts.com/auth",
+    fhirUrl: "https://allscripts.com/fhir/r4",
+    clientId: "",
     icon: (
       <Image src="/ehrs/Allscripts.svg" alt="Cerner" width={24} height={24} />
     ),
-    docsUrl: 'https://docs.nerve.run/ehr/allscripts',
+    docsUrl: "https://docs.nerve.run/ehr/allscripts",
   },
   {
-    name: 'NextGen Healthcare',
-    authUrl: 'https://nextgen.com/auth',
-    fhirUrl: 'https://nextgen.com/fhir/r4',
-    clientId: '',
+    name: "NextGen Healthcare",
+    authUrl: "https://nextgen.com/auth",
+    fhirUrl: "https://nextgen.com/fhir/r4",
+    clientId: "",
     icon: <Image src="/ehrs/NextGen.svg" alt="Cerner" width={24} height={24} />,
-    docsUrl: 'https://docs.nerve.run/ehr/nextgen-healthcare',
+    docsUrl: "https://docs.nerve.run/ehr/nextgen-healthcare",
   },
   {
-    name: 'eClinicalWorks',
-    authUrl: 'https://eclinicalworks.com/auth',
-    fhirUrl: 'https://eclinicalworks.com/fhir/r4',
-    clientId: '',
+    name: "eClinicalWorks",
+    authUrl: "https://eclinicalworks.com/auth",
+    fhirUrl: "https://eclinicalworks.com/fhir/r4",
+    clientId: "",
     icon: (
       <Image
         src="/ehrs/eClinicalWorks.svg"
@@ -79,7 +79,7 @@ const ehrProviders: EHRProvider[] = [
         height={24}
       />
     ),
-    docsUrl: 'https://docs.nerve.run/ehr/eclinicalworks',
+    docsUrl: "https://docs.nerve.run/ehr/eclinicalworks",
   },
   // Add more providers as needed
 ];
@@ -106,8 +106,8 @@ function ProviderButton({
             docsUrl: provider.docsUrl,
           };
           globalThis.localStorage.setItem(
-            '__fhir_oauth_provider',
-            JSON.stringify(serializableProvider)
+            "__fhir_oauth_provider",
+            JSON.stringify(serializableProvider),
           );
           window.location.href = provider.docsUrl;
         }}
@@ -126,10 +126,10 @@ function ProviderButton({
 }
 
 function Unauthenticated() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
   const filteredProviders = ehrProviders.filter((provider) =>
-    provider.name.toLowerCase().includes(searchQuery.toLowerCase())
+    provider.name.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   return (
@@ -148,7 +148,7 @@ function Unauthenticated() {
         <CardContent>
           <div
             className={`grid max-h-[180px] grid-cols-2 gap-1 ${
-              filteredProviders.length > 6 ? 'overflow-y-scroll' : 'grid-rows-3'
+              filteredProviders.length > 6 ? "overflow-y-scroll" : "grid-rows-3"
             }`}
           >
             {filteredProviders.map((provider, index) => (
@@ -158,8 +158,8 @@ function Unauthenticated() {
                 isLast={index === filteredProviders.length - 1}
                 select={(provider) => {
                   globalThis.localStorage.setItem(
-                    '__fhir_oauth_provider',
-                    JSON.stringify(provider)
+                    "__fhir_oauth_provider",
+                    JSON.stringify(provider),
                   );
                 }}
               />
@@ -203,3 +203,4 @@ export default function Home() {
     </div>
   );
 }
+

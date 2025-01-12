@@ -2,6 +2,7 @@ import type { Observation } from "./models/fhir/Observation";
 import type { Patient } from "./models/fhir/Patient";
 import type { Reference } from "./models/fhir/Reference";
 import type { Parameters } from "./models/fhir/Parameters";
+import { KEYS } from ".";
 
 export type FHIRMetadataRest = {
   mode: string;
@@ -91,12 +92,12 @@ export class Nerve {
     this.observation = new ObservationResource(this);
 
     if (globalThis.localStorage !== undefined) {
-      const provider = localStorage.getItem("__fhir_oauth_provider");
+      const provider = localStorage.getItem(KEYS.PROVIDER);
       if (provider !== null) {
         this.setProvider(JSON.parse(provider));
       }
 
-      const authData = localStorage.getItem("__fhir_access_token");
+      const authData = localStorage.getItem(KEYS.TOKEN);
       if (authData !== null) {
         const { accessToken, tokenExpiration } = JSON.parse(authData);
         this.restoreToken(accessToken, tokenExpiration);
@@ -154,10 +155,7 @@ export class Nerve {
     this.provider = provider;
 
     if (globalThis.localStorage !== undefined) {
-      globalThis.localStorage.setItem(
-        "__fhir_oauth_provider",
-        JSON.stringify(provider),
-      );
+      globalThis.localStorage.setItem(KEYS.PROVIDER, JSON.stringify(provider));
     }
   }
 
@@ -207,7 +205,7 @@ export class Nerve {
     return (
       this.accessToken !== undefined &&
       this.tokenExpiration !== undefined &&
-      this.tokenExpiration < Date.now() / 1000
+      this.tokenExpiration < Date.now()
     );
   }
 
@@ -245,7 +243,7 @@ export class Nerve {
     this.config.headers.Authorization = `Bearer ${this.accessToken}`;
 
     globalThis.localStorage?.setItem(
-      "__fhir_access_token",
+      KEYS.TOKEN,
       JSON.stringify({
         accessToken: this.accessToken,
         tokenExpiration: this.tokenExpiration,

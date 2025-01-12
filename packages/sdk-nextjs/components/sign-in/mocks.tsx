@@ -1,7 +1,7 @@
 import Image from "next/image";
-import type { EHRProvider } from "../nerve-sign-in";
+import type { EHRProvider } from ".";
 
-import type { PermissionList } from "../nerve-sign-in";
+import type { PermissionList } from ".";
 
 export const mockPermissionList: PermissionList = {
   read: [

@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 import { useNerveClient, useNerveConfig } from "../../client";
-import type { EHRProvider, PermissionList } from "../nerve-sign-in";
-import ConsentScreen from "./ConsentScreen";
-import EHRScreen from "./EHRScreen";
+import type { EHRProvider, PermissionList } from ".";
+import ConsentScreen from "./consent";
+import EHRScreen from "./provider-selection";
 import { useRouter } from "next/navigation";
 
 export function SignInInner({

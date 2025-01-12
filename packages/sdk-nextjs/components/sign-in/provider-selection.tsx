@@ -13,7 +13,7 @@ import { Input } from "@repo/design-system/components/ui/input";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import type { EHRProvider } from "../nerve-sign-in";
+import type { EHRProvider } from ".";
 
 export default function EHRScreen({
   providers,

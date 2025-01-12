@@ -19,20 +19,6 @@ const NerveGlobalContext = createContext<NerveNextContext | undefined>(
   undefined,
 );
 
-export function Authenticated({ children }: { children: React.ReactNode }) {
-  const client = useNerveClient();
-  const config = useNerveConfig();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!client.isAuthenticated()) {
-      router.replace(config.signInUrl);
-    }
-  }, [client, router, config]);
-
-  return children;
-}
-
 export function NerveProvider({
   children,
   redirectUrl,

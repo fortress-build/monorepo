@@ -1,8 +1,8 @@
 "use server";
 
 import type { JSX } from "react";
-import { SignInInner } from "./EHRSelection/client-components";
-import { mockEHRProviders, mockPermissionList } from "./EHRSelection/mocks";
+import { SignInInner } from "./inner";
+import { mockEHRProviders, mockPermissionList } from "./mocks";
 
 export interface EHRProvider {
   name: string;

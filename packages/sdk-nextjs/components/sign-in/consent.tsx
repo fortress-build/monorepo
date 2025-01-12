@@ -11,8 +11,8 @@ import { ArrowLeft, ArrowUpRight, Check, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@repo/design-system/components/ui/button";
-import type { EHRProvider } from "../nerve-sign-in";
-import type { PermissionList } from "../nerve-sign-in";
+import type { EHRProvider } from ".";
+import type { PermissionList } from ".";
 
 export default function ConsentScreen({
   onAccept,

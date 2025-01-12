@@ -1,6 +1,6 @@
 "use client";
 
-import { Authenticated } from "@nerve-js/next/client";
+import { Authenticated } from "@nerve-js/next";
 
 export default function Home() {
   return (
