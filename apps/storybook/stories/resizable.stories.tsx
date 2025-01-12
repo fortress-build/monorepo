@@ -4,7 +4,7 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from '@repo/design-system/components/ui/resizable';
+} from '@nerve-js/design-system/components/ui/resizable';
 
 /**
  * Accessible resizable panel groups and layouts with keyboard support.

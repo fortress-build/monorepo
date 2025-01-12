@@ -8,16 +8,16 @@
   },
   "dependencies": {
     "@nerve-js/client": "workspace:*",
-    "@repo/next-config": "workspace:*",
+    "@nerve-js/next-config": "workspace:*",
     "lucide-react": "^0.471.0",
     "next": "15.1.4",
-    "@repo/tailwind-config": "workspace:*",
+    "@nerve-js/tailwind-config": "workspace:*",
     "next-themes": "^0.4.4",
     "react": "19.0.0",
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@nerve-js/typescript-config": "workspace:*",
     "@types/node": "22.10.5",
     "@types/react": "19.0.4",
     "@types/react-dom": "19.0.2",

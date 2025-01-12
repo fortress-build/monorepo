@@ -7,9 +7,9 @@ import typographyConfig from "./typography.config";
 export const config: Config = {
   darkMode: ["class"],
   content: [
-    "./node_modules/@repo/design-system/components/**/*.{ts,tsx}",
-    "./node_modules/@repo/design-system/lib/**/*.{ts,tsx}",
-    "./node_modules/@repo/design-system/index.tsx",
+    "./node_modules/@nerve-js/design-system/components/**/*.{ts,tsx}",
+    "./node_modules/@nerve-js/design-system/lib/**/*.{ts,tsx}",
+    "./node_modules/@nerve-js/design-system/index.tsx",
     "./node_modules/@nerve-js/next/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./lib/**/*.{ts,tsx}",

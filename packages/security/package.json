@@ -1,5 +1,5 @@
 {
-  "name": "@repo/security",
+  "name": "@nerve-js/security",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,12 +10,12 @@
   "dependencies": {
     "@arcjet/next": "1.0.0-alpha.34",
     "@nosecone/next": "1.0.0-alpha.34",
-    "@repo/database": "workspace:*",
+    "@nerve-js/database": "workspace:*",
     "@t3-oss/env-nextjs": "^0.11.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@nerve-js/typescript-config": "workspace:*",
     "typescript": "^5.7.3"
   }
 }

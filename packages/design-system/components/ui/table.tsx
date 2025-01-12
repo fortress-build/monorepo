@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@repo/design-system/lib/utils"
+import { cn } from "@nerve-js/design-system/lib/utils"
 
 const Table = React.forwardRef<
   HTMLTableElement,

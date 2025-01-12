@@ -1,3 +1,3 @@
-import { initializeSentry } from '@repo/observability/client';
+import { initializeSentry } from '@nerve-js/observability/client';
 
 initializeSentry();

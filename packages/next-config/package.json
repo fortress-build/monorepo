@@ -1,5 +1,5 @@
 {
-  "name": "@repo/next-config",
+  "name": "@nerve-js/next-config",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@nerve-js/typescript-config": "workspace:*",
     "next": "15.1.4"
   },
   "dependencies": {

@@ -1,12 +1,12 @@
 "use client";
 
-import { OrganizationSwitcher, UserButton } from "@repo/auth/client";
-import { ModeToggle } from "@repo/design-system/components/mode-toggle";
+import { OrganizationSwitcher, UserButton } from "@nerve-js/auth/client";
+import { ModeToggle } from "@nerve-js/design-system/components/mode-toggle";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@repo/design-system/components/ui/collapsible";
+} from "@nerve-js/design-system/components/ui/collapsible";
 import {
   Sidebar,
   SidebarContent,
@@ -24,8 +24,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   useSidebar,
-} from "@repo/design-system/components/ui/sidebar";
-import { cn } from "@repo/design-system/lib/utils";
+} from "@nerve-js/design-system/components/ui/sidebar";
+import { cn } from "@nerve-js/design-system/lib/utils";
 import {
   AnchorIcon,
   BookOpenIcon,

@@ -4,13 +4,13 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from '@repo/design-system/components/ui/avatar';
+} from '@nerve-js/design-system/components/ui/avatar';
 import {
   Carousel,
   type CarouselApi,
   CarouselContent,
   CarouselItem,
-} from '@repo/design-system/components/ui/carousel';
+} from '@nerve-js/design-system/components/ui/carousel';
 import { User } from 'lucide-react';
 import { useEffect, useState } from 'react';
 

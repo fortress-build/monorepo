@@ -1,10 +1,10 @@
 import { Sidebar } from '@/components/sidebar';
 import { ArrowLeftIcon } from '@radix-ui/react-icons';
-import { legal } from '@repo/cms';
-import { Body } from '@repo/cms/components/body';
-import { Feed } from '@repo/cms/components/feed';
-import { TableOfContents } from '@repo/cms/components/toc';
-import { createMetadata } from '@repo/seo/metadata';
+import { legal } from '@nerve-js/cms';
+import { Body } from '@nerve-js/cms/components/body';
+import { Feed } from '@nerve-js/cms/components/feed';
+import { TableOfContents } from '@nerve-js/cms/components/toc';
+import { createMetadata } from '@nerve-js/seo/metadata';
 import type { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';

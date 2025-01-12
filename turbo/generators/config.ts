@@ -8,7 +8,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         type: 'input',
         name: 'name',
         message:
-          'What is the name of the package? (You can skip the `@repo/` prefix)',
+          'What is the name of the package? (You can skip the `@nerve-js/` prefix)',
       },
     ],
     actions: [
@@ -16,9 +16,9 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         if (
           'name' in answers &&
           typeof answers.name === 'string' &&
-          answers.name.startsWith('@repo/')
+          answers.name.startsWith('@nerve-js/')
         ) {
-          answers.name = answers.name.replace('@repo/', '');
+          answers.name = answers.name.replace('@nerve-js/', '');
         }
         return 'Config sanitized';
       },

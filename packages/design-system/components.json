@@ -10,10 +10,10 @@
     "cssVariables": true
   },
   "aliases": {
-    "components": "@repo/design-system/components",
-    "utils": "@repo/design-system/lib/utils",
-    "hooks": "@repo/design-system/hooks",
-    "lib": "@repo/design-system/lib",
-    "ui": "@repo/design-system/components/ui"
+    "components": "@nerve-js/design-system/components",
+    "utils": "@nerve-js/design-system/lib/utils",
+    "hooks": "@nerve-js/design-system/hooks",
+    "lib": "@nerve-js/design-system/lib",
+    "ui": "@nerve-js/design-system/components/ui"
   }
 }

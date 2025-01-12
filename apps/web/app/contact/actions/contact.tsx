@@ -1,10 +1,10 @@
 'use server';
 
 import { env } from '@/env';
-import { resend } from '@repo/email';
-import { ContactTemplate } from '@repo/email/templates/contact';
-import { parseError } from '@repo/observability/error';
-import { createRateLimiter, slidingWindow } from '@repo/rate-limit';
+import { resend } from '@nerve-js/email';
+import { ContactTemplate } from '@nerve-js/email/templates/contact';
+import { parseError } from '@nerve-js/observability/error';
+import { createRateLimiter, slidingWindow } from '@nerve-js/rate-limit';
 import { headers } from 'next/headers';
 
 export const contact = async (
