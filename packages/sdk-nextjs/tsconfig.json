@@ -1,5 +1,5 @@
 {
-  "extends": "@nerve-js/typescript-config/react-library.json",
+  "extends": "@nerve-js/typescript-config/nextjs.json",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

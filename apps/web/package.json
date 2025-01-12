@@ -1,6 +1,5 @@
 {
   "name": "web",
-  "private": true,
   "scripts": {
     "dev": "next dev -p 3001 --turbopack",
     "build": "next build",

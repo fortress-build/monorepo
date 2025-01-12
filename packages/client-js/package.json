@@ -1,6 +1,5 @@
 {
   "name": "@nerve-js/client",
-  "private": false,
   "version": "0.1.0",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",

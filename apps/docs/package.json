@@ -1,6 +1,5 @@
 {
   "name": "docs",
-  "private": true,
   "scripts": {
     "build": "next build",
     "dev": "next dev -p 3004 --turbopack",
