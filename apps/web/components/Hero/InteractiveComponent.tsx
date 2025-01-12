@@ -178,22 +178,13 @@ function Unauthenticated() {
 }
 
 export default function Home() {
+  // Always set authenticatedState to false
   const [authenticatedState, setAuthenticatedState] = useState<
     boolean | undefined
-  >(undefined);
+  >(false);
 
   useEffect(() => {
-    if (!localStorage.getItem('__fhir_oauth_provider')) {
-      setAuthenticatedState(false);
-      return;
-    }
-
-    const selectedProviderJson = localStorage.getItem('__fhir_oauth_provider');
-    const selectedProvider = JSON.parse(selectedProviderJson!);
-    if (!selectedProvider) {
-      setAuthenticatedState(false);
-      return;
-    }
+    setAuthenticatedState(false);
   }, []);
 
   // fhir.authenticate().then((res) => {
@@ -208,7 +199,7 @@ export default function Home() {
 
   return (
     <div className="flex items-center justify-center">
-      {authenticatedState ? <Authenticated /> : <Unauthenticated />}
+      {authenticatedState ? <Unauthenticated /> : <Unauthenticated />}
     </div>
   );
 }

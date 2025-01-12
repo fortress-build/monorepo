@@ -20,7 +20,7 @@ import Logo from 'public/logo.svg';
 
 const GithubIcon = () => (
   // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
-<svg
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     className="h-5 w-5 fill-current"
@@ -31,7 +31,7 @@ const GithubIcon = () => (
 
 const DiscordIcon = () => (
   // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
-<svg
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     className="h-5 w-5 fill-current"
@@ -89,8 +89,6 @@ export const Header = () => {
     <header className="sticky top-0 left-0 z-40 w-full border-b bg-background">
       <div className="container relative mx-auto flex min-h-20 flex-row items-center gap-4 lg:grid lg:grid-cols-[auto,1fr,auto]">
         <div className="flex items-center gap-4">
-      <div className="container relative mx-auto flex min-h-20 flex-row items-center gap-4 lg:grid lg:grid-cols-[auto,1fr,auto]">
-        <div className="flex items-center gap-2">
           <Image
             src={Logo}
             alt="Logo"
@@ -102,8 +100,6 @@ export const Header = () => {
             nerve
           </p>
         </div>
-        <div className="hidden items-center lg:ml-8 lg:flex">
-          <NavigationMenu>
         <div className="hidden items-center lg:ml-8 lg:flex">
           <NavigationMenu>
             <NavigationMenuList className="flex flex-row gap-4">
@@ -157,7 +153,6 @@ export const Header = () => {
           </NavigationMenu>
         </div>
         <div className="flex w-full items-center justify-end gap-4">
-        <div className="flex w-full items-center justify-end gap-4">
           <Button variant="ghost" className="hidden md:inline" asChild>
             <Link href="/contact">Contact us</Link>
           </Button>
@@ -165,7 +160,6 @@ export const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="hidden items-center justify-center md:inline-flex"
             className="hidden items-center justify-center md:inline-flex"
             asChild
           >
@@ -180,7 +174,6 @@ export const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="hidden items-center justify-center md:inline-flex"
             className="hidden items-center justify-center md:inline-flex"
             asChild
           >
