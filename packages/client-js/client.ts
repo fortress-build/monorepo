@@ -1,7 +1,8 @@
-import type { Observation } from "./models/fhir/Observation";
 import type { Patient } from "./models/fhir/Patient";
 import type { Reference } from "./models/fhir/Reference";
 import type { Parameters } from "./models/fhir/Parameters";
+import { ObservationResource } from "./functions/observation";
+import { PatientResource } from "./functions/patient";
 import { KEYS } from ".";
 
 export type FHIRMetadataRest = {
@@ -316,79 +317,9 @@ export class Nerve {
     });
   }
 }
-
-async function resolveReferences(obj: Record<string, unknown>, client: Nerve) {
-  //loops over all of the items
-  for (const [k, v] of Object.entries(obj as object)) {
-    if (v == null || typeof v !== "object") {
-      continue;
-    }
-
-    //check if reference
-    if (Object.hasOwn(v, "reference") && Object.hasOwn(v, "type")) {
-      const ref = await client.resolveReference(v);
-      obj[k] = ref;
-    } else {
-      resolveReferences(v, client);
-    }
-  }
-  return obj;
   //if something has a Reference type, then call function to resolve the reference
-}
 
-class PatientResource {
-  private client: Nerve;
 
-  constructor(client: Nerve) {
-    this.client = client;
-  }
-
-  async read(id: string): Promise<Patient> {
-    const res = await resolveReferences(
-      await this.client.request(`Patient/${id}`),
-      this.client,
-    );
-
-    return res as unknown as Patient;
-  }
-
-  async create(data: Patient): Promise<void> {
-    await this.client.request("Patient", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-  }
-
-  async match(data: Parameters): Promise<unknown /* Bundle */> {
-    return await this.client.request("Patient/$match", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-  }
-
-  async search(params: {
-    address?: string;
-    birthdate?: string;
-    family?: string;
-    gender?: string;
-    given?: string;
-    identifier?: string;
-    name?: string;
-    telecom?: string;
-
-    "legal-sex"?: string;
-
-    "own-name"?: string;
-    "own-prefix"?: string;
-
-    "partner-name"?: string;
-    "partner-prefix"?: string;
-  }) {
-    return await this.client.request(`Patient?${new URLSearchParams(params)}`, {
-      method: "GET",
-    });
-  }
-}
 // Binary.Read (Clinical Notes) (R4)
 // Binary.Read (Radiology Results) (R4)
 // BodyStructure.Read (Organ) (R4)
@@ -409,51 +340,3 @@ class PatientResource {
 // Observation.Read (Labs) (R4) - may need to use it for some labs/results
 // Observation.Read (Vitals) (R4)
 // Procedure.Read (Surgical History) (R4) (
-
-//TODO: Fill out all possible categories
-export type ObservationCategory = "vital-signs" | "laboratory" | "imaging";
-
-export type ObservationSearchRequest = {
-  category?: ObservationCategory;
-  patient: string;
-  code?: string;
-  date?: string;
-};
-
-class ObservationResource {
-  private client: Nerve;
-
-  constructor(client: Nerve) {
-    this.client = client;
-  }
-
-  async read(
-    id: string,
-  ): Promise<{ resourceType: "Observation"; resource: Observation }> {
-    if (this.client.provider === undefined) {
-      throw new Error("Provider information not set");
-    }
-
-    return await this.client.request(
-      `${this.client.provider.fhirUrl}/Observation/${id}`,
-      {
-        method: "GET",
-      },
-    );
-  }
-
-  async create(data: Observation): Promise<void> {
-    await this.client.request("Observation", {
-      method: "POST",
-      body: JSON.stringify(data),
-    });
-  }
-
-  async search(params: ObservationSearchRequest) {
-    const searchParams = new URLSearchParams(params);
-
-    return await this.client.request(`Observation?${searchParams.toString()}`, {
-      method: "GET",
-    });
-  }
-}

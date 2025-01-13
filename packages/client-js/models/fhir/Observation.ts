@@ -22,7 +22,7 @@ import type { Patient } from "./Patient";
 import type { Period } from "./Period";
 import type { Practitioner } from "./Practitioner";
 import type { PractitionerRole } from "./PractitionerRole";
-import type { Procedure } from "./Procedure";
+import type { export export Procedure } from "./Procedure";
 import type { Quantity } from "./Quantity";
 import type { QuestionnaireResponse } from "./QuestionnaireResponse";
 import type { Ratio } from "./Ratio";
