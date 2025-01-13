@@ -1,6 +1,6 @@
-import type { Patient } from '../models/fhir/Patient';
+import { camelToKebab } from '@/camel2kebab';
 import type { Nerve } from '..';
-
+import type { Patient } from '../models/fhir/Patient';
 
 export class PatientResource {
   private client: Nerve;
@@ -41,17 +41,20 @@ export class PatientResource {
     identifier?: string;
     name?: string;
     telecom?: string;
-
-    'legal-sex'?: string;
-
-    'own-name'?: string;
-    'own-prefix'?: string;
-
-    'partner-name'?: string;
-    'partner-prefix'?: string;
+    legalSex?: string;
+    ownName?: string;
+    ownPrefix?: string;
+    partnerName?: string;
+    partnerPrefix?: string;
   }) {
-    return await this.client.request(`Patient?${new URLSearchParams(params)}`, {
-      method: 'GET',
-    });
+    const kebabParams = Object.fromEntries(
+      Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
+    );
+    return await this.client.request(
+      `Patient?${new URLSearchParams(kebabParams)}`,
+      {
+        method: 'GET',
+      }
+    );
   }
 }

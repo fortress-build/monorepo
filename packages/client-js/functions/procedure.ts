@@ -1,10 +1,11 @@
+import { camelToKebab } from '@/camel2kebab';
 import type { Nerve } from '..';
 import type { Procedure } from '../models/fhir/Procedure';
 
 export type ProcedureSearchCategory = {
   category?: string;
   code?: string;
-  date?: string;  
+  date?: string;
 } & (
   | { patient: string; subject?: string }
   | { patient?: string; subject: string }
@@ -41,7 +42,10 @@ export class ObservationResource {
   //   }
 
   async search(params: ProcedureSearchCategory) {
-    const searchParams = new URLSearchParams(params);
+    const kebabParams = Object.fromEntries(
+      Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
+    );
+    const searchParams = new URLSearchParams(kebabParams);
 
     return await this.client.request(`Procedure?${searchParams.toString()}`, {
       method: 'GET',

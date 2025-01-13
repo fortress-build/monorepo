@@ -1,3 +1,4 @@
+import { camelToKebab } from '@/camel2kebab';
 import type { Nerve } from '..';
 import type { DocumentReference } from '../models/fhir/DocumentReference';
 
@@ -22,9 +23,7 @@ export class DocumentReferenceResource {
     this.client = client;
   }
 
-  async read(
-    id: string
-  ): Promise<{
+  async read(id: string): Promise<{
     resourceType: 'DocumentReference';
     resource: DocumentReference;
   }> {
@@ -48,7 +47,10 @@ export class DocumentReferenceResource {
   }
 
   async search(params: DocumentReferenceSearchRequest) {
-    const searchParams = new URLSearchParams(params);
+    const kebabParams = Object.fromEntries(
+      Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
+    );
+    const searchParams = new URLSearchParams(kebabParams);
 
     return await this.client.request(
       `DocumentReference?${searchParams.toString()}`,

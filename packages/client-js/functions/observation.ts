@@ -1,6 +1,6 @@
-import type { Observation } from '../models/fhir/Observation';
+import { camelToKebab } from '@/camel2kebab';
 import type { Nerve } from '..';
-
+import type { Observation } from '../models/fhir/Observation';
 
 export type ObservationSearchRequest = {
   category?: string;
@@ -39,7 +39,10 @@ export class ObservationResource {
   }
 
   async search(params: ObservationSearchRequest) {
-    const searchParams = new URLSearchParams(params);
+    const kebabParams = Object.fromEntries(
+      Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
+    );
+    const searchParams = new URLSearchParams(kebabParams);
 
     return await this.client.request(`Observation?${searchParams.toString()}`, {
       method: 'GET',

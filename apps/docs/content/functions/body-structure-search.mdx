@@ -6,7 +6,7 @@ title: "bodyStructure.search"
 ### Native Request Elements
 | Name | Description | Is Optional | Is Array |
 |------|-------------|-------------|-----------|
-| ID (String) | The FHIR ID. | false | false |
+| id (String) | The FHIR ID. | false | false |
 | location (String) | Limits the search to a particular organ location. Format: "http://snomed.info/sct\|SNOMEDCODE" where SNOMEDCODE is the numeric portion of the code associated with a particular body structure. For example, enter "http://snomed.info/sct\|18639004" to search for left kidney structures. May send multiple entries separated by commas. | false | false |
 | morphology (String) | Limits the search to all organs, or to specifically donor or recipient organs. Enter "organs" for all organs, "http://snomed.info/sct\|91723000" for donor organs, or "http://snomed.info/sct\|280115004" for recipient organs. | false | false |
 | patient (String) | The patient for which to perform the search. | conditional | false |

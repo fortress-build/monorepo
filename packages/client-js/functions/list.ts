@@ -1,3 +1,4 @@
+import { camelToKebab } from '@/camel2kebab';
 import type { Nerve } from '..';
 import type { List } from '../models/fhir/List';
 
@@ -40,7 +41,10 @@ export class ListResource {
   }
 
   async search(params: ListSearchRequest) {
-    const searchParams = new URLSearchParams(params);
+    const kebabParams = Object.fromEntries(
+      Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
+    );
+    const searchParams = new URLSearchParams(kebabParams);
 
     return await this.client.request(`List?${searchParams.toString()}`, {
       method: 'GET',
