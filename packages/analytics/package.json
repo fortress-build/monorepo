@@ -1,6 +1,6 @@
 {
   "name": "@nerve-js/analytics",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
