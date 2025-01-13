@@ -1,6 +1,7 @@
 import { camelToKebab } from '@/camel2kebab';
 import type { Nerve } from '..';
 import type { Patient } from '../models/fhir/Patient';
+import type { Parameters } from '../models/fhir/Parameters';
 
 export class PatientResource {
   private client: Nerve;
@@ -9,13 +10,19 @@ export class PatientResource {
     this.client = client;
   }
 
-  async read(id: string): Promise<Patient> {
-    const res = await this.client.resolveReferences(
-      await this.client.request(`Patient/${id}`),
-      this.client
-    );
+  async read(
+    id: string
+  ): Promise<{ resourceType: 'Patient'; resource: Patient }> {
+    if (this.client.provider === undefined) {
+      throw new Error('Provider information not set');
+    }
 
-    return res as unknown as Patient;
+    return await this.client.request(
+      `${this.client.provider.fhirUrl}/Patient/${id}`,
+      {
+        method: 'GET',
+      }
+    );
   }
 
   async create(data: Patient): Promise<void> {

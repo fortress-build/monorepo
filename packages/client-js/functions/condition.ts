@@ -1,8 +1,8 @@
 import { camelToKebab } from '@/camel2kebab';
 import type { Nerve } from '..';
-import type { DiagnosticReport } from '../models/fhir/DiagnosticReport';
+import type { Condition } from '../models/fhir/Condition';
 
-export type DiagnosticReportSearchRequest = {
+export type ConditionSearchRequest = {
   category?: string;
   clinicalStatus?: string;
   period?: string;
@@ -14,7 +14,7 @@ export type DiagnosticReportSearchRequest = {
   | { patient: string; subject: string }
 );
 
-export class DiagnosticReportResource {
+export class ConditionResource {
   private client: Nerve;
 
   constructor(client: Nerve) {
@@ -22,39 +22,36 @@ export class DiagnosticReportResource {
   }
 
   async read(id: string): Promise<{
-    resourceType: 'DiagnosticReport';
-    resource: DiagnosticReport;
+    resourceType: 'Condition';
+    resource: Condition;
   }> {
     if (this.client.provider === undefined) {
       throw new Error('Provider information not set');
     }
 
     return await this.client.request(
-      `${this.client.provider.fhirUrl}/DiagnosticReport/${id}`,
+      `${this.client.provider.fhirUrl}/Condition/${id}`,
       {
         method: 'GET',
       }
     );
   }
 
-  async create(data: DiagnosticReport): Promise<void> {
-    await this.client.request('DiagnosticReport', {
+  async create(data: Condition): Promise<void> {
+    await this.client.request('Condition', {
       method: 'POST',
       body: JSON.stringify(data),
     });
   }
 
-  async search(params: DiagnosticReportSearchRequest) {
+  async search(params: ConditionSearchRequest) {
     const kebabParams = Object.fromEntries(
       Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
     );
     const searchParams = new URLSearchParams(kebabParams);
 
-    return await this.client.request(
-      `DiagnosticReport?${searchParams.toString()}`,
-      {
-        method: 'GET',
-      }
-    );
+    return await this.client.request(`Condition?${searchParams.toString()}`, {
+      method: 'GET',
+    });
   }
 }

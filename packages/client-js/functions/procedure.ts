@@ -12,7 +12,7 @@ export type ProcedureSearchCategory = {
   | { patient: string; subject: string }
 );
 
-export class ObservationResource {
+export class ProcedureResource {
   private client: Nerve;
 
   constructor(client: Nerve) {
