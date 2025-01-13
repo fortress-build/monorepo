@@ -7,19 +7,19 @@ title: "list.search"
 ## Request Parameters
 
 ### Native Parameters
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|----------|
-| code | Must be "allergies" | false | false |
-| patient | The patient with whom the list is associated | conditional | false |
-| subject | The patient with whom the list is associated | conditional | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|----------|-------|
+| code | Must be "allergies" | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| patient | The patient with whom the list is associated | | false | string |
+| subject | The patient with whom the list is associated | | false | string |
 
 ### Post-filter Parameters
-| Name | Description | Required | Array |
-|------|-------------|----------|--------|
-| empty-reason | If the patient has no allergies documented, the API returns an empty reason of "notstarted". | Yes | No |
-| item | AllergyIntolerance FHIR ID | Yes | No |
-| status | Status of the allergy list. Always "current" because each list represents only the patient's current allergies. | Yes | No |
-| title | The title representing this entity. Always "Allergy List". | Yes | No |
+| Name | Description | Required | Array | Types |
+|------|-------------|----------|-------|-------|
+| empty-reason | If the patient has no allergies documented, the API returns an empty reason of "notstarted". | Yes | No | string |
+| item | AllergyIntolerance FHIR ID | Yes | No | string |
+| status | Status of the allergy list. Always "current" because each list represents only the patient's current allergies. | Yes | No | string |
+| title | The title representing this entity. Always "Allergy List". | Yes | No | string |
 
 ## Response
 
@@ -33,17 +33,17 @@ TODO
 ## Request Parameters
 
 ### Native Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|----------|
-| code | Must be "pedigree-list" | false | false |
-| patient | The patient with whom the list is associated | conditional | false |
-| subject | The patient with whom the list is associated | conditional | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|----------|-------|
+| code | Must be "pedigree-list" | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| patient | The patient with whom the list is associated | | false | string |
+| subject | The patient with whom the list is associated | | false | string |
 
 
 ### Post-filter Parameters
-| Name | Description | Required | Array |
-|------|-------------|----------|--------|
-| item | FamilyHistory FHIR ID Reference | No | No |
+| Name | Description | Required | Array | Types |
+|------|-------------|----------|-------|-------|
+| item | FamilyHistory FHIR ID Reference | No | No | string |
 
 ## Response
 
@@ -143,20 +143,20 @@ TODO
 ## Request Parameters
 
 ### Native Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|----------|
-| code | Must be "immunizations" | false | false |
-| patient | The patient with whom the list is associated | conditional | false |
-| subject | The patient with whom the list is associated | conditional | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|----------|-------|
+| code | Must be "immunizations" | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| patient | The patient with whom the list is associated | | false | string |
+| subject | The patient with whom the list is associated | | false | string |
 
 
 ### Post-filter Parameters
-| Name | Description | Required | Array |
-|------|-------------|----------|--------|
-| empty-reason | If the patient has no allergies documented, the API returns an empty reason of "notstarted". | Yes | No |
-| item | Immunization FHIR ID | Yes | No |
-| status | Always "current" | Yes | No |
-| title | The title representing this entity. Always "Immunization List". | Yes | No |
+| Name | Description | Required | Array | Types |
+|------|-------------|----------|-------|-------|
+| empty-reason | If the patient has no allergies documented, the API returns an empty reason of "notstarted". | Yes | No | string |
+| item | Immunization FHIR ID | Yes | No | string |
+| status | Always "current" | Yes | No | string |
+| title | The title representing this entity. Always "Immunization List". | Yes | No | string |
 
 ## Response
 
@@ -460,25 +460,25 @@ TODO
 ## Request Parameters
 
 ### Native Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|----------|
-| code | The code representing the type of list to search. Must be "medications" | conditional | false |
-| encounter | Reference to the Encounter resource with which the List is associated | conditional | false |
-| patient | The Patient resource with whom the List is associated | conditional | false |
-| subject | Reference to the Patient resource with whom the List is associated | conditional | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|----------|-------|
+| code | The code representing the type of list to search. Must be "medications" | | false | string |
+| encounter | Reference to the Encounter resource with which the List is associated | | false | string |
+| patient | The Patient resource with whom the List is associated | | false | string |
+| subject | Reference to the Patient resource with whom the List is associated | | false | string |
 
 
 ### Post-filter Parameters
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| date | Unsupported | true | false |
-| emptyReason | The reason why the list is empty. Only populated when the list is empty, and preferred to be one of the values here.\nWill be "nilknown" when the med list has been marked as reviewed for the encounter.\nWill be "notasked" for all other encounters.\nWill be "withheld" when in a MyChart context and all meds have been filtered.\nWill be "unavailable" when we recorded a message in the "note" property above and quit before searching for meds. | true | false |
-| identifier | Unsupported | true | false |
-| item | Populated with a reference to the MedicationRequest resource for the represented order. | true | false |
-| notes | The annotation - text content | true | false |
-| source | Unsupported | true | false |
-| status | Status of the medication list. Always "retired" because each list only represents an encounter's changes. Values can be found here. | true | false |
-| title | Unsupported | true | false |
+| Name | Description | Is Optional | Is Array | Types |
+|------|-------------|-------------|-----------|-------|
+| date | Unsupported | true | false | string |
+| emptyReason | The reason why the list is empty. Only populated when the list is empty, and preferred to be one of the values here.\nWill be "nilknown" when the med list has been marked as reviewed for the encounter.\nWill be "notasked" for all other encounters.\nWill be "withheld" when in a MyChart context and all meds have been filtered.\nWill be "unavailable" when we recorded a message in the "note" property above and quit before searching for meds. | true | false | string |
+| identifier | Unsupported | true | false | string |
+| item | Populated with a reference to the MedicationRequest resource for the represented order. | true | false | string |
+| notes | The annotation - text content | true | false | string |
+| source | Unsupported | true | false | string |
+| status | Status of the medication list. Always "retired" because each list only represents an encounter's changes. Values can be found here. | true | false | string |
+| title | Unsupported | true | false | string |
 
 ## Response
 
@@ -573,25 +573,25 @@ TODO
 ## Request Parameters
 
 ### Native Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|----------|
-| code (String) | The type of list to search for. Must be set to "problems" | false | false |
-| patient (String) | The Patient resource with which the List is associated | conditional | false |
-| subject (String) | The Patient resource with which the List is associated | conditional | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|----------|-------|
+| code | The type of list to search for. Must be set to "problems" | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| patient | The Patient resource with which the List is associated | | false | string |
+| subject | The Patient resource with which the List is associated | | false | string |
 
 
 ### Post-filter Parameters
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| date (String) | Unsupported | true | false |
-| empty-reason (String) | If the patient has no problems documented, the API returns an emptyReason of "notstarted". | true | false |
-| encounter (String) | Unsupported | true | false |
-| identifier (String) | Unsupported | true | false |
-| item (String) | Condition (Problems) FHIR ID | true | false |
-| notes (String) | Unsupported | true | false |
-| source (String) | Unsupported | true | false |
-| status (String) | Status of the problem list. Always "current" because each list represents only the patient's current problems. | true | false |
-| title (String) | The title representing this entity. Always "Problem List". | true | false |
+| Name | Description | Is Optional | Is Array | Types |
+|------|-------------|-------------|-----------|-------|
+| date | Unsupported | true | false | string |
+| empty-reason | If the patient has no problems documented, the API returns an emptyReason of "notstarted". | true | false | string |
+| encounter | Unsupported | true | false | string |
+| identifier | Unsupported | true | false | string |
+| item | Condition (Problems) FHIR ID | true | false | string |
+| notes | Unsupported | true | false | string |
+| source | Unsupported | true | false | string |
+| status | Status of the problem list. Always "current" because each list represents only the patient's current problems. | true | false | string |
+| title | The title representing this entity. Always "Problem List". | true | false | string |
 
 ## Response
 

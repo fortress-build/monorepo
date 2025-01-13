@@ -7,18 +7,18 @@ title: "flag.search"
 ## Request Parameters
 
 ### Native Parameters
-| Name | Description | Required | Array |
-|------|-------------|----------|--------|
-| category | Always "infection" | Yes | No |
-| encounter | Associated encounter | No | No |
-| patient | The associated patient | Conditional | No |
-| status |  | No | No |
-| subject | The associated patient | Conditional | No |
+| Name | Description | Required | Array | Types |
+|------|-------------|----------|--------|-------|
+| category | Always "infection" | <span style={{color: "#22c55e"}}>✓</span> | No | string |
+| encounter | Associated encounter |  | No | string |
+| patient | The associated patient | <span style={{color: "#22c55e"}}>✓</span> | No | string |
+| status |  |  | No | string |
+| subject | The associated patient | <span style={{color: "#22c55e"}}>✓</span> | No | string |
 
 ### Post-filter Parameters
-| Name | Description | Required | Array |
-|------|-------------|----------|--------|
-| date | The period during which the infection was marked as active | No | No |
+| Name | Description | Required | Array | Types |
+|------|-------------|----------|--------|-------|
+| date | The period during which the infection was marked as active |  | No | string |
 
 ## Response
 
@@ -248,17 +248,17 @@ title: "flag.search"
 ## Request Parameters
 
 ### Native Request Elements
-| Name | Description | Required | Array |
-|------|-------------|----------|--------|
-| category | Always "infection" | Yes | No |
-| patient | The associated patient | Conditional | No |
-| status |  | No | No |
-| subject | The associated patient | Conditional | No |
+| Name | Description | Required | Array | Types |
+|------|-------------|----------|--------|-------|
+| category | Always "infection" | <span style={{color: "#22c55e"}}>✓</span> | No | string |
+| patient | The associated patient | <span style={{color: "#22c55e"}}>✓</span> | No | string |
+| status |  |  | No | string |
+| subject | The associated patient | <span style={{color: "#22c55e"}}>✓</span> | No | string |
 
 ### Post-filter Parameters
-| Name | Description | Required | Array |
-|------|-------------|----------|--------|
-| date | The most recent period when the flag was active. If the flag is currently active, only period.start is populated.| No | No |
+| Name | Description | Required | Array | Types |
+|------|-------------|----------|--------|-------|
+| date | The most recent period when the flag was active. If the flag is currently active, only period.start is populated.|  | No | string |
 
 ## Response
 

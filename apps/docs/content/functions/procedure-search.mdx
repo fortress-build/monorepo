@@ -7,18 +7,18 @@ title: "procedure.search"
 ## Request Parameters
 
 ### Native Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| category (String) | A code that classifies the procedure. This will always be SNOMED code 387713003 (Surgical procedure) for the Procedure (Surgical history) API. | true | false |
-| patient (String) | The Patient FHIR resource ID. | conditional | false |
-| subject (String) | Subject of the Procedure. | conditional | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| category (String) | A code that classifies the procedure. This will always be SNOMED code 387713003 (Surgical procedure) for the Procedure (Surgical history) API. |  | false | string |
+| patient (String) | The Patient FHIR resource ID. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| subject (String) | Subject of the Procedure. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
 
 ### Post-filter Parameters
-| Name | Description | Is Optional | Array |
-|------|-------------|-------------|--------|
-| code (String) | External codes associated with the procedure. | true | false |
-| date (String) | When the procedure was performed | true | false |
-| status (String) | The status of the Procedure. Refer to the response element for more information. | true | false |
+| Name | Description | Required | Array | Types |
+|------|-------------|----------|--------|-------|
+| code (String) | External codes associated with the procedure. |  | false | string |
+| date (String) | When the procedure was performed |  | false | string |
+| status (String) | The status of the Procedure. Refer to the response element for more information. |  | false | string |
 
 ## Response
 

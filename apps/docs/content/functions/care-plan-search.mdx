@@ -5,22 +5,22 @@ title: "carePlan.search"
 ## Request Parameters
 
 ### Native Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| category (String) | Type of plan. 38717003 should be used to search for longitudinal care plans. In addition, category type "assess-plan" is always included in search results. | false | false |
-| subject (String) | Patient FHIR resource ID for the patient associated with the care plan. | conditional | false |
+| Name | Description | Required | Is Array | Type |
+|------|-------------|----------|-----------|------|
+| category (String) | Type of plan. 38717003 should be used to search for longitudinal care plans. In addition, category type "assess-plan" is always included in search results. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| subject (String) | Patient FHIR resource ID for the patient associated with the care plan. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
 
 ### Post-filter Parameters
-| Name | Description | Is Optional | Array |
-|------|-------------|----------|--------|
-| activity-code (String) | Order or procedure code. | true | false |
-| activity-date (String) | Specified date occurs within period | true | false |
-| condition (String) | The list of health issues this longitudinal care plan addresses. | true | false |
-| goal (String) | Goals for this longitudinal care plan. | true | false |
-| instantiatesCanonical (String) | Unsupported | true | false |
-| intent (String) | For longitudinal care plans, this always equals "plan". | true | false |
-| patient (String) | Patient FHIR resource ID for the patient associated with the care plan. | conditional | false |
-| status (String) | Always "active." | true | false |
+| Name | Description | Required | Array | Type |
+|------|-------------|----------|--------|------|
+| activity-code (String) | Order or procedure code. | | false | string |
+| activity-date (String) | Specified date occurs within period | | false | string |
+| condition (String) | The list of health issues this longitudinal care plan addresses. | | false | string |
+| goal (String) | Goals for this longitudinal care plan. | | false | string |
+| instantiatesCanonical (String) | Unsupported | | false | string |
+| intent (String) | For longitudinal care plans, this always equals "plan". | | false | string |
+| patient (String) | Patient FHIR resource ID for the patient associated with the care plan. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| status (String) | Always "active." | | false | string |
 
 ## Response
 

@@ -7,22 +7,22 @@ title: "observation.search"
 ## Request Parameters
 
 ### Native Parameters
-| Name (Type) | Description | Required | Is Array |
-|-------------|-------------|-----------|-----------|
-| category (String) | Use "core-characteristics" to search for characteristics observations. | Yes | No |
-| code (String) | LOINC code of observation. Can be 76516-4 for gestational age or 8339-4 for birth weight. | Yes | No |
-| patient (String) | Reference to a patient resource. If both patient and subject are provided, they must match. | Yes | No |
+| Name (Type) | Description | Required | Is Array | Types |
+|-------------|-------------|-----------|-----------|--------|
+| category (String) | Use "core-characteristics" to search for characteristics observations. | Yes | No | string |
+| code (String) | LOINC code of observation. Can be 76516-4 for gestational age or 8339-4 for birth weight. | Yes | No | string |
+| patient (String) | Reference to a patient resource. If both patient and subject are provided, they must match. | Yes | No | string |
 
 ### Post-filter Parameters
-| Name (Type) | Description | Is Optional | Is Array |
-|-------------|-------------|-------------|-----------|
-| comboCode (String) | This is the LOINC code corresponding to value returned in this observation. | true | false |
-| comboValueConcept (String) | Type of data returned. See the valueCodeableConcept response element for more information. | true | false |
-| issued (String) | The instant when this observation was last edited. | true | false |
-| performer (String) | The party responsible for documenting the observation. | true | false |
-| status (String) | The status of the observation. Always use "final" when searching for this type of data. | true | false |
-| valueConcept (String) | Type of data returned. See the valueCodeableConcept response element for more information. | true | false |
-| valueString (String) | Type of data returned. See the valueString response element for more information. | true | false |
+| Name (Type) | Description | Required | Is Array | Types |
+|-------------|-------------|-----------|-----------|--------|
+| comboCode (String) | This is the LOINC code corresponding to value returned in this observation. |  | false | string |
+| comboValueConcept (String) | Type of data returned. See the valueCodeableConcept response element for more information. |  | false | string |
+| issued (String) | The instant when this observation was last edited. |  | false | string |
+| performer (String) | The party responsible for documenting the observation. |  | false | string |
+| status (String) | The status of the observation. Always use "final" when searching for this type of data. |  | false | string |
+| valueConcept (String) | Type of data returned. See the valueCodeableConcept response element for more information. |  | false | string |
+| valueString (String) | Type of data returned. See the valueString response element for more information. |  | false | string |
 
 ## Response
 
@@ -161,23 +161,23 @@ title: "observation.search"
 | subject (String) | The reference to a patient resource. | Conditional | No |
 
 ### Post-filter Parameters
-| Name (Type) | Description | Is Optional | Is Array |
-|-------------|-------------|-------------|-----------|
-| based-on (String) | The procedure or service this observation is associated with. | true | false |
-| combo-code (String) | The observation identifier.<br/><br/>LOINC code search is supported in all versions.<br/><br/>Starting in the November 2021 version of Epic, this parameter also supports the following types of values which can be searched with or without a system specified (code=[code] or code=[system]|[code]). If specifying a system, the corresponding OID value must be provided:<br/><br/>- Order component identifiers from the Epic system<br/>- Other custom identifiers defined by the Epic organization | true | false |
-| combo-data-absent-reason (String) | The reason why normally expected content of the data element is missing. Set to "unknown" for lab result components with no values. This element is available starting in the February 2022 version of Epic. | true | false |
-| combo-value-concept (String) | SNOMED code associated with component | true | false |
-| data-absent-reason (String) | The reason why normally expected content of the data element is missing. Set to "unknown" for lab result components with no values. This element is available starting in the February 2022 version of Epic. | true | false |
-| derived-from (String) | The method or isolate level Observation FHIR ID. | true | false |
-| encounter (String) | The Encounter FHIR ID linked to the order. | true | false |
-| has-member (String) | Values include:<br/><br/>- has-member: used for sensitivity-level observations<br/>- derived-from: used for isolate-level observations | true | false |
-| issued (String) | The observation instant. | true | false |
-| method (String) | SNOMED code mapped to procedure record in Epic. | true | false |
-| performer (String) | A reference to the resulting agency's director's Practitioner resource. | true | false |
-| specimen (String) | A reference to the Specimen resource. | true | false |
-| status (String) | The status of the lab order.<br/><br/>For organizations in the Netherlands, this element can also include a TestResultStatus extension that indicates the test result status. | true | false |
-| value-concept (String) | SNOMED code associated with component | true | false |
-| value-string (String) | The result value if the result is a string. | true | false |
+| Name (Type) | Description | Required | Is Array |
+|-------------|-------------|-----------|-----------|
+| based-on (String) | The procedure or service this observation is associated with. |  | false |
+| combo-code (String) | The observation identifier.<br/><br/>LOINC code search is supported in all versions.<br/><br/>Starting in the November 2021 version of Epic, this parameter also supports the following types of values which can be searched with or without a system specified (code=[code] or code=[system]|[code]). If specifying a system, the corresponding OID value must be provided:<br/><br/>- Order component identifiers from the Epic system<br/>- Other custom identifiers defined by the Epic organization |  | false |
+| combo-data-absent-reason (String) | The reason why normally expected content of the data element is missing. Set to "unknown" for lab result components with no values. This element is available starting in the February 2022 version of Epic. |  | false |
+| combo-value-concept (String) | SNOMED code associated with component |  | false |
+| data-absent-reason (String) | The reason why normally expected content of the data element is missing. Set to "unknown" for lab result components with no values. This element is available starting in the February 2022 version of Epic. |  | false |
+| derived-from (String) | The method or isolate level Observation FHIR ID. |  | false |
+| encounter (String) | The Encounter FHIR ID linked to the order. |  | false |
+| has-member (String) | Values include:<br/><br/>- has-member: used for sensitivity-level observations<br/>- derived-from: used for isolate-level observations |  | false |
+| issued (String) | The observation instant. |  | false |
+| method (String) | SNOMED code mapped to procedure record in Epic. |  | false |
+| performer (String) | A reference to the resulting agency's director's Practitioner resource. |  | false |
+| specimen (String) | A reference to the Specimen resource. |  | false |
+| status (String) | The status of the lab order.<br/><br/>For organizations in the Netherlands, this element can also include a TestResultStatus extension that indicates the test result status. |  | false |
+| value-concept (String) | SNOMED code associated with component |  | false |
+| value-string (String) | The result value if the result is a string. |  | false |
 
 ## Response
 
@@ -330,19 +330,19 @@ title: "observation.search"
 | subject (String) | Reference to a patient resource the observation is about. Either this element or patient must be provided. If both are provided, they must match. | Conditional | No |
 
 ### Post-filter Parameters
-| Name (Type) | Description | Is Optional | Is Array |
-|-------------|-------------|-------------|-----------|
-| combo-code (String) | Matches to the code or component.code element in the response. | true | false |
-| combo-data-absent-reason (String) | The reason why the expected value in the element Observation.value[x] or Observation.component.value[x] is missing. | true | false |
-| combo-value-concept (String) | The value or component value of the observation, if that value is a CodeableConcept. | true | false |
-| data-absent-reason (String) | The reason why the expected value in the element Observation.value[x] is missing. | true | false |
-| encounter (String) | Encounter associated with this observation value. For growth chart percentiles, the most recent encounter must be specified. | true | false |
-| issued (String) | The date and time the observation was documented. | true | false |
-| method (String) | Method by which the observation was obtained. | true | false |
-| performer (String) | Who filed the observation. For patient-reported measurements, references the Patient resource. | true | false |
-| status (String) | The status of the observation. Typically "amended" or "final". | true | false |
-| value-concept (String) | The value of the observation if it is a CodeableConcept. | true | false |
-| value-string (String) | The value of the observation, if valueString is populated. | true | false |
+| Name (Type) | Description | Required | Is Array |
+|-------------|-------------|-----------|-----------|
+| combo-code (String) | Matches to the code or component.code element in the response. |  | false |
+| combo-data-absent-reason (String) | The reason why the expected value in the element Observation.value[x] or Observation.component.value[x] is missing. |  | false |
+| combo-value-concept (String) | The value or component value of the observation, if that value is a CodeableConcept. |  | false |
+| data-absent-reason (String) | The reason why the expected value in the element Observation.value[x] is missing. |  | false |
+| encounter (String) | Encounter associated with this observation value. For growth chart percentiles, the most recent encounter must be specified. |  | false |
+| issued (String) | The date and time the observation was documented. |  | false |
+| method (String) | Method by which the observation was obtained. |  | false |
+| performer (String) | Who filed the observation. For patient-reported measurements, references the Patient resource. |  | false |
+| status (String) | The status of the observation. Typically "amended" or "final". |  | false |
+| value-concept (String) | The value of the observation if it is a CodeableConcept. |  | false |
+| value-string (String) | The value of the observation, if valueString is populated. |  | false |
 
 ## Response
 

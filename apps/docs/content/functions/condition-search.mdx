@@ -9,22 +9,22 @@ This web service retrieves problem list and health status data from a patient's 
 ## Request Parameters
 
 ### Native Parameters
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| category | Always "health-concern" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. | Yes | No |
-| clinicalStatus | Status of the condition. FHIR Status: `active`, `resolved` , `inactive` . If no status is specified all active (confirmed) conditions will be returned. *Note: Any FHIR Status not listed in the above table is not returned. | Yes | No |
-| encounter | Associated encounter | No | No |
-| patient | Reference to a patient resource the condition is for. | Conditional | No |
-| subject | Reference to a patient resource the condition is for. | Conditional | No |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| category | Always "health-concern" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. |  | No | string |
+| clinicalStatus | Status of the condition. FHIR Status: `active`, `resolved` , `inactive` . If no status is specified all active (confirmed) conditions will be returned. *Note: Any FHIR Status not listed in the above table is not returned. |  | No | string |
+| encounter | Associated encounter | <span style={{color: "#22c55e"}}>✓</span> | No | string |
+| patient | Reference to a patient resource the condition is for. | <span style={{color: "#22c55e"}}>✓</span> | No | string |
+| subject | Reference to a patient resource the condition is for. | <span style={{color: "#22c55e"}}>✓</span> | No | string |
 
 ### Post-filter Parameters
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| code | Code for the condition. See the code response element for more information. | true | false |
-| onsetDate | The date the problem was noted. | true | false |
-| recordedDate | The date the condition was recorded. | true | false |
-| severity | The priority of the problem. | true | false |
-| verificationStatus | If this is on the patient's local chart, the value is "confirmed". If it is outside data, it is "unconfirmed". | true | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| code | Code for the condition. See the code response element for more information. |  | false | string |
+| onsetDate | The date the problem was noted. |  | false | string |
+| recordedDate | The date the condition was recorded. |  | false | string |
+| severity | The priority of the problem. |  | false | string |
+| verificationStatus | If this is on the patient's local chart, the value is "confirmed". If it is outside data, it is "unconfirmed". |  | false | string |
 
 ## Response
 
@@ -135,21 +135,21 @@ This web service retrieves problem list and health status data from a patient's 
 ## Request Parameters
 
 ### Native Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| category | Always "medical-history" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. | Yes | No |
-| patient | Reference to a patient resource the condition is for. | Conditional | No |
-| subject | Reference to a patient resource the condition is for. | Conditional | No |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| category | Always "medical-history" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. |  | No | string |
+| patient | Reference to a patient resource the condition is for. | <span style={{color: "#22c55e"}}>✓</span> | No | string |
+| subject | Reference to a patient resource the condition is for. | <span style={{color: "#22c55e"}}>✓</span> | No | string |
 
 ### Post-filter Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|----------|
-| code | Code for the condition. See the code response element for more information. | true | false |
-| onsetDate | The date when the medical problem began for the patient. Only applies to positive medical history.	 | true | false |
-| onsetInfo | The date when the medical problem began for the patient. Only applies to positive medical history. Applicable for dates saved as a string instead of a date format. Otherwise, use onset-date.	 | true | false |
-| recordedDate | For pertinent negative medical history, the date when the pertinent negative was noted on the patient’s chart.	 | true | false |
-| severity | The priority of the problem. | true | false |
-| verificationStatus | Use “confirmed” for positive medical history and “refuted” for pertinent negative medical history.	| true | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|----------|-------|
+| code | Code for the condition. See the code response element for more information. |  | false | string |
+| onsetDate | The date when the medical problem began for the patient. Only applies to positive medical history. |  | false | string |
+| onsetInfo | The date when the medical problem began for the patient. Only applies to positive medical history. Applicable for dates saved as a string instead of a date format. Otherwise, use onset-date. |  | false | string |
+| recordedDate | For pertinent negative medical history, the date when the pertinent negative was noted on the patient's chart. |  | false | string |
+| severity | The priority of the problem. |  | false | string |
+| verificationStatus | Use "confirmed" for positive medical history and "refuted" for pertinent negative medical history. |  | false | string |
 
 
 ## Response
@@ -306,26 +306,26 @@ This web service retrieves problem list and health status data from a patient's 
 ## Request Parameters
 
 ### Native Parameters
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| category | Always "problem-list-item" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. | Yes | No |
-| clinical-status | Status of the condition. FHIR Status: `active`, `resolved`, `inactive`. If no status is specified all active (confirmed) conditions will be returned. *Note: Any FHIR Status not listed in the above table is not returned. | Yes | No |
-| encounter | Associated encounter | No | No |
-| patient | Reference to a patient resource the condition is for. | Conditional | No |
-| subject | Reference to a patient resource the condition is for. | Conditional | No |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| category | Always "problem-list-item" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. |  | No | string |
+| clinical-status | Status of the condition. FHIR Status: `active`, `resolved`, `inactive`. If no status is specified all active (confirmed) conditions will be returned. *Note: Any FHIR Status not listed in the above table is not returned. |  | No | string |
+| encounter | Associated encounter | <span style={{color: "#22c55e"}}>✓</span> | No | string |
+| patient | Reference to a patient resource the condition is for. | <span style={{color: "#22c55e"}}>✓</span> | No | string |
+| subject | Reference to a patient resource the condition is for. | <span style={{color: "#22c55e"}}>✓</span> | No | string |
 
 ### Post-filter Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| abatement-date | The date the condition was resolved. | true | false |
-| abatement-string | The date the condition was resolved. | true | false |
-| code | External codings for the condition. | true | false |
-| onset-date | The date a condition was noted. | true | false |
-| onset-info | The date a condition was noted. | true | false |
-| recorded-date | The date the condition was recorded. | true | false |
-| severity | The priority of the problem. | true | false |
-| stage | The stage or grade of the condition. | true | false |
-| verification-status | If this is on the patient's local chart, the value is "confirmed". If it is outside data, it is "unconfirmed". If it is deleted, it is "entered-in-error". | true | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| abatement-date | The date the condition was resolved. |  | false | string |
+| abatement-string | The date the condition was resolved. |  | false | string |
+| code | External codings for the condition. |  | false | string |
+| onset-date | The date a condition was noted. |  | false | string |
+| onset-info | The date a condition was noted. |  | false | string |
+| recorded-date | The date the condition was recorded. |  | false | string |
+| severity | The priority of the problem. |  | false | string |
+| stage | The stage or grade of the condition. |  | false | string |
+| verification-status | If this is on the patient's local chart, the value is "confirmed". If it is outside data, it is "unconfirmed". If it is deleted, it is "entered-in-error". |  | false | string |
 
 ## Response
 

@@ -5,24 +5,24 @@ title: "binary.read"
 ### Native Request Elements
 To get the Binary FHIR ID, you should use [DocumentReference.Search](/functions/document-reference-search) to obtain the FHIR ID.
 
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| id (String) | The FHIR ID. | false | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| id (String) | The FHIR ID. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
 
 ### Native Response Elements
 
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| Binary (Binary) | A single instance of a FHIR Binary resource. | false | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| Binary (Binary) | A single instance of a FHIR Binary resource. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
 
 ### Types
 
 #### Binary
 
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| contentType (String) | Mime content type string. This is "text/html" or "text/rtf" for clinical notes. | false | false |
-| data (String) | The note or document content as a base64-encoded string. | false | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| contentType (String) | Mime content type string. This is "text/html" or "text/rtf" for clinical notes. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| data (String) | The note or document content as a base64-encoded string. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
 
 ### Example Payload
 

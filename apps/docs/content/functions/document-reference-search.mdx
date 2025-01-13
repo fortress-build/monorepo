@@ -9,19 +9,19 @@ This web service allows for retrieval of Document metadata information as well a
 ## Request Parameters
 
 ### Native Parameters
-| Name | Description | Required | Array |
-|------|-------------|----------|--------|
-| category | Always "clinical-reference" | Yes | No |
-| encounter | Associated encounter | No | No |
-| patient | The associated patient | Conditional | No |
-| subject | The associated patient | Conditional | No |
+| Name | Description | Required | Array | Type |
+|------|-------------|----------|--------|------|
+| category | Always "clinical-reference" | Yes | No | string |
+| encounter | Associated encounter | No | No | string |
+| patient | The associated patient | Conditional | No | string |
+| subject | The associated patient | Conditional | No | string |
 
 ### Post-filter Parameters
-| Name | Description | Required | Array |
-|------|-------------|----------|--------|
-| date | The date and time when the Clinical Reference was attached | No | No |
-| format | Format/Content rules for the document (RTF vs HTML) | No | No |
-| status | Always "current" | No | No |
+| Name | Description | Required | Array | Type |
+|------|-------------|----------|--------|------|
+| date | The date and time when the Clinical Reference was attached | No | No | string |
+| format | Format/Content rules for the document (RTF vs HTML) | No | No | string |
+| status | Always "current" | No | No | string |
 
 ## Response
 
@@ -107,25 +107,25 @@ This web service allows for retrieval of Document metadata information as well a
 ## Request Parameters
 
 ### Native Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|----------|
-| author | FHIR ID for the providers who signed or addended the study | true | false |
-| category | Must be set to "imaging-result" if specified. Only category or type may be specified in a single query | true | false |
-| date | The instant or range of instants when a study was addended or finalized | true | false |
-| encounter | Encounter that order is linked to | true | false |
-| patient | The subject of the report if a patient | conditional | false |
-| period | The instant when the exam was performed | true | false |
-| status | The status of the result. Always "current" | true | false |
-| subject | The patient that is the subject of the note | conditional | false |
-| type | The LOINC or system code for the radiology result. Only category or type may be specified in a single query | true | false |
+| Name | Description | Required | Is Array | Type |
+|------|-------------|----------|----------|------|
+| author | FHIR ID for the providers who signed or addended the study |  | false | string |
+| category | Must be set to "imaging-result" if specified. Only category or type may be specified in a single query |  | false | string |
+| date | The instant or range of instants when a study was addended or finalized |  | false | string |
+| encounter | Encounter that order is linked to |  | false | string |
+| patient | The subject of the report if a patient | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| period | The instant when the exam was performed |  | false | string |
+| status | The status of the result. Always "current" |  | false | string |
+| subject | The patient that is the subject of the note | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| type | The LOINC or system code for the radiology result. Only category or type may be specified in a single query |  | false | string |
 
 ### Post-filter Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|----------|
-| authenticator | The user who signed the study. Reference to the Practitioner resource. Returns only the first user who signed the study | true | false |
-| contenttype | Mime content type code. Always "application/pdf" | true | false |
-| description | The name of the procedure | true | false |
-| identifier | The order identifier from the Epic system | true | false |
+| Name | Description | Required | Is Array | Type |
+|------|-------------|----------|----------|------|
+| authenticator | The user who signed the study. Reference to the Practitioner resource. Returns only the first user who signed the study |  | false | string |
+| contenttype | Mime content type code. Always "application/pdf" |  | false | string |
+| description | The name of the procedure |  | false | string |
+| identifier | The order identifier from the Epic system |  | false | string |
 
 ## Response
 

@@ -3,28 +3,28 @@ title: "diagnosticReport.search"
 ---
 
 ### Native Request Elements
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| category (String) | The service category. This can be either an Epic order type or a value from the US Core valueset for DiagnosticReport. In earlier versions, this must be a value from the US Core valueset for DiagnosticReport. | false | false |
-| code (String) | The code for the report as a whole, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result. This can be any code type associated with the procedures, including LOINC, CPT, SNOMED, or other code types mapped to a procedure in Epic. This parameter is formatted with or without a system specified (code=[code] or code=[system]\|[code]). If specifying a system, the corresponding code must be provided. | true | false |
-| date (String) | Clinically relevant time/time period for report. Matches to the effectiveDateTime response element. | false | false |
-| identifier (String) | The business identifier for the report. | false | false |
-| patient (String) | The patient for which to perform the search. | conditional | false |
-| subject (String) | The patient for which to perform the search. | conditional | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| category (String) | The service category. This can be either an Epic order type or a value from the US Core valueset for DiagnosticReport. In earlier versions, this must be a value from the US Core valueset for DiagnosticReport. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| code (String) | The code for the report as a whole, as opposed to codes for the atomic results, which are the names on the observation resource referred to from the result. This can be any code type associated with the procedures, including LOINC, CPT, SNOMED, or other code types mapped to a procedure in Epic. This parameter is formatted with or without a system specified (code=[code] or code=[system]\|[code]). If specifying a system, the corresponding code must be provided. | | false | string |
+| date (String) | Clinically relevant time/time period for report. Matches to the effectiveDateTime response element. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| identifier (String) | The business identifier for the report. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| patient (String) | The patient for which to perform the search. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| subject (String) | The patient for which to perform the search. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
 
 
 ### Post-filter Parameters
-| Name | Description | Is Optional | Is Array |
-|------|-------------|-------------|-----------|
-| basedOn | A reference to a ServiceRequest. | true | false |
-| conclusion | The order diagnosis. | true | false |
-| encounter | Encounter when the test was ordered. This will be either a FHIR Encounter reference in the encounter.reference element, or an encounter CSN identifier in the encounter.identifier element. | true | false |
-| issued | DateTime this version was released. | true | false |
-| media | Key images associated with the report. | true | false |
-| performer | Participants in producing the report. This always includes one or more references to the Practitioner resource. This element can also include a reference to an Organization resource. | true | false |
-| result | Observations, simple or complex nested groups. | true | false |
-| resultsInterpreter | A FHIR reference. | true | false |
-| specimen | Unsupported | false | false |
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| basedOn | A reference to a ServiceRequest. | | false | string |
+| conclusion | The order diagnosis. | | false | string |
+| encounter | Encounter when the test was ordered. This will be either a FHIR Encounter reference in the encounter.reference element, or an encounter CSN identifier in the encounter.identifier element. | | false | string |
+| issued | DateTime this version was released. | | false | string |
+| media | Key images associated with the report. | | false | string |
+| performer | Participants in producing the report. This always includes one or more references to the Practitioner resource. This element can also include a reference to an Organization resource. | | false | string |
+| result | Observations, simple or complex nested groups. | | false | string |
+| resultsInterpreter | A FHIR reference. | | false | string |
+| specimen | Unsupported | <span style={{color: "#22c55e"}}>✓</span> | false | string |
 
 
 ## Response
