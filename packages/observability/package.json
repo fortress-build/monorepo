@@ -1,7 +1,7 @@
 {
   "name": "@nerve-js/observability",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
