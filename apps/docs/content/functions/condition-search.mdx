@@ -12,7 +12,7 @@ This web service retrieves problem list and health status data from a patient's 
 | Name | Description | Is Optional | Is Array |
 |------|-------------|-------------|-----------|
 | category | Always "health-concern" for this API. Multiple category values are allowed if the requestor is authorized to search multiple Condition categories. Starting in the November 2024 version of Epic, the "problem-list-item" category can be used to return health concerns on the patient's problem list. | Yes | No |
-| clinical-status | Status of the condition. FHIR Status: `active`, `resolved` , `inactive` . If no status is specified all active (confirmed) conditions will be returned. *Note: Any FHIR Status not listed in the above table is not returned. | Yes | No |
+| clinicalStatus | Status of the condition. FHIR Status: `active`, `resolved` , `inactive` . If no status is specified all active (confirmed) conditions will be returned. *Note: Any FHIR Status not listed in the above table is not returned. | Yes | No |
 | encounter | Associated encounter | No | No |
 | patient | Reference to a patient resource the condition is for. | Conditional | No |
 | subject | Reference to a patient resource the condition is for. | Conditional | No |
@@ -21,10 +21,10 @@ This web service retrieves problem list and health status data from a patient's 
 | Name | Description | Is Optional | Is Array |
 |------|-------------|-------------|-----------|
 | code | Code for the condition. See the code response element for more information. | true | false |
-| onset-date | The date the problem was noted. | true | false |
-| recorded-date | The date the condition was recorded. | true | false |
+| onsetDate | The date the problem was noted. | true | false |
+| recordedDate | The date the condition was recorded. | true | false |
 | severity | The priority of the problem. | true | false |
-| verification-status | If this is on the patient's local chart, the value is "confirmed". If it is outside data, it is "unconfirmed". | true | false |
+| verificationStatus | If this is on the patient's local chart, the value is "confirmed". If it is outside data, it is "unconfirmed". | true | false |
 
 ## Response
 
@@ -145,11 +145,11 @@ This web service retrieves problem list and health status data from a patient's 
 | Name | Description | Is Optional | Is Array |
 |------|-------------|-------------|----------|
 | code | Code for the condition. See the code response element for more information. | true | false |
-| onset-date | The date when the medical problem began for the patient. Only applies to positive medical history.	 | true | false |
-| onset-info | The date when the medical problem began for the patient. Only applies to positive medical history. Applicable for dates saved as a string instead of a date format. Otherwise, use onset-date.	 | true | false |
-| recorded-date | For pertinent negative medical history, the date when the pertinent negative was noted on the patient’s chart.	 | true | false |
+| onsetDate | The date when the medical problem began for the patient. Only applies to positive medical history.	 | true | false |
+| onsetInfo | The date when the medical problem began for the patient. Only applies to positive medical history. Applicable for dates saved as a string instead of a date format. Otherwise, use onset-date.	 | true | false |
+| recordedDate | For pertinent negative medical history, the date when the pertinent negative was noted on the patient’s chart.	 | true | false |
 | severity | The priority of the problem. | true | false |
-| verification-status | Use “confirmed” for positive medical history and “refuted” for pertinent negative medical history.	| true | false |
+| verificationStatus | Use “confirmed” for positive medical history and “refuted” for pertinent negative medical history.	| true | false |
 
 
 ## Response

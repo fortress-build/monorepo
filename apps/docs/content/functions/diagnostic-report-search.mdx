@@ -16,14 +16,14 @@ title: "diagnosticReport.search"
 ### Post-filter Parameters
 | Name | Description | Is Optional | Is Array |
 |------|-------------|-------------|-----------|
-| based-on | A reference to a ServiceRequest. | true | false |
+| basedOn | A reference to a ServiceRequest. | true | false |
 | conclusion | The order diagnosis. | true | false |
 | encounter | Encounter when the test was ordered. This will be either a FHIR Encounter reference in the encounter.reference element, or an encounter CSN identifier in the encounter.identifier element. | true | false |
 | issued | DateTime this version was released. | true | false |
 | media | Key images associated with the report. | true | false |
 | performer | Participants in producing the report. This always includes one or more references to the Practitioner resource. This element can also include a reference to an Organization resource. | true | false |
 | result | Observations, simple or complex nested groups. | true | false |
-| results-interpreter | A FHIR reference. | true | false |
+| resultsInterpreter | A FHIR reference. | true | false |
 | specimen | Unsupported | false | false |
 
 
