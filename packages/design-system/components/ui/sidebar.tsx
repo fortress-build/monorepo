@@ -17,6 +17,7 @@ import {
   TooltipTrigger,
 } from "@nerve-js/ui/components/ui/tooltip"
 import { ViewVerticalIcon } from "@radix-ui/react-icons"
+import "../../dist/output.css";
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7

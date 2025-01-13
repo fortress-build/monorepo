@@ -1,5 +1,5 @@
 "use client"
-
+import "../../dist/output.css";
 import * as React from "react"
 import * as AvatarPrimitive from "@radix-ui/react-avatar"
 

@@ -3,6 +3,7 @@ import * as ResizablePrimitive from "react-resizable-panels"
 
 import { cn } from "@nerve-js/ui/lib/utils"
 import { DragHandleDots2Icon } from "@radix-ui/react-icons"
+import "../../dist/output.css";
 
 const ResizablePanelGroup = ({
   className,

@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+import "../../dist/output.css";
 
 import { cn } from "@nerve-js/ui/lib/utils"
 

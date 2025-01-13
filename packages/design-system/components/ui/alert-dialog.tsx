@@ -5,6 +5,7 @@ import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog"
 
 import { cn } from "@nerve-js/ui/lib/utils"
 import { buttonVariants } from "@nerve-js/ui/components/ui/button"
+import "../../dist/output.css";
 
 const AlertDialog = AlertDialogPrimitive.Root
 

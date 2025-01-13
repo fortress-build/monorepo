@@ -3,6 +3,7 @@ import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { cva } from "class-variance-authority"
 import { cn } from "@nerve-js/ui/lib/utils"
 import { ChevronDownIcon } from "@radix-ui/react-icons"
+import "../../dist/output.css";
 
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,

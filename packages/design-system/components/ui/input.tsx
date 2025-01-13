@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { cn } from "@nerve-js/ui/lib/utils"
+import "../../dist/output.css";
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, type, ...props }, ref) => {

@@ -14,6 +14,7 @@ import {
 
 import { cn } from "@nerve-js/ui/lib/utils"
 import { Label } from "@nerve-js/ui/components/ui/label"
+import "../../dist/output.css";
 
 const Form = FormProvider
 

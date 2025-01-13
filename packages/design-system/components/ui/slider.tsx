@@ -4,6 +4,7 @@ import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
 
 import { cn } from "@nerve-js/ui/lib/utils"
+import "../../dist/output.css";
 
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,

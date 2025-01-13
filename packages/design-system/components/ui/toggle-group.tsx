@@ -6,6 +6,7 @@ import { type VariantProps } from "class-variance-authority"
 
 import { cn } from "@nerve-js/ui/lib/utils"
 import { toggleVariants } from "@nerve-js/ui/components/ui/toggle"
+import "../../dist/output.css";
 
 const ToggleGroupContext = React.createContext<
   VariantProps<typeof toggleVariants>

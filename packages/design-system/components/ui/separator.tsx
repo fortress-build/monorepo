@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as SeparatorPrimitive from "@radix-ui/react-separator"
+import "../../dist/output.css";
 
 import { cn } from "@nerve-js/ui/lib/utils"
 

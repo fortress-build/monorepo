@@ -7,6 +7,7 @@ import useEmblaCarousel, {
 import { cn } from "@nerve-js/ui/lib/utils"
 import { Button } from "@nerve-js/ui/components/ui/button"
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons"
+import "../../dist/output.css";
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>

@@ -4,6 +4,7 @@ import * as React from "react"
 import * as ScrollAreaPrimitive from "@radix-ui/react-scroll-area"
 
 import { cn } from "@nerve-js/ui/lib/utils"
+import "../../dist/output.css";
 
 const ScrollArea = React.forwardRef<
   React.ElementRef<typeof ScrollAreaPrimitive.Root>,

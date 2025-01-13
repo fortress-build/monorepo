@@ -4,6 +4,7 @@ import * as React from "react"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
 
 import { cn } from "@nerve-js/ui/lib/utils"
+import "../../dist/output.css";
 
 const Tabs = TabsPrimitive.Root
 

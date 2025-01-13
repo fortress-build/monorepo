@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { Drawer as DrawerPrimitive } from "vaul"
+import "../../dist/output.css";
 
 import { cn } from "@nerve-js/ui/lib/utils"
 

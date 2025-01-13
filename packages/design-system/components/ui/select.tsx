@@ -4,6 +4,7 @@ import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
 import { cn } from "@nerve-js/ui/lib/utils"
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "@radix-ui/react-icons"
+import "../../dist/output.css";
 
 const Select = SelectPrimitive.Root
 

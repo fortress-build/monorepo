@@ -9,6 +9,7 @@ import {
   ToastTitle,
   ToastViewport,
 } from "@nerve-js/ui/components/ui/toast"
+import "../../dist/output.css";
 
 export function Toaster() {
   const { toasts } = useToast()

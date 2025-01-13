@@ -2,6 +2,7 @@ import * as React from "react"
 import { cn } from "@nerve-js/ui/lib/utils"
 import { ButtonProps, buttonVariants } from "@nerve-js/ui/components/ui/button"
 import { ChevronLeftIcon, ChevronRightIcon, DotsHorizontalIcon } from "@radix-ui/react-icons"
+import "../../dist/output.css";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav

@@ -1,4 +1,5 @@
 import { cn } from "@nerve-js/ui/lib/utils"
+import "../../dist/output.css";
 
 function Skeleton({
   className,

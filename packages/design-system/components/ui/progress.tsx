@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as ProgressPrimitive from "@radix-ui/react-progress"
+import "../../dist/output.css";
 
 import { cn } from "@nerve-js/ui/lib/utils"
 
