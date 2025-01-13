@@ -1,7 +1,32 @@
 import { camelToKebab } from '@/camel2kebab';
 import type { Nerve } from '..';
-import type { Patient } from '../models/fhir/Patient';
 import type { Parameters } from '../models/fhir/Parameters';
+import type { Patient } from '../models/fhir/Patient';
+
+type BaseSearchParams = {
+  address?: string;
+  legalSex?: string;
+  ownName?: string;
+  ownPrefix?: string;
+  partnerName?: string;
+  partnerPrefix?: string;
+};
+
+type IdentifierSearch = BaseSearchParams & {
+  identifier: string;
+};
+
+type PersonalInfoSearch = BaseSearchParams & {
+  given: string;
+  family: string;
+  birthdate: string;
+};
+
+type AlternativeSearch = BaseSearchParams & {
+  name: string;
+  gender: string;
+  telecom: string;
+};
 
 export class PatientResource {
   private client: Nerve;
@@ -39,21 +64,9 @@ export class PatientResource {
     });
   }
 
-  async search(params: {
-    address?: string;
-    birthdate?: string;
-    family?: string;
-    gender?: string;
-    given?: string;
-    identifier?: string;
-    name?: string;
-    telecom?: string;
-    legalSex?: string;
-    ownName?: string;
-    ownPrefix?: string;
-    partnerName?: string;
-    partnerPrefix?: string;
-  }) {
+  async search(
+    params: IdentifierSearch | PersonalInfoSearch | AlternativeSearch
+  ): Promise<unknown> {
     const kebabParams = Object.fromEntries(
       Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
     );

@@ -1,0 +1,34 @@
+---
+title: "patient.match"
+---
+
+
+### Native Request Elements
+To get the Binary FHIR ID, you should use [DocumentReference.Search](/functions/document-reference-search) to obtain the FHIR ID.
+
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| id (String) | The FHIR ID. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+
+### Native Response Elements
+
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| Binary (Binary) | A single instance of a FHIR Binary resource. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+
+### Types
+
+#### Binary
+
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| contentType (String) | Mime content type string. This is "text/html" or "text/rtf" for clinical notes. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| data (String) | The note or document content as a base64-encoded string. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+
+### Example Payload
+```
+fhir_id = client.documentReference.search()[][]
+client.binary.read('example')
+```
+#### Request
+

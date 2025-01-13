@@ -1,0 +1,451 @@
+---
+title: "patient.match"
+---
+
+## Request
+
+### Native Request Elements
+
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| address (String) | The patient's street address. | conditional | false | string |
+| address-city (String) | The city for patient's home address. | conditional | false | string |
+| address-postalcode (String) | The postal code for patient's home address. | conditional | false | string |
+| address-state (String) | The state for the patient's home address. | conditional | false | string |
+| birthdate (String) | The patient's date of birth in the format YYYY-MM-DD. | conditional* | false | string |
+| family (String) | The patient's family (last) name. | conditional* | false | string |
+| gender (String) | The patient's legal sex. Starting in the August 2021 version of Epic, the legal-sex parameter is preferred. | conditional | false | string |
+| given (String) | The patient's given name. May include first and middle names. | conditional | false | string |
+| identifier (String) | The patient's identifier. Starting in November 2018, this web service supports using ID and ID type combinations, such as Patient?identifier=MRN\|202497. | conditional | false | string |
+| legal-sex (String) | The patient's legal sex. Takes precedence over the gender search parameter. Available starting in the August 2021 version of Epic. | conditional | false | string |
+| name (String) | Any part of the patient's name. When discrete name parameters are used, such as family or given, this parameter is ignored. | conditional | false | string |
+| own-name (String) | The patient's own last name. Usually used in non-US names. | conditional | false | string |
+| own-prefix (String) | The patient's own prefix. Usually used in non-US names. | conditional | false | string |
+| partner-name (String) | The patient's spouse's last name. Usually used in non-US names. | conditional | false | string |
+| partner-prefix (String) | The patient's spouse's prefix. Usually used in non-US names. | conditional | false | string |
+| telecom (String) | The patient's phone number or email. | conditional | false | string |
+
+\* Patient.Search requests require one of the following minimum data sets by default in order to match and return a patient record:
+- FHIR ID
+- SSN
+- ID with or without an ID Type
+- Given name, family name, and birthdate
+- Given name, family name, legal sex, and phone number/email
+
+
+### Post-filter Parameters
+| Name | Description | Required | Is Array | Types |
+|------|-------------|----------|-----------|-------|
+| active | Whether the patient record is active. | | false | string |
+| address-country | Unsupported | | false | string |
+| address-use | The use code for the address. | | false | string |
+| death-date | The date and time of death. | | false | string |
+| email | Email address for the patient. | | false | string |
+| general-practitioner | The patient's Primary Care Provider (PCP). | | false | string |
+| language | The patient's language. | | false | string |
+| link | Patients linked to the patient. | | false | string |
+| organization | The patient's primary service area. | | false | string |
+| phone | Telephone number for the patient. | | false | string |
+| phonetic | Unsupported | | false | string |
+
+
+## Response
+
+```json
+{
+    "resourceType": "Bundle",
+    "type": "searchset",
+    "total": 1,
+    "link": [
+        {
+            "relation": "self",
+            "url": "https://hostname/instance/api/FHIR/R4/Patient?family=fhir&given=freddy&birthdate=1991-07-16&identifier=EXTERNAL|Z8446"
+        }
+    ],
+    "entry": [
+        {
+            "link": [
+                {
+                    "relation": "self",
+                    "url": "https://hostname/instance/api/FHIR/R4/Patient/eP-BmFG0190obAH1wt4wjUw3"
+                }
+            ],
+            "fullUrl": "https://hostname/instance/api/FHIR/R4/Patient/eP-BmFG0190obAH1wt4wjUw3",
+            "resource": {
+                "resourceType": "Patient",
+                "id": "eP-BmFG0190obAH1wt4wjUw3",
+                "extension": [
+                    {
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "urn:oid:1.2.840.114350.1.13.1545.1.7.10.698084.130.657370.74",
+                                    "code": "female",
+                                    "display": "female"
+                                }
+                            ]
+                        },
+                        "url": "http://open.epic.com/FHIR/StructureDefinition/extension/legal-sex"
+                    },
+                    {
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://hl7.org/fhir/gender-identity",
+                                    "code": "female",
+                                    "display": "female"
+                                }
+                            ]
+                        },
+                        "url": "http://hl7.org/fhir/StructureDefinition/patient-genderIdentity"
+                    },
+                    {
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "urn:oid:1.2.840.114350.1.13.1545.1.7.10.698084.130.657370.74",
+                                    "code": "female",
+                                    "display": "female"
+                                }
+                            ]
+                        },
+                        "url": "http://open.epic.com/FHIR/StructureDefinition/extension/sex-for-clinical-use"
+                    },
+                    {
+                        "extension": [
+                            {
+                                "valueCoding": {
+                                    "system": "urn:oid:2.16.840.1.113883.6.238",
+                                    "code": "1002-5",
+                                    "display": "American Indian or Alaska Native"
+                                },
+                                "url": "ombCategory"
+                            },
+                            {
+                                "valueString": "American Indian or Alaska Native",
+                                "url": "text"
+                            }
+                        ],
+                        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race"
+                    },
+                    {
+                        "extension": [
+                            {
+                                "valueString": "Unknown",
+                                "url": "text"
+                            }
+                        ],
+                        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity"
+                    },
+                    {
+                        "valueCode": "248152002",
+                        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-sex"
+                    },
+                    {
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "urn:oid:2.16.840.1.113883.6.96",
+                                    "code": "446141000124107",
+                                    "display": "Identifies as female gender (finding)"
+                                }
+                            ],
+                            "text": "Identifies as female gender (finding)"
+                        },
+                        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-genderIdentity"
+                    },
+                    {
+                        "extension": [
+                            {
+                                "valueCodeableConcept": {
+                                    "coding": [
+                                        {
+                                            "system": "http://terminology.hl7.org/CodeSystem/v3-TribalEntityUS",
+                                            "code": "101"
+                                        }
+                                    ]
+                                },
+                                "url": "tribalAffiliation"
+                            }
+                        ],
+                        "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-tribal-affiliation"
+                    },
+                    {
+                        "valueCodeableConcept": {
+                            "coding": [
+                                {
+                                    "system": "http://loinc.org",
+                                    "code": "LA29519-8",
+                                    "display": "she/her/her/hers/herself"
+                                }
+                            ]
+                        },
+                        "url": "http://open.epic.com/FHIR/StructureDefinition/extension/calculated-pronouns-to-use-for-text"
+                    }
+                ],
+                "identifier": [
+                    {
+                        "use": "usual",
+                        "type": {
+                            "text": "CEID"
+                        },
+                        "system": "urn:oid:1.2.840.114350.1.13.1545.1.7.3.688884.100",
+                        "value": "CADGPNJ6SD3B5TN"
+                    },
+                    {
+                        "use": "usual",
+                        "type": {
+                            "text": "EPIC"
+                        },
+                        "system": "urn:oid:1.2.840.114350.1.13.1545.1.7.5.737384.0",
+                        "value": "E6393"
+                    },
+                    {
+                        "use": "usual",
+                        "type": {
+                            "text": "EXTERNAL"
+                        },
+                        "system": "urn:oid:1.2.840.114350.1.13.1545.1.7.2.698084",
+                        "value": "Z8446"
+                    },
+                    {
+                        "use": "usual",
+                        "type": {
+                            "text": "FHIR"
+                        },
+                        "system": "http://open.epic.com/FHIR/StructureDefinition/patient-dstu2-fhir-id",
+                        "value": "TzIrWN90OE2ddVDqpQe7al9trRYDL0ZwPw7-jQHypmZoB"
+                    },
+                    {
+                        "use": "usual",
+                        "type": {
+                            "text": "FHIR STU3"
+                        },
+                        "system": "http://open.epic.com/FHIR/StructureDefinition/patient-fhir-id",
+                        "value": "eP-BmFG0190obAH1wt4wjUw3"
+                    },
+                    {
+                        "use": "usual",
+                        "type": {
+                            "text": "INTERNAL"
+                        },
+                        "system": "urn:oid:1.2.840.114350.1.13.1545.1.7.2.698084",
+                        "value": "     Z8446"
+                    },
+                    {
+                        "use": "usual",
+                        "type": {
+                            "text": "WPRINTERNAL"
+                        },
+                        "system": "urn:oid:1.2.840.114350.1.13.1545.1.7.2.878082",
+                        "value": "1368"
+                    },
+                    {
+                        "use": "usual",
+                        "system": "https://open.epic.com/FHIR/StructureDefinition/PayerMemberId",
+                        "value": "E639301"
+                    },
+                    {
+                        "use": "usual",
+                        "system": "urn:oid:2.16.840.1.113883.4.1",
+                        "_value": {
+                            "extension": [
+                                {
+                                    "valueString": "xxx-xx-5813",
+                                    "url": "http://hl7.org/fhir/StructureDefinition/rendered-value"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "active": true,
+                "name": [
+                    {
+                        "use": "official",
+                        "text": "Frederick Fhir",
+                        "family": "Fhir",
+                        "given": [
+                            "Frederick"
+                        ]
+                    },
+                    {
+                        "use": "usual",
+                        "text": "Freddy Fhir",
+                        "family": "Tests",
+                        "given": [
+                            "Freddy"
+                        ],
+                        "_given": [
+                            {
+                                "extension": [
+                                    {
+                                        "valueCode": "CL",
+                                        "url": "http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "use": "old",
+                        "text": "FHIR,FRANCIS",
+                        "family": "Fhir",
+                        "given": [
+                            "Francis"
+                        ]
+                    }
+                ],
+                "telecom": [
+                    {
+                        "system": "phone",
+                        "value": "000-123-4567",
+                        "use": "home",
+                        "rank": 2
+                    },
+                    {
+                        "system": "phone",
+                        "value": "000-555-5555",
+                        "use": "mobile",
+                        "rank": 1
+                    },
+                    {
+                        "system": "email",
+                        "value": "freddy_fhir@email.com",
+                        "rank": 1
+                    }
+                ],
+                "gender": "female",
+                "birthDate": "1991-07-16",
+                "deceasedBoolean": false,
+                "address": [
+                    {
+                        "use": "home",
+                        "line": [
+                            "1979 Milky Way",
+                            "Apt 123"
+                        ],
+                        "city": "VERONA",
+                        "district": "DANE",
+                        "state": "WI",
+                        "postalCode": "53593",
+                        "country": "US"
+                    },
+                    {
+                        "use": "old",
+                        "line": [
+                            "1979 Milky Way",
+                            "Apt 123"
+                        ],
+                        "city": "VERONA",
+                        "district": "DANE",
+                        "state": "WI",
+                        "postalCode": "53593",
+                        "country": "US"
+                    }
+                ],
+                "maritalStatus": {
+                    "text": "Married"
+                },
+                "contact": [
+                    {
+                        "name": {
+                            "use": "usual",
+                            "text": "Contact,No"
+                        },
+                        "telecom": [
+                            {
+                                "system": "phone",
+                                "value": "000-000-0000",
+                                "use": "home"
+                            }
+                        ]
+                    },
+                    {
+                        "relationship": [
+                            {
+                                "coding": [
+                                    {
+                                        "system": "http://terminology.hl7.org/CodeSystem/v3-RoleCode",
+                                        "code": "MTH"
+                                    },
+                                    {
+                                        "system": "urn:oid:1.2.840.114350.1.13.1545.1.7.4.827665.1000",
+                                        "code": "8",
+                                        "display": "Mother"
+                                    }
+                                ],
+                                "text": "Mother"
+                            }
+                        ],
+                        "name": {
+                            "use": "usual",
+                            "text": "Related,Person"
+                        },
+                        "telecom": [
+                            {
+                                "system": "phone",
+                                "value": "614-222-9999",
+                                "use": "home"
+                            },
+                            {
+                                "system": "phone",
+                                "value": "614-999-2222",
+                                "use": "mobile"
+                            },
+                            {
+                                "system": "email",
+                                "value": "relatedperson@email.com"
+                            }
+                        ],
+                        "address": {
+                            "use": "home",
+                            "line": [
+                                "123 Main St"
+                            ],
+                            "city": "MADISON",
+                            "district": "DANE",
+                            "state": "WI",
+                            "postalCode": "53719",
+                            "country": "US"
+                        }
+                    }
+                ],
+                "communication": [
+                    {
+                        "language": {
+                            "coding": [
+                                {
+                                    "system": "urn:ietf:bcp:47",
+                                    "code": "es",
+                                    "display": "Spanish"
+                                }
+                            ],
+                            "text": "Spanish"
+                        },
+                        "preferred": true
+                    }
+                ],
+                "generalPractitioner": [
+                    {
+                        "reference": "Practitioner/eCuj-8RSML9azgNbvriN9zQ3",
+                        "type": "Practitioner",
+                        "display": "Cardiologist Cupid, MD"
+                    },
+                    {
+                        "reference": "Practitioner/eStpl8RIDCXUeqWgdoSou8A3",
+                        "type": "Practitioner",
+                        "display": "Administrator Homehealth"
+                    }
+                ],
+                "managingOrganization": {
+                    "reference": "Organization/ew-tiMJ-I2HvVOV1E0GKCoQ3",
+                    "display": "Epic Service Area"
+                }
+            },
+            "search": {
+                "mode": "match"
+            }
+        }
+    ]
+}
+```
