@@ -1,6 +1,6 @@
-import "@repo/design-system/styles/globals.css";
-import { DesignSystemProvider } from "@repo/design-system";
-import { fonts } from "@repo/design-system/lib/fonts";
+import "@nerve-js/ui/styles/globals.css";
+import { DesignSystemProvider } from "@nerve-js/ui";
+import { fonts } from "@nerve-js/ui/lib/fonts";
 import type { ReactNode } from "react";
 import Providers from "./providers";
 

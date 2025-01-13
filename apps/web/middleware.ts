@@ -1,6 +1,6 @@
 import { env } from "@/env";
-import { authMiddleware } from "@repo/auth/middleware";
-import { parseError } from "@repo/observability/error";
+import { authMiddleware } from "@nerve-js/auth/middleware";
+import { parseError } from "@nerve-js/observability/error";
 import { secure } from "@repo/security";
 import { noseconeMiddleware, noseconeOptions } from "@repo/security/middleware";
 import { NextResponse } from "next/server";

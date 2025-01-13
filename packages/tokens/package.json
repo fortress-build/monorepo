@@ -13,6 +13,6 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
-    "@repo/typescript-config": "workspace:*"
+    "@nerve-js/typescript-config": "workspace:*"
   }
 }

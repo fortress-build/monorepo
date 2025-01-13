@@ -3,8 +3,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@repo/design-system/components/ui/accordion';
-import { Button } from '@repo/design-system/components/ui/button';
+} from '@nerve-js/ui/components/ui/accordion';
+import { Button } from '@nerve-js/ui/components/ui/button';
 import { PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 

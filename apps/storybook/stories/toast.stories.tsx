@@ -5,9 +5,9 @@ import {
   ToastAction,
   type ToastActionElement,
   type ToastProps,
-} from '@repo/design-system/components/ui/toast';
-import { Toaster } from '@repo/design-system/components/ui/toaster';
-import { useToast } from '@repo/design-system/hooks/use-toast';
+} from '@nerve-js/ui/components/ui/toast';
+import { Toaster } from '@nerve-js/ui/components/ui/toaster';
+import { useToast } from '@nerve-js/ui/hooks/use-toast';
 
 /**
  * A succinct message that is displayed temporarily.

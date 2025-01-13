@@ -1,13 +1,13 @@
 import { env } from '@/env';
-import { analytics } from '@repo/analytics/posthog/server';
+import { analytics } from '@nerve-js/analytics/posthog/server';
 import type {
   DeletedObjectJSON,
   OrganizationJSON,
   OrganizationMembershipJSON,
   UserJSON,
   WebhookEvent,
-} from '@repo/auth/server';
-import { log } from '@repo/observability/log';
+} from '@nerve-js/auth/server';
+import { log } from '@nerve-js/observability/log';
 import { headers } from 'next/headers';
 import { NextResponse } from 'next/server';
 import { Webhook } from 'svix';

@@ -5,8 +5,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@repo/design-system/components/ui/card";
-import { Input } from "@repo/design-system/components/ui/input";
+} from "@nerve-js/ui/components/ui/card";
+import { Input } from "@nerve-js/ui/components/ui/input";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { type JSX, useEffect, useState } from "react";

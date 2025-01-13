@@ -1,18 +1,18 @@
 'use client';
 
-import { Button } from '@repo/design-system/components/ui/button';
+import { Button } from '@nerve-js/ui/components/ui/button';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@repo/design-system/components/ui/card";
+} from "@nerve-js/ui/components/ui/card";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '@repo/design-system/components/ui/tabs';
+} from '@nerve-js/ui/components/ui/tabs';
 import { useQuery } from '@tanstack/react-query';
 import { Copy } from 'lucide-react';
 import type React from 'react';

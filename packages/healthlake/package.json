@@ -13,7 +13,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@nerve-js/typescript-config": "workspace:*",
     "@types/node": "22.10.5",
     "typescript": "^5.7.3"
   }

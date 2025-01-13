@@ -1,9 +1,11 @@
 {
-  "name": "@repo/design-system",
+  "name": "@nerve-js/ui",
+  "private": false,
   "version": "0.0.0",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "build": "pnpx tailwindcss -i ./styles/globals.css -o ./dist/output.css"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -36,9 +38,9 @@
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.6",
-    "@repo/analytics": "workspace:*",
-    "@repo/auth": "workspace:*",
-    "@repo/observability": "workspace:*",
+    "@nerve-js/analytics": "workspace:*",
+    "@nerve-js/auth": "workspace:*",
+    "@nerve-js/observability": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
@@ -61,7 +63,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@nerve-js/typescript-config": "workspace:*",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.4",
     "autoprefixer": "^10.4.20",

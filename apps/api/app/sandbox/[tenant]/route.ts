@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 import { unkey } from "@repo/tokens";
 import { getSandboxInfo } from "@repo/healthlake";
 import { env } from "@/env";
-import { log } from "@repo/observability/log";
+import { log } from "@nerve-js/observability/log";
 
 interface Params {
   tenant: string;

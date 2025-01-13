@@ -8,7 +8,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from '@repo/design-system/components/ui/command';
+} from '@nerve-js/ui/components/ui/command';
 
 /**
  * Fast, composable, unstyled command menu for React.

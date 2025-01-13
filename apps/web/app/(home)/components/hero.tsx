@@ -2,7 +2,7 @@ import YCLogo from "@/components/Branding/PartnerLogos/YCombinator";
 import { env } from "@/env";
 import { blog } from "@repo/cms";
 import { Feed } from "@repo/cms/components/feed";
-import { Button } from "@repo/design-system/components/ui/button";
+import { Button } from "@nerve-js/ui/components/ui/button";
 import { BookOpen, MoveRight } from "lucide-react";
 import { draftMode } from "next/headers";
 import Link from "next/link";

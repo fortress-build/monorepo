@@ -29,7 +29,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from '@repo/design-system/components/ui/avatar';
+} from '@nerve-js/ui/components/ui/avatar';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -37,12 +37,12 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@repo/design-system/components/ui/breadcrumb';
+} from '@nerve-js/ui/components/ui/breadcrumb';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@repo/design-system/components/ui/collapsible';
+} from '@nerve-js/ui/components/ui/collapsible';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -52,8 +52,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from '@repo/design-system/components/ui/dropdown-menu';
-import { Separator } from '@repo/design-system/components/ui/separator';
+} from '@nerve-js/ui/components/ui/dropdown-menu';
+import { Separator } from '@nerve-js/ui/components/ui/separator';
 import {
   Sidebar,
   SidebarContent,
@@ -72,7 +72,7 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from '@repo/design-system/components/ui/sidebar';
+} from '@nerve-js/ui/components/ui/sidebar';
 import { useState } from 'react';
 
 const meta: Meta<typeof Sidebar> = {

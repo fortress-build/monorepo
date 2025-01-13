@@ -4,6 +4,8 @@ import type { JSX } from "react";
 import { SignInInner } from "./inner";
 import { mockEHRProviders, mockPermissionList } from "./mocks";
 
+import "../../output.css";
+
 export interface EHRProvider {
   name: string;
   authUrl: string;

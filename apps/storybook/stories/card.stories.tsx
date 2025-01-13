@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@repo/design-system/components/ui/card';
+} from '@nerve-js/ui/components/ui/card';
 
 const notifications = [
   {

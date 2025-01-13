@@ -106,7 +106,7 @@
   }
 }
 
-/* This layer is added by shadcn/ui */
+/* This layer is added by shadcn/ui 
 @layer base {
   * {
     @apply border-border;

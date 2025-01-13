@@ -1,4 +1,4 @@
-import { cn } from "@repo/design-system/lib/utils"
+import { cn } from "@nerve-js/ui/lib/utils"
 
 function Skeleton({
   className,

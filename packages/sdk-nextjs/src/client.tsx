@@ -1,8 +1,7 @@
 "use client";
 
 import { Nerve } from "@nerve-js/client";
-import { useRouter } from "next/navigation";
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext } from "react";
 import type React from "react";
 
 export interface NerveNextConfig {

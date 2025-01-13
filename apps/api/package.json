@@ -12,12 +12,12 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@repo/analytics": "workspace:*",
-    "@repo/auth": "workspace:*",
+    "@nerve-js/analytics": "workspace:*",
+    "@nerve-js/auth": "workspace:*",
     "@repo/database": "workspace:*",
-    "@repo/design-system": "workspace:*",
-    "@repo/next-config": "workspace:*",
-    "@repo/observability": "workspace:*",
+    "@nerve-js/ui": "workspace:*",
+    "@nerve-js/next-config": "workspace:*",
+    "@nerve-js/observability": "workspace:*",
     "@repo/payments": "workspace:*",
     "@repo/tokens": "workspace:*",
     "@repo/healthlake": "workspace:*",
@@ -30,7 +30,7 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@nerve-js/typescript-config": "workspace:*",
     "@types/node": "22.10.5",
     "@types/react": "19.0.4",
     "@types/react-dom": "19.0.2",

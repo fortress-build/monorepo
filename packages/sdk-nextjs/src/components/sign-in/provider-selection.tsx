@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@repo/design-system/components/ui/button";
+import { Button } from "@nerve-js/ui/components/ui/button";
 
 import {
   Card,
@@ -8,12 +8,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@repo/design-system/components/ui/card";
-import { Input } from "@repo/design-system/components/ui/input";
+} from "@nerve-js/ui/components/ui/card";
+import { Input } from "@nerve-js/ui/components/ui/input";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import type { EHRProvider } from ".";
+
+import "../../output.css";
+import "@nerve-js/ui/dist/output.css";
 
 export default function EHRScreen({
   providers,

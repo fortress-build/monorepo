@@ -19,7 +19,7 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from '@repo/design-system/components/ui/chart';
+} from '@nerve-js/ui/components/ui/chart';
 
 const multiSeriesData = [
   { month: 'January', desktop: 186, mobile: 80 },

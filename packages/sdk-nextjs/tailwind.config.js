@@ -1,16 +1,14 @@
 import typography from "@tailwindcss/typography";
-import type { Config } from "tailwindcss";
+// import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 import defaultTheme from "tailwindcss/defaultTheme";
 
-export const config: Config = {
+module.exports = {
   darkMode: ["class"],
   content: [
-    "./node_modules/@nerve-js/next/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./lib/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./providers/**/*.{ts,tsx}",
+    "./node_modules/@nerve-js/next/**/*.{ts,tsx,js,jsx}",
+    "./node_modules/@nerve-js/ui/**/*.{ts,tsx,js,jsx}",
+    "./src/**/*.{ts,tsx,js,jsx}",
   ],
   theme: {
     container: {

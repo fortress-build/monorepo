@@ -12,7 +12,7 @@
     "schema-dts": "^1.1.2"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*",
+    "@nerve-js/typescript-config": "workspace:*",
     "@types/lodash.merge": "^4.6.9",
     "@types/node": "22.10.5",
     "@types/react": "19.0.4",

@@ -1,7 +1,7 @@
 "use client"
 import * as ResizablePrimitive from "react-resizable-panels"
 
-import { cn } from "@repo/design-system/lib/utils"
+import { cn } from "@nerve-js/ui/lib/utils"
 import { DragHandleDots2Icon } from "@radix-ui/react-icons"
 
 const ResizablePanelGroup = ({

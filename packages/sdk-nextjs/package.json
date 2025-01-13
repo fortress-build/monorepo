@@ -2,25 +2,32 @@
   "name": "@nerve-js/next",
   "private": false,
   "version": "0.1.2",
+  "type": "module",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "build": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css"
   },
+  "module": "./src/index.ts",
   "dependencies": {
     "@nerve-js/client": "workspace:*",
+    "@nerve-js/ui": "workspace:*",
     "@tailwindcss/typography": "^0.5.16",
-    "tailwindcss-animate": "^1.0.7",
     "lucide-react": "^0.471.0",
     "next": "15.1.4",
     "next-themes": "^0.4.4",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "@types/react": "19.0.4",
+    "@types/react-dom": "19.0.2",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "22.10.5",
     "@types/react": "19.0.4",
     "@types/react-dom": "19.0.2",
     "jsdom": "^26.0.0",
+    "pkgroll": "^2.6.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "tailwindcss": "^3.4.17",

@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3010",
+    "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@nerve-js/client": "^0.1.0",
-    "@nerve-js/next": "^0.1.2",
+    "@nerve-js/client": "workspace:*",
+    "@nerve-js/next": "workspace:*",
     "@radix-ui/react-dialog": "^1.1.4",
     "@radix-ui/react-navigation-menu": "^1.2.3",
     "@radix-ui/react-separator": "^1.1.1",
