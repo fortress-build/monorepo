@@ -13,6 +13,7 @@
     "@arcjet/next": "1.0.0-alpha.34",
     "@radix-ui/react-icons": "^1.3.2",
     "@repo/cms": "workspace:*",
+    "@nerve-js/auth": "workspace:*",
     "@nerve-js/ui": "workspace:*",
     "@repo/email": "workspace:*",
     "@nerve-js/next-config": "workspace:*",

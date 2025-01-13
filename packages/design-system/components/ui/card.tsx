@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cn } from "@nerve-js/ui/lib/utils";
+import { cn } from "../../lib/utils";
 
 import "../../dist/output.css";
 

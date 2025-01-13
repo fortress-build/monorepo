@@ -1,4 +1,4 @@
-import { cn } from "@nerve-js/ui/lib/utils"
+import { cn } from "../../lib/utils";
 import "../../dist/output.css";
 
 function Skeleton({
@@ -10,7 +10,7 @@ function Skeleton({
       className={cn("animate-pulse rounded-md bg-primary/10", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Skeleton }
+export { Skeleton };

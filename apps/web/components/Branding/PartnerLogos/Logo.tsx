@@ -1,7 +1,6 @@
-import LogoSvg from "../../SVGs/LogoSvg";
+import LogoSvg from "../SVGs/LogoSvg";
 
-import { Lexend } from "@/lib/typography";
-import { cn } from "@/lib/utils";
+import { cn } from "@nerve-js/ui/lib/utils";
 
 type LogoSize = {
   icon: string;
@@ -70,8 +69,7 @@ export default function Logo({
       {!hideName && (
         <h1
           className={cn(
-            Lexend.className,
-            'pr-2 font-bold',
+            "pr-2 font-bold",
             sizeVariant.font,
             dark ? "text-background" : "text-foreground",
           )}

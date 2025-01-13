@@ -1,6 +1,6 @@
 {
   "name": "@nerve-js/auth",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": false,
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
