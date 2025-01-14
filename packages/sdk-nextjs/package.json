@@ -1,40 +1,56 @@
 {
   "name": "@nerve-js/next",
   "private": false,
-  "version": "0.1.7",
+  "version": "0.1.8-rc.1",
   "type": "module",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "build": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css"
+    "old-build-do-not-use-please": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css",
+    "build": "tsc && vite build"
   },
-  "module": "./src/index.ts",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "public"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.es.js"
+    },
+    "./dist/style.css": "/dist/style.css"
+  },
   "dependencies": {
     "@nerve-js/client": "workspace:*",
     "@nerve-js/ui": "workspace:*",
     "@tailwindcss/typography": "^0.5.16",
+    "@types/react": "19.0.6",
+    "@types/react-dom": "19.0.3",
     "lucide-react": "^0.471.0",
     "next": "15.1.4",
     "next-themes": "^0.4.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "@types/react": "19.0.6",
-    "@types/react-dom": "19.0.3",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "22.10.5",
     "@types/react": "19.0.6",
     "@types/react-dom": "19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
     "jsdom": "^26.0.0",
     "pkgroll": "^2.6.1",
+    "postcss": "^8.5.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5.7.3"
-  },
-  "files": [
-    "dist",
-    "public"
-  ]
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7",
+    "vite-plugin-dts": "^4.5.0"
+  }
 }
