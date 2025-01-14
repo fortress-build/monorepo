@@ -4,31 +4,72 @@ title: "patient.match"
 
 
 ### Native Request Elements
-To get the Binary FHIR ID, you should use [DocumentReference.Search](/functions/document-reference-search) to obtain the FHIR ID.
 
 | Name | Description | Required | Is Array | Types |
 |------|-------------|----------|-----------|-------|
-| id (String) | The FHIR ID. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| resource | A complete set of patient details for MPI matching (e.g., Patient resource) | <span style={{color: "#22c55e"}}>✓</span> | false | Resource |
+| onlySingleMatch | If true, returns only the single most appropriate match when multiple potential matches exist | false | false | boolean |
+| onlyCertainMatches | If true, returns only matches that the server is certain belong to the same patient | false | false | boolean |
+| count | Maximum number of records to return. Server determines default if not specified | false | false | integer |
 
 ### Native Response Elements
 
 | Name | Description | Required | Is Array | Types |
 |------|-------------|----------|-----------|-------|
-| Binary (Binary) | A single instance of a FHIR Binary resource. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
+| return | A Bundle of type "searchset" containing potential patient matches | <span style={{color: "#22c55e"}}>✓</span> | false | Bundle |
 
-### Types
+#### Bundle Contents
+The searchset Bundle may contain:
+- Patient resources representing possible matches
+- Optional OperationOutcome resource with additional information about the search results (e.g., warnings, match count information)
 
-#### Binary
+If the operation fails, it will return:
+- OperationOutcome resource
+- HTTP 400 Bad Request status code (e.g., for security issues or insufficient patient properties)
 
-| Name | Description | Required | Is Array | Types |
-|------|-------------|----------|-----------|-------|
-| contentType (String) | Mime content type string. This is "text/html" or "text/rtf" for clinical notes. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
-| data (String) | The note or document content as a base64-encoded string. | <span style={{color: "#22c55e"}}>✓</span> | false | string |
 
 ### Example Payload
 ```
-fhir_id = client.documentReference.search()[][]
-client.binary.read('example')
+
+{
+  "resourceType": "Bundle",
+  "id": "26419249-18b3-45de-b10e-dca0b2e72b",
+  "meta": {
+    "lastUpdated": "2016-03-18T03:28:49Z"
+  },
+  "type": "searchset",
+  "total": 2,
+  "entry": [{
+    "fullUrl": "http://server/path/Patient/example",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "example",
+      .. snip ...
+    },
+    "search": {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/match-grade",
+        "valueCode": "certain"
+      }],
+      "mode": "match",
+      "score": 0.9
+    }
+  },{
+    "fullUrl": "http://server/path/Patient/292",
+    "resource": {
+      "resourceType": "Patient",
+      "id": "292",
+      .. snip ...
+    },
+    "search": {
+      "extension": [{
+        "url": "http://hl7.org/fhir/StructureDefinition/match-grade",
+        "valueCode": "possible"
+      }],
+      "mode": "match",
+      "score": 0.2
+    }
+  }]
+}
 ```
-#### Request
 

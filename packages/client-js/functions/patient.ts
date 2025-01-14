@@ -28,6 +28,13 @@ type AlternativeSearch = BaseSearchParams & {
   telecom: string;
 };
 
+interface MatchParameters {
+  resource: Patient;
+  onlySingleMatch?: boolean;
+  onlyCertainMatches?: boolean;
+  count?: number;
+}
+
 export class PatientResource {
   private client: Nerve;
 
@@ -57,10 +64,45 @@ export class PatientResource {
     });
   }
 
-  async match(data: Parameters): Promise<unknown /* Bundle */> {
+  async match(params: MatchParameters): Promise<unknown /* Bundle */> {
+    const parameters: Parameters = {
+      resourceType: 'Parameters',
+      parameter: [
+        {
+          name: 'resource',
+          resource: {
+            resourceType: 'Patient',
+            ...params.resource,
+          },
+        },
+      ],
+    };
+
+    //MAY NEED TO CONVERT THESE TO STRING
+    if (params.count !== undefined) {
+      parameters.parameter.push({
+        name: 'count',
+        valueInteger: params.count,
+      });
+    }
+
+    if (params.onlyCertainMatches !== undefined) {
+      parameters.parameter.push({
+        name: 'onlyCertainMatches',
+        valueBoolean: params.onlyCertainMatches,
+      });
+    }
+
+    if (params.onlySingleMatch !== undefined) {
+      parameters.parameter.push({
+        name: 'onlySingleMatch',
+        valueBoolean: params.onlySingleMatch,
+      });
+    }
+
     return await this.client.request('Patient/$match', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(parameters),
     });
   }
 

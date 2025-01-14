@@ -1,10 +1,10 @@
-import type { CodeableConcept } from "./CodeableConcept";
-import type { Coding } from "./Coding";
-import type { Identifier } from "./Identifier";
-import type { Period } from "./Period";
-import type { Quantity } from "./Quantity";
-import type { Reference } from "./Reference";
-import { Resource } from "./Resource";
+import type { CodeableConcept } from './CodeableConcept';
+import type { Coding } from './Coding';
+import type { Identifier } from './Identifier';
+import type { Period } from './Period';
+import type { Quantity } from './Quantity';
+import type { Reference } from './Reference';
+import type { Resource } from './Resource';
 
 export type Parameter = {
   name: string;
@@ -27,7 +27,7 @@ export type Parameter = {
 };
 
 export declare class Parameters extends Resource {
-  resourceType: "Parameters";
+  resourceType: 'Parameters';
   parameter: Parameter[];
 }
 
