@@ -1,10 +1,10 @@
 "use client";
 import { useState, type JSX } from "react";
-import { SignInInner } from "@/components/sign-in/inner";
+import { SignInInner } from "../../components/sign-in/inner";
 import {
   mockEHRProviders,
   mockPermissionList,
-} from "@/components/sign-in/mocks";
+} from "../../components/sign-in/mocks";
 
 import { Loader } from "lucide-react";
 

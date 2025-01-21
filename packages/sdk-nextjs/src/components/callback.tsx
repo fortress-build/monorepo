@@ -1,6 +1,6 @@
 "use client";
 
-import { useNerveClient, useNerveConfig } from "@/client";
+import { useNerveClient, useNerveConfig } from "../client";
 import { useRouter, useSearchParams } from "next/navigation";
 import type React from "react";
 import { useEffect } from "react";

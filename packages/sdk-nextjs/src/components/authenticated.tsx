@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useNerveClient, useNerveConfig } from "@/client";
+import { useNerveClient, useNerveConfig } from "../client";
 import { useEffect, useState } from "react";
 import type React from "react";
 
