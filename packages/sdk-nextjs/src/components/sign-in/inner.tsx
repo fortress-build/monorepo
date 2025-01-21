@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import { useNerveClient, useNerveConfig } from "../../client";
+import { useNerveClient, useNerveConfig } from "@/client";
 import type { EHRProvider, PermissionList } from ".";
 import ConsentScreen from "./consent";
 import EHRScreen from "./provider-selection";
