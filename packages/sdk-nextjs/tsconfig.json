@@ -7,14 +7,14 @@
         "./src/*"
       ]
     },
-    "target": "ESNext",
+    "target": "ES2022",
     "useDefineForClassFields": true,
     "lib": [
-      "esnext",
+      "ES2022",
       "DOM",
       "DOM.Iterable"
     ],
-    "module": "ESNext",
+    "module": "NodeNext",
     "skipLibCheck": true,
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,
@@ -23,9 +23,6 @@
     "noEmit": true,
     "declaration": true,
     "jsx": "react-jsx",
-    "typeRoots": [
-      "./dist/index.d.ts"
-    ],
     "declarationMap": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
