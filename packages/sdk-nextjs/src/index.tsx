@@ -12,7 +12,7 @@ export { NerveSignIn } from "./components/sign-in";
 export { Nerve } from "@nerve-js/client";
 export { Authenticated } from "./components/authenticated";
 
-import "../dist/next.css";
+import "./output.css";
 
 export function signOut() {
   if (typeof window === "undefined") {
