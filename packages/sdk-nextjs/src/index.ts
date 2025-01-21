@@ -1,3 +1,4 @@
+"use client";
 import { KEYS } from "@nerve-js/client";
 
 export {
@@ -10,6 +11,8 @@ export { NerveCallback } from "./components/callback";
 export { NerveSignIn } from "./components/sign-in";
 export { Nerve } from "@nerve-js/client";
 export { Authenticated } from "./components/authenticated";
+
+import "../dist/next.css";
 
 export function signOut() {
   if (typeof window === "undefined") {

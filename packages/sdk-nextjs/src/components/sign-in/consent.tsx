@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Card,
   CardContent,
@@ -13,8 +12,6 @@ import { useState } from "react";
 import { Button } from "@nerve-js/ui/components/ui/button";
 import type { EHRProvider } from ".";
 import type { PermissionList } from ".";
-
-import "../../output.css";
 
 export default function ConsentScreen({
   onAccept,
@@ -62,6 +59,7 @@ export default function ConsentScreen({
                 <li
                   key={item.title}
                   className="flex flex-col gap-2 p-3 border rounded-md bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
+                  onKeyUp={() => null}
                   onClick={() =>
                     setSelectedItem(
                       selectedItem === item.title ? null : item.title,
@@ -111,6 +109,7 @@ export default function ConsentScreen({
                 <li
                   key={item.title}
                   className="flex flex-col gap-2 p-3 border rounded-md bg-gray-50 cursor-pointer hover:bg-gray-100 transition-colors"
+                  onKeyUp={() => null}
                   onClick={() =>
                     setSelectedItem(
                       selectedItem === item.title ? null : item.title,

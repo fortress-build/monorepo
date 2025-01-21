@@ -15,9 +15,6 @@ import Image from "next/image";
 import { useState } from "react";
 import type { EHRProvider } from ".";
 
-import "../../output.css";
-import "@nerve-js/ui/dist/output.css";
-
 export default function EHRScreen({
   providers,
   onProviderSelect,

@@ -5,10 +5,27 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "build": "pnpx tailwindcss -i ./styles/globals.css -o ./dist/output.css"
+    "build": "pnpx tailwindcss -i ./src/styles/globals.css -o ./dist/output.css"
+  },
+  "main": "./src/index.tsx",
+  "module": "./src/index.tsx",
+  "types": "./src/index.tsx",
+  "exports": {
+    ".": {
+      "import": "./src/index.tsx"
+    },
+    "./components/ui/*": {
+      "import": "./src/components/ui/*.tsx"
+    },
+    "./components/mode-toggle": {
+      "import": "./src/components/mode-toggle.tsx"
+    }
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
+    "@nerve-js/analytics": "workspace:*",
+    "@nerve-js/auth": "workspace:*",
+    "@nerve-js/observability": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.4",
     "@radix-ui/react-aspect-ratio": "^1.1.1",
@@ -38,9 +55,6 @@
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.6",
-    "@nerve-js/analytics": "workspace:*",
-    "@nerve-js/auth": "workspace:*",
-    "@nerve-js/observability": "workspace:*",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
@@ -64,11 +78,13 @@
   },
   "devDependencies": {
     "@nerve-js/typescript-config": "workspace:*",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/node": "^22.10.5",
     "@types/react": "^19.0.6",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.7.3"
   }
 }

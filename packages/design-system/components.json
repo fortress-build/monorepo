@@ -4,16 +4,16 @@
   "rsc": true,
   "tsx": true,
   "tailwind": {
-    "config": "../tailwind-config/config.ts",
-    "css": "styles/globals.css",
+    "config": "tailwind.config.js",
+    "css": "src/styles/globals.css",
     "baseColor": "neutral",
     "cssVariables": true
   },
   "aliases": {
-    "components": "@nerve-js/ui/components",
-    "utils": "@nerve-js/ui/lib/utils",
-    "hooks": "@nerve-js/ui/hooks",
-    "lib": "@nerve-js/ui/lib",
-    "ui": "@nerve-js/ui/components/ui"
+    "components": "@/components",
+    "utils": "@/utils",
+    "hooks": "@/hooks",
+    "lib": "@/lib",
+    "ui": "@/components/ui"
   }
 }

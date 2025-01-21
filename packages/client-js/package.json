@@ -2,11 +2,26 @@
   "name": "@nerve-js/client",
   "private": false,
   "version": "0.1.2",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "build": "tsc && vite build"
   },
   "devDependencies": {
-    "globals": "^15.14.0"
+    "globals": "^15.14.0",
+    "vite-plugin-dts": "^4.5.0"
+  },
+  "dependencies": {
+    "vite": "^6.0.7"
   }
 }

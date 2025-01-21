@@ -5,8 +5,6 @@ import { useNerveClient, useNerveConfig } from "../client";
 import { useEffect, useState } from "react";
 import type React from "react";
 
-import "../output.css";
-
 export function Authenticated({
   children,
   fallback,

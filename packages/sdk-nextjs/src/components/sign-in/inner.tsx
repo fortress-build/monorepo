@@ -8,8 +8,6 @@ import ConsentScreen from "./consent";
 import EHRScreen from "./provider-selection";
 import { useRouter } from "next/navigation";
 
-import "../../output.css";
-
 export function SignInInner({
   initialProviders,
   initialPermissions,

@@ -5,8 +5,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import type React from "react";
 import { useEffect } from "react";
 
-import "../output.css";
-
 export function NerveCallback({ children }: { children: React.ReactNode }) {
   const client = useNerveClient();
   const config = useNerveConfig();
