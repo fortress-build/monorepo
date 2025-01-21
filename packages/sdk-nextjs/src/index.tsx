@@ -6,11 +6,11 @@ export {
   type NerveNextConfig,
   useNerveConfig,
   useNerveClient,
-} from "@/client";
-export { NerveCallback } from "./components/callback";
-export { NerveSignIn } from "./components/sign-in";
+} from "@/client.tsx";
+export { NerveCallback } from "@/components/callback.tsx";
+export { NerveSignIn } from "@/components/sign-in/index.tsx";
 export { Nerve } from "@nerve-js/client";
-export { Authenticated } from "./components/authenticated";
+export { Authenticated } from "@/components/authenticated.tsx";
 
 import "../dist/next.css";
 
