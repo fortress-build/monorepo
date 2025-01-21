@@ -1,7 +1,7 @@
 {
   "name": "@nerve-js/next",
   "private": false,
-  "version": "0.1.8-rc.8",
+  "version": "0.1.8-rc.9",
   "type": "module",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
@@ -12,14 +12,6 @@
     "dist",
     "public"
   ],
-  "main": "./src/index.tsx",
-  "module": "./src/index.tsx",
-  "types": "./src/index.tsx",
-  "exports": {
-    ".": {
-      "import": "./src/index.tsx"
-    }
-  },
   "dependencies": {
     "@nerve-js/client": "workspace:*",
     "@nerve-js/ui": "workspace:*",
