@@ -13,7 +13,7 @@ import { Input } from "@nerve-js/ui/components/ui/input";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import type { EHRProvider } from ".";
+import type { EHRProvider } from "@/components/sign-in";
 
 export default function EHRScreen({
   providers,
@@ -38,7 +38,9 @@ export default function EHRScreen({
           className="h-8 text-sm"
           placeholder="Search providers..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e: { target: HTMLInputElement }) =>
+            setSearchQuery(e.target.value)
+          }
         />
       </CardHeader>
       <CardContent>

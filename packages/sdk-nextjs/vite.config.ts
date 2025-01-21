@@ -25,8 +25,8 @@ export default defineConfig({
     },
   },
   esbuild: {
-    // legalComments: "none",
-    // keepNames: true,
+    legalComments: "none",
+    keepNames: true,
   },
   build: {
     lib: {

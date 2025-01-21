@@ -1,17 +1,27 @@
 {
   "name": "@nerve-js/next",
   "private": false,
-  "version": "0.1.8-rc.10",
+  "version": "0.1.8-rc.11",
   "type": "module",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "build": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css"
+    "old-build-do-not-use-please": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css",
+    "build": "tsc"
   },
   "files": [
     "dist",
     "public"
   ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "dependencies": {
     "@nerve-js/client": "workspace:*",
     "@nerve-js/ui": "workspace:*",

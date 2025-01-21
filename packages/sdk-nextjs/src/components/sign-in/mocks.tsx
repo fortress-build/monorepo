@@ -1,7 +1,5 @@
 import Image from "next/image";
-import type { EHRProvider } from ".";
-
-import type { PermissionList } from ".";
+import type { PermissionList, EHRProvider } from "@/components/sign-in";
 
 export const mockPermissionList: PermissionList = {
   read: [

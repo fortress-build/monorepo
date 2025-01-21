@@ -10,8 +10,7 @@ import { ArrowLeft, ArrowUpRight, Check, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@nerve-js/ui/components/ui/button";
-import type { EHRProvider } from ".";
-import type { PermissionList } from ".";
+import type { EHRProvider, PermissionList } from "@/components/sign-in";
 
 export default function ConsentScreen({
   onAccept,
