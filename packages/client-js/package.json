@@ -1,7 +1,7 @@
 {
   "name": "@nerve-js/client",
   "private": false,
-  "version": "0.1.2-rc.1",
+  "version": "0.1.2-rc.2",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
