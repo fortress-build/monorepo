@@ -1,12 +1,12 @@
 {
   "name": "@nerve-js/next",
   "private": false,
-  "version": "0.1.8-rc.16",
+  "version": "0.1.8-rc.17",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "old-build-do-not-use-please": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css",
-    "build": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css && tsc"
+    "build": "pnpx tailwindcss -i ./src/input.css -o ./dist/output.css && tsc"
   },
   "files": [
     "dist",
