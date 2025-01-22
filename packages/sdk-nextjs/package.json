@@ -3,22 +3,22 @@
   "private": false,
   "version": "0.1.8-rc.18",
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "clean": "git clean -xdf .cache .turbo distrib node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "old-build-do-not-use-please": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css",
-    "build": "pnpx tailwindcss -i ./src/input.css -o ./dist/output.css && tsc"
+    "build": "pnpx tailwindcss -i ./src/input.css -o ./distrib/output.css && tsc"
   },
   "files": [
-    "dist",
+    "distrib",
     "public"
   ],
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./distrib/index.cjs",
+  "module": "./distrib/index.js",
+  "types": "./distrib/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./distrib/index.js",
+      "require": "./distrib/index.cjs"
     }
   },
   "dependencies": {

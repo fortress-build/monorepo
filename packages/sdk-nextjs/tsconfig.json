@@ -19,8 +19,8 @@
       "DOM.Iterable"
     ],
     "jsx": "react-jsx",
-    "outDir": "dist",
-    "declarationDir": "dist",
+    "outDir": "distrib",
+    "declarationDir": "distrib",
     "module": "Es2022",
     "moduleDetection": "force",
     "moduleResolution": "bundler",
