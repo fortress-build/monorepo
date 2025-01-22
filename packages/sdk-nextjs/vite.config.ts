@@ -35,7 +35,12 @@ export default defineConfig({
       formats: ["es", "cjs"],
     },
     rollupOptions: {
-      external: ["react", "react-dom", "tailwindcss"],
+      external: [
+        "react",
+        "react-dom",
+        "tailwindcss",
+        "class-variance-authority",
+      ],
       output: {
         globals: {
           react: "React",

@@ -38,7 +38,7 @@ async function getPermissionList(): Promise<PermissionList> {
   return mockPermissionList;
 }
 
-export async function NerveSignIn() {
+export function NerveSignIn() {
   const [loading, setLoading] = useState(true);
   const [providers, setProviders] = useState<EHRProvider[] | null>(null);
   const [permissions, setPermissions] = useState<PermissionList | null>(null);
