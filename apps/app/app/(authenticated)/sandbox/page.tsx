@@ -1,26 +1,20 @@
-'use client';
+"use client";
 
-import { Button } from '@nerve-js/ui/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@nerve-js/ui/components/ui/card";
+import { Button } from "@nerve-js/ui/components/ui/button";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '@nerve-js/ui/components/ui/tabs';
-import { useQuery } from '@tanstack/react-query';
-import { Copy } from 'lucide-react';
-import type React from 'react';
+} from "@nerve-js/ui/components/ui/tabs";
+import { useQuery } from "@tanstack/react-query";
+import { Copy } from "lucide-react";
+import type React from "react";
 
 const mockCredentials = {
-  clientId: 'sandbox-client-123',
-  clientSecret: 'sandbox-secret-456',
-  apiKey: 'sk_sandbox_abcdef123456',
+  clientId: "sandbox-client-123",
+  clientSecret: "sandbox-secret-456",
+  apiKey: "sk_sandbox_abcdef123456",
 };
 
 function Tab({
@@ -35,8 +29,8 @@ function Tab({
   return (
     <TabsContent value={value}>
       <div className="border-0 shadow-none flex flex-col gap-6">
-        <div className={'flex flex-col space-y-1.5'}>
-          <div className={'font-semibold leading-none tracking-tight'}>
+        <div className={"flex flex-col space-y-1.5"}>
+          <div className={"font-semibold leading-none tracking-tight"}>
             {title}
           </div>
         </div>
@@ -48,7 +42,7 @@ function Tab({
 
 function SandboxCredentials() {
   const { data: credentials, isLoading } = useQuery({
-    queryKey: ['sandbox-credentials'],
+    queryKey: ["sandbox-credentials"],
     queryFn: () => mockCredentials,
   });
 
@@ -66,7 +60,7 @@ function SandboxCredentials() {
             {Object.entries(credentials ?? []).map(([key, value]) => (
               <div key={key} className="space-y-2">
                 <span className="font-medium text-gray-500 text-sm capitalize">
-                  {key.replace(/([A-Z])/g, ' $1').trim()}
+                  {key.replace(/([A-Z])/g, " $1").trim()}
                 </span>
                 <div className="flex items-center space-x-2">
                   <code className="flex-1 rounded-md bg-gray-100 p-2 font-mono text-sm">

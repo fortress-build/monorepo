@@ -1,5 +1,5 @@
 import { env } from "@/env";
-import { withCMS } from "@repo/cms/next-config";
+import { withCMS } from "@nerve-js/cms/next-config";
 import { config, withAnalyzer } from "@nerve-js/next-config";
 import { withLogtail, withSentry } from "@nerve-js/observability/next-config";
 import type { NextConfig } from "next";

@@ -1,5 +1,5 @@
 {
-  "name": "@repo/webhooks",
+  "name": "@nerve-js/webhooks",
   "version": "0.0.0",
   "private": true,
   "scripts": {

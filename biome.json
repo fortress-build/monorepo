@@ -25,9 +25,9 @@
   },
   "files": {
     "ignore": [
-      "packages/design-system/src/components/ui/**",
-      "packages/design-system/src/lib/**",
-      "packages/design-system/src/hooks/**",
+      "packages/ui/src/components/ui/**",
+      "packages/ui/src/lib/**",
+      "packages/ui/src/hooks/**",
       "apps/docs/**/*.json",
       "apps/email/.react-email/**"
     ]

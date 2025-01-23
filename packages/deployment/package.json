@@ -1,5 +1,5 @@
 {
-  "name": "@repo/deployment",
+  "name": "@nerve-js/deployment",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -8,11 +8,11 @@
   },
   "devDependencies": {
     "@nerve-js/typescript-config": "workspace:*",
-    "@types/node": "^22.10.5",
-    "next": "15.1.4"
+    "@types/node": "^22.10.9",
+    "next": "15.1.6"
   },
   "dependencies": {
-    "@next/bundle-analyzer": "^15.1.4",
+    "@next/bundle-analyzer": "^15.1.6",
     "@prisma/nextjs-monorepo-workaround-plugin": "^6.2.1",
     "@t3-oss/env-core": "^0.11.1",
     "@t3-oss/env-nextjs": "^0.11.1",

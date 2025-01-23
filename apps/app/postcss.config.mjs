@@ -1,1 +1,1 @@
-export { default } from '@nerve-js/ui/postcss.config.mjs';
+export { default } from "@nerve-js/ui/postcss.config.mjs";

@@ -1,8 +1,8 @@
 import { env } from "@/env";
 import { authMiddleware } from "@nerve-js/auth/middleware";
 import { parseError } from "@nerve-js/observability/error";
-import { secure } from "@repo/security";
-import { noseconeMiddleware, noseconeOptions } from "@repo/security/middleware";
+import { secure } from "@nerve-js/security";
+import { noseconeMiddleware, noseconeOptions } from "@nerve-js/security/middleware";
 import { NextResponse } from "next/server";
 
 export const config = {

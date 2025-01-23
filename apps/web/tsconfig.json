@@ -1,15 +1,21 @@
 {
   "extends": [
     "@nerve-js/typescript-config/nextjs.json",
-    "@repo/cms/typescript-config.json"
+    "@nerve-js/cms/typescript-config.json"
   ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"],
-      "@repo/*": ["../../packages/*"]
+      "@/*": [
+        "./*"
+      ],
+      "@repo/*": [
+        "../../packages/*"
+      ]
     },
-    "types": ["prismjs"]
+    "types": [
+      "prismjs"
+    ]
   },
   "include": [
     "next-env.d.ts",

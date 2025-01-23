@@ -1,4 +1,4 @@
-import { createMetadata } from '@repo/seo/metadata';
+import { createMetadata } from '@nerve-js/seo/metadata';
 import type { Metadata } from 'next';
 import { AppTypes } from './components/appTypes';
 import { Cases } from './components/cases';

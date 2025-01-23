@@ -1,5 +1,5 @@
 {
-  "name": "@repo/cms",
+  "name": "@nerve-js/cms",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,15 +12,15 @@
   "dependencies": {
     "@basehub/mutation-api-helpers": "^2.0.7",
     "@t3-oss/env-nextjs": "^0.11.1",
-    "basehub": "^8.0.3",
+    "basehub": "^8.1.6",
     "react": "^19.0.0",
     "zod": "^3.24.1"
   },
   "devDependencies": {
     "@nerve-js/typescript-config": "workspace:*",
-    "@types/node": "22.10.5",
-    "@types/react": "19.0.6",
+    "@types/node": "22.10.9",
+    "@types/react": "19.0.7",
     "@types/react-dom": "^19.0.3",
-    "next": "15.1.4"
+    "next": "15.1.6"
   }
 }

@@ -4,28 +4,27 @@
   "version": "0.1.8-rc.34",
   "type": "module",
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo distrib node_modules",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "old-build-do-not-use-please": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css",
-    "build": "npx tailwindcss -i ./src/input.css -o ./distrib/output.css && tsc"
+    "build": "pnpx tailwindcss@3 -i ./src/input.css -o ./dist/output.css && tsc"
   },
   "files": [
-    "distrib",
+    "dist",
     "public"
   ],
-  "main": "./distrib/index.cjs",
-  "module": "./distrib/index.js",
-  "types": "./distrib/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./distrib/index.d.ts",
-      "import": "./distrib/index.js",
-      "require": "./distrib/index.cjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./components/ui": {
-      "types": "./distrib/components/ui/*.d.ts",
-      "import": "./distrib/components/ui/*.js",
-      "require": "./distrib/components/ui/*.cjs"
+      "types": "./dist/components/ui/*.d.ts",
+      "import": "./dist/components/ui/*.js",
+      "require": "./dist/components/ui/*.cjs"
     }
   },
   "dependencies": {
@@ -33,12 +32,12 @@
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@tailwindcss/typography": "^0.5.16",
-    "@types/react": "19.0.6",
+    "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.471.2",
-    "next": "15.1.4",
+    "lucide-react": "^0.473.0",
+    "next": "15.1.6",
     "next-themes": "^0.4.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
@@ -46,8 +45,8 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "22.10.5",
-    "@types/react": "19.0.6",
+    "@types/node": "22.10.9",
+    "@types/react": "19.0.7",
     "@types/react-dom": "19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
@@ -58,7 +57,7 @@
     "react-dom": "19.0.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.7.3",
-    "vite": "^6.0.10",
+    "vite": "^6.0.11",
     "vite-plugin-dts": "^4.5.0"
   }
 }

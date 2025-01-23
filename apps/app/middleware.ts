@@ -1,5 +1,5 @@
 import { authMiddleware } from "@nerve-js/auth/middleware";
-import { noseconeMiddleware, noseconeOptions } from "@repo/security/middleware";
+import { noseconeMiddleware, noseconeOptions } from "@nerve-js/security/middleware";
 
 const securityHeaders = noseconeMiddleware(noseconeOptions);
 

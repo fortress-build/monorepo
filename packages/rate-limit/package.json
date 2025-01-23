@@ -1,5 +1,5 @@
 {
-  "name": "@repo/rate-limit",
+  "name": "@nerve-js/rate-limit",
   "version": "0.0.0",
   "private": true,
   "scripts": {

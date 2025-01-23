@@ -14,7 +14,7 @@ export default defineConfig({
     }),
     dts({
       rollupTypes: true,
-      // This will generate .d.ts files in the `distrib` folder
+      // This will generate .d.ts files in the `dist` folder
       // and also make sure your package.json "types" point is correct.
       insertTypesEntry: true,
     }),

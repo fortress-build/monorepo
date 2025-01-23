@@ -8,15 +8,7 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <DocsLayout
       sidebar={{
-        banner: (
-          <RootToggle
-            options={[
-              {
-                title: "Bongus",
-              },
-            ]}
-          />
-        ),
+        banner: <RootToggle options={[]} />,
       }}
       tree={source.pageTree}
       {...baseOptions}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "../tailwind-config/config.ts",
+    "css": "src/styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@nerve-js/ui/components",
+    "utils": "@nerve-js/ui/utils",
+    "hooks": "@nerve-js/ui/hooks",
+    "lib": "@nerve-js/ui/lib",
+    "ui": "@nerve-js/ui/components/ui"
+  }
+}

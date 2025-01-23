@@ -1,7 +1,7 @@
 import YCLogo from "@/components/Branding/PartnerLogos/YCombinator";
 import { env } from "@/env";
-import { blog } from "@repo/cms";
-import { Feed } from "@repo/cms/components/feed";
+import { blog } from "@nerve-js/cms";
+import { Feed } from "@nerve-js/cms/components/feed";
 import { Button } from "@nerve-js/ui/components/ui/button";
 import { BookOpen, MoveRight } from "lucide-react";
 import { draftMode } from "next/headers";

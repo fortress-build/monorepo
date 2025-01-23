@@ -20,8 +20,8 @@
       "DOM.Iterable"
     ],
     "jsx": "react-jsx",
-    "outDir": "distrib",
-    "declarationDir": "distrib",
+    "outDir": "dist",
+    "declarationDir": "dist",
     "module": "ES2022",
     "moduleDetection": "force",
     "moduleResolution": "node",

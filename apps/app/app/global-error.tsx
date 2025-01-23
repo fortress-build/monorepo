@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Button } from '@nerve-js/ui/components/ui/button';
-import { fonts } from '@nerve-js/ui/lib/fonts';
-import { captureException } from '@sentry/nextjs';
-import type NextError from 'next/error';
-import { useEffect } from 'react';
+import { Button } from "@nerve-js/ui/components/ui/button";
+import { fonts } from "@nerve-js/ui/lib/fonts";
+import { captureException } from "@sentry/nextjs";
+import type NextError from "next/error";
+import { useEffect } from "react";
 
 type GlobalErrorProperties = {
   readonly error: NextError & { digest?: string };

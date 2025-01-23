@@ -9,7 +9,7 @@ const config = {
   serverExternalPackages: [
     // "twoslash",
     "typescript",
-    // "@repo/sdk-nextjs",
+    // "@nerve-js/sdk-nextjs",
     // "lucide-react",
   ],
 };
