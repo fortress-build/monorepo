@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 
 import {
   Card,
@@ -8,12 +8,12 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+} from "../../components/ui/card";
+import { Input } from "../../components/ui/input";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import type { EHRProvider } from "@/components/sign-in";
+import type { EHRProvider } from "../../components/sign-in";
 
 export default function EHRScreen({
   providers,
