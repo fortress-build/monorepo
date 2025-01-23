@@ -1,6 +1,6 @@
 import * as React from "react";
 import { type VariantProps } from "class-variance-authority";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const buttonVariants: (props?: ({
     variant?: "default" | "link" | "secondary" | "destructive" | "outline" | "ghost" | null | undefined;
     size?: "default" | "sm" | "lg" | "icon" | null | undefined;

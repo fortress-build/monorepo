@@ -3,7 +3,7 @@ import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cn } from "../../lib/utils";
 import { ChevronRightIcon, DotsHorizontalIcon } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const Breadcrumb = React.forwardRef(({ ...props }, ref) => _jsx("nav", { ref: ref, "aria-label": "breadcrumb", ...props }));
 Breadcrumb.displayName = "Breadcrumb";
 const BreadcrumbList = React.forwardRef(({ className, ...props }, ref) => (_jsx("ol", { ref: ref, className: cn("flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5", className), ...props })));

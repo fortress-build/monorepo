@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ButtonProps } from "../../components/ui/button";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const Pagination: {
     ({ className, ...props }: React.ComponentProps<"nav">): import("react/jsx-runtime").JSX.Element;
     displayName: string;

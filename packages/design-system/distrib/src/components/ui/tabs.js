@@ -3,7 +3,7 @@ import { jsx as _jsx } from "react/jsx-runtime";
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import { cn } from "../../lib/utils";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const Tabs = TabsPrimitive.Root;
 const TabsList = React.forwardRef(({ className, ...props }, ref) => (_jsx(TabsPrimitive.List, { ref: ref, className: cn("inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground", className), ...props })));
 TabsList.displayName = TabsPrimitive.List.displayName;

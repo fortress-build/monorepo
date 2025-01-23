@@ -1,6 +1,6 @@
 import * as React from "react";
 import { type DialogProps } from "@radix-ui/react-dialog";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const Command: React.ForwardRefExoticComponent<Omit<{
     children?: React.ReactNode;
 } & Pick<Pick<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "key" | keyof React.HTMLAttributes<HTMLDivElement>> & {
@@ -23,7 +23,7 @@ declare const CommandInput: React.ForwardRefExoticComponent<Omit<Omit<Pick<Pick<
     ref?: React.Ref<HTMLInputElement>;
 } & {
     asChild?: boolean;
-}, "key" | "asChild" | keyof React.InputHTMLAttributes<HTMLInputElement>>, "type" | "value" | "onChange"> & {
+}, "key" | "asChild" | keyof React.InputHTMLAttributes<HTMLInputElement>>, "onChange" | "value" | "type"> & {
     value?: string;
     onValueChange?: (search: string) => void;
 } & React.RefAttributes<HTMLInputElement>, "ref"> & React.RefAttributes<HTMLInputElement>>;
@@ -49,7 +49,7 @@ declare const CommandGroup: React.ForwardRefExoticComponent<Omit<{
     ref?: React.Ref<HTMLDivElement>;
 } & {
     asChild?: boolean;
-}, "key" | keyof React.HTMLAttributes<HTMLDivElement> | "asChild">, "value" | "heading"> & {
+}, "key" | keyof React.HTMLAttributes<HTMLDivElement> | "asChild">, "heading" | "value"> & {
     heading?: React.ReactNode;
     value?: string;
     forceMount?: boolean;
@@ -67,7 +67,7 @@ declare const CommandItem: React.ForwardRefExoticComponent<Omit<{
     ref?: React.Ref<HTMLDivElement>;
 } & {
     asChild?: boolean;
-}, "key" | keyof React.HTMLAttributes<HTMLDivElement> | "asChild">, "value" | "onSelect" | "disabled"> & {
+}, "key" | keyof React.HTMLAttributes<HTMLDivElement> | "asChild">, "onSelect" | "value" | "disabled"> & {
     disabled?: boolean;
     onSelect?: (value: string) => void;
     value?: string;

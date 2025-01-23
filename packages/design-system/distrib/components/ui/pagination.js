@@ -3,7 +3,7 @@ import * as React from "react";
 import { cn } from "../../lib/utils";
 import { buttonVariants } from "../../components/ui/button";
 import { ChevronLeftIcon, ChevronRightIcon, DotsHorizontalIcon, } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const Pagination = ({ className, ...props }) => (_jsx("nav", { role: "navigation", "aria-label": "pagination", className: cn("mx-auto flex w-full justify-center", className), ...props }));
 Pagination.displayName = "Pagination";
 const PaginationContent = React.forwardRef(({ className, ...props }, ref) => (_jsx("ul", { ref: ref, className: cn("flex flex-row items-center gap-1", className), ...props })));

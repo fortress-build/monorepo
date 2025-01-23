@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as LabelPrimitive from "@radix-ui/react-label";
 import { ControllerProps, FieldPath, FieldValues } from "react-hook-form";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const Form: <TFieldValues extends FieldValues, TContext = any, TTransformedValues extends FieldValues | undefined = undefined>(props: import("react-hook-form").FormProviderProps<TFieldValues, TContext, TTransformedValues>) => React.JSX.Element;
 declare const FormField: <TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>>({ ...props }: ControllerProps<TFieldValues, TName>) => import("react/jsx-runtime").JSX.Element;
 declare const useFormField: () => {

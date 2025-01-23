@@ -5,7 +5,7 @@ import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { cva } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 import { Cross2Icon } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const Sheet = SheetPrimitive.Root;
 const SheetTrigger = SheetPrimitive.Trigger;
 const SheetClose = SheetPrimitive.Close;

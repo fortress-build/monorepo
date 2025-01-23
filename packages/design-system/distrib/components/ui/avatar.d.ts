@@ -1,4 +1,4 @@
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 import * as React from "react";
 import * as AvatarPrimitive from "@radix-ui/react-avatar";
 declare const Avatar: React.ForwardRefExoticComponent<Omit<AvatarPrimitive.AvatarProps & React.RefAttributes<HTMLSpanElement>, "ref"> & React.RefAttributes<HTMLSpanElement>>;

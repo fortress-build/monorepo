@@ -7,7 +7,7 @@ import useEmblaCarousel, {
 import { cn } from "../../lib/utils";
 import { Button } from "../../components/ui/button";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;

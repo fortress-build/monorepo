@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo distrib node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "build": "pnpx tailwindcss -i ./src/styles/globals.css -o ./distrib/output.css && tsc"
+    "build": "npx tailwindcss -i ./src/styles/globals.css -o ./distrib/output.css && tsc"
   },
   "main": "./distrib/index.cjs",
   "module": "./distrib/index.js",
@@ -26,8 +26,6 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
-    "@nerve-js/analytics": "workspace:*",
-    "@nerve-js/auth": "workspace:*",
     "@radix-ui/react-accordion": "^1.2.2",
     "@radix-ui/react-alert-dialog": "^1.1.4",
     "@radix-ui/react-aspect-ratio": "^1.1.1",

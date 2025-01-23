@@ -2,7 +2,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { useTheme } from "next-themes";
 import { Toaster as Sonner } from "sonner";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const Toaster = ({ ...props }) => {
     const { theme = "system" } = useTheme();
     return (_jsx(Sonner, { theme: theme, className: "toaster group", toastOptions: {

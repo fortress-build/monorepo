@@ -4,7 +4,7 @@ import * as React from "react";
 import { OTPInput, OTPInputContext } from "input-otp";
 import { cn } from "../../lib/utils";
 import { MinusIcon } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 
 const InputOTP = React.forwardRef<
   React.ElementRef<typeof OTPInput>,

@@ -1,3 +1,3 @@
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 export declare function Toaster(): import("react/jsx-runtime").JSX.Element;
 //# sourceMappingURL=toaster.d.ts.map

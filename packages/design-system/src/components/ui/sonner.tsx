@@ -2,7 +2,7 @@
 
 import { useTheme } from "next-themes"
 import { Toaster as Sonner } from "sonner"
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 

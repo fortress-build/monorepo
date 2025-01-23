@@ -14,7 +14,7 @@ import {
 
 import { cn } from "../../lib/utils";
 import { Label } from "../../components/ui/label";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 
 const Form = FormProvider;
 

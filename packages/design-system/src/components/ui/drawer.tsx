@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 
 import { cn } from "../../lib/utils";
 

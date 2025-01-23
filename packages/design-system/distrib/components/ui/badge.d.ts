@@ -1,6 +1,6 @@
 import * as React from "react";
 import { type VariantProps } from "class-variance-authority";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const badgeVariants: (props?: ({
     variant?: "default" | "secondary" | "destructive" | "outline" | null | undefined;
 } & import("class-variance-authority/types").ClassProp) | undefined) => string;

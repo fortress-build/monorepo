@@ -8,7 +8,7 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 
 const Select = SelectPrimitive.Root;
 

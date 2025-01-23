@@ -4,7 +4,7 @@ import * as React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
 import { cn } from "../../lib/utils";
 import { CheckIcon, ChevronRightIcon, DotFilledIcon, } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const MenubarMenu = MenubarPrimitive.Menu;
 const MenubarGroup = MenubarPrimitive.Group;
 const MenubarPortal = MenubarPrimitive.Portal;

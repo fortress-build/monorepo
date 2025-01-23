@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as TogglePrimitive from "@radix-ui/react-toggle";
 import { type VariantProps } from "class-variance-authority";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const toggleVariants: (props?: ({
     variant?: "default" | "outline" | null | undefined;
     size?: "default" | "sm" | "lg" | null | undefined;

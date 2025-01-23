@@ -12,7 +12,7 @@ import { Sheet, SheetContent } from "../../components/ui/sheet";
 import { Skeleton } from "../../components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger, } from "../../components/ui/tooltip";
 import { ViewVerticalIcon } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const SIDEBAR_WIDTH = "16rem";

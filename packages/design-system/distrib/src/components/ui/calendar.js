@@ -4,7 +4,7 @@ import { DayPicker } from "react-day-picker";
 import { cn } from "../../lib/utils";
 import { buttonVariants } from "../../components/ui/button";
 import { ChevronLeftIcon, ChevronRightIcon } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
     return (_jsx(DayPicker, { showOutsideDays: showOutsideDays, className: cn("p-3", className), classNames: {
             months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",

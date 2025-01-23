@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as RechartsPrimitive from "recharts";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const THEMES: {
     readonly light: "";
     readonly dark: ".dark";

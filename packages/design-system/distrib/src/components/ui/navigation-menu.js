@@ -4,7 +4,7 @@ import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const NavigationMenu = React.forwardRef(({ className, children, ...props }, ref) => (_jsxs(NavigationMenuPrimitive.Root, { ref: ref, className: cn("relative z-10 flex max-w-max flex-1 items-center justify-center", className), ...props, children: [children, _jsx(NavigationMenuViewport, {})] })));
 NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName;
 const NavigationMenuList = React.forwardRef(({ className, ...props }, ref) => (_jsx(NavigationMenuPrimitive.List, { ref: ref, className: cn("group flex flex-1 list-none items-center justify-center space-x-1", className), ...props })));

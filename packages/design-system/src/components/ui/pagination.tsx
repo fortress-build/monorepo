@@ -6,7 +6,7 @@ import {
   ChevronRightIcon,
   DotsHorizontalIcon,
 } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 
 const Pagination = ({ className, ...props }: React.ComponentProps<"nav">) => (
   <nav

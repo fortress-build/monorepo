@@ -5,7 +5,7 @@ import { Command as CommandPrimitive } from "cmdk";
 import { cn } from "../../lib/utils";
 import { Dialog, DialogContent } from "../../components/ui/dialog";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const Command = React.forwardRef(({ className, ...props }, ref) => (_jsx(CommandPrimitive, { ref: ref, className: cn("flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground", className), ...props })));
 Command.displayName = CommandPrimitive.displayName;
 const CommandDialog = ({ children, ...props }) => {

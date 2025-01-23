@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as MenubarPrimitive from "@radix-ui/react-menubar";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const MenubarMenu: {
     (props: MenubarPrimitive.MenubarMenuProps & {
         __scopeMenubar?: import("@radix-ui/react-context").Scope;

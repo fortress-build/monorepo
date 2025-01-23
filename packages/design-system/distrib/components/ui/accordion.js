@@ -4,7 +4,7 @@ import * as React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { cn } from "../../lib/utils";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 const Accordion = AccordionPrimitive.Root;
 const AccordionItem = React.forwardRef(({ className, ...props }, ref) => (_jsx(AccordionPrimitive.Item, { ref: ref, className: cn("border-b", className), ...props })));
 AccordionItem.displayName = "AccordionItem";

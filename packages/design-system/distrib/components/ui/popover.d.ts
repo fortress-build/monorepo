@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const Popover: React.FC<PopoverPrimitive.PopoverProps>;
 declare const PopoverTrigger: React.ForwardRefExoticComponent<PopoverPrimitive.PopoverTriggerProps & React.RefAttributes<HTMLButtonElement>>;
 declare const PopoverAnchor: React.ForwardRefExoticComponent<PopoverPrimitive.PopoverAnchorProps & React.RefAttributes<HTMLDivElement>>;

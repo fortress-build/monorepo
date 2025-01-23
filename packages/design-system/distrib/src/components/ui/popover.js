@@ -2,7 +2,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import * as React from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 import { cn } from "../../lib/utils";
 const Popover = PopoverPrimitive.Root;
 const PopoverTrigger = PopoverPrimitive.Trigger;

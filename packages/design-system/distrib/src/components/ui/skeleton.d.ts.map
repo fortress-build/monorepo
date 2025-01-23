@@ -1,1 +1,1 @@
-{"version":3,"file":"skeleton.d.ts","sourceRoot":"","sources":["../../../../src/components/ui/skeleton.tsx"],"names":[],"mappings":"AACA,OAAO,0BAA0B,CAAC;AAElC,iBAAS,QAAQ,CAAC,EAChB,SAAS,EACT,GAAG,KAAK,EACT,EAAE,KAAK,CAAC,cAAc,CAAC,cAAc,CAAC,2CAOtC;AAED,OAAO,EAAE,QAAQ,EAAE,CAAC"}
+{"version":3,"file":"skeleton.d.ts","sourceRoot":"","sources":["../../../../src/components/ui/skeleton.tsx"],"names":[],"mappings":"AACA,OAAO,6BAA6B,CAAC;AAErC,iBAAS,QAAQ,CAAC,EAChB,SAAS,EACT,GAAG,KAAK,EACT,EAAE,KAAK,CAAC,cAAc,CAAC,cAAc,CAAC,2CAOtC;AAED,OAAO,EAAE,QAAQ,EAAE,CAAC"}

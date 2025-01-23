@@ -1,5 +1,5 @@
 import * as React from "react";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 declare const InputOTP: React.ForwardRefExoticComponent<(Omit<Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "onChange" | "maxLength" | "textAlign" | "onComplete" | "pushPasswordManagerStrategy" | "pasteTransformer" | "containerClassName" | "noScriptCSSFallback"> & {
     value?: string;
     onChange?: (newValue: string) => unknown;

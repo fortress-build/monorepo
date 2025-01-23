@@ -1,5 +1,5 @@
 import { cn } from "../../lib/utils";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 
 function Skeleton({
   className,

@@ -1,6 +1,6 @@
 import * as React from "react";
 import type { ToastActionElement, ToastProps } from "../../components/ui/toast";
-import "../../dist/output.css";
+import "../../distrib/output.css";
 type ToasterToast = ToastProps & {
     id: string;
     title?: React.ReactNode;

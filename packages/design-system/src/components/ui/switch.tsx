@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as SwitchPrimitives from "@radix-ui/react-switch";
-import "../../../dist/output.css";
+import "../../../distrib/output.css";
 
 import { cn } from "../../lib/utils";
 
