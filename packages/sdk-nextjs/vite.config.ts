@@ -25,8 +25,8 @@ export default defineConfig({
     },
   },
   esbuild: {
-    legalComments: "none",
-    keepNames: true,
+    // legalComments: "none",
+    // keepNames: true,
   },
   build: {
     lib: {
@@ -40,9 +40,6 @@ export default defineConfig({
         "react-dom",
         "tailwindcss",
         "class-variance-authority",
-        "@nerve-js/ui",
-        "@nerve-js/observability",
-        "@nerve-js/auth",
       ],
       output: {
         globals: {
