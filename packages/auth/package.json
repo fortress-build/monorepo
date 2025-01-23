@@ -1,7 +1,7 @@
 {
-  "name": "@nerve-js/auth",
+  "name": "@repo/auth",
   "version": "0.1.2",
-  "private": false,
+  "private": true,
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
@@ -9,7 +9,7 @@
   "dependencies": {
     "@clerk/nextjs": "^6.10.0",
     "@clerk/themes": "^2.2.10",
-    "@nerve-js/tailwind-config": "workspace:*",
+    "@repo/tailwind-config": "workspace:*",
     "@t3-oss/env-nextjs": "^0.11.1",
     "next-themes": "^0.4.4",
     "react": "^19.0.0",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@clerk/types": "^4.42.0",
-    "@nerve-js/typescript-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@types/node": "22.10.9",
     "@types/react": "19.0.7",
     "@types/react-dom": "^19.0.3",

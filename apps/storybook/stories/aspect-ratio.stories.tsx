@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Image from 'next/image';
 
-import { AspectRatio } from '@nerve-js/ui/components/ui/aspect-ratio';
+import { AspectRatio } from '@repo/ui/components/ui/aspect-ratio';
 
 /**
  * Displays content within a desired ratio.

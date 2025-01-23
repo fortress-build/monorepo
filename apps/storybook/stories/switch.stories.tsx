@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Switch } from '@nerve-js/ui/components/ui/switch';
+import { Switch } from '@repo/ui/components/ui/switch';
 
 /**
  * A control that allows the user to toggle between checked and not checked.

@@ -5,7 +5,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@nerve-js/ui/components/ui/collapsible';
+} from '@repo/ui/components/ui/collapsible';
 
 /**
  * An interactive component which expands/collapses a panel.

@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@nerve-js/ui": "workspace:*",
+    "@repo/ui": "workspace:*",
     "lucide-react": "^0.473.0",
     "next": "15.1.6",
     "react": "19.0.0",
@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
-    "@nerve-js/typescript-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "@storybook/addon-essentials": "^8.5.1",
     "@storybook/addon-interactions": "^8.5.1",
     "@storybook/addon-onboarding": "^8.5.1",

@@ -6,7 +6,7 @@ import {
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from '@nerve-js/ui/components/ui/tooltip';
+} from '@repo/ui/components/ui/tooltip';
 
 /**
  * A popup that displays information related to an element when the element

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Badge } from '@nerve-js/ui/components/ui/badge';
+import { Badge } from '@repo/ui/components/ui/badge';
 
 /**
  * Displays a badge or a component that looks like a badge.

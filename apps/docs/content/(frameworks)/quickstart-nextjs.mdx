@@ -18,7 +18,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
     ## Install the Nerve SDK
 
     ```package-install
-    npm i @nerve-js/client @nerve-js/next
+    npm i @repo/client @repo/next
     ```
 
   </Step>
@@ -29,7 +29,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
     ```tsx twoslash
     // @noErrors
-    import { NerveProvider } from "@nerve-js/next"; // [!code ++]
+    import { NerveProvider } from "@repo/next"; // [!code ++]
 
     export default function RootLayout({
       children,
@@ -61,7 +61,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
       ```tsx twoslash
       // @noErrors
-      import { NerveSignIn } from "@nerve-js/next"; // [!code ++]
+      import { NerveSignIn } from "@repo/next"; // [!code ++]
 
       export default async function LoginPage() {
         return (
@@ -88,7 +88,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
       ```tsx twoslash
       // @noErrors
-      export { CallbackPage as default } from "@nerve-js/next" // [!code ++]
+      export { CallbackPage as default } from "@repo/next" // [!code ++]
       ```
 
     </Files>

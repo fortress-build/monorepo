@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nerve-js/client": "workspace:*",
-    "@nerve-js/next": "workspace:*",
+    "@repo/client": "workspace:*",
+    "@repo/next": "workspace:*",
     "@radix-ui/react-dialog": "^1.1.5",
     "@radix-ui/react-navigation-menu": "^1.2.4",
     "@radix-ui/react-separator": "^1.1.1",

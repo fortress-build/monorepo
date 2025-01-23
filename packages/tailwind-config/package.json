@@ -1,7 +1,7 @@
 {
-  "name": "@nerve-js/tailwind-config",
+  "name": "@repo/tailwind-config",
   "version": "0.1.2",
-  "private": false,
+  "private": true,
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
@@ -12,7 +12,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@nerve-js/typescript-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
     "tailwindcss": "^3.4.17"
   }
 }

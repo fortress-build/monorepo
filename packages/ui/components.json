@@ -10,10 +10,10 @@
     "cssVariables": true
   },
   "aliases": {
-    "components": "@nerve-js/ui/components",
-    "utils": "@nerve-js/ui/utils",
-    "hooks": "@nerve-js/ui/hooks",
-    "lib": "@nerve-js/ui/lib",
-    "ui": "@nerve-js/ui/components/ui"
+    "components": "@repo/ui/components",
+    "utils": "@repo/ui/utils",
+    "hooks": "@repo/ui/hooks",
+    "lib": "@repo/ui/lib",
+    "ui": "@repo/ui/components/ui"
   }
 }

@@ -5,7 +5,7 @@ import {
   type CarouselApi,
   CarouselContent,
   CarouselItem,
-} from '@nerve-js/ui/components/ui/carousel';
+} from '@repo/ui/components/ui/carousel';
 import { useEffect, useState } from 'react';
 
 export const Cases = () => {

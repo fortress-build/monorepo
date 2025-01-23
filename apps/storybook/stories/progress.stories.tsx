@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Progress } from '@nerve-js/ui/components/ui/progress';
+import { Progress } from '@repo/ui/components/ui/progress';
 
 /**
  * Displays an indicator showing the completion progress of a task, typically

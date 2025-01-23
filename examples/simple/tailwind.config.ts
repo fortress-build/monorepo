@@ -6,8 +6,8 @@ import defaultTheme from "tailwindcss/defaultTheme";
 export const config: Config = {
   darkMode: ["class"],
   content: [
-    "./node_modules/@nerve-js/next/**/*.{js,jsx}",
-    "./node_modules/@nerve-js/ui/**/*.{js,jsx}",
+    "./node_modules/@repo/next/**/*.{js,jsx}",
+    "./node_modules/@repo/ui/**/*.{js,jsx}",
     "./components/**/*.{ts,tsx}",
     "./lib/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",

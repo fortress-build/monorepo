@@ -1,5 +1,5 @@
 {
-  "extends": "@nerve-js/typescript-config/react-library.json",
+  "extends": "@repo/typescript-config/react-library.json",
   "compilerOptions": {
     "baseUrl": ".",
     "plugins": [
@@ -11,7 +11,7 @@
       "@repo/*": [
         "../*"
       ],
-      "@nerve-js/ui/*": [
+      "@repo/ui/*": [
         "./src/*"
       ],
       "@/*": [

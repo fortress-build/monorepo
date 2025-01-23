@@ -1,4 +1,4 @@
-import { NerveSignIn } from "@nerve-js/next";
+import { NerveSignIn } from "@repo/next";
 
 export default async function SignInPage() {
   return (

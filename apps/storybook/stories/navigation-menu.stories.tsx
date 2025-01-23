@@ -8,7 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from '@nerve-js/ui/components/ui/navigation-menu';
+} from '@repo/ui/components/ui/navigation-menu';
 
 /**
  * A collection of links for navigating websites.

@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@nerve-js/ui/components/ui/button";
-import { fonts } from "@nerve-js/ui/lib/fonts";
+import { Button } from "@repo/ui/components/ui/button";
+import { fonts } from "@repo/ui/lib/fonts";
 import { captureException } from "@sentry/nextjs";
 import type NextError from "next/error";
 import { useEffect } from "react";

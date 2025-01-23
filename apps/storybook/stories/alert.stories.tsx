@@ -5,7 +5,7 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from '@nerve-js/ui/components/ui/alert';
+} from '@repo/ui/components/ui/alert';
 
 /**
  * Displays a callout for user attention.

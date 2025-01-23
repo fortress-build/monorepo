@@ -8,7 +8,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@nerve-js/ui/components/ui/table';
+} from '@repo/ui/components/ui/table';
 
 const invoices = [
   {

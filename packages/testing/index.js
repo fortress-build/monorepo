@@ -10,7 +10,7 @@ const config = defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './'),
-      '@nerve-js': path.resolve(__dirname, '../../packages'),
+      '@repo': path.resolve(__dirname, '../../packages'),
     },
   },
 });

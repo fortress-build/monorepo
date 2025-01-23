@@ -6,7 +6,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@nerve-js/ui/components/ui/carousel';
+} from '@repo/ui/components/ui/carousel';
 
 /**
  * A carousel with motion and swipe built using Embla.

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Label } from '@nerve-js/ui/components/ui/label';
+import { Label } from '@repo/ui/components/ui/label';
 
 /**
  * Renders an accessible label associated with controls.

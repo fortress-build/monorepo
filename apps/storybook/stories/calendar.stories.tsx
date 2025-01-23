@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import type { Meta, StoryObj } from '@storybook/react';
 import { addDays } from 'date-fns';
 
-import { Calendar } from '@nerve-js/ui/components/ui/calendar';
+import { Calendar } from '@repo/ui/components/ui/calendar';
 
 /**
  * A date field component that allows users to enter and edit date.

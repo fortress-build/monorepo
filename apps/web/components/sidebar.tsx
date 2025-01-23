@@ -1,4 +1,4 @@
-import { capitalize } from '@nerve-js/ui/lib/utils';
+import { capitalize } from '@repo/ui/lib/utils';
 import type { ReactNode } from 'react';
 
 type SidebarProperties = {

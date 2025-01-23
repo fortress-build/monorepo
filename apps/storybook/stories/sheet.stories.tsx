@@ -9,7 +9,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@nerve-js/ui/components/ui/sheet';
+} from '@repo/ui/components/ui/sheet';
 
 /**
  * Extends the Dialog component to display content that complements the main

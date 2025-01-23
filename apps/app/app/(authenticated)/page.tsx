@@ -1,4 +1,4 @@
-import { auth } from "@nerve-js/auth/server";
+import { auth } from "@repo/auth/server";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header } from "./components/header";

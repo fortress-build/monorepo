@@ -1,5 +1,5 @@
 import 'server-only';
-import { auth } from '@nerve-js/auth/server';
+import { auth } from '@repo/auth/server';
 import { Svix } from 'svix';
 import { keys } from '../keys';
 

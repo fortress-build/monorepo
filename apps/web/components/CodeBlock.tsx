@@ -1,12 +1,12 @@
 'use client';
 
-import { ScrollArea } from '@nerve-js/ui/components/ui/scroll-area';
+import { ScrollArea } from '@repo/ui/components/ui/scroll-area';
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '@nerve-js/ui/components/ui/tabs';
+} from '@repo/ui/components/ui/tabs';
 import { Highlight, themes } from 'prism-react-renderer';
 
 // Define content type and data structure

@@ -1,7 +1,7 @@
 {
   "extends": [
-    "@nerve-js/typescript-config/nextjs.json",
-    "@nerve-js/cms/typescript-config.json"
+    "@repo/typescript-config/nextjs.json",
+    "@repo/cms/typescript-config.json"
   ],
   "compilerOptions": {
     "baseUrl": ".",

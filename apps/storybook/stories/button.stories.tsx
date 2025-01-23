@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Loader2, Mail } from 'lucide-react';
 
-import { Button } from '@nerve-js/ui/components/ui/button';
+import { Button } from '@repo/ui/components/ui/button';
 
 /**
  * Displays a button or a component that looks like a button.

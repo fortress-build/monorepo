@@ -1,7 +1,7 @@
 'use client';
 
 import { CodeBlock } from '@/components/CodeBlock';
-import {} from '@nerve-js/ui/components/ui/carousel';
+import {} from '@repo/ui/components/ui/carousel';
 import {} from 'react';
 
 import {} from 'lucide-react';

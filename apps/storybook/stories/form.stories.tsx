@@ -12,7 +12,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@nerve-js/ui/components/ui/form';
+} from '@repo/ui/components/ui/form';
 
 /**
  * Building forms with React Hook Form and Zod.

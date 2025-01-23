@@ -17,7 +17,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from '@nerve-js/ui/components/ui/dropdown-menu';
+} from '@repo/ui/components/ui/dropdown-menu';
 
 /**
  * Displays a menu to the user — such as a set of actions or functions —

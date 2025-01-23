@@ -5,7 +5,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@nerve-js/ui/components/ui/accordion';
+} from '@repo/ui/components/ui/accordion';
 
 /**
  * A vertically stacked set of interactive headings that each reveal a section

@@ -8,7 +8,7 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from '@nerve-js/ui/components/ui/pagination';
+} from '@repo/ui/components/ui/pagination';
 
 /**
  * Pagination with page navigation, next and previous links.

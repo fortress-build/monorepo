@@ -1,5 +1,5 @@
 "use client";
-import { KEYS } from "@nerve-js/client";
+import { KEYS } from "@repo/client";
 
 export {
   NerveProvider,
@@ -9,7 +9,7 @@ export {
 } from "./client";
 export { NerveCallback } from "./components/callback";
 export { NerveSignIn } from "./components/sign-in";
-export { Nerve } from "@nerve-js/client";
+export { Nerve } from "@repo/client";
 export { Authenticated } from "./components/authenticated";
 
 import "./output.css";

@@ -1,7 +1,7 @@
 {
-  "name": "@nerve-js/next",
+  "name": "@repo/next",
   "private": false,
-  "version": "0.1.8-rc.34",
+  "version": "0.1.8",
   "type": "module",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
@@ -28,7 +28,7 @@
     }
   },
   "dependencies": {
-    "@nerve-js/client": "workspace:*",
+    "@repo/client": "workspace:*",
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@tailwindcss/typography": "^0.5.16",

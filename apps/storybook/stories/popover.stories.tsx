@@ -4,7 +4,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@nerve-js/ui/components/ui/popover';
+} from '@repo/ui/components/ui/popover';
 
 /**
  * Displays rich content in a portal, triggered by a button.

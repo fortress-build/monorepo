@@ -1,8 +1,8 @@
-import "@nerve-js/ui/styles/globals.css";
+import "@repo/ui/styles/globals.css";
 import "./styles/web.css";
-import { DesignSystemProvider } from "@nerve-js/ui";
-import { fonts } from "@nerve-js/ui/lib/fonts";
-import { cn } from "@nerve-js/ui/lib/utils";
+import { DesignSystemProvider } from "@repo/ui";
+import { fonts } from "@repo/ui/lib/fonts";
+import { cn } from "@repo/ui/lib/utils";
 import type { ReactNode } from "react";
 import { Footer } from "./components/footer";
 import { Header } from "./components/header";

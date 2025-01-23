@@ -6,7 +6,7 @@ import {
   InputOTPGroup,
   InputOTPSeparator,
   InputOTPSlot,
-} from '@nerve-js/ui/components/ui/input-otp';
+} from '@repo/ui/components/ui/input-otp';
 
 /**
  * Accessible one-time password component with copy paste functionality.

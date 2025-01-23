@@ -10,7 +10,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@nerve-js/ui/components/ui/alert-dialog';
+} from '@repo/ui/components/ui/alert-dialog';
 
 /**
  * A modal dialog that interrupts the user with important content and expects

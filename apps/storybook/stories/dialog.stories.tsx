@@ -9,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@nerve-js/ui/components/ui/dialog';
+} from '@repo/ui/components/ui/dialog';
 
 /**
  * A window overlaid on either the primary window or another dialog window,

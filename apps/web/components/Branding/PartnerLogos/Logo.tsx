@@ -1,6 +1,6 @@
 import LogoSvg from "../SVGs/LogoSvg";
 
-import { cn } from "@nerve-js/ui/lib/utils";
+import { cn } from "@repo/ui/lib/utils";
 
 type LogoSize = {
   icon: string;

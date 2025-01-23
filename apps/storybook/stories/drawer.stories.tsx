@@ -9,7 +9,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from '@nerve-js/ui/components/ui/drawer';
+} from '@repo/ui/components/ui/drawer';
 
 /**
  * A drawer component for React.

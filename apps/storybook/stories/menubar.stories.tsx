@@ -16,7 +16,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from '@nerve-js/ui/components/ui/menubar';
+} from '@repo/ui/components/ui/menubar';
 
 /**
  * A visually persistent menu common in desktop applications that provides

@@ -5,9 +5,9 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@nerve-js/ui/components/ui/breadcrumb';
-import { Separator } from '@nerve-js/ui/components/ui/separator';
-import { SidebarTrigger } from '@nerve-js/ui/components/ui/sidebar';
+} from '@repo/ui/components/ui/breadcrumb';
+import { Separator } from '@repo/ui/components/ui/separator';
+import { SidebarTrigger } from '@repo/ui/components/ui/sidebar';
 import { Fragment, type ReactNode } from 'react';
 
 type HeaderProps = {

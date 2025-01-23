@@ -8,7 +8,7 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@nerve-js/ui/components/ui/breadcrumb';
+} from '@repo/ui/components/ui/breadcrumb';
 
 /**
  * Displays the path to the current resource using a hierarchy of links.

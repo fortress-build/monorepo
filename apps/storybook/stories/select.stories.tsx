@@ -9,7 +9,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from '@nerve-js/ui/components/ui/select';
+} from '@repo/ui/components/ui/select';
 
 /**
  * Displays a list of options for the user to pick from—triggered by a button.

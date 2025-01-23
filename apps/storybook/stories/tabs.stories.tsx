@@ -5,7 +5,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from '@nerve-js/ui/components/ui/tabs';
+} from '@repo/ui/components/ui/tabs';
 
 /**
  * A set of layered sections of content—known as tab panels—that are displayed
