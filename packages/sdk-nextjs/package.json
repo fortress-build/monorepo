@@ -1,12 +1,12 @@
 {
   "name": "@nerve-js/next",
   "private": false,
-  "version": "0.1.8-rc.22",
+  "version": "0.1.8-rc.24",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo distrib node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "old-build-do-not-use-please": "pnpx tailwindcss -i ./src/input.css -o ./src/output.css",
-    "build": "pnpx tailwindcss -i ./src/input.css -o ./distrib/output.css && tsc"
+    "build": "npx tailwindcss -i ./src/input.css -o ./distrib/output.css && tsc"
   },
   "files": [
     "distrib",
@@ -23,16 +23,19 @@
   },
   "dependencies": {
     "@nerve-js/client": "workspace:*",
-    "@nerve-js/ui": "workspace:*",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-slot": "^1.1.1",
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "19.0.6",
     "@types/react-dom": "19.0.3",
     "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "lucide-react": "^0.471.2",
     "next": "15.1.4",
     "next-themes": "^0.4.4",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {

@@ -1,1 +1,0 @@
-{"version":3,"file":"provider-selection.d.ts","sourceRoot":"","sources":["../../../src/components/sign-in/provider-selection.tsx"],"names":[],"mappings":"AAeA,OAAO,KAAK,EAAE,WAAW,EAAE,MAAM,0BAA0B,CAAC;AAE5D,MAAM,CAAC,OAAO,UAAU,SAAS,CAAC,EAChC,SAAS,EACT,gBAAgB,GACjB,EAAE;IACD,SAAS,EAAE,WAAW,EAAE,CAAC;IACzB,gBAAgB,EAAE,CAAC,QAAQ,EAAE,WAAW,KAAK,IAAI,CAAC;CACnD,2CA2DA"}

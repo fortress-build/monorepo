@@ -1,1 +1,0 @@
-{"version":3,"file":"authenticated.d.ts","sourceRoot":"","sources":["../../src/components/authenticated.tsx"],"names":[],"mappings":"AAKA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAE/B,wBAAgB,aAAa,CAAC,EAC5B,QAAQ,EACR,QAAQ,GACT,EAAE;IACD,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;IAC1B,QAAQ,CAAC,EAAE,KAAK,CAAC,SAAS,CAAC;CAC5B,mBAgBA"}

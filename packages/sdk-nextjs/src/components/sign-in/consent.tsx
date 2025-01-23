@@ -5,11 +5,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@nerve-js/ui/components/ui/card";
+} from "@/components/ui/card";
 import { ArrowLeft, ArrowUpRight, Check, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { Button } from "@nerve-js/ui/components/ui/button";
+import { Button } from "@/components/ui/button";
 import type { EHRProvider, PermissionList } from "../../components/sign-in";
 
 export default function ConsentScreen({

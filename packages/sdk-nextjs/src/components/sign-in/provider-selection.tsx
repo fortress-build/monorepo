@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@nerve-js/ui/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 import {
   Card,
@@ -8,8 +8,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@nerve-js/ui/components/ui/card";
-import { Input } from "@nerve-js/ui/components/ui/input";
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
