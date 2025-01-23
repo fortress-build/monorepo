@@ -1,7 +1,15 @@
 {
-  "extends": "@nerve-js/typescript-config/nextjs.json",
+  "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@repo/*": [
+        "../../packages/*"
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
