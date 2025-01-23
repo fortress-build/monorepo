@@ -1,7 +1,7 @@
 {
   "name": "@nerve-js/next",
   "private": false,
-  "version": "0.1.8-rc.25",
+  "version": "0.1.8-rc.26",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo distrib node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
@@ -19,6 +19,11 @@
     ".": {
       "import": "./distrib/index.js",
       "require": "./distrib/index.cjs"
+    },
+    "./components/ui/*": {
+      "types": "./distrib/components/ui/*.d.ts",
+      "import": "./distrib/components/ui/*.js",
+      "require": "./distrib/components/ui/*.cjs"
     }
   },
   "dependencies": {
