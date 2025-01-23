@@ -1,5 +1,5 @@
 {
-  "name": "@repo/next",
+  "name": "@nerve-js/next",
   "private": false,
   "version": "0.1.8",
   "type": "module",
@@ -28,7 +28,7 @@
     }
   },
   "dependencies": {
-    "@repo/client": "workspace:*",
+    "@nerve-js/client": "workspace:*",
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@tailwindcss/typography": "^0.5.16",
