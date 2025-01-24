@@ -2,4 +2,421 @@
 title: "CapabilityStatement"
 ---
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
-import { DollarSign } from 'lucide-react'
+import { Database } from 'lucide-react'
+
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| N | Anonymous | <div className="flex items-center gap-2"> <Database className="h-5 w-5 text-blue-500" /> **Foundation Resources**</div> |
+
+A Capability Statement documents a set of capabilities (behaviors) of a FHIR Server or Client for a particular version of FHIR that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+    | <div style={{width: "180px"}}>Name</div> | Required| <div style={{width: "180px"}}>Type</div> | <div style={{width: "calc(100% - 480px)"}}>Description & Constraints</div> |
+    |------|--------|------|------------------------|
+    | url | | uri | Canonical identifier for this capability statement, represented as a URI (globally unique) |
+    | identifier | | Identifier | Additional identifier for the CapabilityStatement (business identifier) |
+    | version | | string | Business version of the capability statement |
+    | versionAlgorithm[x] | | string\|Coding | How to compare versions |
+    | name | | string | Name for this capability statement (computer friendly) |
+    | title | | string | Name for this capability statement (human friendly) |
+    | status | <span style={{color: "#22c55e"}}>✓</span> | code | draft \| active \| retired \| unknown |
+    | experimental | | boolean | For testing purposes, not real usage |
+    | date | <span style={{color: "#22c55e"}}>✓</span> | dateTime | Date last changed |
+    | publisher | | string | Name of the publisher/steward (organization or individual) |
+    | contact | | ContactDetail | Contact details for the publisher |
+    | description | | markdown | Natural language description of the capability statement |
+    | useContext | | UsageContext | The context that the content is intended to support |
+    | jurisdiction | | CodeableConcept | Intended jurisdiction for capability statement (if applicable) |
+    | purpose | | markdown | Why this capability statement is defined |
+    | copyright | | markdown | Use and/or publishing restrictions |
+    | copyrightLabel | | string | Copyright holder and year(s) |
+    | kind | <span style={{color: "#22c55e"}}>✓</span> | code | instance \| capability \| requirements |
+    | instantiates | | canonical(CapabilityStatement) | Canonical URL of another capability statement this implements |
+    | imports | | canonical(CapabilityStatement) | Canonical URL of another capability statement this adds to |
+    | software | | BackboneElement | Software that is covered by this capability statement |
+    | <span style={{color: "#777777"}}>└─ name</span> | <span style={{color: "#22c55e"}}>✓</span> | string | A name the software is known by |
+    | <span style={{color: "#777777"}}>└─ version</span> | | string | Version covered by this statement |
+    | <span style={{color: "#777777"}}>└─ releaseDate</span> | | dateTime | Date this version was released |
+    | implementation | | BackboneElement | If this describes a specific instance |
+    | <span style={{color: "#777777"}}>└─ description</span> | <span style={{color: "#22c55e"}}>✓</span> | markdown | Describes this specific instance |
+    | <span style={{color: "#777777"}}>└─ url</span> | | url | Base URL for the installation |
+    | <span style={{color: "#777777"}}>└─ custodian</span> | | Reference(Organization) | Organization that manages the data |
+    | fhirVersion | <span style={{color: "#22c55e"}}>✓</span> | code | FHIR Version the system supports |
+    | format | <span style={{color: "#22c55e"}}>✓</span> | code[] | formats supported (xml \| json \| ttl \| mime type) |
+    | patchFormat | | code[] | Patch formats supported |
+    | acceptLanguage | | code[] | Languages supported |
+    | implementationGuide | | canonical(ImplementationGuide)[] | Implementation guides supported |
+    | rest | | BackboneElement[] | If the endpoint is a RESTful one |
+    | <span style={{color: "#777777"}}>└─ mode</span> | <span style={{color: "#22c55e"}}>✓</span> | code | client \| server |
+    | <span style={{color: "#777777"}}>└─ documentation</span> | | markdown | General description of implementation |
+    | <span style={{color: "#777777"}}>└─ security</span> | | BackboneElement | Information about security of implementation |
+    | <span style={{color: "#4B9CD3"}}>└─── cors</span> | | boolean | Adds CORS Headers (http://enable-cors.org/) |
+    | <span style={{color: "#4B9CD3"}}>└─── service</span> | | CodeableConcept | OAuth \| SMART-on-FHIR \| NTLM \| Basic \| Kerberos \| Certificates |
+    | <span style={{color: "#4B9CD3"}}>└─── description</span> | | markdown | General description of how security works |
+    | <span style={{color: "#777777"}}>└─ resource</span> | | BackboneElement | Resource served on the REST interface |
+    | <span style={{color: "#4B9CD3"}}>└─── type</span> | <span style={{color: "#22c55e"}}>✓</span> | code | A resource type that is supported |
+    | <span style={{color: "#4B9CD3"}}>└─── profile</span> | | canonical(StructureDefinition) | System-wide profile |
+    | <span style={{color: "#4B9CD3"}}>└─── supportedProfile</span> | | canonical(StructureDefinition)[] | Use-case specific profiles |
+    | signature | | Signature | Digital Signature |
+  </Tab>
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "CapabilityStatement",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "url" : "<uri>", // Canonical identifier for this capability statement, represented as a URI (globally unique)
+  "identifier" : [{ Identifier }], // Additional identifier for the CapabilityStatement (business identifier)
+  "version" : "<string>", // Business version of the capability statement
+  // versionAlgorithm[x]: How to compare versions. One of these 2:
+  "versionAlgorithmString" : "<string>",
+  "versionAlgorithmCoding" : { Coding },
+  "name" : "<string>", // I Name for this capability statement (computer friendly)
+  "title" : "<string>", // Name for this capability statement (human friendly)
+  "status" : "<code>", // R!  draft | active | retired | unknown
+  "experimental" : <boolean>, // For testing purposes, not real usage
+  "date" : "<dateTime>", // R!  Date last changed
+  "publisher" : "<string>", // Name of the publisher/steward (organization or individual)
+  "contact" : [{ ContactDetail }], // Contact details for the publisher
+  "description" : "<markdown>", // I Natural language description of the capability statement
+  "useContext" : [{ UsageContext }], // The context that the content is intended to support
+  "jurisdiction" : [{ CodeableConcept }], // Intended jurisdiction for capability statement (if applicable)
+  "purpose" : "<markdown>", // Why this capability statement is defined
+  "copyright" : "<markdown>", // Use and/or publishing restrictions
+  "copyrightLabel" : "<string>", // Copyright holder and year(s)
+  "kind" : "<code>", // I R!  instance | capability | requirements
+  "instantiates" : ["<canonical(CapabilityStatement)>"], // Canonical URL of another capability statement this implements
+  "imports" : ["<canonical(CapabilityStatement)>"], // Canonical URL of another capability statement this adds to
+  "software" : { // I Software that is covered by this capability statement
+    "name" : "<string>", // R!  A name the software is known by
+    "version" : "<string>", // Version covered by this statement
+    "releaseDate" : "<dateTime>" // Date this version was released
+  },
+  "implementation" : { // I If this describes a specific instance
+    "description" : "<markdown>", // R!  Describes this specific instance
+    "url" : "<url>", // Base URL for the installation
+    "custodian" : { Reference(Organization) } // Organization that manages the data
+  },
+  "fhirVersion" : "<code>", // R!  FHIR Version the system supports
+  "format" : ["<code>"], // R!  formats supported (xml | json | ttl | mime type)
+  "patchFormat" : ["<code>"], // Patch formats supported
+  "acceptLanguage" : ["<code>"], // Languages supported
+  "implementationGuide" : ["<canonical(ImplementationGuide)>"], // Implementation guides supported
+  "rest" : [{ // I If the endpoint is a RESTful one
+    "mode" : "<code>", // I R!  client | server
+    "documentation" : "<markdown>", // General description of implementation
+    "security" : { // Information about security of implementation
+      "cors" : <boolean>, // Adds CORS Headers (http://enable-cors.org/)
+      "service" : [{ CodeableConcept }], // OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates
+      "description" : "<markdown>" // General description of how security works
+    },
+    "resource" : [{ // I Resource served on the REST interface
+      "type" : "<code>", // I R!  A resource type that is supported
+      "profile" : "<canonical(StructureDefinition)>", // System-wide profile
+      "supportedProfile" : ["<canonical(StructureDefinition)>"], // Use-case specific profiles
+      "documentation" : "<markdown>", // Additional information about the use of the resource type
+      "interaction" : [{ // What operations are supported?
+        "code" : "<code>", // R!  read | vread | update | update-conditional | patch | patch-conditional | delete | delete-conditional-single | delete-conditional-multiple | delete-history | delete-history-version | history-instance | history-type | create | create-conditional | search-type
+        "documentation" : "<markdown>" // Anything special about operation behavior
+      }],
+      "versioning" : "<code>", // no-version | versioned | versioned-update
+      "readHistory" : <boolean>, // Whether vRead can return past versions
+      "updateCreate" : <boolean>, // If update can commit to a new identity
+      "conditionalCreate" : <boolean>, // If allows/uses conditional create
+      "conditionalRead" : "<code>", // not-supported | modified-since | not-match | full-support
+      "conditionalUpdate" : <boolean>, // If allows/uses conditional update
+      "conditionalPatch" : <boolean>, // If allows/uses conditional patch
+      "conditionalDelete" : "<code>", // not-supported | single | multiple - how conditional delete is supported
+      "referencePolicy" : ["<code>"], // literal | logical | resolves | enforced | local
+      "searchInclude" : ["<string>"], // _include values supported by the server
+      "searchRevInclude" : ["<string>"], // _revinclude values supported by the server
+      "searchParam" : [{ // I Search parameters supported by implementation
+        "name" : "<string>", // I R!  Name for parameter in search url
+        "definition" : "<canonical(SearchParameter)>", // Source of definition for parameter
+        "type" : "<code>", // R!  number | date | string | token | reference | composite | quantity | uri | special
+        "documentation" : "<markdown>" // Server-specific usage
+      }],
+      "operation" : [{ // Definition of a resource operation
+        "name" : "<string>", // R!  Name by which the operation/query is invoked
+        "definition" : "<canonical(OperationDefinition)>", // R!  The defined operation/query
+        "documentation" : "<markdown>" // Specific details about operation behavior
+      }]
+    }],
+    "interaction" : [{ // What operations are supported?
+      "code" : "<code>", // R!  transaction | batch | search-system | history-system
+      "documentation" : "<markdown>" // Anything special about operation behavior
+    }],
+    "searchParam" : [{ Content as for CapabilityStatement.rest.resource.searchParam }], // Search parameters for searching all resources
+    "operation" : [{ Content as for CapabilityStatement.rest.resource.operation }], // Definition of a system level operation
+    "compartment" : ["<canonical(CompartmentDefinition)>"] // Compartments served/used by system
+  }],
+  "messaging" : [{ // I If messaging is supported
+    "endpoint" : [{ // I Where messages should be sent
+      "protocol" : { Coding }, // R!  http | ftp | mllp +
+      "address" : "<url>" // R!  Network address or identifier of the end-point
+    }],
+    "reliableCache" : "<unsignedInt>", // Reliable Message Cache Length (min)
+    "documentation" : "<markdown>", // Messaging interface behavior details
+    "supportedMessage" : [{ // Messages supported by this system
+      "mode" : "<code>", // R!  sender | receiver
+      "definition" : "<canonical(MessageDefinition)>" // R!  Message supported by this system
+    }]
+  }],
+  "document" : [{ // I Document definition
+    "mode" : "<code>", // I R!  producer | consumer
+    "documentation" : "<markdown>", // Description of document support
+    "profile" : "<canonical(StructureDefinition)>" // I R!  Constraint on the resources used in the document
+  }]
+}
+        ```
+  </Tab>
+  <Tab value="types">
+```typescript
+export declare class Software {
+    name: string;
+    version?: string;
+    releaseDate?: string;
+    }
+
+export declare class Implementation {
+    description: string;
+    url?: string;
+    custodian?: Reference<Organization>;
+    }
+
+export declare class RestSecurity {
+    cors?: boolean;
+    service?: CodeableConcept[];
+    description?: string;
+    }
+
+export declare class RestResourceInteraction {
+    code: 'read' | 'vread' | 'update' | 'patch' | 'delete' | 'history-instance' | 'history-type' | 'create' | 'search-type';
+    documentation?: string;
+    }
+
+export declare class RestResourceSearchParam {
+    name: string;
+    definition?: string;
+    type: 'number' | 'date' | 'string' | 'token' | 'reference' | 'composite' | 'quantity' | 'uri' | 'special';
+    documentation?: string;
+    }
+
+export declare class RestResourceOperation {
+    name: string;
+    definition: string;
+    documentation?: string;
+    }
+
+export declare class RestResource {
+    type: string; // ResourceType will need to be defined
+    profile?: string;
+    supportedProfile?: string[];
+    documentation?: string;
+    interaction?: RestResourceInteraction[];
+    versioning?: 'no-version' | 'versioned' | 'versioned-update';
+    readHistory?: boolean;
+    updateCreate?: boolean;
+    conditionalCreate?: boolean;
+    conditionalRead?: 'not-supported' | 'modified-since' | 'not-match' | 'full-support';
+    conditionalUpdate?: boolean;
+    conditionalDelete?: 'not-supported' | 'single' | 'multiple';
+    referencePolicy?: Array<'literal' | 'logical' | 'resolves' | 'enforced' | 'local'>;
+    searchInclude?: string[];
+    searchRevInclude?: string[];
+    searchParam?: RestResourceSearchParam[];
+    operation?: RestResourceOperation[];
+    }
+
+export declare class RestInteraction {
+    code: 'transaction' | 'batch' | 'search-system' | 'history-system'
+    documentation: string;
+    }
+
+export declare class Rest {
+    mode: 'server' | 'code';
+    documentation?: string;
+    security?: RestSecurity;
+    resource?: RestResource[]
+    interaction?: RestResourceInteraction
+    searchParam?: string[];
+    operation?: string[];
+    compartment?: string[];
+    }
+
+export declare class MessagingEndpoint {
+    protocol: Coding;
+    address: string;
+    }
+
+export declare class SupportedMessage {
+    mode: 'sender' | 'receiver';
+    definition: string;  
+    }
+
+export declare class Messaging {
+    endpoint?: MessagingEndpoint[];
+    reliableCache?: number;
+    documentation?: string;
+    supportedMessage?: SupportedMessage[];
+    }
+
+export declare class Document {
+    mode: 'producer' | 'consumer';
+    documentation?: string;
+    profile: string;  
+    }
+
+// Main class
+export declare class CapabilityStatement extends DomainResource {
+    resourceType: 'CapabilityStatement';
+    url?: string;
+    version?: string;
+    name?: string;
+    title?: string;
+    status: 'draft' | 'active' | 'retired' | 'unknown';
+    experimental?: boolean;
+    date: string;
+    publisher?: string;
+    contact?: ContactDetail[];
+    description?: string;
+    useContext?: UsageContext[];
+    jurisdiction?: CodeableConcept[];
+    purpose?: string;
+    copyright?: string;
+    kind: 'instance' | 'capability' | 'requirements';
+    instantiates?: string[];
+    imports?: string[];
+    software?: Software;
+    implementation?: Implementation;
+    fhirVersion: string;
+    format: 'xml' | 'json' | 'ttl' | 'mime type';
+    patchFormat: string;
+    implementationGuide: string;
+    rest: Rest[];
+    messaging?: Messaging[];
+    document?: Document[];
+    }
+    ```
+  </Tab>
+</Tabs>
+
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| context | token | A use context assigned to the capability statement | `CapabilityStatement.useContext.value as CodeableConcept` |
+| context-quantity | quantity | A quantity- or range-valued use context assigned to the capability statement | `CapabilityStatement.useContext.value as Quantity \| CapabilityStatement.useContext.value as Range` |
+| context-type | token | A type of use context assigned to the capability statement | `CapabilityStatement.useContext.code` |
+| date | date | The capability statement publication date | `CapabilityStatement.date` |
+| description | string | The description of the capability statement | `CapabilityStatement.description` |
+| fhirversion | token | The version of FHIR | `CapabilityStatement.version` |
+| format | token | formats supported (xml \| json \| ttl \| mime type) | `CapabilityStatement.format` |
+| guide | reference | Implementation guides supported | `CapabilityStatement.implementationGuide` |
+| jurisdiction | token | Intended jurisdiction for the capability statement | `CapabilityStatement.jurisdiction` |
+| mode | token | Mode - restful (server/client) or messaging (sender/receiver) | `CapabilityStatement.rest.mode` |
+| name | string | Computationally friendly name of the capability statement | `CapabilityStatement.name` |
+| publisher | string | Name of the publisher of the capability statement | `CapabilityStatement.publisher` |
+| resource | token | Name of a resource mentioned in a capability statement | `CapabilityStatement.rest.resource.type` |
+| resource-profile | reference | A profile id invoked in a capability statement | `CapabilityStatement.rest.resource.profile` |
+| security-service | token | OAuth \| SMART-on-FHIR \| NTLM \| Basic \| Kerberos \| Certificates | `CapabilityStatement.rest.security.service` |
+| software | string | Part of the name of a software application | `CapabilityStatement.software.name` |
+| status | token | The current status of the capability statement | `CapabilityStatement.status` |
+| supported-profile | reference | Profiles for use cases supported | `CapabilityStatement.rest.resource.supportedProfile` |
+| title | string | The human-friendly name of the capability statement | `CapabilityStatement.title` |
+| url | uri | The uri that identifies the capability statement | `CapabilityStatement.url` |
+| version | token | The business version of the capability statement | `CapabilityStatement.version` |
+| context-type-quantity | composite | A use context type and quantity- or range-based value assigned to the capability statement | `CapabilityStatement.useContext` |
+| context-type-value | composite | A use context type and value assigned to the capability statement | `CapabilityStatement.useContext` |
+
+## Scope and Usage
+
+The CapabilityStatement is a key part of the FHIR conformance framework. It serves as:
+- A statement of actual software features
+- A set of rules for application functionality
+- A connection to detailed functionality statements (StructureDefinitions and ValueSets)
+
+It can be used for:
+- System compatibility testing
+- Code generation
+- Conformance assessment
+
+### Types of Capability Statements
+
+There are three main types of Capability Statements:
+
+#### 1. Instance
+- **Purpose**: Describes an actual implementation
+- **Requirements**: Implementation must be present, software may be present
+- **Use Cases**:
+  - Describes capabilities of deployed solutions at specific access points
+  - Used by FHIR RESTful solutions for the capabilities operation
+  - Forms basis for testing and certification of specific installations
+
+#### 2. Capability
+- **Purpose**: Describes software solution capabilities
+- **Requirements**: Implementation must be absent, software must be present
+- **Use Cases**:
+  - Documents generic capabilities of software applications
+  - Used as marketing tool to describe vendor capabilities
+  - Basis for software conformance testing
+  - May describe multiple possible configurations
+
+#### 3. Requirements
+- **Purpose**: Describes desired system capabilities
+- **Requirements**: Both implementation and software must be absent
+- **Use Cases**:
+  - Used in architectural design to document needed capabilities
+  - Part of RFP process to document requirements
+  - Can include additional documentation/extensions to specify expectations
+
+### Working with Capability Statements
+
+#### Combined Usage
+These three types can work together:
+- Requirements statements can be compared against solution statements in RFPs
+- Solution statements for software packages inform implementation statements for specific installations
+
+#### Practical Considerations
+- Capability Statements enable some automatic configuration and adaptation
+- Complete capture of all system variations is rarely practical
+- They serve as both:
+  - An automation tool
+  - A source of human-readable documentation
+
+#### Version Support
+- Applications may implement multiple FHIR versions
+- Each version requires its own CapabilityStatement
+- Systems can use the `$versions` operation for version management
+
+#### Normative Content
+- Core CapabilityStatement resource is Normative
+- Many operational flags are marked as trial-use
+- Applications can request 'Normative content only' using the mode parameter
+- Future versions may introduce changes to trial-use portions based on community feedback
+
+## Background and context
+Capability Statements provide for a degree of automatic configuration and adaptation. However, capturing absolutely every variation that could impact the interoperability of two systems, let alone keeping that detailed information up-to-date as systems evolve through maintenance and upgrades, is rarely practical. Therefore, capability statements should be seen as an interim step. They provide a degree of automation. However, they also provide a great deal of human-readable content that can minimize the need for direct communication between the operators of the systems being configured to interoperate.
+
+5.3.2.1 Supporting Multiple Versions 
+Applications may implement multiple versions. If they do, then a CapabilityStatement describes the system's support for a particular version of FHIR, and the system will have multiple statements, one for each version it supports. For further information, see Managing Multiple Versions, and the $versions operation.
+
+5.3.2.2 Mixed Normative Content 
+While the core of the CapabilityStatement resource is Normative, many of the flags that indicate exactly how the system operates are marked as trial-use. Roughly, the portions of the resource that correspond to OpenAPI document icon elements are normative.
+
+Applications looking for normative stability should only use the normative parts of the resource, and not populate or ignore the portions labelled trial-use. To assist with this, clients can ask for the server to return a 'Normative content only' CapabilityStatement using the mode parameter on /metadata.
+
+Community discussion regarding more capable, efficient and computable representations of an applications capabilities may lead to change to the trial-use parts of this resource or the creation of new resources and/or functionality in future versions of this specification.
+
+## Referenced Elements
+
+This resource is referenced by:
+- [ActivityDefinition](/fhir/resources/activitydefinition)
+- [ActorDefinition](/fhir/resources/actordefinition) 
+- [CapabilityStatement](/fhir/resources/capabilitystatement)
+- [PlanDefinition](/fhir/resources/plandefinition)
+- [RequestOrchestration](/fhir/resources/requestorchestration)
+- [TestScript](/fhir/resources/testscript)

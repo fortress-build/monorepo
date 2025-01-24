@@ -2,4 +2,176 @@
 title: "CareTeam"
 ---
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
-import { DollarSign } from 'lucide-react'
+import { Stethoscope } from 'lucide-react'
+
+| Maturity Level | Security Category | Resource Category |
+|----------------|------------------|-------------------|
+| 2 | Patient | <div className="flex items-center gap-2"><Stethoscope className="h-5 w-5 text-red-500" /> Clinical </div> |
+
+The Care Team includes all the people, organizations, and care teams who participate or plan to participate in the coordination and delivery of care.
+
+## Resource Content
+<Tabs items={["structure", "json", "types"]} defaultValue="structure">
+  <Tab value="structure">
+| Name | Card. | Type | Description |
+|------|--------|------|------------|
+| identifier | 0..* | Identifier | External Ids for this team |
+| status | 0..1 | code | proposed \| active \| suspended \| inactive \| entered-in-error |
+| category | 0..* | CodeableConcept | Type of team |
+| name | 0..1 | string | Name of the team, such as crisis assessment team |
+| subject | 0..1 | Reference(Patient \| Group) | Who care team is for |
+| period | 0..1 | Period | Time period team covers |
+| participant | 0..* | BackboneElement | Members of the team |
+| <span style={{color: "#777777"}}>└─ role</span> | 0..1 | CodeableConcept | Type of involvement |
+| <span style={{color: "#777777"}}>└─ member</span> | 0..1 | Reference(Practitioner \| PractitionerRole \| RelatedPerson \| Patient \| Organization \| CareTeam) | Who is involved |
+| <span style={{color: "#777777"}}>└─ onBehalfOf</span> | 0..1 | Reference(Practitioner \| PractitionerRole \| RelatedPerson \| Patient \| Organization \| CareTeam) | Entity that the participant is acting as a proxy of |
+| <span style={{color: "#777777"}}>└─ effectivePeriod</span> | 0..1 | Period | When the member is generally available within this care team |
+| <span style={{color: "#777777"}}>└─ effectiveTiming</span> | 0..1 | Timing | When the member is generally available within this care team |
+| reason | 0..* | CodeableReference(Condition) | Why the care team exists |
+| managingOrganization | 0..* | Reference(Organization) | Organization responsible for the care team |
+| telecom | 0..* | ContactPoint | A contact detail for the care team (that applies to all members) |
+| note | 0..* | Annotation | Comments made about the CareTeam |
+  </Tab>
+  
+  <Tab value="json">
+    ```json
+{
+  "resourceType" : "CareTeam",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // External Ids for this team
+  "status" : "<code>", // proposed | active | suspended | inactive | entered-in-error
+  "category" : [{ CodeableConcept }], // Type of team
+  "name" : "<string>", // Name of the team, such as crisis assessment team
+  "subject" : { Reference(Group|Patient) }, // Who care team is for
+  "period" : { Period }, // Time period team covers
+  "participant" : [{ // Members of the team
+    "role" : { CodeableConcept }, // I Type of involvement
+    "member" : { Reference(CareTeam|Organization|Patient|Practitioner|
+    PractitionerRole|RelatedPerson) }, // I Who is involved
+    "onBehalfOf" : { Reference(CareTeam|Organization|Patient|Practitioner|
+    PractitionerRole|RelatedPerson) }, // Entity that the participant is acting as a proxy of, or an agent of, or in the interest of, or as a representative of
+    // effective[x]: When the member is generally available within this care team. One of these 2:
+    "effectivePeriod" : { Period },
+    "effectiveTiming" : { Timing }
+  }],
+  "reason" : [{ CodeableReference(Condition) }], // Why the care team exists
+  "managingOrganization" : [{ Reference(Organization) }], // Organization responsible for the care team
+  "telecom" : [{ ContactPoint }], // A contact detail for the care team (that applies to all members)
+  "note" : [{ Annotation }] // Comments made about the CareTeam
+}
+    ```
+  </Tab>
+  
+  <Tab value="types">
+    ```typescript
+export declare class CareTeamParticipant {
+  role?: CodeableConcept[];
+  member?: Reference<
+    | Practitioner
+    | PractitionerRole
+    | RelatedPerson
+    | Patient
+    | Organization
+    | CareTeam
+  >;
+  onBehalfOf?: Reference<Organization>;
+  period?: Period;
+}
+
+export declare class CareTeam extends DomainResource {
+  resourceType: "CareTeam";
+  identifier?: Identifier[];
+  status?:
+    | "proposed"
+    | "active"
+    | "suspended"
+    | "inactive"
+    | "entered-in-error";
+  category?: CodeableConcept[];
+  name?: string;
+  subject?: Reference<Patient | Group>;
+  period?: Period;
+  participant?: CareTeamParticipant[];
+  reasonCode?: CodeableConcept[];
+  reasonReference?: Reference<Condition>[];
+  managingOrganization?: Reference<Organization>[];
+  telecom?: ContactPoint[];
+  note?: Annotation[];
+}
+    ```
+  </Tab>
+</Tabs>
+
+## Search Parameters
+| Name | Type | Description | Expression |
+|------|------|-------------|------------|
+| date | date | Time period team covers | `CareTeam.period` |
+| identifier | token | External Ids for this team | `CareTeam.identifier` |
+| patient | reference | Who care team is for | `CareTeam.subject.where(resolve() is Patient)` |
+| category | token | Type of team | `CareTeam.category` |
+| encounter | reference | Encounter created as part of | `CareTeam.encounter` |
+| participant | reference | Who is involved | `CareTeam.participant.member` |
+| status | token | proposed \| active \| suspended \| inactive \| entered-in-error | `CareTeam.status` |
+| subject | reference | Who care team is for | `CareTeam.subject` |
+| name | string | The name of the care team | `CareTeam.name` |
+
+## Scope and Usage
+
+The CareTeam includes all the people, organizations, and care teams who participate or plan to participate in the coordination and delivery of care and is assigned to:
+
+a single patient, or
+a group (such as a married couple in therapy or a support group), or
+an event, prior to a subject being identified (such as a code blue team or emergency response team)
+Care Team is not limited to practitioners, but may include other caregivers such as family members, guardians, the patient themself, or others. The Care Team, depending on where used, may include care team members specific to a particular care plan, an episode of care, an encounter, or may reflect all known team members across these perspectives. A CareTeam can be dynamic over time, such that there can be transience of team members, such as a rehabilitation team.
+
+## Boundaries and Relationships
+
+Care Team is distinct from Group. Group identifies an undifferentiated set of individuals who are intended to be the target of one or more clinical activities (e.g. set of clinical trial participants, set of individuals impacted by or at risk of a public health event, a herd or flock, etc.) The participants within a CareTeam are the individual members or organized group of individuals. CareTeam can be referenced by EpisodeOfCare, Encounter, or CarePlan to identify the set of individuals (and their respective roles) who are intended to be involved in providing the care defined by those resources.
+
+
+## Referenced Elements
+This resource is referenced by:
+- [ActivityDefinition](/fhir/resources/activitydefinition)
+- [AdverseEvent](/fhir/resources/adverseevent)
+- [Appointment](/fhir/resources/appointment)
+- [AuditEvent](/fhir/resources/auditevent)
+- [Basic](/fhir/resources/basic)
+- [CarePlan](/fhir/resources/careplan)
+- [CareTeam](/fhir/resources/careteam)
+- [ChargeItem](/fhir/resources/chargeitem)
+- [Communication](/fhir/resources/communication)
+- [CommunicationRequest](/fhir/resources/communicationrequest)
+- [ConditionDefinition](/fhir/resources/conditiondefinition)
+- [Consent](/fhir/resources/consent)
+- [Contract](/fhir/resources/contract)
+- [DeviceDispense](/fhir/resources/devicedispense)
+- [DeviceRequest](/fhir/resources/devicerequest)
+- [DiagnosticReport](/fhir/resources/diagnosticreport)
+- [DocumentReference](/fhir/resources/documentreference)
+- [Encounter](/fhir/resources/encounter)
+- [EpisodeOfCare](/fhir/resources/episodeofcare)
+- [FamilyMemberHistory](/fhir/resources/familymemberhistory)
+- [Goal](/fhir/resources/goal)
+- [Group](/fhir/resources/group)
+- [ImagingSelection](/fhir/resources/imagingselection)
+- [ImagingStudy](/fhir/resources/imagingstudy)
+- [List](/fhir/resources/list)
+- [MeasureReport](/fhir/resources/measurereport)
+- [MedicationDispense](/fhir/resources/medicationdispense)
+- [MedicationRequest](/fhir/resources/medicationrequest)
+- [NutritionIntake](/fhir/resources/nutritionintake)
+- [NutritionOrder](/fhir/resources/nutritionorder)
+- [Observation](/fhir/resources/observation)
+- [Permission](/fhir/resources/permission)
+- [PlanDefinition](/fhir/resources/plandefinition)
+- [Procedure](/fhir/resources/procedure)
+- [Provenance](/fhir/resources/provenance)
+- [RequestOrchestration](/fhir/resources/requestorchestration)
+- [Requirements](/fhir/resources/requirements)
+- [Schedule](/fhir/resources/schedule)
+- [ServiceRequest](/fhir/resources/servicerequest)
+- [Subscription](/fhir/resources/subscription)
+- [SupplyRequest](/fhir/resources/supplyrequest)
+- [Task](/fhir/resources/task)
+- [Transport](/fhir/resources/transport)
