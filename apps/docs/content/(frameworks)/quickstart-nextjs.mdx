@@ -40,7 +40,17 @@ import { Callout } from 'fumadocs-ui/components/callout';
         <html lang="en">
           <body>
             {/* [!code ++]*/}
-            <NerveProvider>
+            <NerveProvider
+            {/* [!code ++]*/}
+              // Configure your Nerve client here
+            {/* [!code ++]*/}
+              redirectUrl="http://localhost:3000/callback/"
+            {/* [!code ++]*/}
+              afterRedirectUrl="http://localhost:3000/"
+            {/* [!code ++]*/}
+              signInUrl="http://localhost:3000/auth/login/"
+            {/* [!code ++]*/}
+            >
               {children}
             {/* [!code ++] */}
             </NerveProvider>
@@ -88,7 +98,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
       ```tsx twoslash
       // @noErrors
-      export { CallbackPage as default } from "@nerve-js/next" // [!code ++]
+      export { NerveCallback as default } from "@nerve-js/next" // [!code ++]
       ```
 
     </Files>
@@ -114,7 +124,8 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
     ```tsx twoslash
     // @noErrors
-    import { useQuery } from "@tanstack/react-query"
+    import { useQuery } from "@tanstack/react-query";
+    import { useNerveClient } from "@nerve-js/next";
 
     function MyComponent() {
       const nerve = useNerveClient();
