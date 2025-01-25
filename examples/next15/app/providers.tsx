@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { NerveProvider } from "@repo/next";
+import { NerveProvider } from "@nerve-js/next";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (

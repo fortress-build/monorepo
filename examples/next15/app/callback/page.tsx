@@ -1,1 +1,1 @@
-export { NerveCallback as default } from "@repo/next";
+export { NerveCallback as default } from "@nerve-js/next";

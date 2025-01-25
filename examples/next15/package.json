@@ -2,6 +2,7 @@
   "name": "simple",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
@@ -9,8 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@repo/client": "workspace:*",
-    "@repo/next": "workspace:*",
+    "@nerve-js/client": "file:../../packages/client-js",
+    "@nerve-js/next": "file:../../packages/sdk-nextjs",
     "@radix-ui/react-dialog": "^1.1.5",
     "@radix-ui/react-navigation-menu": "^1.2.4",
     "@radix-ui/react-separator": "^1.1.1",
