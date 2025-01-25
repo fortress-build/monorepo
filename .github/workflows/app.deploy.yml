@@ -1,0 +1,23 @@
+name: Deploy App
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - apps/app/**
+
+jobs:
+  deploy-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to fly.io
+        run: flyctl deploy --config apps/app/fly.toml
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_DEPLOY_KEY }}
