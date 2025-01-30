@@ -7,6 +7,7 @@ import { DiscordIcon } from '../icons/discord.tsx'
 import { FHIRIcon } from '../icons/fhir.tsx'
 import { LogoIcon } from '../icons/logo.tsx'
 import { CodeIcon, PuzzleIcon } from 'lucide-react'
+import { Tabs, Tab } from 'fumadocs-ui/components/tabs'
 
 ## Introduction
 
@@ -47,17 +48,39 @@ for reading and writing data to EHR systems.
 
 ## Basic Usage
 
-```typescript
-import { NerveClient } from '@nerve-js/client';
+<Tabs defaultValue="vanilla">
+  <Tab label="Vanilla" value="vanilla">
+    ```typescript
+    import { NerveClient } from '@nerve-js/client';
 
-const client = new NerveClient({
-  redirectUrl: 'https://your-app.com/callback',
-  scope: ['patient.read', 'patient.write']
-});
+    const client = new NerveClient({
+      redirectUrl: 'https://your-app.com/callback',
+      scope: ['patient.read', 'patient.write']
+    });
 
-// Search for a patient
-const results = await client.patient.search("John Doe");
-```
+    // Search for a patient
+    const results = await client.patient.search("John Doe");
+    ```
+  </Tab>
+  <Tab label="Tanstack" value="tanstack">
+    ```typescript
+    import { NerveClient } from '@nerve-js/client';
+    import { useQuery } from '@tanstack/react-query';
+
+    const client = new NerveClient({
+      redirectUrl: 'https://your-app.com/callback',
+      scope: ['patient.read', 'patient.write']
+    });
+
+    function YourComponent() {
+      const { data: results } = useQuery({
+        queryKey: ['patient-search'],
+        queryFn: () => client.patient.search("John Doe")
+      });
+    }
+    ```
+  </Tab>
+</Tabs>
 
 See framework integrations for more specific instructions.
 

@@ -149,6 +149,40 @@ import { Callout } from 'fumadocs-ui/components/callout';
     ```
 
   </Step>
+
+  ## Basic Usage
+
+  <Tabs>
+    <Tab label="Vanilla">
+      ```typescript
+      // Your vanilla JavaScript/TypeScript code here
+      import { NerveClient } from "@nerve/client-js";
+
+      const client = new NerveClient({
+        // configuration
+      });
+      ```
+    </Tab>
+    <Tab label="Tanstack">
+      ```typescript
+      // Your Tanstack Query code here
+      import { NerveClient } from "@nerve/client-js";
+      import { useQuery } from "@tanstack/react-query";
+
+      const client = new NerveClient({
+        // configuration
+      });
+
+      function YourComponent() {
+        const { data } = useQuery({
+          queryKey: ['your-key'],
+          queryFn: () => client.yourMethod()
+        });
+      }
+      ```
+    </Tab>
+  </Tabs>
+
 </Steps>
 
 Click [here](/) to return to the getting started page.
