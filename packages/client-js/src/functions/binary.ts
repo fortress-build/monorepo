@@ -1,6 +1,7 @@
-import type { Nerve } from "..";
+import type { BodyStructure, Nerve } from "..";
 import type { Binary } from "../models/fhir/Binary";
 import { camelToKebab } from "../camel2kebab";
+import { search2Array } from "@/modelMapping";
 
 export type BinarySearchRequest = {
   id: string;
@@ -36,15 +37,17 @@ export class BinaryResource {
     });
   }
 
-  async search(params: BinarySearchRequest) {
+  async search(params: BinarySearchRequest) : Promise<Binary[]> {
     const kebabParams = Object.fromEntries(
       Object.entries(params).map(([key, value]) => [camelToKebab(key), value]),
     );
 
     const searchParams = new URLSearchParams(kebabParams);
 
-    return await this.client.request(`Binary?${searchParams.toString()}`, {
+    const result = await this.client.request(`Binary?${searchParams.toString()}`, {
       method: "GET",
     });
+
+    return search2Array(result, {} as Binary);
   }
 }

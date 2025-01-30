@@ -1,6 +1,7 @@
 import { camelToKebab } from '../camel2kebab';
 import type { Nerve } from '..';
 import type { Procedure } from '../models/fhir/Procedure';
+import { search2Array } from '@/modelMapping';
 
 export type ProcedureSearchCategory = {
   category?: string;
@@ -41,14 +42,16 @@ export class ProcedureResource {
   //     });
   //   }
 
-  async search(params: ProcedureSearchCategory) {
+  async search(params: ProcedureSearchCategory): Promise<Procedure[]> {
     const kebabParams = Object.fromEntries(
       Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
     );
     const searchParams = new URLSearchParams(kebabParams);
 
-    return await this.client.request(`Procedure?${searchParams.toString()}`, {
+    const result= await this.client.request(`Procedure?${searchParams.toString()}`, {
       method: 'GET',
     });
+
+    return search2Array(result, {} as Procedure)
   }
 }

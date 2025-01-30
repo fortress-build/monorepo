@@ -1,6 +1,7 @@
 import { camelToKebab } from '../camel2kebab';
 import type { Nerve } from '..';
 import type { Flag } from '../models/fhir/Flag';
+import { search2Array } from '@/modelMapping';
 
 export type FlagSearchRequest = {
   category?: string;
@@ -40,14 +41,16 @@ export class FlagResource {
     });
   }
 
-  async search(params: FlagSearchRequest) {
+  async search(params: FlagSearchRequest) : Promise<Flag[]> {
     const kebabParams = Object.fromEntries(
       Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
     );
     const searchParams = new URLSearchParams(kebabParams);
 
-    return await this.client.request(`Flag?${searchParams.toString()}`, {
+    const result =  await this.client.request(`Flag?${searchParams.toString()}`, {
       method: 'GET',
     });
+
+    return search2Array(result, {} as Flag);
   }
 }

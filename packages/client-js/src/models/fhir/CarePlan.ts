@@ -181,7 +181,6 @@ export declare class CarePlanActivity {
 
 export declare class CarePlan extends DomainResource {
   resourceType: "CarePlan";
-
   identifier?: Identifier[];
   instantiatesCanonical?: string[]; // TODO: Fix
   instantiatesUri?: string[];

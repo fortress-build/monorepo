@@ -1,6 +1,7 @@
 import { camelToKebab } from '../camel2kebab';
 import type { Nerve } from '..';
 import type { Condition } from '../models/fhir/Condition';
+import { search2Array } from '@/modelMapping';
 
 export type ConditionSearchRequest = {
   category?: string;
@@ -44,14 +45,16 @@ export class ConditionResource {
     });
   }
 
-  async search(params: ConditionSearchRequest) {
+  async search(params: ConditionSearchRequest): Promise<Condition[]> {
     const kebabParams = Object.fromEntries(
       Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
     );
     const searchParams = new URLSearchParams(kebabParams);
 
-    return await this.client.request(`Condition?${searchParams.toString()}`, {
+    const result = await this.client.request(`Condition?${searchParams.toString()}`, {
       method: 'GET',
     });
+
+    return search2Array(result, {} as Condition);
   }
 }
