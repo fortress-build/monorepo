@@ -7,7 +7,7 @@ import { DiscordIcon } from '../icons/discord.tsx'
 import { FHIRIcon } from '../icons/fhir.tsx'
 import { LogoIcon } from '../icons/logo.tsx'
 import { CodeIcon, PuzzleIcon } from 'lucide-react'
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
 ## Introduction
 
@@ -48,8 +48,8 @@ for reading and writing data to EHR systems.
 
 ## Basic Usage
 
-<Tabs defaultValue="vanilla">
-  <Tab label="Vanilla" value="vanilla">
+<Tabs defaultValue="vanilla" items={["Vanilla", "Tanstack"]}>
+  <Tab value="vanilla" label="Vanilla">
     ```typescript
     import { NerveClient } from '@nerve-js/client';
 
@@ -62,7 +62,7 @@ for reading and writing data to EHR systems.
     const results = await client.patient.search("John Doe");
     ```
   </Tab>
-  <Tab label="Tanstack" value="tanstack">
+  <Tab value="tanstack" label="Tanstack">
     ```typescript
     import { NerveClient } from '@nerve-js/client';
     import { useQuery } from '@tanstack/react-query';
