@@ -197,7 +197,7 @@ export interface AuditEventSource {
   /**
    * Identifier of the source where the event was detected.
    */
-  observer: Reference<PractitionerRole | Practitioner | Organization | Device | Patient | RelatedPerson | Subscription | Bot | ClientApplication>;
+  observer: Reference<PractitionerRole | Practitioner | Organization | Device | Patient | RelatedPerson>;
 
   /**
    * Code specifying the type of source where event originated.

@@ -12,6 +12,7 @@ import type { Period } from './Period';
 import type { Quantity } from './Quantity';
 import type { Reference } from './Reference';
 import type { RelatedArtifact } from './RelatedArtifact';
+import { DomainResource } from './Resource';
 import type { SpecimenDefinition } from './SpecimenDefinition';
 import type { Substance } from './Substance';
 import type { Timing } from './Timing';

@@ -93,7 +93,7 @@ export * from "@/models/fhir/SubstancePolymer";
 export * from "@/models/fhir/HealthcareService";
 export * from "@/models/fhir/Element";
 export * from "@/models/fhir/Money";
-export * from "@/models/fhir/Procedure";
+export * from '@/models/fhir/Procedure';
 export * from "@/models/fhir/EvidenceVariable";
 export * from "@/models/fhir/EnrollmentResponse";
 export * from "@/models/fhir/EnrollmentRequest";

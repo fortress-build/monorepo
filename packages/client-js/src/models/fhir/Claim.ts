@@ -219,7 +219,7 @@ export interface Diagnosis {
  * Procedures performed on the patient relevant to the billing items with
  * the claim.
  */
-export interface Procedure {
+export interface ClaimProcedure {
   /**
    * A number to uniquely identify procedure entries.
    */
@@ -245,7 +245,7 @@ export interface Procedure {
    * The code or reference to a Procedure resource which identifies the
    * clinical intervention performed.
    */
-  procedureReference?: Reference<Procedure>;
+  procedureReference?: Reference<ClaimProcedure>;
 
   /**
    * Unique Device Identifiers associated with this line item.
@@ -772,7 +772,7 @@ export declare class Claim extends DomainResource {
    * Procedures performed on the patient relevant to the billing items with
    * the claim.
    */
-  procedure?: Procedure[];
+  procedure?: ClaimProcedure[];
 
   /**
    * Financial instruments for reimbursement for the health care products
