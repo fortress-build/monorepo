@@ -54,7 +54,7 @@ export class PatientResource {
     });
   }
 
-  async match(params: MatchParameters): Promise<unknown /* Bundle */> {
+  async match(params: MatchParameters): Promise<Patient[] /* Bundle */> {
     const parameters: Parameters = {
       resourceType: "Parameters",
       parameter: [
