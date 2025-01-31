@@ -19,7 +19,7 @@ export default function Home() {
 
 function HomeContent({ nerve }: { nerve: any }) {
 	const [searchResults, setSearchResults] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
     const handleClick = async () => {
@@ -33,6 +33,7 @@ function HomeContent({ nerve }: { nerve: any }) {
                 encounter: "Encounter/es09oReoYsZk20hcbnd7r4A3",
                 performer: "Practitioner/exfo6E4EXjWsnhA1OGVElgw3",
             });
+            
             setSearchResults(data);
         } catch (err: any) {
             setError(err.message || "An error occurred");
@@ -41,34 +42,11 @@ function HomeContent({ nerve }: { nerve: any }) {
         }
     }
 
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		console.log("Fetching data in test page");
-	// 		try {
-	// 			const data = await nerve.observation.search({
-	// 				patient: "eAB3mDIBBcyUKviyzrxsnAw3",
-	// 				category: "vital-signs",
-	// 				status: "final",
-	// 				encounter: "Encounter/es09oReoYsZk20hcbnd7r4A3",
-	// 				performer: "Practitioner/exfo6E4EXjWsnhA1OGVElgw3",
-	// 			});
-	// 			console.log("Data fetched in test page");
-	// 			setSearchResults(data);
-	// 		} catch (err: any) {
-	// 			setError(err.message || "An error occurred");
-	// 		} finally {
-	// 			setIsLoading(false);
-	// 		}
-	// 	};
-
-	// 	fetchData();
-	// }, []);
-
 	return (
 		<main>
 			<h1>Welcome</h1>
-            <button onClick={handleClick}>Search</button>
-			{isLoading && <p>Loading...</p>}
+            {!isLoading ? <button onClick={handleClick}>Search</button> : <p>Loading...</p>}
+			{/* {isLoading && <p>Loading...</p>} */}
 			{error && <p>Error: {error}</p>}
 			{searchResults && (
 				<div>
