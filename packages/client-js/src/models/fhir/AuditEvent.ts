@@ -14,7 +14,7 @@ import type { Patient } from "./Patient";
  * Logical network location for application activity, if the activity has
  * a network location.
  */
-export type AuditEventAgentNetwork = {
+export interface AuditEventAgentNetwork {
   /**
    * An identifier for the network access point of the user device for the
    * audit event.
@@ -32,7 +32,7 @@ export type AuditEventAgentNetwork = {
  * Tagged value pairs for conveying additional information about the
  * entity.
  */
-export type AuditEventEntityDetail = {
+export interface AuditEventEntityDetail {
   /**
    * The type of extra detail provided in the value.
    */
@@ -52,7 +52,7 @@ export type AuditEventEntityDetail = {
 /**
  * Specific instances of data or objects that have been accessed.
  */
-export type AuditEventEntity = {
+export interface AuditEventEntity {
   /**
    * Identifies a specific instance of the entity. The reference should be
    * version specific.
@@ -106,7 +106,7 @@ export type AuditEventEntity = {
  * An actor taking an active role in the event or activity that is
  * logged.
  */
-export type AuditEventAgent = {
+export interface AuditEventAgent {
   /**
    * Specification of the participation type the user plays when performing
    * the event.
@@ -186,7 +186,7 @@ export type AuditEventAgent = {
 /**
  * The system that is reporting the event.
  */
-export type AuditEventSource = {
+export interface AuditEventSource {
   /**
    * Logical source location within the healthcare enterprise network.  For
    * example, a hospital or other provider location within a multi-entity

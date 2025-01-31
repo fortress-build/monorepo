@@ -24,7 +24,7 @@ import type { MedicationAdministration } from "./MedicationAdministration";
 import type { MedicationStatement } from "./MedicationStatement";
 
 
-export type SuspectEntity = {
+export interface SuspectEntity {
   /**
    * Identifies the actual instance of what caused the adverse event.  May
    * be a substance, medication, medication administration, medication
@@ -45,7 +45,7 @@ export type SuspectEntity = {
   causality: Causality;
 };
 
-export type Causality = {
+export interface Causality {
   assessment?: CodeableConcept;
   productRelatedness?: string;
   author?: Reference<Practitioner|PractitionerRole>

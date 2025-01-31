@@ -3,15 +3,15 @@ import type { CareTeam } from "./CareTeam";
 import type { CodeableConcept } from "./CodeableConcept";
 import type { Condition } from "./Condition";
 import type { Device } from "./Device";
-import { DiagnosticReport } from "./DiagnosticReport";
-import { DocumentReference } from "./DocumentReference";
+import type { DiagnosticReport } from "./DiagnosticReport";
+import type { DocumentReference } from "./DocumentReference";
 import type { Encounter } from "./Encounter";
 import type { Goal } from "./Goal";
 import type { Group } from "./Group";
 import type { HealthcareService } from "./HealthcareService";
 import type { Identifier } from "./Identifier";
-import { Medication } from "./Medication";
-import { Observation } from "./Observation";
+import type { Medication } from "./Medication";
+import type { Observation } from "./Observation";
 import type { Organization } from "./Organization";
 import type { Patient } from "./Patient";
 import type { Period } from "./Period";
@@ -21,7 +21,7 @@ import type { Quantity } from "./Quantity";
 import type { Reference } from "./Reference";
 import type { RelatedPerson } from "./RelatedPerson";
 import type { DomainResource, Resource } from "./Resource";
-import { Substance } from "./Substance";
+import type { Substance } from "./Substance";
 import type { Timing } from "./Timing";
 
 /**
@@ -29,7 +29,7 @@ import type { Timing } from "./Timing";
  * example, a medication to be used, lab tests to perform,
  * self-monitoring, education, etc.
  */
-export declare class CarePlanActivity {
+export declare interface CarePlanActivity {
   /**
    * Identifies the outcome at the point when the status of the activity is
    * assessed.  For example, the outcome of an education activity could be

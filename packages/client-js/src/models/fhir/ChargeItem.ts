@@ -32,7 +32,7 @@ import type { CareTeam } from './CareTeam';
  * Indicates who or what performed or participated in the charged
  * service.
  */
-export declare class ChargeItemPerformer {
+export declare interface ChargeItemPerformer {
   /**
    * Describes the type of performance or participation(e.g. primary
    * surgeon, anesthesiologiest, etc.).
@@ -177,7 +177,7 @@ export declare class ChargeItem extends DomainResource {
     value: number;
     currency: string;
   };
-  
+
   /**
    * If the list price or the rule-based factor associated with the code is
    * overridden, this attribute can capture a text to indicate the  reason

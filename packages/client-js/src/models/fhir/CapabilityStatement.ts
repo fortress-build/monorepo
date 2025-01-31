@@ -14,7 +14,7 @@ import type { UsageContext } from './UsageContext';
  * when the capability statement describes the capabilities of a
  * particular software version, independent of an installation.
  */
-export declare class Software {
+export declare interface Software {
   /**
    * Name the software is known by.
    */
@@ -36,7 +36,7 @@ export declare class Software {
  * capability statement - i.e. a particular installation, rather than the
  * capabilities of a software program.
  */
-export declare class Implementation {
+export declare interface Implementation {
   /**
    * Information about the specific installation that this capability
    * statement relates to.
@@ -60,7 +60,7 @@ export declare class Implementation {
  * Information about security implementation from an interface
  * perspective - what a client needs to know.
  */
-export declare class RestSecurity {
+export declare interface RestSecurity {
   /**
    * Server adds CORS headers when responding to requests - this enables
    * Javascript applications to use the server.
@@ -81,7 +81,7 @@ export declare class RestSecurity {
 /**
  * Identifies a restful operation supported by the solution.
  */
-export declare class RestResourceInteraction {
+export declare interface RestResourceInteraction {
   /**
    * Coded identifier of the operation, supported by the system resource.
    */
@@ -110,7 +110,7 @@ export declare class RestResourceInteraction {
  * either references to ones defined in the specification, or additional
  * ones defined for/by the implementation.
  */
-export declare class RestResourceSearchParam {
+export declare interface RestResourceSearchParam {
   /**
    * The name of the search parameter used in the interface.
    */
@@ -156,7 +156,7 @@ export declare class RestResourceSearchParam {
  * operation for details about how to invoke the operation, and the
  * parameters.
  */
-export declare class RestResourceOperation {
+export declare interface RestResourceOperation {
   /**
    * The name of the operation or query. For an operation, this is the name
    * prefixed with $ and used in the URL. For a query, this is the name
@@ -189,7 +189,7 @@ export declare class RestResourceOperation {
  * A specification of the restful capabilities of the solution for a
  * specific resource type.
  */
-export declare class RestResource {
+export declare interface RestResource {
   /**
    * A type of resource exposed via the restful interface.
    */
@@ -315,7 +315,7 @@ export declare class RestResource {
 /**
  * A specification of restful operations supported by the system.
  */
-export declare class RestInteraction {
+export declare interface RestInteraction {
   /**
    * A coded identifier of the operation, supported by the system.
    */
@@ -332,7 +332,7 @@ export declare class RestInteraction {
 /**
  * A definition of the restful capabilities of the solution, if any.
  */
-export declare class Rest {
+export declare interface Rest {
   /**
    * Identifies whether this portion of the statement is describing the
    * ability to initiate or receive restful operations.
@@ -388,7 +388,7 @@ export declare class Rest {
  * An endpoint (network accessible address) to which messages and/or
  * replies are to be sent.
  */
-export declare class MessagingEndpoint {
+export declare interface MessagingEndpoint {
   /**
    * A list of the messaging transport protocol(s) identifiers, supported
    * by this endpoint.
@@ -406,7 +406,7 @@ export declare class MessagingEndpoint {
  * References to message definitions for messages this system can send or
  * receive.
  */
-export declare class SupportedMessage {
+export declare interface SupportedMessage {
   /**
    * The mode of this event declaration - whether application is sender or
    * receiver.
@@ -423,7 +423,7 @@ export declare class SupportedMessage {
 /**
  * A description of the messaging capabilities of the solution.
  */
-export declare class Messaging {
+export declare interface Messaging {
   /**
    * An endpoint (network accessible address) to which messages and/or
    * replies are to be sent.
@@ -455,7 +455,7 @@ export declare class Messaging {
 /**
  * A document definition.
  */
-export declare class Document {
+export declare interface Document {
   /**
    * Mode of this document declaration - whether an application is a
    * producer or consumer.

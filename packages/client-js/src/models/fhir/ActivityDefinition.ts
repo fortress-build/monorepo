@@ -17,7 +17,7 @@ import type { Substance } from './Substance';
 import type { Timing } from './Timing';
 import type { UsageContext } from './UsageContext';
 
-export type ActivityDefinitionDynamicValue = {
+export interface ActivityDefinitionDynamicValue {
   /**
    * The path to the element to be customized. This is the path on the
    * resource that will hold the result of the calculation defined by the
@@ -36,7 +36,7 @@ export type ActivityDefinitionDynamicValue = {
   expression: Expression;
 };
 
-export type ActivityDefinitionParticipant = {
+export interface ActivityDefinitionParticipant {
   /**
    * The type of participant in the action.
    */

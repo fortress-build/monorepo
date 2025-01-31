@@ -13,7 +13,7 @@ import type { Substance } from "./Substance";
 /**
  * Product storage.
  */
-export declare class BiologicallyDerivedProductStorage {
+export declare interface BiologicallyDerivedProductStorage {
   /**
    * Description of storage.
    */
@@ -40,7 +40,7 @@ export declare class BiologicallyDerivedProductStorage {
  * the fundamental nature of the product. For example adding
  * anti-coagulants during the collection of Peripheral Blood Stem Cells.
  */
-export declare class BiologicallyDerivedProductProcessing {
+export declare interface BiologicallyDerivedProductProcessing {
   /**
    * Description of of processing.
    */
@@ -72,7 +72,7 @@ export declare class BiologicallyDerivedProductProcessing {
  * the product.  For example a buffy-coat enrichment or CD8 reduction of
  * Peripheral Blood Stem Cells to make it more suitable for infusion.
  */
-export declare class BiologicallyDerivedProductManipulation {
+export declare interface BiologicallyDerivedProductManipulation {
   /**
    * Description of manipulation.
    */
@@ -93,7 +93,7 @@ export declare class BiologicallyDerivedProductManipulation {
 /**
  * How this product was collected.
  */
-export declare class BiologicallyDerivedProductCollection {
+export declare interface BiologicallyDerivedProductCollection {
   /**
    * Healthcare professional who is performing the collection.
    */

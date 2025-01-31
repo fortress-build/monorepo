@@ -16,7 +16,7 @@ import { DomainResource } from "./Resource";
  * Details about each adverse reaction event linked to exposure to the
  * identified substance.
  */
-export type AllergyIntoleranceReaction = {
+export interface AllergyIntoleranceReaction {
   /**
    * Identification of the specific substance (or pharmaceutical product)
    * considered to be responsible for the Adverse Reaction event. Note: the

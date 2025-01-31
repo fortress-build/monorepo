@@ -18,7 +18,7 @@ import { DomainResource } from "./Resource";
  * Identifies all people and organizations who are expected to be
  * involved in the care team.
  */
-export declare class CareTeamParticipant {
+export declare interface CareTeamParticipant {
   /**
    * Indicates specific responsibility of an individual within the care
    * team, such as &quot;Primary care physician&quot;, &quot;Trained social worker

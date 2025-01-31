@@ -8,7 +8,7 @@ import type { RelatedPerson } from "./RelatedPerson";
  * A  text note which also  contains information about who made the
  * statement and when.
  */
-export type Annotation = {
+export interface Annotation {
   /**
    * The individual responsible for making the annotation.
    */
