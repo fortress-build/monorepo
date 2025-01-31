@@ -7,7 +7,7 @@ title: "patient.match"
 
 | Name | Description | Required | Is Array | Types |
 |------|-------------|----------|-----------|-------|
-| resource | A complete set of patient details for MPI matching (e.g., Patient resource) | <span style={{color: "#22c55e"}}>✓</span> | false | Resource |
+| [Patient](/fhir/resources/Patient) | A complete set of patient details for MPI matching (e.g., Patient resource) | <span style={{color: "#22c55e"}}>✓</span> | false | Resource |
 | onlySingleMatch | If true, returns only the single most appropriate match when multiple potential matches exist | false | false | boolean |
 | onlyCertainMatches | If true, returns only matches that the server is certain belong to the same patient | false | false | boolean |
 | count | Maximum number of records to return. Server determines default if not specified | false | false | integer |

@@ -12,13 +12,40 @@ import type { Practitioner } from "./Practitioner";
 import type { Coverage } from "./Coverage";
 import type { RelatedPerson } from "./RelatedPerson";
 
+/**
+ * A financial tool for tracking value accrued for a particular purpose.
+ * In the healthcare field, used to track charges for a patient, cost
+ * centers, etc.
+ */
 export declare class Account extends DomainResource {
-  resourceType: "Account";
-
+  /**
+   * This is a Account resource
+   */
+  resourceType: 'Account';
+  /**
+   * Unique identifier used to reference the account.  Might or might not
+   * be intended for human use (e.g. credit card number).
+   */
   identifier?: Identifier[];
-  status: "active" | "inactive" | "entered-in-error" | "on-hold" | "unknown";
+  /**
+   * Indicates whether the account is presently used/usable or not.
+   */
+  status: 'active' | 'inactive' | 'entered-in-error' | 'on-hold' | 'unknown';
+  /**
+   * Categorizes the account for reporting and searching purposes.
+   */
   type?: CodeableConcept;
+  /**
+   * Name used for the account when displaying it to humans in reports,
+   * etc.
+   */
   name?: string;
+  /**
+   * Identifies the entity which incurs the expenses. While the immediate
+   * recipients of services or goods might be entities related to the
+   * subject, the expenses were ultimately incurred by the subject of the
+   * Account.
+   */
   subject?: Reference<
     | Patient
     | Device
@@ -28,46 +55,61 @@ export declare class Account extends DomainResource {
     | HealthcareService
     | Organization
   >[];
+  /**
+   * The date range of services associated with this account.
+   */
   servicePeriod?: Period;
+  /**
+   * The party(s) that are responsible for covering the payment of this
+   * account, and what order should they be applied to the account.
+   */
   coverage?: {
+    /**
+     * The party(s) that contribute to payment (or part of) of the charges
+     * applied to this account (including self-pay).
+     *
+     * A coverage may only be responsible for specific types of charges, and
+     * the sequence of the coverages in the account could be important when
+     * processing billing.
+     */
     coverage: Reference<Coverage>;
+    /**
+     * The priority of the coverage in the context of this account.
+     */
     priority?: number;
   }[];
+  /**
+   * Indicates the service area, hospital, department, etc. with
+   * responsibility for managing the Account.
+   */
   owner?: Reference<Organization>;
+  /**
+   * Provides additional information about what the account tracks and how
+   * it is used.
+   */
   description?: string;
+  /**
+   * The parties responsible for balancing the account if other payment
+   * options fall short.
+   */
   guarantor?: {
+    /**
+     * The entity who is responsible.
+     */
     party: Reference<Patient | RelatedPerson | Organization>;
+    /**
+     * A guarantor may be placed on credit hold or otherwise have their role
+     * temporarily suspended.
+     */
     onHold?: boolean;
+    /**
+     * The timeframe during which the guarantor accepts responsibility for
+     * the account.
+     */
     period?: Period;
   }[];
+  /**
+   * Reference to a parent Account.
+   */
   partOf?: Reference<Account>;
 }
-
-// export const Account = v.object({
-//   resourceType: v.literal("Account"),
-//   id: v.optional(v.string()),
-//   meta: v.optional(Meta),
-//   implicitRules: v.optional(v.string()),
-//   language: v.optional(v.string()),
-//   text: v.optional(Narrative),
-//   contained: v.optional(v.array(Resource)),
-//   extension: v.optional(v.array(Extension)),
-//   modifierExtension: v.optional(v.array(Extension)),
-//   identifier: v.optional(v.array(Identifier)),
-//   status: v.union([
-//     v.literal("active"),
-//     v.literal("inactive"),
-//     v.literal("entered-in-error"),
-//     v.literal("on-hold"),
-//     v.literal("unknown"),
-//   ]),
-//   type: v.optional(CodeableConcept),
-//   name: v.optional(v.string()),
-//   subject: v.optional(v.array(Reference<Patient>())),
-//   servicePeriod: v.optional(Period),
-//   coverage: v.optional(v.array(AccountCoverage)),
-//   // owner: v.optional(Reference<Patient>()),
-//   description: v.optional(v.string()),
-//   guarantor: v.optional(v.array(AccountGuarantor)),
-//   // partOf: v.optional(Reference)
-// });

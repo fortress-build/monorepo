@@ -2,6 +2,7 @@ import { camelToKebab } from "../camel2kebab";
 import type { Nerve } from "..";
 import type { Parameters } from "../models/fhir/Parameters";
 import type { Patient } from "../models/fhir/Patient";
+import { search2Array } from "@/modelMapping";
 
 type BaseSearchParams = {
   address?: string;
@@ -86,23 +87,27 @@ export class PatientResource {
       });
     }
 
-    return await this.client.request("Patient/$match", {
+    const result = await this.client.request("Patient/$match", {
       method: "POST",
       body: JSON.stringify(parameters),
     });
+    
+    return search2Array(result, {} as Patient);
   }
 
   async search(
     params: IdentifierSearch | PersonalInfoSearch | AlternativeSearch,
-  ): Promise<unknown> {
+  ): Promise<Patient[]> {
     const kebabParams = Object.fromEntries(
       Object.entries(params).map(([key, value]) => [camelToKebab(key), value]),
     );
-    return await this.client.request(
+    const result = await this.client.request(
       `Patient?${new URLSearchParams(kebabParams)}`,
       {
         method: "GET",
       },
     );
+
+    return search2Array(result, {} as Patient)
   }
 }
