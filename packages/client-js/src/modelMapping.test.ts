@@ -99,8 +99,8 @@ describe('search2Array', () => {
 
     const result = search2Array(mockSearchSet, {} as CarePlan);
     expect(result).toHaveLength(1);
-    expect(result[0].status).toBe('active');
-    expect(result[0].activity[0].detail?.kind).toBe('ServiceRequest');
+    expect(result[0].status.toBe('active');
+    expect(result[0].activity[0].detail).toBe('ServiceRequest');
 
   });
 
