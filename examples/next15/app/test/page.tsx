@@ -33,7 +33,6 @@ function HomeContent({ nerve }: { nerve: any }) {
                 encounter: "Encounter/es09oReoYsZk20hcbnd7r4A3",
                 performer: "Practitioner/exfo6E4EXjWsnhA1OGVElgw3",
             });
-            
             setSearchResults(data);
         } catch (err: any) {
             setError(err.message || "An error occurred");

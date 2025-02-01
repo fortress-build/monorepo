@@ -57,5 +57,6 @@ export class BodyStructureResource {
     );
     
     return search2Array(result, {} as BodyStructure);
+    
   }
 }

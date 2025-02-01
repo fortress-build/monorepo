@@ -205,28 +205,34 @@ export type Term = {
   group?: Term[];
 }[];
 
+
+
+/**
+ * Legally enforceable, formally recorded unilateral or bilateral
+ * directive i.e., a policy or agreement.
+ */
 export declare class Contract extends DomainResource {
-  resourceType: "Contract";
+  resourceType: 'Contract';
 
   identifier?: Identifier[];
   url?: string;
   version?: string;
   status?:
-    | "amended"
-    | "appended"
-    | "cancelled"
-    | "disputed"
-    | "entered-in-error"
-    | "executable"
-    | "executed"
-    | "negotiable"
-    | "offered"
-    | "policy"
-    | "rejected"
-    | "renewed"
-    | "revoked"
-    | "resolved"
-    | "terminated";
+    | 'amended'
+    | 'appended'
+    | 'cancelled'
+    | 'disputed'
+    | 'entered-in-error'
+    | 'executable'
+    | 'executed'
+    | 'negotiable'
+    | 'offered'
+    | 'policy'
+    | 'rejected'
+    | 'renewed'
+    | 'revoked'
+    | 'resolved'
+    | 'terminated';
   legalSate?: CodeableConcept;
   instantiatesCanonical?: string[]; // FIXME: Canonical
   instantiatesUri?: string[];
@@ -258,21 +264,21 @@ export declare class Contract extends DomainResource {
     publisher?: Reference<Practitioner | PractitionerRole | Organization>;
     publicationDate?: string;
     publicationStatus:
-      | "amended"
-      | "appended"
-      | "cancelled"
-      | "disputed"
-      | "entered-in-error"
-      | "executable"
-      | "executed"
-      | "negotiable"
-      | "offered"
-      | "policy"
-      | "rejected"
-      | "renewed"
-      | "revoked"
-      | "resolved"
-      | "terminated";
+      | 'amended'
+      | 'appended'
+      | 'cancelled'
+      | 'disputed'
+      | 'entered-in-error'
+      | 'executable'
+      | 'executed'
+      | 'negotiable'
+      | 'offered'
+      | 'policy'
+      | 'rejected'
+      | 'renewed'
+      | 'revoked'
+      | 'resolved'
+      | 'terminated';
     copyright?: string;
   };
   term?: Term;
