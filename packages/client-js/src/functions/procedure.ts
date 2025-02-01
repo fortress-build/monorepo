@@ -20,6 +20,7 @@ export class ProcedureResource {
     this.client = client;
   }
 
+  
   async read(
     id: string
   ): Promise<{ resourceType: 'Procedure'; resource: Procedure }> {
