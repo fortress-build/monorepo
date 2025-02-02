@@ -19,7 +19,7 @@
     "declarationDir": "dist",
     "module": "ES2022",
     "moduleDetection": "force",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

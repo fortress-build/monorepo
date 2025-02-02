@@ -1,7 +1,7 @@
 'use client';
 import { type Nerve, useNerveClient } from '@nerve-js/next';
 import { useState } from 'react';
-import type { Observation } from '../../../../packages/client-js/dist/index.js';
+import type { Observation } from '@nerve-js/client';
 
 export default function Home() {
   const nerve = useNerveClient();
@@ -34,7 +34,7 @@ function HomeContent({ nerve }: { nerve: Nerve }) {
         status: 'final',
         encounter: 'Encounter/es09oReoYsZk20hcbnd7r4A3',
         performer: 'Practitioner/exfo6E4EXjWsnhA1OGVElgw3',
-      }))
+      })) 
       setSearchResults(data[0]);
     } catch (err: any) {
       setError(err.message || 'An error occurred');
