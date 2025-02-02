@@ -9,7 +9,7 @@ export interface NerveNextConfig {
 }
 
 interface NerveNextContext {
-  client: Nerve;
+  client: NerveType;
   config: NerveNextConfig;
 }
 
