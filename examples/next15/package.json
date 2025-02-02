@@ -10,8 +10,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nerve-js/client": "file:../../packages/client-js",
-    "@nerve-js/next": "file:../../packages/sdk-nextjs",
+    "@nerve-js/client": "^0.1.7",
+    "@nerve-js/next": "^0.1.12",
     "@radix-ui/react-dialog": "^1.1.5",
     "@radix-ui/react-navigation-menu": "^1.2.4",
     "@radix-ui/react-separator": "^1.1.1",
