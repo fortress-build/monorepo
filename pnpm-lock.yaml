@@ -523,11 +523,11 @@ importers:
   examples/next15:
     dependencies:
       '@nerve-js/client':
-        specifier: ^0.1.7
-        version: 0.1.7(@types/node@22.13.0)(jiti@1.21.7)(terser@5.31.0)(yaml@2.7.0)
+        specifier: ^0.1.8
+        version: 0.1.8(@types/node@22.13.0)(jiti@1.21.7)(terser@5.31.0)(yaml@2.7.0)
       '@nerve-js/next':
-        specifier: ^0.1.12
-        version: 0.1.12(@opentelemetry/api@1.9.0)(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.15))(@types/node@22.13.0)(typescript@5.7.3)))
+        specifier: ^0.1.13
+        version: 0.1.13(@opentelemetry/api@1.9.0)(@types/node@22.13.0)(jiti@1.21.7)(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.15))(@types/node@22.13.0)(typescript@5.7.3)))(terser@5.31.0)(yaml@2.7.0)
       '@radix-ui/react-dialog':
         specifier: ^1.1.5
         version: 1.1.5(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -3323,11 +3323,11 @@ packages:
   '@neondatabase/serverless@0.10.4':
     resolution: {integrity: sha512-2nZuh3VUO9voBauuh+IGYRhGU/MskWHt1IuZvHcJw6GLjDgtqj/KViKo7SIrLdGLdot7vFbiRRw+BgEy3wT9HA==}
 
-  '@nerve-js/client@0.1.7':
-    resolution: {integrity: sha512-MMDVUU0Wc+x6Adhog4kzssuot5j2iq17CV51ON9fxDDuaK1YxJ+a/xocAYXKLezSMSgXpW9g1aFGCMdcxFK7+w==}
+  '@nerve-js/client@0.1.8':
+    resolution: {integrity: sha512-cYHvXZ4QQuQTCOy9MdJpmJE4CVdHHQh0JCeqvDHBQPW8bo2UpzDv3T9QBcmIshXGfKt3j1NsShJ1KLe8wqwxwA==}
 
-  '@nerve-js/next@0.1.12':
-    resolution: {integrity: sha512-aHyFUgBGV4XMES3PyRU0uGZ6RUkNuiDy6MJmuOJenznnho9181md+22gE4kHtqUKi6KiBWTPi+g1ohjzOEARCg==}
+  '@nerve-js/next@0.1.13':
+    resolution: {integrity: sha512-HeqksEtXqOUgw0qo6GIdZtoz5BhXzLJsa52+eIye2jhlxdYXlKYtAsY/xD6yE/b1Qx4n/2pWmqyCU9TxxWdNpA==}
 
   '@next/bundle-analyzer@15.1.6':
     resolution: {integrity: sha512-hGzQyDqJzFHcHNCyTqM3o05BpVq5tGnRODccZBVJDBf5Miv/26UJPMB0wh9L9j3ylgHC+0/v8BaBnBBek1rC6Q==}
@@ -14425,7 +14425,7 @@ snapshots:
     dependencies:
       '@types/pg': 8.11.6
 
-  '@nerve-js/client@0.1.7(@types/node@22.13.0)(jiti@1.21.7)(terser@5.31.0)(yaml@2.7.0)':
+  '@nerve-js/client@0.1.8(@types/node@22.13.0)(jiti@1.21.7)(terser@5.31.0)(yaml@2.7.0)':
     dependencies:
       vite: 6.0.11(@types/node@22.13.0)(jiti@1.21.7)(terser@5.31.0)(yaml@2.7.0)
     transitivePeerDependencies:
@@ -14441,9 +14441,9 @@ snapshots:
       - tsx
       - yaml
 
-  '@nerve-js/next@0.1.12(@opentelemetry/api@1.9.0)(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.15))(@types/node@22.13.0)(typescript@5.7.3)))':
+  '@nerve-js/next@0.1.13(@opentelemetry/api@1.9.0)(@types/node@22.13.0)(jiti@1.21.7)(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.15))(@types/node@22.13.0)(typescript@5.7.3)))(terser@5.31.0)(yaml@2.7.0)':
     dependencies:
-      '@nerve-js/client': link:packages/client-js
+      '@nerve-js/client': 0.1.8(@types/node@22.13.0)(jiti@1.21.7)(terser@5.31.0)(yaml@2.7.0)
       '@radix-ui/react-label': 2.1.1(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@radix-ui/react-slot': 1.1.1(@types/react@19.0.7)(react@19.0.0)
       '@tailwindcss/typography': 0.5.16(tailwindcss@3.4.17(ts-node@10.9.2(@swc/core@1.3.101(@swc/helpers@0.5.15))(@types/node@22.13.0)(typescript@5.7.3)))
@@ -14462,10 +14462,20 @@ snapshots:
       - '@babel/core'
       - '@opentelemetry/api'
       - '@playwright/test'
+      - '@types/node'
       - babel-plugin-macros
       - babel-plugin-react-compiler
+      - jiti
+      - less
+      - lightningcss
       - sass
+      - sass-embedded
+      - stylus
+      - sugarss
       - tailwindcss
+      - terser
+      - tsx
+      - yaml
 
   '@next/bundle-analyzer@15.1.6(bufferutil@4.0.9)':
     dependencies:

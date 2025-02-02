@@ -24,12 +24,8 @@
     "strict": true,
     "target": "ES2022",
     "strictNullChecks": true,
-    "removeComments": false,
-    "allowJs": true,
-    "checkJs": true,
-    "noEmit": true,
-    "types": ["node"]
+    "removeComments": false
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"]
 }
