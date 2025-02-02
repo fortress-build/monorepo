@@ -28,7 +28,6 @@
     "noImplicitAny": true,
     "allowJs": true,
     "checkJs": true,
-    "composite": true,
     "sourceMap": true
   },
   "include": ["src"]
