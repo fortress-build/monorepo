@@ -1,7 +1,7 @@
-"use client";
-import { Nerve } from "@nerve-js/client";
-import { createContext, useContext } from "react";
-import type React from "react";
+'use client';
+import { Nerve } from '@nerve-js/client';
+import { createContext, useContext } from 'react';
+import type React from 'react';
 
 export interface NerveNextConfig {
   afterRedirectUrl: string;
@@ -14,7 +14,7 @@ interface NerveNextContext {
 }
 
 const NerveGlobalContext = createContext<NerveNextContext | undefined>(
-  undefined,
+  undefined
 );
 
 export function NerveProvider({
@@ -22,7 +22,7 @@ export function NerveProvider({
   redirectUrl,
   afterRedirectUrl,
   signInUrl,
-  scopes = ["openid", "fhirUser", "user/*.*"],
+  scopes = ['openid', 'fhirUser', 'user/*.*'],
 }: {
   children: React.ReactNode;
   redirectUrl: string;
@@ -52,7 +52,7 @@ export function useNerveClient(): Nerve {
   const context = useContext(NerveGlobalContext);
 
   if (context === undefined) {
-    throw new Error("useNerveClient must be used within a NerveProvider");
+    throw new Error('useNerveClient must be used within a NerveProvider');
   }
 
   return context.client;
@@ -62,7 +62,7 @@ export function useNerveConfig(): NerveNextConfig {
   const context = useContext(NerveGlobalContext);
 
   if (context === undefined) {
-    throw new Error("useNerveConfig must be used within a NerveProvider");
+    throw new Error('useNerveConfig must be used within a NerveProvider');
   }
 
   return context.config;
