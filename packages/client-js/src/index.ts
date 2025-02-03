@@ -1,4 +1,4 @@
-export { Nerve, NerveSandbox } from '@/client';
+export { Nerve } from '@/client';
 
 export * from '@/models/fhir/Invoice';
 export * from '@/models/fhir/Account';

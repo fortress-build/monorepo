@@ -180,7 +180,18 @@ export class Nerve {
     return this.provider !== undefined;
   }
 
-  setProvider(provider: FHIRProviderInfo) {
+  setProvider(provider: FHIRProviderInfo | string) {
+    if (typeof provider === 'string') {
+      if (provider === 'sandbox') {
+        this.provider = {
+          authUrl: '',
+          fhirUrl: 'http://hapi.fhir.org/baseR4',
+          clientId: 'null',
+        };
+      }
+      return;
+    }
+
     this.provider = provider;
 
     if (globalThis.localStorage !== undefined) {
@@ -421,21 +432,6 @@ export class Nerve {
     return await this.request<T>(reference, {
       method: 'GET',
     });
-  }
-}
-
-export class NerveSandbox extends Nerve {
-  constructor() {
-    super({
-      redirectUrl: 'http://localhost:3000/callback/',
-      scopes: ['openid', 'fhirUser'],
-    });
-
-    this.provider = {
-      authUrl: '',
-      fhirUrl: 'http://hapi.fhir.org/baseR4',
-      clientId: 'test123',
-    };
   }
 }
 //if something has a Reference type, then call function to resolve the reference
