@@ -1,9 +1,6 @@
 'use client';
 
-import { NerveSandbox } from '@nerve-js/client';
 import { Authenticated } from '@nerve-js/next';
-
-NerveSandbox;
 
 export default function Home() {
   return (
