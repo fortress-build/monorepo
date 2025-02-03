@@ -195,6 +195,7 @@ export * from "@/models/fhir/CarePlan";
 export * from "@/models/fhir/DeviceUseStatement";
 
 export const KEYS = {
-  PROVIDER: "__fhir_oauth_provider",
-  TOKEN: "__fhir_oauth_token",
+  PROVIDER: '__fhir_oauth_provider',
+  TOKEN: '__fhir_oauth_token',
+  REFRESH_TOKEN: '__fhir_oauth_refresh_token',
 };

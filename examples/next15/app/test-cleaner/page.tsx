@@ -10,6 +10,7 @@ export default function Home() {
     clientId: "0d804090-4ae2-49af-b49d-deb2cf7cd35d",
   });
 
+
   return (
     <div className="min-h-screen p-8">
       <HomeContent nerve={nerve} />
