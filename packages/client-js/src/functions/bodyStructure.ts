@@ -1,6 +1,7 @@
 import { camelToKebab } from "../camel2kebab";
-import type { Nerve } from '..';
+import type { Binary, Nerve } from '..';
 import type { BodyStructure } from '../models/fhir/BodyStructure';
+import { search2Array } from '@/modelMapping';
 
 export type BodyStructureSearchRequest = {
   id: string;
@@ -42,17 +43,20 @@ export class BodyStructureResource {
     });
   }
 
-  async search(params: BodyStructureSearchRequest) {
+  async search(params: BodyStructureSearchRequest) : Promise<BodyStructure[]> {
     const kebabParams = Object.fromEntries(
       Object.entries(params).map(([key, value]) => [camelToKebab(key), value])
     );
     const searchParams = new URLSearchParams(kebabParams);
 
-    return await this.client.request(
+    const result = await this.client.request(
       `BodyStructure?${searchParams.toString()}`,
       {
         method: 'GET',
       }
     );
+    
+    return search2Array(result, {} as BodyStructure);
+    
   }
 }

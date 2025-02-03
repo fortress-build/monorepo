@@ -22,8 +22,17 @@ import type { DomainResource } from "./Resource";
 import type { ServiceRequest } from "./ServiceRequest";
 import type { Specimen } from "./Specimen";
 
+
+/**
+ * The findings and interpretation of diagnostic  tests performed on
+ * patients, groups of patients, devices, and locations, and/or specimens
+ * derived from these. The report includes clinical context such as
+ * requesting and provider information, and some mix of atomic results,
+ * images, textual and coded interpretations, and formatted
+ * representation of diagnostic reports.
+ */
 export declare class DiagnosticReport extends DomainResource {
-  resourceType: "DiagnosticReport";
+  resourceType: 'DiagnosticReport';
 
   identifier?: Identifier[];
   basedOn?: Reference<
@@ -34,16 +43,16 @@ export declare class DiagnosticReport extends DomainResource {
     | ServiceRequest
   >[];
   status:
-    | "registered"
-    | "partial"
-    | "preliminary"
-    | "final"
-    | "amended"
-    | "corrected"
-    | "appended"
-    | "cancelled"
-    | "entered-in-error"
-    | "unknown";
+    | 'registered'
+    | 'partial'
+    | 'preliminary'
+    | 'final'
+    | 'amended'
+    | 'corrected'
+    | 'appended'
+    | 'cancelled'
+    | 'entered-in-error'
+    | 'unknown';
   category?: CodeableConcept[];
   code: CodeableConcept;
   subject?: Reference<Patient | Group | Device | Location>;

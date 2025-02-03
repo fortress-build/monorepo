@@ -1,17 +1,14 @@
 {
   "name": "@nerve-js/next",
   "private": false,
-  "version": "0.1.10",
+  "version": "0.1.19",
   "type": "module",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "build": "pnpx tailwindcss@3 -i ./src/input.css -o ./dist/output.css && tsc"
   },
-  "files": [
-    "dist",
-    "public"
-  ],
+  "files": ["dist", "public"],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",

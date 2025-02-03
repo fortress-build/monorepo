@@ -52,6 +52,7 @@ export type FHIRSession = {
   patient: string;
   token_type: string;
   access_token: string;
+  refresh_token?: string;
   id_token: string;
   expires_in: number;
   scope: string;
@@ -76,6 +77,7 @@ export type FHIRProviderInfo = {
   authUrl: string;
   fhirUrl: string;
   clientId: string;
+  clientSecret?: string;
 };
 
 export class Nerve {
@@ -198,6 +200,9 @@ export class Nerve {
 
     if (this.accessToken !== undefined && this.tokenExpiration !== undefined) {
       if (now < this.tokenExpiration) {
+        //Checking to see if this is enough of a bug.
+        // console.log('Now: ', now);
+        // console.log('TokenExpiration: ', this.tokenExpiration);
         return {
           state: 'authenticated',
           accessToken: this.accessToken,
@@ -206,6 +211,22 @@ export class Nerve {
 
       // TODO: Token expired, refresh
       // throw new Error("unimplemented");
+      const refreshToken = localStorage.getItem(KEYS.REFRESH_TOKEN);
+      if (refreshToken) {
+        try {
+          await this.refreshAccessToken(refreshToken);
+          if (!this.accessToken) {
+            throw new Error('Access token not set after refresh');
+          }
+          return {
+            state: 'authenticated',
+            accessToken: this.accessToken,
+          };
+        } catch (error) {
+          console.warn('Failed to refresh token:', error);
+          // Continue with new auth flow if refresh fails
+        }
+      }
     }
 
     // No token, start auth flow
@@ -226,6 +247,60 @@ export class Nerve {
       state: 'unauthenticated',
       authUrl: `${this.provider.authUrl}/authorize?${request.toString()}`,
     };
+  }
+
+  private async refreshAccessToken(refreshToken: string): Promise<void> {
+    if (!this.provider) {
+      throw new Error('Provider information not set');
+    }
+
+    if (!this.provider.clientSecret) {
+      throw new Error('Client secret required for refresh token flow');
+    }
+
+    // Create basic auth header
+    const credentials = btoa(
+      `${encodeURIComponent(this.provider.clientId)}:${encodeURIComponent(this.provider.clientSecret)}`
+    );
+
+    const request = new URLSearchParams({
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken,
+    });
+
+    const response = await fetch(`${this.provider.authUrl}/token`, {
+      method: 'POST',
+      body: request.toString(),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: `Basic ${credentials}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Failed to refresh token: ${response.status} - ${response.statusText}`
+      );
+    }
+
+    const data: FHIRSession = await response.json();
+
+    this.accessToken = data.access_token;
+    this.tokenExpiration = Math.floor(Date.now() / 1000) + data.expires_in;
+    this.config.headers.Authorization = `Bearer ${this.accessToken}`;
+
+    // Store the new tokens
+    globalThis.localStorage?.setItem(
+      KEYS.TOKEN,
+      JSON.stringify({
+        accessToken: this.accessToken,
+        tokenExpiration: this.tokenExpiration,
+      })
+    );
+
+    if (data.refresh_token) {
+      globalThis.localStorage?.setItem(KEYS.REFRESH_TOKEN, data.refresh_token);
+    }
   }
 
   isAuthenticated(): boolean {
@@ -276,6 +351,11 @@ export class Nerve {
         tokenExpiration: this.tokenExpiration,
       })
     );
+
+    // Store refresh token if provided
+    if (data.refresh_token) {
+      globalThis.localStorage?.setItem(KEYS.REFRESH_TOKEN, data.refresh_token);
+    }
   }
 
   async getToken(): Promise<string> {

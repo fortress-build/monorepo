@@ -9,6 +9,7 @@
     ],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "allowImportingTsExtensions": true,
     "allowJs": true,
     "jsx": "preserve",
     "noEmit": true,

@@ -8,7 +8,7 @@ export interface NerveNextConfig {
   signInUrl: string;
 }
 
-interface NerveNextContext {
+export interface NerveNextContext {
   client: Nerve;
   config: NerveNextConfig;
 }
@@ -49,7 +49,7 @@ export function NerveProvider({
 }
 
 export function useNerveClient(): Nerve {
-  const context = useContext(NerveGlobalContext);
+  const context = useContext<NerveNextContext | undefined>(NerveGlobalContext);
 
   if (context === undefined) {
     throw new Error('useNerveClient must be used within a NerveProvider');
@@ -59,7 +59,7 @@ export function useNerveClient(): Nerve {
 }
 
 export function useNerveConfig(): NerveNextConfig {
-  const context = useContext(NerveGlobalContext);
+  const context = useContext<NerveNextContext | undefined>(NerveGlobalContext);
 
   if (context === undefined) {
     throw new Error('useNerveConfig must be used within a NerveProvider');

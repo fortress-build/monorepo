@@ -7,6 +7,7 @@ import { DiscordIcon } from '../icons/discord.tsx'
 import { FHIRIcon } from '../icons/fhir.tsx'
 import { LogoIcon } from '../icons/logo.tsx'
 import { CodeIcon, PuzzleIcon } from 'lucide-react'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
 
 ## Introduction
 
@@ -47,17 +48,44 @@ for reading and writing data to EHR systems.
 
 ## Basic Usage
 
-```typescript
-import { NerveClient } from '@nerve-js/client';
+<Tabs defaultValue="vanilla" items={["Vanilla", "Tanstack"]}>
+  <Tab value="vanilla" label="Vanilla">
+    ```typescript
+    import { NerveClient } from '@nerve-js/client';
 
-const client = new NerveClient({
-  redirectUrl: 'https://your-app.com/callback',
-  scope: ['patient.read', 'patient.write']
-});
+    const client = new NerveClient({
+      redirectUrl: 'https://your-app.com/callback',
+      scope: ['patient.read', 'patient.write']
+    });
 
-// Search for a patient
-const results = await client.patient.search("John Doe");
-```
+    // Search for a patient
+    const results = await client.observation.search({
+      patient: "patient-id",
+      category: "vital-signs"
+    });
+    ```
+  </Tab>
+  <Tab value="tanstack" label="Tanstack">
+    ```typescript
+    import { useNerveClient } from '@nerve-js/next';
+    import { useObservationSearch } from '@nerve-js/client/hooks';
+
+    function YourComponent() {
+      const client = useNerveClient();
+      
+      const { data, isLoading, error } = useObservationSearch(client, {
+        patient: "patient-id",
+        category: "vital-signs"
+      });
+
+      if (isLoading) return <div>Loading...</div>;
+      if (error) return <div>Error: {error.message}</div>;
+      
+      return <div>{JSON.stringify(data)}</div>;
+    }
+    ```
+  </Tab>
+</Tabs>
 
 See framework integrations for more specific instructions.
 

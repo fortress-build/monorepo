@@ -1,312 +1,1207 @@
-import type { Annotation } from "./Annotation";
-import type { Attachment } from "./Attachment";
-import type { CareTeam } from "./CareTeam";
-import type { CodeableConcept } from "./CodeableConcept";
-import type { Coding } from "./Coding";
-import type { Condition } from "./Condition";
-import type { Device } from "./Device";
-import type { DiagnosticReport } from "./DiagnosticReport";
-import type { DocumentReference } from "./DocumentReference";
-import type { Encounter } from "./Encounter";
-import type { EpisodeOfCare } from "./EpisodeOfCare";
-import type { Group } from "./Group";
-import type { Identifier } from "./Identifier";
-import type { Location } from "./Location";
-import type { Money } from "./Money";
-import type { Observation } from "./Observation";
-import type { Organization } from "./Organization";
-import type { Patient } from "./Patient";
-import type { Period } from "./Period";
-import type { Practitioner } from "./Practitioner";
-import type { PractitionerRole } from "./PractitionerRole";
-import type { Provenance } from "./Provenance";
-import type { Quantity } from "./Quantity";
-import type { Questionnaire } from "./Questionnaire";
-import type { QuestionnaireResponse } from "./QuestionnaireResponse";
-import type { Reference } from "./Reference";
-import type { RelatedPerson } from "./RelatedPerson";
-import type { DomainResource, Resource } from "./Resource";
-import type { Signature } from "./Signature";
-import type { SimpleQuantity } from "./SimpleQuantity";
-import type { Substance } from "./Substance";
-import type { Timing } from "./Timing";
+import type { Annotation } from './Annotation';
+import type { Attachment } from './Attachment';
+import type { CareTeam } from './CareTeam';
+import type { CodeableConcept } from './CodeableConcept';
+import type { Coding } from './Coding';
+import type { Composition } from './Composition';
+import type { Condition } from './Condition';
+import type { Device } from './Device';
+import type { DiagnosticReport } from './DiagnosticReport';
+import type { DocumentReference } from './DocumentReference';
+import type { Encounter } from './Encounter';
+import type { EpisodeOfCare } from './EpisodeOfCare';
+import type { Group } from './Group';
+import type { Identifier } from './Identifier';
+import type { Location } from './Location';
+import type { Money } from './Money';
+import type { Observation } from './Observation';
+import type { Organization } from './Organization';
+import type { Patient } from './Patient';
+import type { Period } from './Period';
+import type { Practitioner } from './Practitioner';
+import type { PractitionerRole } from './PractitionerRole';
+import type { Provenance } from './Provenance';
+import type { Quantity } from './Quantity';
+import type { Questionnaire } from './Questionnaire';
+import type { QuestionnaireResponse } from './QuestionnaireResponse';
+import type { Reference } from './Reference';
+import type { RelatedPerson } from './RelatedPerson';
+import type { Resource } from './Resource';
+import type { Signature } from './Signature';
+import type { Substance } from './Substance';
+import type { Timing } from './Timing';
 
-export type Term = {
-  identifier?: Identifier;
-  issued?: string;
-  applies?: Period;
-
-  topicCodeableConcept?: CodeableConcept;
-  topicReference?: Reference<Resource>;
-
-  type?: CodeableConcept;
-  subType?: CodeableConcept;
-  text?: string;
-  securityLabel?: {
-    number?: number[];
-    classification?: Coding;
-    category?: Coding[];
-    control?: Coding[];
-  }[];
-  offer: {
-    identifier?: Identifier[];
-    party?: {
-      reference: Reference<
-        | Patient
-        | Practitioner
-        | PractitionerRole
-        | Organization
-        | RelatedPerson
-        | Device
-        | Group
-      >[];
-      role: CodeableConcept;
-    }[];
-    topic?: Reference<Resource>;
-    type?: CodeableConcept;
-    decision?: CodeableConcept;
-    decisionMode?: CodeableConcept[];
-    answer?: {
-      valueBoolean?: boolean;
-      valueDecimal?: number;
-      valueInteger?: number;
-      valueDate?: string;
-      valueDateTime?: string;
-      valueTime?: string;
-      valueString?: string;
-      valueUri?: string;
-      valueAttachment?: Attachment;
-      valueCoding?: Coding;
-      valueQuantity?: Quantity;
-      valueReference?: Reference<Resource>;
-    }[];
-    text?: string;
-    linkId?: string[];
-    securityLabelNumber?: number[];
-  };
-  asset?: {
-    scope?: CodeableConcept;
-    type?: CodeableConcept[];
-    typeReference?: Reference<Resource>[];
-    subtype?: CodeableConcept[];
-    relationship?: Coding;
-    context?: {
-      reference?: Reference<Resource>;
-      code?: CodeableConcept[];
-      text?: string;
-    }[];
-    condition?: string;
-    periodType?: CodeableConcept[];
-    period?: Period[];
-    usePeriod?: Period[];
-    text?: string;
-    linkId?: string[];
-    answer?: {
-      valueBoolean?: boolean;
-      valueDecimal?: number;
-      valueInteger?: number;
-      valueDate?: string;
-      valueDateTime?: string;
-      valueTime?: string;
-      valueString?: string;
-      valueUri?: string;
-      valueAttachment?: Attachment;
-      valueCoding?: Coding;
-      valueQuantity?: Quantity;
-      valueReference?: Reference<Resource>;
-    }[];
-    securityLabelNumber?: number[];
-    valuedItem?: {
-      entityCodeableConcept?: CodeableConcept;
-      entityReference?: Reference<Resource>;
-
-      identifier?: Identifier;
-      effectiveTime?: string;
-      quantity?: SimpleQuantity;
-      unitPrice?: Money;
-      factor?: number;
-      points?: number;
-      net?: Money;
-      payment?: string;
-      paymentDate?: string;
-      responsible?: Reference<
-        Practitioner | PractitionerRole | Organization | Patient | RelatedPerson
-      >;
-      recipient?: Reference<
-        Practitioner | PractitionerRole | Organization | Patient | RelatedPerson
-      >;
-      linkId?: string[];
-      securityLabelNumber?: number[];
-    }[];
-  }[];
-  action?: {
-    doNotPerform?: boolean;
-    type: CodeableConcept;
-    subject?: {
-      reference: Reference<
-        | Patient
-        | RelatedPerson
-        | Practitioner
-        | PractitionerRole
-        | Device
-        | Group
-        | Organization
-      >;
-      role?: CodeableConcept;
-    }[];
-    intent: CodeableConcept;
-    linkId?: string[];
-    status: CodeableConcept;
-    context?: Reference<Encounter | EpisodeOfCare>;
-    contextLinkId?: string[];
-
-    occurrenceDateTime?: string;
-    occurrencePeriod?: Period;
-    occurrenceTiming?: Timing;
-
-    requester?: Reference<
-      | Patient
-      | RelatedPerson
-      | Practitioner
-      | PractitionerRole
-      | Device
-      | Group
-      | Organization
-    >;
-    requesterLinkId?: string[];
-    performerType?: CodeableConcept[];
-    performerRole?: CodeableConcept;
-    performer?: Reference<
-      | RelatedPerson
-      | Patient
-      | Practitioner
-      | PractitionerRole
-      | CareTeam
-      | Device
-      | Substance
-      | Organization
-      | Location
-    >[];
-    performerLinkId?: string[];
-    reasonCode?: CodeableConcept[];
-    reasonReference?: Reference<
-      | Condition
-      | Observation
-      | DiagnosticReport
-      | DocumentReference
-      | Questionnaire
-      | QuestionnaireResponse
-    >[];
-    reason?: string[];
-    reasonLinkId?: string[];
-    note?: Annotation[];
-    securityLabelNumber?: number[];
-  }[];
-  group?: Term[];
-}[];
-
-export declare class Contract extends DomainResource {
-  resourceType: "Contract";
-
+/**
+ * Legally enforceable, formally recorded unilateral or bilateral
+ * directive i.e., a policy or agreement.
+ */
+export declare class Contract {
+  resourceType: 'Contract';
+  /**
+   * Unique identifier for this Contract or a derivative that references a
+   * Source Contract.
+   */
   identifier?: Identifier[];
+
+  /**
+   * Canonical identifier for this contract, represented as a URI (globally
+   * unique).
+   */
   url?: string;
+
+  /**
+   * An edition identifier used for business purposes to label business
+   * significant variants.
+   */
   version?: string;
+
+  /**
+   * The status of the resource instance.
+   */
   status?:
-    | "amended"
-    | "appended"
-    | "cancelled"
-    | "disputed"
-    | "entered-in-error"
-    | "executable"
-    | "executed"
-    | "negotiable"
-    | "offered"
-    | "policy"
-    | "rejected"
-    | "renewed"
-    | "revoked"
-    | "resolved"
-    | "terminated";
-  legalSate?: CodeableConcept;
-  instantiatesCanonical?: string[]; // FIXME: Canonical
-  instantiatesUri?: string[];
+    | 'amended'
+    | 'appended'
+    | 'cancelled'
+    | 'disputed'
+    | 'entered-in-error'
+    | 'executable'
+    | 'executed'
+    | 'negotiable'
+    | 'offered'
+    | 'policy'
+    | 'rejected'
+    | 'renewed'
+    | 'revoked'
+    | 'resolved'
+    | 'terminated';
+
+  /**
+   * Legal states of the formation of a legal instrument, which is a
+   * formally executed written document that can be formally attributed to
+   * its author, records and formally expresses a legally enforceable act,
+   * process, or contractual duty, obligation, or right, and therefore
+   * evidences that act, process, or agreement.
+   */
+  legalState?: CodeableConcept;
+
+  /**
+   * The URL pointing to a FHIR-defined Contract Definition that is adhered
+   * to in whole or part by this Contract.
+   */
+  instantiatesCanonical?: Reference<Contract>;
+
+  /**
+   * The URL pointing to an externally maintained definition that is
+   * adhered to in whole or in part by this Contract.
+   */
+  instantiatesUri?: string;
+
+  /**
+   * The minimal content derived from the basal information source at a
+   * specific stage in its lifecycle.
+   */
   contentDerivative?: CodeableConcept;
+
+  /**
+   * When this  Contract was issued.
+   */
   issued?: string;
+
+  /**
+   * Relevant time or time-period when this Contract is applicable.
+   */
   applies?: Period;
+
+  /**
+   * Event resulting in discontinuation or termination of this Contract
+   * instance by one or more parties to the contract.
+   */
   expirationType?: CodeableConcept;
+
+  /**
+   * The target entity impacted by or of interest to parties to the
+   * agreement.
+   */
   subject?: Reference<Resource>[];
+
+  /**
+   * A formally or informally recognized grouping of people, principals,
+   * organizations, or jurisdictions formed for the purpose of achieving
+   * some form of collective action such as the promulgation,
+   * administration and enforcement of contracts and policies.
+   */
   authority?: Reference<Organization>[];
+
+  /**
+   * Recognized governance framework or system operating with a
+   * circumscribed scope in accordance with specified principles, policies,
+   * processes or procedures for managing rights, actions, or behaviors of
+   * parties or principals relative to resources.
+   */
   domain?: Reference<Location>[];
+
+  /**
+   * Sites in which the contract is complied with,  exercised, or in force.
+   */
   site?: Reference<Location>[];
+
+  /**
+   * A natural language name identifying this Contract definition,
+   * derivative, or instance in any legal state. Provides additional
+   * information about its content. This name should be usable as an
+   * identifier for the module by machine processing applications such as
+   * code generation.
+   */
   name?: string;
+
+  /**
+   * A short, descriptive, user-friendly title for this Contract
+   * definition, derivative, or instance in any legal state.t giving
+   * additional information about its content.
+   */
   title?: string;
+
+  /**
+   * An explanatory or alternate user-friendly title for this Contract
+   * definition, derivative, or instance in any legal state.t giving
+   * additional information about its content.
+   */
   subtitle?: string;
+
+  /**
+   * Alternative representation of the title for this Contract definition,
+   * derivative, or instance in any legal state., e.g., a domain specific
+   * contract number related to legislation.
+   */
   alias?: string[];
-  author?: Reference<
-    Patient | Practitioner | PractitionerRole | Organization
-  >[];
+
+  /**
+   * The individual or organization that authored the Contract definition,
+   * derivative, or instance in any legal state.
+   */
+  author?: Reference<Patient | Practitioner | PractitionerRole | Organization>;
+
+  /**
+   * A selector of legal concerns for this Contract definition, derivative,
+   * or instance in any legal state.
+   */
   scope?: CodeableConcept;
 
+  /**
+   * Narrows the range of legal concerns to focus on the achievement of
+   * specific contractual objectives.
+   */
   topicCodeableConcept?: CodeableConcept;
+
+  /**
+   * Narrows the range of legal concerns to focus on the achievement of
+   * specific contractual objectives.
+   */
   topicReference?: Reference<Resource>;
 
+  /**
+   * A high-level category for the legal instrument, whether constructed as
+   * a Contract definition, derivative, or instance in any legal state.
+   * Provides additional information about its content within the context
+   * of the Contract's scope to distinguish the kinds of systems that would
+   * be interested in the contract.
+   */
   type?: CodeableConcept;
-  subType?: CodeableConcept[];
-  contentDefinition?: {
-    type: CodeableConcept;
-    subType?: CodeableConcept;
-    publisher?: Reference<Practitioner | PractitionerRole | Organization>;
-    publicationDate?: string;
-    publicationStatus:
-      | "amended"
-      | "appended"
-      | "cancelled"
-      | "disputed"
-      | "entered-in-error"
-      | "executable"
-      | "executed"
-      | "negotiable"
-      | "offered"
-      | "policy"
-      | "rejected"
-      | "renewed"
-      | "revoked"
-      | "resolved"
-      | "terminated";
-    copyright?: string;
-  };
-  term?: Term;
-  supportingInfo?: Reference<Resource>[];
-  relevantHistory?: Reference<Provenance>[];
-  signer?: {
-    type: Coding;
-    party: Reference<
-      Organization | Patient | Practitioner | PractitionerRole | RelatedPerson
-    >[];
-    signature: Signature[];
-  }[];
-  friendly?: {
-    contentAttachment?: Attachment;
-    contentReference?: Reference<
-      // Composition |
-      DocumentReference | QuestionnaireResponse
-    >;
-  }[];
-  legal?: {
-    contentAttachment: Attachment;
-    contentReference: Reference<
-      // Composition |
-      DocumentReference | QuestionnaireResponse
-    >;
-  }[];
-  rule?: {
-    contentAttachment: Attachment;
-    contentReference: Reference<DocumentReference>;
-  }[];
 
+  /**
+   * Sub-category for the Contract that distinguishes the kinds of systems
+   * that would be interested in the Contract within the context of the
+   * Contract's scope.
+   */
+  subType?: CodeableConcept[];
+
+  /**
+   * Precusory content developed with a focus and intent of supporting the
+   * formation a Contract instance, which may be associated with and
+   * transformable into a Contract.
+   */
+  contentDefinition?: ContractContentDefinition;
+
+  /**
+   * One or more Contract Provisions, which may be related and conveyed as
+   * a group, and may contain nested groups.
+   */
+  term?: ContractTerm[];
+
+  /**
+   * Information that may be needed by/relevant to the performer in their
+   * execution of this term action.
+   */
+  supportingInfo?: Reference<Resource>[];
+
+  /**
+   * Links to Provenance records for past versions of this Contract
+   * definition, derivative, or instance, which identify key state
+   * transitions or updates that are likely to be relevant to a user
+   * looking at the current version of the Contract.  The Provence.entity
+   * indicates the target that was changed in the update.
+   * http://build.fhir.org/provenance-definitions.html#Provenance.entity.
+   */
+  relevantHistory?: Reference<Provenance>[];
+
+  /**
+   * Parties with legal standing in the Contract, including the principal
+   * parties, the grantor(s) and grantee(s), which are any person or
+   * organization bound by the contract, and any ancillary parties, which
+   * facilitate the execution of the contract such as a notary or witness.
+   */
+  signer?: ContractSigner[];
+
+  /**
+   * The &quot;patient friendly language&quot; versionof the Contract in whole or in
+   * parts. &quot;Patient friendly language&quot; means the representation of the
+   * Contract and Contract Provisions in a manner that is readily
+   * accessible and understandable by a layperson in accordance with best
+   * practices for communication styles that ensure that those agreeing to
+   * or signing the Contract understand the roles, actions, obligations,
+   * responsibilities, and implication of the agreement.
+   */
+  friendly?: ContractFriendly[];
+
+  /**
+   * List of Legal expressions or representations of this Contract.
+   */
+  legal?: ContractLegal[];
+
+  /**
+   * List of Computable Policy Rule Language Representations of this
+   * Contract.
+   */
+  rule?: ContractRule[];
+
+  /**
+   * Legally binding Contract: This is the signed and legally recognized
+   * representation of the Contract, which is considered the &quot;source of
+   * truth&quot; and which would be the basis for legal action related to
+   * enforcement of this Contract.
+   */
   legallyBindingAttachment?: Attachment;
+
+  /**
+   * Legally binding Contract: This is the signed and legally recognized
+   * representation of the Contract, which is considered the &quot;source of
+   * truth&quot; and which would be the basis for legal action related to
+   * enforcement of this Contract.
+   */
   legallyBindingReference?: Reference<
-    // Composition |
-    DocumentReference | QuestionnaireResponse | Contract
+    Composition | DocumentReference | QuestionnaireResponse | Contract
   >;
+}
+
+/**
+ * Narrows the range of legal concerns to focus on the achievement of
+ * specific contractual objectives.
+ */
+export type ContractTopic = CodeableConcept | Reference<Resource>;
+
+/**
+ * Legally binding Contract: This is the signed and legally recognized
+ * representation of the Contract, which is considered the &quot;source of
+ * truth&quot; and which would be the basis for legal action related to
+ * enforcement of this Contract.
+ */
+export type ContractLegallyBinding =
+  | Attachment
+  | Reference<
+      Composition | DocumentReference | QuestionnaireResponse | Contract
+    >;
+
+/**
+ * Precusory content developed with a focus and intent of supporting the
+ * formation a Contract instance, which may be associated with and
+ * transformable into a Contract.
+ */
+export interface ContractContentDefinition {
+  /**
+   * Precusory content structure and use, i.e., a boilerplate, template,
+   * application for a contract such as an insurance policy or benefits
+   * under a program, e.g., workers compensation.
+   */
+  type: CodeableConcept;
+
+  /**
+   * Detailed Precusory content type.
+   */
+  subType?: CodeableConcept;
+
+  /**
+   * The  individual or organization that published the Contract precursor
+   * content.
+   */
+  publisher?: Reference<Practitioner | PractitionerRole | Organization>;
+
+  /**
+   * The date (and optionally time) when the contract was published. The
+   * date must change when the business version changes and it must change
+   * if the status code changes. In addition, it should change when the
+   * substantive content of the contract changes.
+   */
+  publicationDate?: string;
+
+  /**
+   * amended | appended | cancelled | disputed | entered-in-error |
+   * executable | executed | negotiable | offered | policy | rejected |
+   * renewed | revoked | resolved | terminated.
+   */
+  publicationStatus:
+    | 'amended'
+    | 'appended'
+    | 'cancelled'
+    | 'disputed'
+    | 'entered-in-error'
+    | 'executable'
+    | 'executed'
+    | 'negotiable'
+    | 'offered'
+    | 'policy'
+    | 'rejected'
+    | 'renewed'
+    | 'revoked'
+    | 'resolved'
+    | 'terminated';
+
+  /**
+   * A copyright statement relating to Contract precursor content.
+   * Copyright statements are generally legal restrictions on the use and
+   * publishing of the Contract precursor content.
+   */
+  copyright?: string;
+}
+
+/**
+ * The &quot;patient friendly language&quot; versionof the Contract in whole or in
+ * parts. &quot;Patient friendly language&quot; means the representation of the
+ * Contract and Contract Provisions in a manner that is readily
+ * accessible and understandable by a layperson in accordance with best
+ * practices for communication styles that ensure that those agreeing to
+ * or signing the Contract understand the roles, actions, obligations,
+ * responsibilities, and implication of the agreement.
+ */
+export interface ContractFriendly {
+  /**
+   * Human readable rendering of this Contract in a format and
+   * representation intended to enhance comprehension and ensure
+   * understandability.
+   */
+  contentAttachment?: Attachment;
+
+  /**
+   * Human readable rendering of this Contract in a format and
+   * representation intended to enhance comprehension and ensure
+   * understandability.
+   */
+  contentReference?: Reference<
+    Composition | DocumentReference | QuestionnaireResponse
+  >;
+}
+
+/**
+ * Human readable rendering of this Contract in a format and
+ * representation intended to enhance comprehension and ensure
+ * understandability.
+ */
+export type ContractFriendlyContent =
+  | Attachment
+  | Reference<Composition | DocumentReference | QuestionnaireResponse>;
+
+/**
+ * List of Legal expressions or representations of this Contract.
+ */
+export interface ContractLegal {
+  /**
+   * Contract legal text in human renderable form.
+   */
+  contentAttachment?: Attachment;
+
+  /**
+   * Contract legal text in human renderable form.
+   */
+  contentReference?: Reference<
+    Composition | DocumentReference | QuestionnaireResponse
+  >;
+}
+
+/**
+ * Contract legal text in human renderable form.
+ */
+export type ContractLegalContent =
+  | Attachment
+  | Reference<Composition | DocumentReference | QuestionnaireResponse>;
+
+/**
+ * List of Computable Policy Rule Language Representations of this
+ * Contract.
+ */
+export interface ContractRule {
+  /**
+   * Computable Contract conveyed using a policy rule language (e.g. XACML,
+   * DKAL, SecPal).
+   */
+  contentAttachment?: Attachment;
+
+  /**
+   * Computable Contract conveyed using a policy rule language (e.g. XACML,
+   * DKAL, SecPal).
+   */
+  contentReference?: Reference<DocumentReference>;
+}
+
+/**
+ * Computable Contract conveyed using a policy rule language (e.g. XACML,
+ * DKAL, SecPal).
+ */
+export type ContractRuleContent = Attachment | Reference<DocumentReference>;
+
+/**
+ * Parties with legal standing in the Contract, including the principal
+ * parties, the grantor(s) and grantee(s), which are any person or
+ * organization bound by the contract, and any ancillary parties, which
+ * facilitate the execution of the contract such as a notary or witness.
+ */
+export interface ContractSigner {
+  /**
+   * Role of this Contract signer, e.g. notary, grantee.
+   */
+  type: Coding;
+
+  /**
+   * Party which is a signator to this Contract.
+   */
+  party: Reference<
+    Organization | Patient | Practitioner | PractitionerRole | RelatedPerson
+  >;
+
+  /**
+   * Legally binding Contract DSIG signature contents in Base64.
+   */
+  signature: Signature[];
+}
+
+/**
+ * One or more Contract Provisions, which may be related and conveyed as
+ * a group, and may contain nested groups.
+ */
+export interface ContractTerm {
+  /**
+   * Unique identifier for this particular Contract Provision.
+   */
+  identifier?: Identifier;
+
+  /**
+   * When this Contract Provision was issued.
+   */
+  issued?: string;
+
+  /**
+   * Relevant time or time-period when this Contract Provision is
+   * applicable.
+   */
+  applies?: Period;
+
+  /**
+   * The entity that the term applies to.
+   */
+  topicCodeableConcept?: CodeableConcept;
+
+  /**
+   * The entity that the term applies to.
+   */
+  topicReference?: Reference<Resource>;
+
+  /**
+   * A legal clause or condition contained within a contract that requires
+   * one or both parties to perform a particular requirement by some
+   * specified time or prevents one or both parties from performing a
+   * particular requirement by some specified time.
+   */
+  type?: CodeableConcept;
+
+  /**
+   * A specialized legal clause or condition based on overarching contract
+   * type.
+   */
+  subType?: CodeableConcept;
+
+  /**
+   * Statement of a provision in a policy or a contract.
+   */
+  text?: string;
+
+  /**
+   * Security labels that protect the handling of information about the
+   * term and its elements, which may be specifically identified..
+   */
+  securityLabel?: ContractTermSecurityLabel[];
+
+  /**
+   * The matter of concern in the context of this provision of the
+   * agrement.
+   */
+  offer: ContractTermOffer;
+
+  /**
+   * Contract Term Asset List.
+   */
+  asset?: ContractTermAsset[];
+
+  /**
+   * An actor taking a role in an activity for which it can be assigned
+   * some degree of responsibility for the activity taking place.
+   */
+  action?: ContractTermAction[];
+
+  /**
+   * Nested group of Contract Provisions.
+   */
+  group?: ContractTerm[];
+}
+
+/**
+ * The entity that the term applies to.
+ */
+export type ContractTermTopic = CodeableConcept | Reference<Resource>;
+
+/**
+ * An actor taking a role in an activity for which it can be assigned
+ * some degree of responsibility for the activity taking place.
+ */
+export interface ContractTermAction {
+  /**
+   * True if the term prohibits the  action.
+   */
+  doNotPerform?: boolean;
+
+  /**
+   * Activity or service obligation to be done or not done, performed or
+   * not performed, effectuated or not by this Contract term.
+   */
+  type: CodeableConcept;
+
+  /**
+   * Entity of the action.
+   */
+  subject?: ContractTermActionSubject[];
+
+  /**
+   * Reason or purpose for the action stipulated by this Contract
+   * Provision.
+   */
+  intent: CodeableConcept;
+
+  /**
+   * Id [identifier??] of the clause or question text related to this
+   * action in the referenced form or QuestionnaireResponse.
+   */
+  linkId?: string[];
+
+  /**
+   * Current state of the term action.
+   */
+  status: CodeableConcept;
+
+  /**
+   * Encounter or Episode with primary association to specified term
+   * activity.
+   */
+  context?: Reference<Encounter | EpisodeOfCare>;
+
+  /**
+   * Id [identifier??] of the clause or question text related to the
+   * requester of this action in the referenced form or
+   * QuestionnaireResponse.
+   */
+  contextLinkId?: string[];
+
+  /**
+   * When action happens.
+   */
+  occurrenceDateTime?: string;
+
+  /**
+   * When action happens.
+   */
+  occurrencePeriod?: Period;
+
+  /**
+   * When action happens.
+   */
+  occurrenceTiming?: Timing;
+
+  /**
+   * Who or what initiated the action and has responsibility for its
+   * activation.
+   */
+  requester?: Reference<
+    | Patient
+    | RelatedPerson
+    | Practitioner
+    | PractitionerRole
+    | Device
+    | Group
+    | Organization
+  >[];
+
+  /**
+   * Id [identifier??] of the clause or question text related to the
+   * requester of this action in the referenced form or
+   * QuestionnaireResponse.
+   */
+  requesterLinkId?: string[];
+
+  /**
+   * The type of individual that is desired or required to perform or not
+   * perform the action.
+   */
+  performerType?: CodeableConcept[];
+
+  /**
+   * The type of role or competency of an individual desired or required to
+   * perform or not perform the action.
+   */
+  performerRole?: CodeableConcept;
+
+  /**
+   * Indicates who or what is being asked to perform (or not perform) the
+   * ction.
+   */
+  performer?: Reference<
+    | RelatedPerson
+    | Patient
+    | Practitioner
+    | PractitionerRole
+    | CareTeam
+    | Device
+    | Substance
+    | Organization
+    | Location
+  >;
+
+  /**
+   * Id [identifier??] of the clause or question text related to the reason
+   * type or reference of this  action in the referenced form or
+   * QuestionnaireResponse.
+   */
+  performerLinkId?: string[];
+
+  /**
+   * Rationale for the action to be performed or not performed. Describes
+   * why the action is permitted or prohibited.
+   */
+  reasonCode?: CodeableConcept[];
+
+  /**
+   * Indicates another resource whose existence justifies permitting or not
+   * permitting this action.
+   */
+  reasonReference?: Reference<
+    | Condition
+    | Observation
+    | DiagnosticReport
+    | DocumentReference
+    | Questionnaire
+    | QuestionnaireResponse
+  >[];
+
+  /**
+   * Describes why the action is to be performed or not performed in
+   * textual form.
+   */
+  reason?: string[];
+
+  /**
+   * Id [identifier??] of the clause or question text related to the reason
+   * type or reference of this  action in the referenced form or
+   * QuestionnaireResponse.
+   */
+  reasonLinkId?: string[];
+
+  /**
+   * Comments made about the term action made by the requester, performer,
+   * subject or other participants.
+   */
+  note?: Annotation[];
+
+  /**
+   * Security labels that protects the action.
+   */
+  securityLabelNumber?: number[];
+}
+
+/**
+ * When action happens.
+ */
+export type ContractTermActionOccurrence = Period | string | Timing;
+
+/**
+ * Entity of the action.
+ */
+export interface ContractTermActionSubject {
+  /**
+   * The entity the action is performed or not performed on or for.
+   */
+  reference: Reference<
+    | Patient
+    | RelatedPerson
+    | Practitioner
+    | PractitionerRole
+    | Device
+    | Group
+    | Organization
+  >[];
+
+  /**
+   * Role type of agent assigned roles in this Contract.
+   */
+  role?: CodeableConcept;
+}
+
+/**
+ * Contract Term Asset List.
+ */
+export interface ContractTermAsset {
+  /**
+   * Differentiates the kind of the asset .
+   */
+  scope?: CodeableConcept;
+
+  /**
+   * Target entity type about which the term may be concerned.
+   */
+  type?: CodeableConcept[];
+
+  /**
+   * Associated entities.
+   */
+  typeReference?: Reference<Resource>[];
+
+  /**
+   * May be a subtype or part of an offered asset.
+   */
+  subtype?: CodeableConcept[];
+
+  /**
+   * Specifies the applicability of the term to an asset resource instance,
+   * and instances it refers to orinstances that refer to it, and/or are
+   * owned by the offeree.
+   */
+  relationship?: Coding;
+
+  /**
+   * Circumstance of the asset.
+   */
+  context?: ContractTermAssetContext[];
+
+  /**
+   * Description of the quality and completeness of the asset that imay be
+   * a factor in its valuation.
+   */
+  condition?: string;
+
+  /**
+   * Type of Asset availability for use or ownership.
+   */
+  periodType?: CodeableConcept[];
+
+  /**
+   * Asset relevant contractual time period.
+   */
+  period?: Period[];
+
+  /**
+   * Time period of asset use.
+   */
+  usePeriod?: Period[];
+
+  /**
+   * Clause or question text (Prose Object) concerning the asset in a
+   * linked form, such as a QuestionnaireResponse used in the formation of
+   * the contract.
+   */
+  text?: string;
+
+  /**
+   * Id [identifier??] of the clause or question text about the asset in
+   * the referenced form or QuestionnaireResponse.
+   */
+  linkId?: string[];
+
+  /**
+   * Response to assets.
+   */
+  answer?: ContractTermOfferAnswer[];
+
+  /**
+   * Security labels that protects the asset.
+   */
+  securityLabelNumber?: number[];
+
+  /**
+   * Contract Valued Item List.
+   */
+  valuedItem?: ContractTermAssetValuedItem[];
+}
+
+/**
+ * Circumstance of the asset.
+ */
+export interface ContractTermAssetContext {
+  /**
+   * Asset context reference may include the creator, custodian, or owning
+   * Person or Organization (e.g., bank, repository),  location held, e.g.,
+   * building,  jurisdiction.
+   */
+  reference?: Reference<Resource>;
+
+  /**
+   * Coded representation of the context generally or of the Referenced
+   * entity, such as the asset holder type or location.
+   */
+  code?: CodeableConcept[];
+
+  /**
+   * Context description.
+   */
+  text?: string;
+}
+
+/**
+ * Contract Valued Item List.
+ */
+export interface ContractTermAssetValuedItem {
+  /**
+   * Specific type of Contract Valued Item that may be priced.
+   */
+  entityCodeableConcept?: CodeableConcept;
+
+  /**
+   * Specific type of Contract Valued Item that may be priced.
+   */
+  entityReference?: Reference<Resource>;
+
+  /**
+   * Identifies a Contract Valued Item instance.
+   */
+  identifier?: Identifier;
+
+  /**
+   * Indicates the time during which this Contract ValuedItem information
+   * is effective.
+   */
+  effectiveTime?: string;
+
+  /**
+   * Specifies the units by which the Contract Valued Item is measured or
+   * counted, and quantifies the countable or measurable Contract Valued
+   * Item instances.
+   */
+  quantity?: Quantity;
+
+  /**
+   * A Contract Valued Item unit valuation measure.
+   */
+  unitPrice?: Money;
+
+  /**
+   * A real number that represents a multiplier used in determining the
+   * overall value of the Contract Valued Item delivered. The concept of a
+   * Factor allows for a discount or surcharge multiplier to be applied to
+   * a monetary amount.
+   */
+  factor?: number;
+
+  /**
+   * An amount that expresses the weighting (based on difficulty, cost
+   * and/or resource intensiveness) associated with the Contract Valued
+   * Item delivered. The concept of Points allows for assignment of point
+   * values for a Contract Valued Item, such that a monetary amount can be
+   * assigned to each point.
+   */
+  points?: number;
+
+  /**
+   * Expresses the product of the Contract Valued Item unitQuantity and the
+   * unitPriceAmt. For example, the formula: unit Quantity * unit Price
+   * (Cost per Point) * factor Number  * points = net Amount. Quantity,
+   * factor and points are assumed to be 1 if not supplied.
+   */
+  net?: Money;
+
+  /**
+   * Terms of valuation.
+   */
+  payment?: string;
+
+  /**
+   * When payment is due.
+   */
+  paymentDate?: string;
+
+  /**
+   * Who will make payment.
+   */
+  responsible?: Reference<
+    Organization | Patient | Practitioner | PractitionerRole | RelatedPerson
+  >;
+
+  /**
+   * Who will receive payment.
+   */
+  recipient?: Reference<
+    Organization | Patient | Practitioner | PractitionerRole | RelatedPerson
+  >;
+
+  /**
+   * Id  of the clause or question text related to the context of this
+   * valuedItem in the referenced form or QuestionnaireResponse.
+   */
+  linkId?: string[];
+
+  /**
+   * A set of security labels that define which terms are controlled by
+   * this condition.
+   */
+  securityLabelNumber?: number[];
+}
+
+/**
+ * Specific type of Contract Valued Item that may be priced.
+ */
+export type ContractTermAssetValuedItemEntity =
+  | CodeableConcept
+  | Reference<Resource>;
+
+/**
+ * The matter of concern in the context of this provision of the
+ * agrement.
+ */
+export interface ContractTermOffer {
+  /**
+   * Unique identifier for this particular Contract Provision.
+   */
+  identifier?: Identifier[];
+
+  /**
+   * Offer Recipient.
+   */
+  party?: ContractTermOfferParty[];
+
+  /**
+   * The owner of an asset has the residual control rights over the asset:
+   * the right to decide all usages of the asset in any way not
+   * inconsistent with a prior contract, custom, or law (Hart, 1995, p.
+   * 30).
+   */
+  topic?: Reference<Resource>;
+
+  /**
+   * Type of Contract Provision such as specific requirements, purposes for
+   * actions, obligations, prohibitions, e.g. life time maximum benefit.
+   */
+  type?: CodeableConcept;
+
+  /**
+   * Type of choice made by accepting party with respect to an offer made
+   * by an offeror/ grantee.
+   */
+  decision?: CodeableConcept;
+
+  /**
+   * How the decision about a Contract was conveyed.
+   */
+  decisionMode?: CodeableConcept[];
+
+  /**
+   * Response to offer text.
+   */
+  answer?: ContractTermOfferAnswer[];
+
+  /**
+   * Human readable form of this Contract Offer.
+   */
+  text?: string;
+
+  /**
+   * The id of the clause or question text of the offer in the referenced
+   * questionnaire/response.
+   */
+  linkId?: string[];
+
+  /**
+   * Security labels that protects the offer.
+   */
+  securityLabelNumber?: number[];
+}
+
+/**
+ * Response to offer text.
+ */
+export interface ContractTermOfferAnswer {
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueBoolean?: boolean;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueDecimal?: number;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueInteger?: number;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueDate?: string;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueDateTime?: string;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueTime?: string;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueString?: string;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueUri?: string;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueAttachment?: Attachment;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueCoding?: Coding;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueQuantity?: Quantity;
+
+  /**
+   * Response to an offer clause or question text,  which enables selection
+   * of values to be agreed to, e.g., the period of participation, the date
+   * of occupancy of a rental, warrently duration, or whether biospecimen
+   * may be used for further research.
+   */
+  valueReference?: Reference<Resource>;
+}
+
+/**
+ * Response to an offer clause or question text,  which enables selection
+ * of values to be agreed to, e.g., the period of participation, the date
+ * of occupancy of a rental, warrently duration, or whether biospecimen
+ * may be used for further research.
+ */
+export type ContractTermOfferAnswerValue =
+  | Attachment
+  | boolean
+  | Coding
+  | number
+  | Quantity
+  | Reference<Resource>
+  | string;
+
+/**
+ * Offer Recipient.
+ */
+export interface ContractTermOfferParty {
+  /**
+   * Participant in the offer.
+   */
+  reference: Reference<
+    | Patient
+    | RelatedPerson
+    | Practitioner
+    | PractitionerRole
+    | Device
+    | Group
+    | Organization
+  >[];
+
+  /**
+   * How the party participates in the offer.
+   */
+  role: CodeableConcept;
+}
+
+/**
+ * Security labels that protect the handling of information about the
+ * term and its elements, which may be specifically identified..
+ */
+export interface ContractTermSecurityLabel {
+  /**
+   * Number used to link this term or term element to the applicable
+   * Security Label.
+   */
+  number?: number[];
+
+  /**
+   * Security label privacy tag that species the level of confidentiality
+   * protection required for this term and/or term elements.
+   */
+  classification: Coding;
+
+  /**
+   * Security label privacy tag that species the applicable privacy and
+   * security policies governing this term and/or term elements.
+   */
+  category?: Coding[];
+
+  /**
+   * Security label privacy tag that species the manner in which term
+   * and/or term elements are to be protected.
+   */
+  control?: Coding[];
 }

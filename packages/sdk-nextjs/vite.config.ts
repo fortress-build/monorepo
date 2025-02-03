@@ -1,7 +1,7 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import dts from "vite-plugin-dts";
-import tailwindcss from "tailwindcss";
+import react from '@vitejs/plugin-react';
+import tailwindcss from 'tailwindcss';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -30,21 +30,21 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: "src/index.ts",
+      entry: 'src/index.ts',
       fileName: (format) => `index.${format}.js`,
-      formats: ["es", "cjs"],
+      formats: ['es', 'cjs'],
     },
     rollupOptions: {
       external: [
-        "react",
-        "react-dom",
-        "tailwindcss",
-        "class-variance-authority",
+        'react',
+        'react-dom',
+        'tailwindcss',
+        'class-variance-authority',
       ],
       output: {
         globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
+          react: 'React',
+          'react-dom': 'ReactDOM',
         },
       },
     },
