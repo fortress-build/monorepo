@@ -532,8 +532,8 @@ importers:
         specifier: ^1.4.1
         version: 1.4.1(next@15.1.6(@opentelemetry/api@1.9.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(svelte@5.2.7)(vue@3.5.13(typescript@5.7.3))
       posthog-js:
-        specifier: ^1.207.8
-        version: 1.207.8
+        specifier: ^1.215.3
+        version: 1.215.3
       posthog-node:
         specifier: ^4.4.1
         version: 4.4.1
@@ -6665,8 +6665,8 @@ packages:
   core-js-pure@3.40.0:
     resolution: {integrity: sha512-AtDzVIgRrmRKQai62yuSIN5vNiQjcJakJb4fbhVw3ehxx7Lohphvw9SGNWKhLFqSxC4ilD0g/L1huAYFQU3Q6A==}
 
-  core-js@3.38.1:
-    resolution: {integrity: sha512-OP35aUorbU3Zvlx7pjsFdu1rGNnD4pgw/CWoYzRY3t2EzoVT7shKHY1dlAy3f41cGIO7ZDPQimhGFTlEYkG/Hw==}
+  core-js@3.40.0:
+    resolution: {integrity: sha512-7vsMc/Lty6AGnn7uFpYT56QesI5D2Y/UkgKounk87OP9Z2H9Z8kj6jzcSGAxFmUtDOS0ntK6lbQz+Nsa0Jj6mQ==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -9566,15 +9566,15 @@ packages:
   postgres-range@1.1.4:
     resolution: {integrity: sha512-i/hbxIE9803Alj/6ytL7UHQxRvZkI9O4Sy+J3HGc4F4oo/2eQAjTSNJ0bfxyse3bH0nuVesCk+3IRLaMtG3H6w==}
 
-  posthog-js@1.207.8:
-    resolution: {integrity: sha512-fFbOs0YwjlU9qn/9dQEXufbT/JeiOl7sEmKFy7AEB8Qsb7lbPLM6847svDCj1XzILj/xTs84yKYJmcYPjPdDzQ==}
+  posthog-js@1.215.3:
+    resolution: {integrity: sha512-vTk8/gyjbKP7EbDxWzo/GBCK7Ok7M6RTqEWOzRgIxCPf/KA5faFi5z1T4cRR1oPgcDqLeB1ZGa04Za/cPEHxgA==}
 
   posthog-node@4.4.1:
     resolution: {integrity: sha512-o9G9sSvwWITrfSJgIUrPLJd//AYPGJNu5D+pSLxqiBvhUeicc/i639FvU0DPr1OsHiLDE2zHNMmLpa0mw4kBCg==}
     engines: {node: '>=15.0.0'}
 
-  preact@10.24.3:
-    resolution: {integrity: sha512-Z2dPnBnMUfyQfSQ+GBdsGa16hz35YmLmtTLhM169uW944hYL6xzTYkJjC07j+Wosz733pMWx0fgON3JNw1jJQA==}
+  preact@10.25.4:
+    resolution: {integrity: sha512-jLdZDb+Q+odkHJ+MpW/9U5cODzqnB+fy2EiHSZES7ldV5LK7yjlVzTp7R8Xy6W6y75kfK8iWYtFVH7lvjwrCMA==}
 
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
@@ -17977,7 +17977,7 @@ snapshots:
 
   core-js-pure@3.40.0: {}
 
-  core-js@3.38.1: {}
+  core-js@3.40.0: {}
 
   core-util-is@1.0.3: {}
 
@@ -21720,11 +21720,11 @@ snapshots:
 
   postgres-range@1.1.4: {}
 
-  posthog-js@1.207.8:
+  posthog-js@1.215.3:
     dependencies:
-      core-js: 3.38.1
+      core-js: 3.40.0
       fflate: 0.4.8
-      preact: 10.24.3
+      preact: 10.25.4
       web-vitals: 4.2.4
 
   posthog-node@4.4.1:
@@ -21733,7 +21733,7 @@ snapshots:
     transitivePeerDependencies:
       - debug
 
-  preact@10.24.3: {}
+  preact@10.25.4: {}
 
   prettier@2.8.8: {}
 
