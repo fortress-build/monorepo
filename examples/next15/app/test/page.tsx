@@ -40,8 +40,6 @@ function HomeContent({ nerve }: { nerve: Nerve }) {
         // performer: 'Practitioner/exfo6E4EXjWsnhA1OGVElgw3',
       });
 
-      console.log('finished search');
-
       setSearchResults(data);
     } catch (err: any) {
       setError(err.message || 'An error occurred');

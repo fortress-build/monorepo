@@ -9,6 +9,18 @@ import { ListResource } from './functions/list';
 import { ObservationResource } from './functions/observation';
 import { PatientResource } from './functions/patient';
 import { ProcedureResource } from './functions/procedure';
+import { AdverseEventResource } from './functions/adverseEvent';
+import { AccountResource } from './functions/account';
+import { AllergyIntoleranceResource } from './functions/allergyIntolerance';
+import { AppointmentResource } from './functions/appointment';
+import { CdsHooksConditionResource } from './functions/cdsHooksCondition';
+import { CdsHooksMedicationRequestResource } from './functions/cdsHooksMedicationRequest';
+import { CdsHooksServiceRequestResource } from './functions/cdsHooksServiceRequest';
+import { CommunicationResource } from './functions/communication';
+import { ConsentResource } from './functions/consent';
+import { ContractResource } from './functions/contract';
+import { CoverageResource } from './functions/coverage';
+
 import type { Reference } from './models/fhir/Reference';
 
 import { KEYS } from '.';
@@ -100,7 +112,17 @@ export class Nerve {
   flag: FlagResource;
   list: ListResource;
   procedure: ProcedureResource;
-
+  adverseEvent: AdverseEventResource;
+  account: AccountResource;
+  allergyIntolerance: AllergyIntoleranceResource;
+  appointment: AppointmentResource;
+  cdsHooksCondition: CdsHooksConditionResource;
+  cdsHooksMedicationRequest: CdsHooksMedicationRequestResource;
+  cdsHooksServiceRequest: CdsHooksServiceRequestResource;
+  communication: CommunicationResource;
+  consent: ConsentResource;
+  contract: ContractResource;
+  coverage: CoverageResource;
   constructor(config: PartialFHIRClientConfig) {
     this.config = {
       scopes: ['openid', 'fhirUser'],
@@ -119,7 +141,17 @@ export class Nerve {
     this.flag = new FlagResource(this);
     this.list = new ListResource(this);
     this.procedure = new ProcedureResource(this);
-
+    this.adverseEvent = new AdverseEventResource(this);
+    this.account = new AccountResource(this);
+    this.allergyIntolerance = new AllergyIntoleranceResource(this);
+    this.appointment = new AppointmentResource(this);
+    this.cdsHooksCondition = new CdsHooksConditionResource(this);
+    this.cdsHooksMedicationRequest = new CdsHooksMedicationRequestResource(this);
+    this.cdsHooksServiceRequest = new CdsHooksServiceRequestResource(this);
+    this.communication = new CommunicationResource(this);
+    this.consent = new ConsentResource(this);
+    this.contract = new ContractResource(this);
+    this.coverage = new CoverageResource(this);
     if (globalThis.localStorage !== undefined) {
       const provider = localStorage.getItem(KEYS.PROVIDER);
       if (provider !== null) {
