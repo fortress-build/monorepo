@@ -10,6 +10,15 @@ import { ObservationResource } from './functions/observation';
 import { PatientResource } from './functions/patient';
 import { ProcedureResource } from './functions/procedure';
 import { AdverseEventResource } from './functions/adverseEvent';
+import { AccountResource } from './functions/account';
+import { AllergyIntoleranceResource } from './functions/allergyIntolerance';
+import { AppointmentResource } from './functions/appointment';
+import { CdsHooksConditionResource } from './functions/cdsHooksCondition';
+import { CdsHooksMedicationRequestResource } from './functions/cdsHooksMedicationRequest';
+import { CdsHooksServiceRequestResource } from './functions/cdsHooksServiceRequest';
+import { CommunicationResource } from './functions/communication';
+import { ConsentResource } from './functions/consent';
+
 import type { Reference } from './models/fhir/Reference';
 
 import { KEYS } from '.';
@@ -102,6 +111,14 @@ export class Nerve {
   list: ListResource;
   procedure: ProcedureResource;
   adverseEvent: AdverseEventResource;
+  account: AccountResource;
+  allergyIntolerance: AllergyIntoleranceResource;
+  appointment: AppointmentResource;
+  cdsHooksCondition: CdsHooksConditionResource;
+  cdsHooksMedicationRequest: CdsHooksMedicationRequestResource;
+  cdsHooksServiceRequest: CdsHooksServiceRequestResource;
+  communication: CommunicationResource;
+  consent: ConsentResource;
   constructor(config: PartialFHIRClientConfig) {
     this.config = {
       scopes: ['openid', 'fhirUser'],
@@ -121,7 +138,14 @@ export class Nerve {
     this.list = new ListResource(this);
     this.procedure = new ProcedureResource(this);
     this.adverseEvent = new AdverseEventResource(this);
-
+    this.account = new AccountResource(this);
+    this.allergyIntolerance = new AllergyIntoleranceResource(this);
+    this.appointment = new AppointmentResource(this);
+    this.cdsHooksCondition = new CdsHooksConditionResource(this);
+    this.cdsHooksMedicationRequest = new CdsHooksMedicationRequestResource(this);
+    this.cdsHooksServiceRequest = new CdsHooksServiceRequestResource(this);
+    this.communication = new CommunicationResource(this);
+    this.consent = new ConsentResource(this);
     if (globalThis.localStorage !== undefined) {
       const provider = localStorage.getItem(KEYS.PROVIDER);
       if (provider !== null) {
