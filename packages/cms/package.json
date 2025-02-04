@@ -12,7 +12,7 @@
   "dependencies": {
     "@basehub/mutation-api-helpers": "^2.0.7",
     "@t3-oss/env-nextjs": "^0.11.1",
-    "basehub": "^8.1.6",
+    "basehub": "^8.1.9",
     "react": "^19.0.0",
     "zod": "^3.24.1"
   },
