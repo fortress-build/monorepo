@@ -15,7 +15,7 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "build": "tsc && vite build",
+    "build": "rm -rf ./dist && tsc && vite build",
     "test": "jest"
   },
   "devDependencies": {
