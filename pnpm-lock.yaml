@@ -25,17 +25,17 @@ importers:
         specifier: workspace:*
         version: link:packages/typescript-config
       '@turbo/gen':
-        specifier: ^2.3.3
-        version: 2.3.3(@swc/core@1.3.101(@swc/helpers@0.5.15))(@types/node@22.13.1)(typescript@5.7.3)
+        specifier: ^2.4.0
+        version: 2.4.0(@swc/core@1.3.101(@swc/helpers@0.5.15))(@types/node@22.13.1)(typescript@5.7.3)
       turbo:
-        specifier: ^2.3.3
-        version: 2.3.3
+        specifier: ^2.4.0
+        version: 2.4.0
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
       ultracite:
-        specifier: ^4.1.15
-        version: 4.1.15
+        specifier: ^4.1.18
+        version: 4.1.18
 
   apps/api:
     dependencies:
@@ -1698,6 +1698,11 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
+  '@babel/parser@7.26.7':
+    resolution: {integrity: sha512-kEvgGGgEjRUutvdVvZhbn/BxVt+5VSpwXz1j3WYXQbXDo8KzFOPNG2GQbdAiNq8g6wn1yKk7C/qrke03a84V+w==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+
   '@babel/plugin-bugfix-firefox-class-in-computed-class-key@7.25.9':
     resolution: {integrity: sha512-ZkRyVkThtxQ/J6nv3JFYv1RYY+JT5BvU0y3k5bWrmuG4woXypRa4PXmm9RhOwodRkYFWqC0C0cqcJ4OqR7kW+g==}
     engines: {node: '>=6.9.0'}
@@ -2213,8 +2218,8 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
-  '@babel/runtime-corejs3@7.26.0':
-    resolution: {integrity: sha512-YXHu5lN8kJCb1LOb9PgV6pvak43X2h4HvRApcN5SdWeaItQOzfn1hgP6jasD6KWQyJDBxrVmA9o9OivlnNJK/w==}
+  '@babel/runtime-corejs3@7.26.7':
+    resolution: {integrity: sha512-55gRV8vGrCIYZnaQHQrD92Lo/hYE3Sj5tmbuf0hhHR7sj2CWhEhHU89hbq+UVDXvFG1zUVXJhUkEq1eAfqXtFw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/runtime@7.24.6':
@@ -2235,6 +2240,10 @@ packages:
 
   '@babel/types@7.26.5':
     resolution: {integrity: sha512-L6mZmwFDK6Cjh1nRCLXpa6no13ZIioJDz7mdkzHv399pThrTa/k0nUlNaenOeh2kWu/iaOQYElEpKPUswUa9Vg==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/types@7.26.7':
+    resolution: {integrity: sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==}
     engines: {node: '>=6.9.0'}
 
   '@basehub/genql@9.0.0-canary.10':
@@ -5448,12 +5457,12 @@ packages:
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
 
-  '@turbo/gen@2.3.3':
-    resolution: {integrity: sha512-MIXXX0sVRvfTWOrLhjDT1KJ15dqzRlNlHIvNeWoS5ZtTMQ9XuBl9D5ek/5vMj77n+84mFRS/VKAoEuScOIWwaw==}
+  '@turbo/gen@2.4.0':
+    resolution: {integrity: sha512-MR3uInO+5bozTEPyd+0QLepfGwrE14QOa3eohPb5Vg6pLdw0/G9ZfAodE+b7uiJev0zPPG2Md5jVZhWLEreptA==}
     hasBin: true
 
-  '@turbo/workspaces@2.3.3':
-    resolution: {integrity: sha512-PSys7Hy5NuX76HBleOkd8wlRtI4GCzLHS2XUpKeGIj0vpzH4fqE+tpi7fBb5t9U7UiyM6E6pyabSKjoD2zUsoQ==}
+  '@turbo/workspaces@2.4.0':
+    resolution: {integrity: sha512-WHKtnPoT9fVqS0oWG9P3JeQvNCloz2oZWEsEn2LbGyMSU89isCJ6dKlHxqjfGSNdm8+b1fwT5JuE1AW6uYp1TQ==}
     hasBin: true
 
   '@types/acorn@4.0.6':
@@ -7871,6 +7880,10 @@ packages:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
 
+  import-fresh@3.3.1:
+    resolution: {integrity: sha512-TR3KfrTZTYLPB6jUjfx6MF9WcWrHL9su5TObK4ZkYgBdWKPOFoSoQIdEuTuR82pmtxH2spWG9h6etwfr1pLBqQ==}
+    engines: {node: '>=6'}
+
   import-from@3.0.0:
     resolution: {integrity: sha512-CiuXOFFSzkU5x/CR0+z7T91Iht4CXgfCxVOFRhh2Zyhg5wOpWvvDLQUsWl+gcN+QscYBjez8hDCt85O7RLDttQ==}
     engines: {node: '>=8'}
@@ -8349,8 +8362,8 @@ packages:
     resolution: {integrity: sha512-cEiJEAEoIbWfCZYKWhVwFuvPX1gETRYPw6LlaTKoxD3s2AkXzkCjnp6h0V77ozyqj0jakteJ4YqDJT830+lVGw==}
     engines: {node: '>=14'}
 
-  js-tiktoken@1.0.16:
-    resolution: {integrity: sha512-nUVdO5k/M9llWpiaZlBBDdtmr6qWXwSD6fgaDu2zM8UP+OXxx9V37lFkI6w0/1IuaDx7WffZ37oYd9KvcWKElg==}
+  js-tiktoken@1.0.18:
+    resolution: {integrity: sha512-hFYx4xYf6URgcttcGvGuOBJhTxPYZ2R5eIesqCaNRJmYH8sNmsfTeWg4yu//7u1VD/qIUkgKJTpGom9oHXmB4g==}
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
@@ -10786,38 +10799,38 @@ packages:
   tty-browserify@0.0.1:
     resolution: {integrity: sha512-C3TaO7K81YvjCgQH9Q1S3R3P3BtN3RIM8n+OvX4il1K1zgE8ZhI0op7kClgkxtutIE8hQrcrHBXvIheqKUUCxw==}
 
-  turbo-darwin-64@2.3.3:
-    resolution: {integrity: sha512-bxX82xe6du/3rPmm4aCC5RdEilIN99VUld4HkFQuw+mvFg6darNBuQxyWSHZTtc25XgYjQrjsV05888w1grpaA==}
+  turbo-darwin-64@2.4.0:
+    resolution: {integrity: sha512-kVMScnPUa3R4n7woNmkR15kOY0aUwCLJcUyH5UC59ggKqr5HIHwweKYK8N1pwBQso0LQF4I9i93hIzfJguCcwQ==}
     cpu: [x64]
     os: [darwin]
 
-  turbo-darwin-arm64@2.3.3:
-    resolution: {integrity: sha512-DYbQwa3NsAuWkCUYVzfOUBbSUBVQzH5HWUFy2Kgi3fGjIWVZOFk86ss+xsWu//rlEAfYwEmopigsPYSmW4X15A==}
+  turbo-darwin-arm64@2.4.0:
+    resolution: {integrity: sha512-8JObIpfun1guA7UlFR5jC/SOVm49lRscxMxfg5jZ5ABft79rhFC+ygN9AwAhGKv6W2DUhIh2xENkSgu4EDmUyg==}
     cpu: [arm64]
     os: [darwin]
 
-  turbo-linux-64@2.3.3:
-    resolution: {integrity: sha512-eHj9OIB0dFaP6BxB88jSuaCLsOQSYWBgmhy2ErCu6D2GG6xW3b6e2UWHl/1Ho9FsTg4uVgo4DB9wGsKa5erjUA==}
+  turbo-linux-64@2.4.0:
+    resolution: {integrity: sha512-xWDGGcRlBuGV7HXWAVuTY6vsQi4aZxGMAnuiuNDg8Ij1aHGohOM0RUsWMXjxz4vuJmjk9+/D6NQqHH3AJEXezg==}
     cpu: [x64]
     os: [linux]
 
-  turbo-linux-arm64@2.3.3:
-    resolution: {integrity: sha512-NmDE/NjZoDj1UWBhMtOPmqFLEBKhzGS61KObfrDEbXvU3lekwHeoPvAMfcovzswzch+kN2DrtbNIlz+/rp8OCg==}
+  turbo-linux-arm64@2.4.0:
+    resolution: {integrity: sha512-c3En99xMguc/Pdtk/rZP53LnDdw0W6lgUc04he8r8F+UHYSNvgzHh0WGXXmCC6lGbBH72kPhhGx4bAwyvi7dug==}
     cpu: [arm64]
     os: [linux]
 
-  turbo-windows-64@2.3.3:
-    resolution: {integrity: sha512-O2+BS4QqjK3dOERscXqv7N2GXNcqHr9hXumkMxDj/oGx9oCatIwnnwx34UmzodloSnJpgSqjl8iRWiY65SmYoQ==}
+  turbo-windows-64@2.4.0:
+    resolution: {integrity: sha512-/gOORuOlyA8JDPzyA16CD3wvyRcuBFePa1URAnFUof9hXQmKxK0VvSDO79cYZFsJSchCKNJpckUS0gYxGsWwoA==}
     cpu: [x64]
     os: [win32]
 
-  turbo-windows-arm64@2.3.3:
-    resolution: {integrity: sha512-dW4ZK1r6XLPNYLIKjC4o87HxYidtRRcBeo/hZ9Wng2XM/MqqYkAyzJXJGgRMsc0MMEN9z4+ZIfnSNBrA0b08ag==}
+  turbo-windows-arm64@2.4.0:
+    resolution: {integrity: sha512-/DJIdTFijEMM5LSiEpSfarDOMOlYqJV+EzmppqWtHqDsOLF4hbbIBH9sJR6OOp5dURAu5eURBYdmvBRz9Lo6TA==}
     cpu: [arm64]
     os: [win32]
 
-  turbo@2.3.3:
-    resolution: {integrity: sha512-DUHWQAcC8BTiUZDRzAYGvpSpGLiaOQPfYXlCieQbwUvmml/LRGIe3raKdrOPOoiX0DYlzxs2nH6BoWJoZrj8hA==}
+  turbo@2.4.0:
+    resolution: {integrity: sha512-ah/yQp2oMif1X0u7fBJ4MLMygnkbKnW5O8SG6pJvloPCpHfFoZctkSVQiJ3VnvNTq71V2JJIdwmOeu1i34OQyg==}
     hasBin: true
 
   tween-functions@1.2.0:
@@ -10909,8 +10922,8 @@ packages:
     engines: {node: '>=0.8.0'}
     hasBin: true
 
-  ultracite@4.1.15:
-    resolution: {integrity: sha512-sIFmJ91rSF3nSMux83V8g9355JIJ40AJq82ymdYriv8/opbTizjlTgDNuXKhgyFP3/YmmyhqCYK6ACVHZXMk6Q==}
+  ultracite@4.1.18:
+    resolution: {integrity: sha512-tHYPMzhLTbdHxDMMdWDuB9zb+uhd+XtLa30L4/1wn63/N6MUVg5jNxEczzX/h4FGSDrr3W91VpnVX4neNitk0w==}
     hasBin: true
 
   unbox-primitive@1.1.0:
@@ -11674,7 +11687,7 @@ snapshots:
       parse-github-url: 1.0.2
       pretty-ms: 7.0.1
       requireg: 0.2.2
-      semver: 7.6.3
+      semver: 7.7.1
       signale: 1.4.0
       tapable: 2.2.1
       terminal-link: 2.1.1
@@ -12271,6 +12284,11 @@ snapshots:
   '@babel/parser@7.26.5':
     dependencies:
       '@babel/types': 7.26.5
+
+  '@babel/parser@7.26.7':
+    dependencies:
+      '@babel/types': 7.26.7
+    optional: true
 
   '@babel/plugin-bugfix-firefox-class-in-computed-class-key@7.25.9(@babel/core@7.26.0)':
     dependencies:
@@ -12902,7 +12920,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@babel/runtime-corejs3@7.26.0':
+  '@babel/runtime-corejs3@7.26.7':
     dependencies:
       core-js-pure: 3.40.0
       regenerator-runtime: 0.14.1
@@ -12938,6 +12956,12 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@babel/types@7.26.7':
+    dependencies:
+      '@babel/helper-string-parser': 7.25.9
+      '@babel/helper-validator-identifier': 7.25.9
+    optional: true
 
   '@basehub/genql@9.0.0-canary.10(enquirer@2.4.1)':
     dependencies:
@@ -13728,7 +13752,7 @@ snapshots:
       ansi-styles: 5.2.0
       camelcase: 6.3.0
       decamelize: 1.2.0
-      js-tiktoken: 1.0.16
+      js-tiktoken: 1.0.18
       langsmith: 0.2.15
       mustache: 4.2.0
       p-queue: 6.6.2
@@ -14108,7 +14132,7 @@ snapshots:
       '@opentelemetry/instrumentation': 0.56.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.28.0
       forwarded-parse: 2.1.2
-      semver: 7.6.3
+      semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
 
@@ -14241,7 +14265,7 @@ snapshots:
       '@types/shimmer': 1.2.0
       import-in-the-middle: 1.12.0
       require-in-the-middle: 7.4.0
-      semver: 7.6.3
+      semver: 7.7.1
       shimmer: 1.2.1
     transitivePeerDependencies:
       - supports-color
@@ -14253,7 +14277,7 @@ snapshots:
       '@types/shimmer': 1.2.0
       import-in-the-middle: 1.12.0
       require-in-the-middle: 7.4.0
-      semver: 7.6.3
+      semver: 7.7.1
       shimmer: 1.2.1
     transitivePeerDependencies:
       - supports-color
@@ -16525,9 +16549,9 @@ snapshots:
 
   '@tsconfig/node16@1.0.4': {}
 
-  '@turbo/gen@2.3.3(@swc/core@1.3.101(@swc/helpers@0.5.15))(@types/node@22.13.1)(typescript@5.7.3)':
+  '@turbo/gen@2.4.0(@swc/core@1.3.101(@swc/helpers@0.5.15))(@types/node@22.13.1)(typescript@5.7.3)':
     dependencies:
-      '@turbo/workspaces': 2.3.3
+      '@turbo/workspaces': 2.4.0
       commander: 10.0.1
       fs-extra: 10.1.0
       inquirer: 8.2.6
@@ -16545,7 +16569,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@turbo/workspaces@2.3.3':
+  '@turbo/workspaces@2.4.0':
     dependencies:
       commander: 10.0.1
       execa: 5.1.1
@@ -16649,7 +16673,7 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 22.10.9
+      '@types/node': 22.13.1
 
   '@types/graceful-fs@4.1.9':
     dependencies:
@@ -16769,7 +16793,7 @@ snapshots:
 
   '@types/through@0.0.33':
     dependencies:
-      '@types/node': 22.10.9
+      '@types/node': 22.13.1
 
   '@types/tinycolor2@1.4.6': {}
 
@@ -16962,7 +16986,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.5.13':
     dependencies:
-      '@babel/parser': 7.26.5
+      '@babel/parser': 7.26.7
       '@vue/compiler-core': 3.5.13
       '@vue/compiler-dom': 3.5.13
       '@vue/compiler-ssr': 3.5.13
@@ -17965,7 +17989,7 @@ snapshots:
   cosmiconfig@7.0.0:
     dependencies:
       '@types/parse-json': 4.0.2
-      import-fresh: 3.3.0
+      import-fresh: 3.3.1
       parse-json: 5.2.0
       path-type: 4.0.0
       yaml: 1.10.2
@@ -17973,7 +17997,7 @@ snapshots:
   cosmiconfig@7.1.0:
     dependencies:
       '@types/parse-json': 4.0.2
-      import-fresh: 3.3.0
+      import-fresh: 3.3.1
       parse-json: 5.2.0
       path-type: 4.0.0
       yaml: 1.10.2
@@ -18357,7 +18381,7 @@ snapshots:
       '@one-ini/wasm': 0.1.1
       commander: 10.0.1
       minimatch: 9.0.1
-      semver: 7.6.3
+      semver: 7.7.1
 
   ejs@3.1.10:
     dependencies:
@@ -19486,6 +19510,11 @@ snapshots:
       parent-module: 1.0.1
       resolve-from: 4.0.0
 
+  import-fresh@3.3.1:
+    dependencies:
+      parent-module: 1.0.1
+      resolve-from: 4.0.0
+
   import-from@3.0.0:
     dependencies:
       resolve-from: 5.0.0
@@ -19788,7 +19817,7 @@ snapshots:
       '@babel/parser': 7.26.5
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.2
-      semver: 7.6.3
+      semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
 
@@ -20170,7 +20199,7 @@ snapshots:
 
   js-cookie@3.0.5: {}
 
-  js-tiktoken@1.0.16:
+  js-tiktoken@1.0.18:
     dependencies:
       base64-js: 1.5.1
 
@@ -20425,7 +20454,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.6.3
+      semver: 7.7.1
 
   make-error@1.3.6: {}
 
@@ -21114,7 +21143,7 @@ snapshots:
 
   node-plop@0.26.3:
     dependencies:
-      '@babel/runtime-corejs3': 7.26.0
+      '@babel/runtime-corejs3': 7.26.7
       '@types/inquirer': 6.5.0
       change-case: 3.1.0
       del: 5.1.0
@@ -23344,32 +23373,32 @@ snapshots:
 
   tty-browserify@0.0.1: {}
 
-  turbo-darwin-64@2.3.3:
+  turbo-darwin-64@2.4.0:
     optional: true
 
-  turbo-darwin-arm64@2.3.3:
+  turbo-darwin-arm64@2.4.0:
     optional: true
 
-  turbo-linux-64@2.3.3:
+  turbo-linux-64@2.4.0:
     optional: true
 
-  turbo-linux-arm64@2.3.3:
+  turbo-linux-arm64@2.4.0:
     optional: true
 
-  turbo-windows-64@2.3.3:
+  turbo-windows-64@2.4.0:
     optional: true
 
-  turbo-windows-arm64@2.3.3:
+  turbo-windows-arm64@2.4.0:
     optional: true
 
-  turbo@2.3.3:
+  turbo@2.4.0:
     optionalDependencies:
-      turbo-darwin-64: 2.3.3
-      turbo-darwin-arm64: 2.3.3
-      turbo-linux-64: 2.3.3
-      turbo-linux-arm64: 2.3.3
-      turbo-windows-64: 2.3.3
-      turbo-windows-arm64: 2.3.3
+      turbo-darwin-64: 2.4.0
+      turbo-darwin-arm64: 2.4.0
+      turbo-linux-64: 2.4.0
+      turbo-linux-arm64: 2.4.0
+      turbo-windows-64: 2.4.0
+      turbo-windows-arm64: 2.4.0
 
   tween-functions@1.2.0: {}
 
@@ -23455,7 +23484,7 @@ snapshots:
   uglify-js@3.19.3:
     optional: true
 
-  ultracite@4.1.15:
+  ultracite@4.1.18:
     dependencies:
       commander: 12.1.0
 
