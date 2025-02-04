@@ -9,6 +9,7 @@ import { ListResource } from './functions/list';
 import { ObservationResource } from './functions/observation';
 import { PatientResource } from './functions/patient';
 import { ProcedureResource } from './functions/procedure';
+import { AdverseEventResource } from './functions/adverseEvent';
 import type { Reference } from './models/fhir/Reference';
 
 import { KEYS } from '.';
@@ -100,7 +101,7 @@ export class Nerve {
   flag: FlagResource;
   list: ListResource;
   procedure: ProcedureResource;
-
+  adverseEvent: AdverseEventResource;
   constructor(config: PartialFHIRClientConfig) {
     this.config = {
       scopes: ['openid', 'fhirUser'],
@@ -119,6 +120,7 @@ export class Nerve {
     this.flag = new FlagResource(this);
     this.list = new ListResource(this);
     this.procedure = new ProcedureResource(this);
+    this.adverseEvent = new AdverseEventResource(this);
 
     if (globalThis.localStorage !== undefined) {
       const provider = localStorage.getItem(KEYS.PROVIDER);

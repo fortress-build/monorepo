@@ -37,6 +37,7 @@ export class BinaryResource {
     });
   }
 
+  
   async search(params: BinarySearchRequest) : Promise<Binary[]> {
     const kebabParams = Object.fromEntries(
       Object.entries(params).map(([key, value]) => [camelToKebab(key), value]),
