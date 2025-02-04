@@ -4,7 +4,7 @@ import { camelToKebab } from "../camel2kebab";
 import { search2Array } from '@/modelMapping';
 
 export type ContractSearchRequest = {
-  _id: string;  // Only supports _id search parameter
+  id: string;  // Epic FHIR uses 'id' rather than '_id'
 };
 
 export class ContractResource {

@@ -24,7 +24,7 @@ type CrmSearch = BaseCommunicationSearch & {
 
 // Non-Patient CRM search parameters
 type NonPatientCrmSearch = BaseCommunicationSearch & {
-  _id: string;  // Only supports _id search parameter
+  id: string;  // Only supports _id search parameter
 }
 
 // Patient Education search parameters

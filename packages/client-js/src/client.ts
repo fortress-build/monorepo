@@ -18,6 +18,8 @@ import { CdsHooksMedicationRequestResource } from './functions/cdsHooksMedicatio
 import { CdsHooksServiceRequestResource } from './functions/cdsHooksServiceRequest';
 import { CommunicationResource } from './functions/communication';
 import { ConsentResource } from './functions/consent';
+import { ContractResource } from './functions/contract';
+import { CoverageResource } from './functions/coverage';
 
 import type { Reference } from './models/fhir/Reference';
 
@@ -119,6 +121,8 @@ export class Nerve {
   cdsHooksServiceRequest: CdsHooksServiceRequestResource;
   communication: CommunicationResource;
   consent: ConsentResource;
+  contract: ContractResource;
+  coverage: CoverageResource;
   constructor(config: PartialFHIRClientConfig) {
     this.config = {
       scopes: ['openid', 'fhirUser'],
@@ -146,6 +150,8 @@ export class Nerve {
     this.cdsHooksServiceRequest = new CdsHooksServiceRequestResource(this);
     this.communication = new CommunicationResource(this);
     this.consent = new ConsentResource(this);
+    this.contract = new ContractResource(this);
+    this.coverage = new CoverageResource(this);
     if (globalThis.localStorage !== undefined) {
       const provider = localStorage.getItem(KEYS.PROVIDER);
       if (provider !== null) {
