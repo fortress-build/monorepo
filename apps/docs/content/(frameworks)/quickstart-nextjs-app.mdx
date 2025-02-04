@@ -1,0 +1,197 @@
+---
+title: Next.js (App Router)
+description: Learn how to integrate Nerve API into your Next.js application.
+---
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Files, File } from 'fumadocs-ui/components/files';
+import { Callout } from 'fumadocs-ui/components/callout';
+
+<Callout type="info">
+  This guide assumes you are using the Next.js App Router (Next.js 14+).
+</Callout>
+
+<Steps>
+  <Step>
+
+    ## Install the Nerve SDK
+
+    ```package-install
+    npm i @nerve-js/client @nerve-js/next
+    ```
+
+  </Step>
+
+  <Step>
+
+    ## Create a providers wrapper
+
+    <Files className="space-y-2">
+      <File name="app/providers.tsx"/>
+
+      ```tsx
+      'use client';
+
+      import { NerveProvider } from '@nerve-js/next';
+      import type React from 'react';
+
+      export default function Providers({ children }: { children: React.ReactNode }) {
+        return (
+          {/* [!code ++]*/}
+          <NerveProvider
+                                {/* [!code ++]*/}
+            redirectUrl="http://localhost:3000/callback/"
+                                  {/* [!code ++]*/}
+            afterRedirectUrl="http://localhost:3000/"
+                                  {/* [!code ++]*/}
+            signInUrl="http://localhost:3000/auth/login/">
+                                  {/* [!code ++]*/}
+            {children}
+                                  {/* [!code ++]*/}
+          </NerveProvider>
+        );
+      }
+      ```
+    </Files>
+
+    Then wrap your app with the provider in your root layout:
+
+    <Files className="space-y-2">
+      <File name="app/layout.tsx"/>
+
+      ```tsx
+      import Providers from './providers';
+
+      export default function RootLayout({
+        children,
+      }: Readonly<{
+        children: React.ReactNode;
+      }>) {
+        return (
+          <html lang="en">
+            <body>
+              {/* [!code ++]*/}
+              <Providers>{children}</Providers>
+            </body>
+          </html>
+        );
+      }
+      ```
+    </Files>
+
+    <Callout type="info">
+      We separate the providers into their own file to keep client-side code isolated, which helps with better code organization and performance.
+    </Callout>
+
+  </Step>
+
+  <Step>
+
+    ## Add the EHR selection component to your login page
+
+    <Files className="space-y-2">
+      <File name="app/auth/login/page.tsx"/>
+
+      ```tsx twoslash
+      // @noErrors
+      import { NerveSignIn } from "@nerve-js/next"; // [!code ++]
+
+      export default async function LoginPage() {
+        return (
+          <>
+            {/* your login page header/content... */}
+            {/* [!code ++] */}
+            <NerveSignIn />
+          </>
+        )
+      }
+      ```
+
+    </Files>
+
+  </Step>
+
+  <Step>
+
+    ## Add a route for the auth redirect
+
+
+    <Files className="space-y-2">
+      <File name="app/auth/callback/page.tsx"/>
+
+      ```tsx twoslash
+      // @noErrors
+      export { NerveCallback as default } from "@nerve-js/next" // [!code ++]
+      ```
+
+    </Files>
+
+    <Callout type="info">
+      You can customize the callback url using the `callbackUrl` option
+      in the `NerveProvider` component.
+    </Callout>
+
+  </Step>
+
+  <Step>
+
+    ## That's all!
+
+    You can start using the Nerve client in your application. Before making any requests, make sure to set your provider!
+
+
+  ## Basic Usage
+
+  <Tabs items={["vanilla", "tanstack"]}>
+    <Tab value="vanilla">
+      ```typescript
+      import { useNerveClient } from '@nerve-js/next';
+
+      // Get the client instance
+      const client = useNerveClient();
+      
+      // Set provider to sandbox before making any requests
+      await client.setProvider('sandbox');
+
+      // Now you can make requests
+      const results = await client.observation.search({
+        patient: "patient-id",
+        category: "vital-signs"
+      });
+      ```
+    </Tab>
+    <Tab value="tanstack">
+      ```typescript
+      import { useNerveClient } from '@nerve-js/next';
+      import { useQuery } from "@tanstack/react-query";
+
+      function YourComponent() {
+        const client = useNerveClient();
+
+        // Set provider to sandbox before making any requests
+        await client.setProvider('sandbox');
+
+
+        const { data } = useQuery({
+          queryKey: ['your-key'],
+          queryFn: async () => {
+            await client.setProvider('sandbox');
+            return client.yourMethod();
+          }
+        });
+      }
+      ```
+    </Tab>
+  </Tabs>
+
+    <Callout type="warn">
+      Currently only a client-side API is available.
+    </Callout>
+
+
+  </Step>
+
+</Steps>
+
+Click [here](/) to return to the getting started page.

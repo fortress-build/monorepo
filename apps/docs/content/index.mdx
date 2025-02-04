@@ -8,6 +8,7 @@ import { FHIRIcon } from '../icons/fhir.tsx'
 import { LogoIcon } from '../icons/logo.tsx'
 import { CodeIcon, PuzzleIcon } from 'lucide-react'
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 ## Introduction
 
@@ -34,60 +35,90 @@ for reading and writing data to EHR systems.
   />
 </Cards>
 
-## Quick Setup
+## Quick Setup for Sandbox
 
-1. **Get your sandbox API Key**
+<Steps>
+  <Step>
+    ### Install SDK
 
-   Request your sandbox API key from the [Developer Portal](https://nerve.run/dashboard).
-
-2. **Install SDK**
-
-   ```package-install
-   npm install @nerve-js/client
-   ```
-
-## Basic Usage
-
-<Tabs defaultValue="vanilla" items={["Vanilla", "Tanstack"]}>
-  <Tab value="vanilla" label="Vanilla">
-    ```typescript
-    import { NerveClient } from '@nerve-js/client';
-
-    const client = new NerveClient({
-      redirectUrl: 'https://your-app.com/callback',
-      scope: ['patient.read', 'patient.write']
-    });
-
-    // Search for a patient
-    const results = await client.observation.search({
-      patient: "patient-id",
-      category: "vital-signs"
-    });
+    ```package-install
+    npm install @nerve-js/client @nerve-js/next
     ```
-  </Tab>
-  <Tab value="tanstack" label="Tanstack">
+  </Step>
+
+  <Step>
+    ### Create Provider Wrapper
+
+    Create a new file `app/providers.tsx`:
+
     ```typescript
-    import { useNerveClient } from '@nerve-js/next';
-    import { useObservationSearch } from '@nerve-js/client/hooks';
+    'use client';
 
-    function YourComponent() {
-      const client = useNerveClient();
-      
-      const { data, isLoading, error } = useObservationSearch(client, {
-        patient: "patient-id",
-        category: "vital-signs"
-      });
+    import { NerveProvider } from '@nerve-js/next';
+    import type React from 'react';
 
-      if (isLoading) return <div>Loading...</div>;
-      if (error) return <div>Error: {error.message}</div>;
-      
-      return <div>{JSON.stringify(data)}</div>;
+    export default function Providers({ children }: { children: React.ReactNode }) {
+      return (
+        <NerveProvider
+          redirectUrl="http://localhost:3000/callback/"
+          signInUrl="http://localhost:3000/signin/"
+          afterRedirectUrl="http://localhost:3000/"
+        >
+          {children}
+        </NerveProvider>
+      );
     }
     ```
-  </Tab>
-</Tabs>
 
-See framework integrations for more specific instructions.
+    Then wrap your app with the provider in `app/layout.tsx`:
+
+    ```typescript
+    import Providers from './providers';
+
+    export default function RootLayout({
+      children,
+    }: {
+      children: React.ReactNode;
+    }) {
+      return (
+        <html>
+          <body>
+            <Providers>{children}</Providers>
+          </body>
+        </html>
+      );
+    }
+    ```
+  </Step>
+
+  <Step>
+    ### Basic Usage
+
+    <Tabs defaultValue="vanilla" items={["Vanilla"]}>
+      <Tab value="vanilla" label="Vanilla">
+        ```typescript
+        import { useNerveClient } from '@nerve-js/next';
+
+        // Get the client instance
+        const client = useNerveClient();
+        
+        // Set provider to sandbox before making any requests
+        await client.setProvider('sandbox');
+
+        // Now you can make requests
+        const results = await client.observation.search({
+          patient: "patient-id",
+          category: "vital-signs"
+        });
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+</Steps>
+
+That's it! You can now use `useNerveClient()` in any client component to start querying healthcare data from our sandbox. The client provides type-safe access to all FHIR resources and operations.
+
+See framework integrations for more specific instructions on how to include the Auth component for actual integrations.
 
 <Cards>
   <Card
