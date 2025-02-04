@@ -12,11 +12,12 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
 
 ## Introduction
 
-Nerve is a unified API for healthtech developers to easily integrate with provider's EHR systems, and build using sandbox data. We
+Nerve is a unified API for healthtech developers to easily integrate with EHR systems, and build using sandbox data. We
 support major platforms like Epic, Cerner, and AthenaHealth and [many more](/docs/integrations)!
 
-Nerve is built on top of the [FHIR](https://hl7.org/fhir/) data model, and offers developers consistent abstractions
-for reading and writing data to EHR systems.
+## Our Philosophy
+
+Nerve abstracts over the [FHIR](https://hl7.org/fhir/) data model to provide developers a simpler developer interface when reading and writing data to EHR systems. We use FHIR as a ['compile-target'](/nerve-data-model) to ensure interoperability with other health systems while reducing the complexity for developers.
 
 <Cards>
   <Card
@@ -35,7 +36,7 @@ for reading and writing data to EHR systems.
   />
 </Cards>
 
-## Quick Setup for Sandbox
+## Quick Setup for Sandbox (NextJS App Router)
 
 <Steps>
   <Step>

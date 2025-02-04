@@ -1,0 +1,32 @@
+---
+title: Nerve Data Model
+description: Explaining how we made simplications to FHIR to make it simpler for developers
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+## Our Philosophy
+
+FHIR was built to be comprehensive, not easy-to-use. For engineering teams who have developers who may be coming from indusitries outside of healthcare, FHIR is too deep of an interface to learn. We believe that there will be more developers working in healthcare in the future and we wanted to reduce the barrier for them to make impactful work.
+
+Nevertheless, as FHIR is becoming a growing standard for REST-based interfaces, we believe that making our data model compatable with FHIR as a compile-target is important for larger-scale interoperability. 
+
+
+<Callout>
+For our integrations, we don't just use the FHIR APIs offered by ONC EHRs, we often use a combination of HL7, FHIR APIs, propriatary APIs, CSV exports, and RPA to get all of the data necessary. 
+</Callout>
+
+
+1. More Resources: Including things like X, Y, Z 
+
+2. Returning .search results in an [] instead of a 'Searchset',
+
+3. Patient-centered. You can access Patient resources like X, Y, Z by creating a Patient object and accessing it's type
+
+4. Removing health-codes, and flattening more JSON objects like CodeableConcepts to strings.
+
+5. Allowing reference resolving to be simple by doing 'Resource1.resource2'
+
+6. Simplifications of fields like 'subject' vs 'patient'
+
+
