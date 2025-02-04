@@ -36,7 +36,6 @@ export default defineConfig({
       fileName: (format) => `index.${format}.js`,
       formats: ['es', 'cjs'],
     },
-    sourcemap: 'inline',
     rollupOptions: {
       external: [
         'react',
