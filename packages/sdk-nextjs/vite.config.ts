@@ -17,6 +17,8 @@ export default defineConfig({
       // This will generate .d.ts files in the `dist` folder
       // and also make sure your package.json "types" point is correct.
       insertTypesEntry: true,
+      copyDtsFiles: true,
+      include: ['src/**/*.ts', 'src/**/*.tsx'],
     }),
   ],
   css: {
@@ -30,10 +32,11 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: 'src/index.ts',
+      entry: 'src/index.tsx',
       fileName: (format) => `index.${format}.js`,
       formats: ['es', 'cjs'],
     },
+    sourcemap: 'inline',
     rollupOptions: {
       external: [
         'react',

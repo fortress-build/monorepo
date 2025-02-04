@@ -19,14 +19,12 @@
     "declarationDir": "dist",
     "module": "ES2022",
     "moduleDetection": "force",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2022",
-    "strictNullChecks": true,
-    "allowImportingTsExtensions": true,
-    "emitDeclarationOnly": true
+    "strictNullChecks": true
   },
   "include": ["src"]
 }

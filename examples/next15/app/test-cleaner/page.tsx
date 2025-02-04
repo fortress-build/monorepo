@@ -1,9 +1,10 @@
 "use client";
-import { useNerveClient } from "@nerve-js/next";
+import { type Nerve, useNerveClient } from "@nerve-js/next";
 import { useState } from "react";
 
 export default function Home() {
   const nerve = useNerveClient();
+  //const nerve = useNerveClient();
   nerve.setProvider({
     authUrl: "https://fhir.epic.com/interconnect-fhir-oauth/oauth2",
     fhirUrl: "https://fhir.epic.com/interconnect-fhir-oauth/api/FHIR/R4",
@@ -18,7 +19,7 @@ export default function Home() {
   );
 }
 
-function HomeContent({ nerve }: { nerve: any }) {
+function HomeContent({ nerve }: { nerve: Nerve }) {
   const [searchResults, setSearchResults] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
