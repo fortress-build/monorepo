@@ -6,7 +6,9 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "build": "rm -rf ./dist && pnpx tailwindcss@3 -i ./src/input.css -o ./dist/output.css && tsc && vite build"
+    "build": "rm -rf ./dist && pnpx tailwindcss@3 -i ./src/input.css -o ./dist/output.css && tsc",
+    "build2": "rm -rf ./dist && pnpx tailwindcss@3 -i ./src/input.css -o ./dist/output.css && tsc && vite build"
+
   },
   "files": ["dist", "public"],
   "main": "./dist/index.cjs",

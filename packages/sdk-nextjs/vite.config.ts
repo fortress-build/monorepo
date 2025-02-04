@@ -31,6 +31,7 @@ export default defineConfig({
     // keepNames: true,
   },
   build: {
+    minify: false,
     lib: {
       entry: 'src/index.tsx',
       fileName: (format) => `index.${format}.js`,
