@@ -130,9 +130,14 @@ import { Callout } from 'fumadocs-ui/components/callout';
       await client.setProvider('sandbox');
 
       // Now you can make requests
-      const results = await client.observation.search({
-        patient: "patient-id",
-        category: "vital-signs"
+      const patients = await nerve.patient.search({
+        given: 'John',
+        family: 'Doe',
+        birthdate: '',
+      });
+
+      const data = await nerve.carePlan.search({
+        patient: patients[0].id || '',
       });
       ```
     </Tab>
