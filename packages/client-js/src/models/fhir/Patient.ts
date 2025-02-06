@@ -1,37 +1,21 @@
-import type { ContactPoint } from "./ContactPoint";
-import type { Address } from "./Address";
-import type { Identifier } from "./Identifier";
-import type { HumanName } from "./HumanName";
-import type { Reference } from "./Reference";
-import type { Practitioner } from "./Practitioner";
-import type { DomainResource } from "./Resource";
-import type { CodeableConcept } from "./CodeableConcept";
-import type { Organization } from "./Organization";
-import type { Period } from "./Period";
-import type { Attachment } from "./Attachment";
-import type { PractitionerRole } from "./PractitionerRole";
-import type { RelatedPerson } from "./RelatedPerson";
+import type { Nerve } from '@/index';
+import type { Address } from './Address';
+import type { Attachment } from './Attachment';
+import type { CodeableConcept } from './CodeableConcept';
+import type { ContactPoint } from './ContactPoint';
+import type { HumanName } from './HumanName';
+import type { Identifier } from './Identifier';
+import type { Organization } from './Organization';
+import type { Period } from './Period';
+import type { Practitioner } from './Practitioner';
+import type { PractitionerRole } from './PractitionerRole';
+import type { Reference } from './Reference';
+import type { RelatedPerson } from './RelatedPerson';
+import type { DomainResource } from './Resource';
 
-// export const Patient = v.object({
-//   active: v.optional(v.boolean()),
-//   address: v.optional(v.array(Address)),
-//   birthDate: v.string(),
-//   gender: v.string(),
-//   generalPractitioner: v.array(Reference<Practitioner>()),
-//   identifier: v.array(Identifier),
-//   maritalStatus: v.object({
-//     text: v.string(),
-//   }),
-//   name: v.array(HumanName),
-//   telecom: v.optional(v.array(ContactPoint)),
-//   extension: v.array(Extension),
-// });
-//
-// export type Patient = v.InferOutput<typeof Patient>;
-
+// Base Patient resource type
 export declare class Patient extends DomainResource {
-  resourceType: "Patient";
-
+  resourceType: 'Patient';
   identifier?: Identifier[];
   active?: boolean;
   name?: HumanName[];
@@ -58,7 +42,6 @@ export declare class Patient extends DomainResource {
     language: CodeableConcept;
     preferred?: boolean;
   };
-
   generalPractitioner?: Reference<
     Organization | Practitioner | PractitionerRole
   >[];
@@ -68,3 +51,21 @@ export declare class Patient extends DomainResource {
     type: string;
   };
 }
+
+// // Extended Patient class with additional functionality
+// export class Patient extends PatientResource {
+//   private client!: Nerve;
+
+//   constructor(client: Nerve) {
+//     super();
+//     this.client = client;
+//   }
+//   get carePlan(): Promise<CarePlan> {
+//     if (!this.id) {
+//       throw new Error('Patient ID is required to fetch care plan');
+//     }
+//     return this.client.carePlan
+//       .read(this.id)
+//       .then((response) => response.resource);
+//   }
+// }

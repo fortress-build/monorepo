@@ -8,9 +8,11 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "build": "rm -rf ./dist && pnpx tailwindcss@3 -i ./src/input.css -o ./dist/output.css && tsc",
     "build2": "rm -rf ./dist && pnpx tailwindcss@3 -i ./src/input.css -o ./dist/output.css && tsc && vite build"
-
   },
-  "files": ["dist", "public"],
+  "files": [
+    "dist",
+    "public"
+  ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -50,7 +52,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "jsdom": "^26.0.0",
-    "pkgroll": "^2.6.1",
+    "pkgroll": "^2.8.0",
     "postcss": "^8.5.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
