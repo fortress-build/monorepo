@@ -52,7 +52,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "jsdom": "^26.0.0",
-    "pkgroll": "^2.8.0",
+    "pkgroll": "^2.6.1",
     "postcss": "^8.5.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
