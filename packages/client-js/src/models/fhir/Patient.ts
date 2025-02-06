@@ -1,4 +1,3 @@
-import type { Nerve } from '@/index';
 import type { Address } from './Address';
 import type { Attachment } from './Attachment';
 import type { CodeableConcept } from './CodeableConcept';
