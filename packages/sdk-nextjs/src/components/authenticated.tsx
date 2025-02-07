@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { useNerveClient, useNerveConfig } from "../client";
-import { useEffect, useState } from "react";
-import type React from "react";
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import type React from 'react';
+import { useNerveClient, useNerveConfig } from '../client';
 
 export function Authenticated({
   children,

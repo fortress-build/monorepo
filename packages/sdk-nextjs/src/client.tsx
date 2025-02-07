@@ -59,12 +59,9 @@ export function useNerveClient(): Nerve {
 }
 
 export function useNerveConfig(): NerveNextConfig {
-  const context = useContext<NerveNextContext | undefined>(NerveGlobalContext);
-  console.log(context)
-
+  const context = useContext<NerveNextContext | undefined>(NerveGlobalContext);  
   if (context === undefined) {
     throw new Error('useNerveConfig must be used within a NerveProvider');
   }
-
   return context.config;
 }

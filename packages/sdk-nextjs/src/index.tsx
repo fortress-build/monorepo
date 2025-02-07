@@ -23,6 +23,5 @@ export function signOut() {
 
   window.localStorage.removeItem(KEYS.PROVIDER);
   window.localStorage.removeItem(KEYS.TOKEN);
-
   window.location.reload();
 }
