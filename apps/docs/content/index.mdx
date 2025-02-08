@@ -106,13 +106,13 @@ for reading and writing data to EHR systems.
         await client.setProvider('sandbox');
 
         // Now you can make requests
-        const patients = await nerve.patient.search({
+        const patients = await client.patient.search({
           given: 'John',
           family: 'Doe',
           birthdate: '',
         });
 
-        const data = await nerve.carePlan.search({
+        const data = await client.carePlan.search({
           patient: patients[0].id || '',
         });
         ```
