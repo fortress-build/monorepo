@@ -23,7 +23,6 @@ export function Authenticated({
       setContent(children);
     } else {
       router.replace(config.signInUrl);
-      // window.location.href = config.signInUrl;
     }
   }, [client,  config, children]);
 
