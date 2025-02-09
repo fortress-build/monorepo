@@ -24,7 +24,7 @@ export function Authenticated({
     } else {
       router.replace(config.signInUrl);
     }
-  }, [client,  config, children]);
+  }, [client, router, config, children]);
 
   return content;
 }
