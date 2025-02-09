@@ -6,8 +6,7 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "build": "rm -rf ./dist && pnpx tailwindcss@3 -i ./src/input.css -o ./dist/output.css && tsc",
-    "build2": "rm -rf ./dist && pnpx tailwindcss@3 -i ./src/input.css -o ./dist/output.css && tsc && vite build"
+    "build": "rm -rf ./dist && vite build && echo 'import \"./next.css\";' >> dist/index.es.js"
   },
   "files": [
     "dist",
@@ -26,7 +25,8 @@
       "types": "./dist/components/ui/*.d.ts",
       "import": "./dist/components/ui/*.js",
       "require": "./dist/components/ui/*.cjs"
-    }
+    },
+    "./next.css": "./dist/next.css"
   },
   "dependencies": {
     "@nerve-js/client": "workspace:*",

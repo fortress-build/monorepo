@@ -12,7 +12,8 @@ export { NerveSignIn } from "./components/sign-in";
 export { Nerve } from "@nerve-js/client";
 export { Authenticated } from "./components/authenticated";
 
-import "./output.css";
+import "./next.css"
+
 
 export function signOut() {
   if (typeof window === "undefined") {
