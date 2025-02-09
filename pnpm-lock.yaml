@@ -354,8 +354,8 @@ importers:
         specifier: ^8.5.1
         version: 8.5.1(storybook@8.5.1(bufferutil@4.0.9)(prettier@3.4.2))
       '@storybook/addon-onboarding':
-        specifier: ^8.5.1
-        version: 8.5.1(storybook@8.5.1(bufferutil@4.0.9)(prettier@3.4.2))
+        specifier: ^8.5.3
+        version: 8.5.3(storybook@8.5.1(bufferutil@4.0.9)(prettier@3.4.2))
       '@storybook/addon-themes':
         specifier: ^8.5.1
         version: 8.5.1(storybook@8.5.1(bufferutil@4.0.9)(prettier@3.4.2))
@@ -5413,10 +5413,10 @@ packages:
     peerDependencies:
       storybook: ^8.5.1
 
-  '@storybook/addon-onboarding@8.5.1':
-    resolution: {integrity: sha512-ooa59cAz9sJHFbStIL3/kpBpLM9xZGQa2zmSn8TMCMUq1TM/rJARYD4SNj4BeBsLH24wFHI9SXf15Cln8EhASg==}
+  '@storybook/addon-onboarding@8.5.3':
+    resolution: {integrity: sha512-NZhYj3UZK65reO7mXcK7FPPu7QkLCRyIa6TpfQ3mRAocfjqg401mcBsRO37JNywYfHCZrU4w1l7pwpqjvcYceg==}
     peerDependencies:
-      storybook: ^8.5.1
+      storybook: ^8.5.3
 
   '@storybook/addon-outline@8.5.1':
     resolution: {integrity: sha512-LM3wG5bUgAAEgDS4MD1dw2VStduSYTMc/rNgaTExVVr7pPeuAgkfyIUriP3P0i7x5jweSb2aGzaTuy3PUHAWfg==}
@@ -16682,7 +16682,7 @@ snapshots:
       storybook: 8.5.1(bufferutil@4.0.9)(prettier@3.4.2)
       tiny-invariant: 1.3.3
 
-  '@storybook/addon-onboarding@8.5.1(storybook@8.5.1(bufferutil@4.0.9)(prettier@3.4.2))':
+  '@storybook/addon-onboarding@8.5.3(storybook@8.5.1(bufferutil@4.0.9)(prettier@3.4.2))':
     dependencies:
       storybook: 8.5.1(bufferutil@4.0.9)(prettier@3.4.2)
 
