@@ -2,6 +2,7 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from 'tailwindcss';
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import preserveDirectives from 'rollup-preserve-directives';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -12,6 +13,7 @@ export default defineConfig({
       // This plugin generally keeps them, but if not,
       // you can further customize esbuild options.
     }),
+    preserveDirectives(),
     dts({
       rollupTypes: true,
       // This will generate .d.ts files in the `dist` folder
@@ -43,6 +45,8 @@ export default defineConfig({
         'react-dom',
         'tailwindcss',
         'class-variance-authority',
+        'next',
+        'next/navigation'
       ],
       output: {
         globals: {
