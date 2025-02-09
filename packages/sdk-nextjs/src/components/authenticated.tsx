@@ -1,9 +1,10 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { useNerveClient, useNerveConfig } from "../client";
-import { useEffect, useState } from "react";
-import type React from "react";
+import { useRouter } from 'next/compat/router';
+
+import { useEffect, useState } from 'react';
+import type React from 'react';
+import { useNerveClient, useNerveConfig } from '../client';
 
 export function Authenticated({
   children,
@@ -18,11 +19,23 @@ export function Authenticated({
 
   const [content, setContent] = useState<React.ReactNode | null>(fallback);
 
+  console.log('router', router)
+  console.log('useRouter', useRouter)
   useEffect(() => {
+
+    if (router && !router.isReady) {
+      return;
+    }
+    
     if (client.isAuthenticated()) {
       setContent(children);
     } else {
+      if (!router) {
+        return;
+      }
+
       router.replace(config.signInUrl);
+      return;
     }
   }, [client, router, config, children]);
 

@@ -1,9 +1,10 @@
 "use client";
 
-import { useNerveClient, useNerveConfig } from "../client";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter} from "next/compat/router";
+import { useSearchParams } from "next/navigation";
 import type React from "react";
 import { useEffect } from "react";
+import { useNerveClient, useNerveConfig } from "../client";
 
 export function NerveCallback({ children }: { children: React.ReactNode }) {
   const client = useNerveClient();
@@ -11,10 +12,19 @@ export function NerveCallback({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const params = useSearchParams();
 
+
   useEffect(() => {
-    const code = params.get("code");
-    if (code !== null && code !== "") {
+    if (router && !router.isReady) {
+      return;
+    }
+
+    const code = params.get('code');
+    if (code !== null && code !== '') {
       client.authCallback(code).then(() => {
+        if (!router) {
+          console.log(router);
+          return;
+        }
         router.replace(config.afterRedirectUrl);
       });
     }

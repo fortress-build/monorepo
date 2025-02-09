@@ -46,7 +46,8 @@ export default defineConfig({
         'tailwindcss',
         'class-variance-authority',
         'next',
-        'next/navigation'
+        'next/compat',
+        'next/navigation.js'
       ],
       output: {
         globals: {

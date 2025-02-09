@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-import { useNerveClient, useNerveConfig } from "../../client";
-import type { EHRProvider, PermissionList } from "../../components/sign-in";
-import ConsentScreen from "../../components/sign-in/consent";
-import EHRScreen from "../../components/sign-in/provider-selection";
-import { useRouter } from "next/navigation";
+import { useRouter } from 'next/compat/router';
+import { useNerveClient, useNerveConfig } from '../../client';
+import type { EHRProvider, PermissionList } from '../../components/sign-in';
+import ConsentScreen from '../../components/sign-in/consent';
+import EHRScreen from '../../components/sign-in/provider-selection';
 
 export function SignInInner({
   initialProviders,
@@ -18,14 +18,22 @@ export function SignInInner({
   const [providers] = useState<EHRProvider[]>(initialProviders);
   const [permissions] = useState<PermissionList>(initialPermissions);
   const [selectedProvider, setSelectedProvider] = useState<EHRProvider | null>(
-    null,
+    null
   );
   const client = useNerveClient();
   const config = useNerveConfig();
   const router = useRouter();
 
+
   useEffect(() => {
+    if (router && !router.isReady) {
+      return;
+    }
     if (client.isAuthenticated()) {
+      if (!router) {
+        console.log(router);
+        return;
+      }
       router.replace(config.afterRedirectUrl);
     }
   }, [router, client, config]);
@@ -42,7 +50,7 @@ export function SignInInner({
           });
 
           client.authenticate().then((res) => {
-            if (res.state === "unauthenticated") {
+            if (res.state === 'unauthenticated') {
               globalThis.window.location.assign(res.authUrl);
               return;
             }
