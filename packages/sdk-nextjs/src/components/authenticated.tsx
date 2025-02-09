@@ -23,8 +23,9 @@ export function Authenticated({
       setContent(children);
     } else {
       router.replace(config.signInUrl);
+      // window.location.href = config.signInUrl;
     }
-  }, [client, router, config, children]);
+  }, [client,  config, children]);
 
   return content;
 }
