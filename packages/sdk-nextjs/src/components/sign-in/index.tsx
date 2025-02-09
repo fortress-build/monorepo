@@ -43,6 +43,7 @@ export function NerveSignIn() {
   const [providers, setProviders] = useState<EHRProvider[] | null>(null);
   const [permissions, setPermissions] = useState<PermissionList | null>(null);
 
+  // SUSSY BAKA -david
   Promise.all([getEHRProviders(), getPermissionList()]).then(
     ([providers, permissions]) => {
       setProviders(providers);
